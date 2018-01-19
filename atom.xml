@@ -5,9 +5,9 @@
   <subtitle>Hexo</subtitle>
   <link href="/myblog/atom.xml" rel="self"/>
   
-  <link href="http://HackerFreedom.github.io/"/>
+  <link href="http://HackerFreedom.github.io/myblog/"/>
   <updated>2018-01-19T09:33:05.201Z</updated>
-  <id>http://HackerFreedom.github.io/</id>
+  <id>http://HackerFreedom.github.io/myblog/</id>
   
   <author>
     <name>Sam</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>JQueryAjx知识点</title>
-    <link href="http://HackerFreedom.github.io/2018/01/19/Ajax/"/>
-    <id>http://HackerFreedom.github.io/2018/01/19/Ajax/</id>
+    <link href="http://HackerFreedom.github.io/myblog/2018/01/19/Ajax/"/>
+    <id>http://HackerFreedom.github.io/myblog/2018/01/19/Ajax/</id>
     <published>2018-01-19T09:33:03.000Z</published>
     <updated>2018-01-19T09:33:05.201Z</updated>
     
@@ -34,17 +34,17 @@
     
     </summary>
     
-      <category term="Web进阶" scheme="http://HackerFreedom.github.io/categories/Web%E8%BF%9B%E9%98%B6/"/>
+      <category term="Web进阶" scheme="http://HackerFreedom.github.io/myblog/categories/Web%E8%BF%9B%E9%98%B6/"/>
     
     
-      <category term="JQuery" scheme="http://HackerFreedom.github.io/tags/JQuery/"/>
+      <category term="JQuery" scheme="http://HackerFreedom.github.io/myblog/tags/JQuery/"/>
     
   </entry>
   
   <entry>
     <title>JQuery知识点</title>
-    <link href="http://HackerFreedom.github.io/2018/01/19/Jquery/"/>
-    <id>http://HackerFreedom.github.io/2018/01/19/Jquery/</id>
+    <link href="http://HackerFreedom.github.io/myblog/2018/01/19/Jquery/"/>
+    <id>http://HackerFreedom.github.io/myblog/2018/01/19/Jquery/</id>
     <published>2018-01-19T09:33:03.000Z</published>
     <updated>2018-01-19T09:36:40.855Z</updated>
     
@@ -60,17 +60,17 @@
     
     </summary>
     
-      <category term="Web进阶" scheme="http://HackerFreedom.github.io/categories/Web%E8%BF%9B%E9%98%B6/"/>
+      <category term="Web进阶" scheme="http://HackerFreedom.github.io/myblog/categories/Web%E8%BF%9B%E9%98%B6/"/>
     
     
-      <category term="JQuery" scheme="http://HackerFreedom.github.io/tags/JQuery/"/>
+      <category term="JQuery" scheme="http://HackerFreedom.github.io/myblog/tags/JQuery/"/>
     
   </entry>
   
   <entry>
     <title>JQuery知识点</title>
-    <link href="http://HackerFreedom.github.io/2018/01/19/Jsonp/"/>
-    <id>http://HackerFreedom.github.io/2018/01/19/Jsonp/</id>
+    <link href="http://HackerFreedom.github.io/myblog/2018/01/19/Jsonp/"/>
+    <id>http://HackerFreedom.github.io/myblog/2018/01/19/Jsonp/</id>
     <published>2018-01-19T09:02:37.000Z</published>
     <updated>2018-01-19T09:32:30.474Z</updated>
     
@@ -85,17 +85,17 @@
     
     </summary>
     
-      <category term="Web进阶" scheme="http://HackerFreedom.github.io/categories/Web%E8%BF%9B%E9%98%B6/"/>
+      <category term="Web进阶" scheme="http://HackerFreedom.github.io/myblog/categories/Web%E8%BF%9B%E9%98%B6/"/>
     
     
-      <category term="JQuery" scheme="http://HackerFreedom.github.io/tags/JQuery/"/>
+      <category term="JQuery" scheme="http://HackerFreedom.github.io/myblog/tags/JQuery/"/>
     
   </entry>
   
   <entry>
     <title>MarkDownPad基本使用</title>
-    <link href="http://HackerFreedom.github.io/2018/01/19/Hexo/"/>
-    <id>http://HackerFreedom.github.io/2018/01/19/Hexo/</id>
+    <link href="http://HackerFreedom.github.io/myblog/2018/01/19/Hexo/"/>
+    <id>http://HackerFreedom.github.io/myblog/2018/01/19/Hexo/</id>
     <published>2018-01-18T17:39:59.000Z</published>
     <updated>2018-01-19T07:51:46.999Z</updated>
     
@@ -111,15 +111,15 @@
     
     </summary>
     
-      <category term="Hexo教程" scheme="http://HackerFreedom.github.io/categories/Hexo%E6%95%99%E7%A8%8B/"/>
+      <category term="Hexo教程" scheme="http://HackerFreedom.github.io/myblog/categories/Hexo%E6%95%99%E7%A8%8B/"/>
     
     
   </entry>
   
   <entry>
     <title>Java基础知识</title>
-    <link href="http://HackerFreedom.github.io/2018/01/19/JavaSE%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%82%B9/"/>
-    <id>http://HackerFreedom.github.io/2018/01/19/JavaSE基础知识点/</id>
+    <link href="http://HackerFreedom.github.io/myblog/2018/01/19/JavaSE%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%82%B9/"/>
+    <id>http://HackerFreedom.github.io/myblog/2018/01/19/JavaSE基础知识点/</id>
     <published>2018-01-18T16:00:00.000Z</published>
     <updated>2018-01-19T08:00:07.447Z</updated>
     
@@ -131,15 +131,15 @@
     
     </summary>
     
-      <category term="Java" scheme="http://HackerFreedom.github.io/categories/Java/"/>
+      <category term="Java" scheme="http://HackerFreedom.github.io/myblog/categories/Java/"/>
     
     
   </entry>
   
   <entry>
     <title>Hello World</title>
-    <link href="http://HackerFreedom.github.io/2018/01/16/hello-world/"/>
-    <id>http://HackerFreedom.github.io/2018/01/16/hello-world/</id>
+    <link href="http://HackerFreedom.github.io/myblog/2018/01/16/hello-world/"/>
+    <id>http://HackerFreedom.github.io/myblog/2018/01/16/hello-world/</id>
     <published>2018-01-16T13:31:55.492Z</published>
     <updated>2018-01-16T13:31:55.492Z</updated>
     
