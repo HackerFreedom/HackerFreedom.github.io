@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://HackerFreedom.github.io/2018/01/19/Jsonp/</loc>
+    
+    <lastmod>2018-01-19T11:04:59.197Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://HackerFreedom.github.io/2018/01/19/Jquery/</loc>
     
     <lastmod>2018-01-19T09:36:40.855Z</lastmod>
@@ -12,13 +19,6 @@
     <loc>http://HackerFreedom.github.io/2018/01/19/Ajax/</loc>
     
     <lastmod>2018-01-19T09:33:05.201Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://HackerFreedom.github.io/2018/01/19/Jsonp/</loc>
-    
-    <lastmod>2018-01-19T09:32:30.474Z</lastmod>
     
   </url>
   
