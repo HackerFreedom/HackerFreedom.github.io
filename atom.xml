@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>HackerSpace</title>
+  
+  <subtitle>Hexo</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="HackerFreedom.github.io/"/>
+  <updated>2018-01-19T09:33:05.201Z</updated>
+  <id>HackerFreedom.github.io/</id>
+  
+  <author>
+    <name>Sam</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>JQueryAjx知识点</title>
+    <link href="HackerFreedom.github.io/2018/01/19/Ajax/"/>
+    <id>HackerFreedom.github.io/2018/01/19/Ajax/</id>
+    <published>2018-01-19T09:33:03.000Z</published>
+    <updated>2018-01-19T09:33:05.201Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="Jquery第二天"><a href="#Jquery第二天" class="headerlink" title="Jquery第二天"></a>Jquery第二天</h1><h2 id="ajax概述"><a href="#ajax概述" class="headerlink" title="ajax概述"></a>ajax概述</h2><p><em>通过在后台与服务器进行少量数据交换，ajax可以使网页实现异步更新。这意味着可以在不重新加载整个网页的情况下，对网页的某部分进行更新。传统的网页（不使用 ajax）如果需要更新内容，必需重载整个网页面</em><br>    ajax的开发步骤：<br>        【第一步】：创建异步对象(XMLHttpRequest对象)<br>        var xmlHttp = createXmlHttp();<br>        【第二步】：设置监听<br>        【第三步】：设置请求方式,URL<br>        xmlHttp.onreadystatechange = function() {}</p><pre><code>    xmlHttp.open(“GET”,”/web15/ServletDemo1”,true);【第四步】：发送请求xmlHttp.send(null);【第五步】：在回调函数中获取响应数据xmlHttp.onreadystatechange = function(){    if(xmlHttp.readyState == 4){ //         if(xmlHttp.status == 200){ //            alert(xmlHttp.responseText);        }    }}</code></pre><h2 id="XMLHttpRequest对象详解-重点"><a href="#XMLHttpRequest对象详解-重点" class="headerlink" title="XMLHttpRequest对象详解(重点)"></a>XMLHttpRequest对象详解(重点)</h2><ol><li>XMLHttpRequest对象的常用属性：<br>readyState属性：HTTP 请求的状态.当一个 XMLHttpRequest 初次创建时，这个属性的值从 0 开始，直到接收到完整的 HTTP 响应，这个值增加到 4。</li><li><p>status属性：由服务器返回的 HTTP 状态代码，如 200 表示成功，而 404 表示 “Not Found” 错误。当 readyState 小于 3 的时候读取这一属性会导致一个异常。</p></li><li><p>onreadystatechange事件：每次 readyState 属性改变的时候调用的事件句柄函数。</p><h2 id="XMLHttpRequest常用方法"><a href="#XMLHttpRequest常用方法" class="headerlink" title="XMLHttpRequest常用方法"></a>XMLHttpRequest常用方法</h2></li><li>open它是用于设置请求方式，url及是否异步<br>参数1：HTTP 请求方式  POST/GET。<br>参数2:url路径<br>参数3:true/false 代表是否异步</li><li><p>send它是真正向服务器发送请求<br>如果请求方式是get，那么我们使用send(null) 原因:get请求方式是没有http请求体<br>只有post请求方式时，才有请求体,所以send的参数只是在post请求时使用例如<br>Xmlhttp.send(“username=xxx&amp;password=xxx”);</p></li><li><p>setRequestHeader<br>注意：如果请求方式是POST,那么我们在使用时，必须设置一个请求头，就需要使用setRequestHeader方法来完成</p><h3 id="jquery的ajax开发-load介绍"><a href="#jquery的ajax开发-load介绍" class="headerlink" title="jquery的ajax开发-load介绍"></a>jquery的ajax开发-load介绍</h3><p><strong>load（）方法的调用：想要把结果插入到哪个元素中，就使用这个元素的jQuery对象调用load方法。也就是说，load方法发送请求是直接将结果插入到dom元素中。<br>当有参数传递给服务器时就是post请求，没有参数传递就是get请求。</strong></p><h3 id="jquery的ajax开发-post与-get介绍-重点"><a href="#jquery的ajax开发-post与-get介绍-重点" class="headerlink" title="jquery的ajax开发-$.post与$.get介绍(重点)"></a>jquery的ajax开发-$.post与$.get介绍(重点)</h3><p> $.get与$.post他们针对于 get和post请求<br> URL：发送请求地址<br> data：待发送的key/value参数<br> callback：发送成功时回调函数<br> type：放回内容格式xml.html ,sctipt, json ,text, _default</p></li></ol><h4 id="json介绍"><a href="#json介绍" class="headerlink" title="json介绍"></a>json介绍</h4><p><em>JSON(JavaScript Object Notation, JS 对象标记) 是一种轻量级的数据交换格式，说白了就是客户端与服务器之间传递的数据格式（json、xml…）。</em></p><h4 id="fastjson使用介绍"><a href="#fastjson使用介绍" class="headerlink" title="fastjson使用介绍"></a>fastjson使用介绍</h4><p><em>fastjson是阿里公司为我们提供的一个解析和封装json数据的开源类库。也就是说使用fastjson一定要导入相关的jar包。同时还有其它许多类似的开源类库。</em><br><strong>对于json处理插件有 fastjson  jsonlib  flexjson jackson</strong><br><strong>注意：JSONObject.toJSONString（Object object）；传入的是Object 。</strong><br><strong>如果java对象中存在日期类型属性java.util.Date,是否可以用指定的格式来转换成json。</strong><br><strong>简单方式(保留想要的属性) SerializeFilter filter =new SimplePropertyPreFiler(“”,””)将需要的属性指定</strong></p><h2 id="关于fastjson将java对象转换成json时的循环引用问题-通过SerializerFeature-DisableCirularReferenceDetect"><a href="#关于fastjson将java对象转换成json时的循环引用问题-通过SerializerFeature-DisableCirularReferenceDetect" class="headerlink" title="关于fastjson将java对象转换成json时的循环引用问题? 通过SerializerFeature.DisableCirularReferenceDetect"></a><strong>关于fastjson将java对象转换成json时的循环引用问题? 通过SerializerFeature.DisableCirularReferenceDetect</strong></h2>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;Jquery第二天&quot;&gt;&lt;a href=&quot;#Jquery第二天&quot; class=&quot;headerlink&quot; title=&quot;Jquery第二天&quot;&gt;&lt;/a&gt;Jquery第二天&lt;/h1&gt;&lt;h2 id=&quot;ajax概述&quot;&gt;&lt;a href=&quot;#ajax概述&quot; class=&quot;head
+      
+    
+    </summary>
+    
+      <category term="Web进阶" scheme="HackerFreedom.github.io/categories/Web%E8%BF%9B%E9%98%B6/"/>
+    
+    
+      <category term="JQuery" scheme="HackerFreedom.github.io/tags/JQuery/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>JQuery知识点</title>
+    <link href="HackerFreedom.github.io/2018/01/19/Jquery/"/>
+    <id>HackerFreedom.github.io/2018/01/19/Jquery/</id>
+    <published>2018-01-19T09:33:03.000Z</published>
+    <updated>2018-01-19T09:36:40.855Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="jQuery介绍"><a href="#jQuery介绍" class="headerlink" title="jQuery介绍"></a>jQuery介绍</h1><pre><code>我们使用jquery可以更好完成以下操作1.html文档操作，对于dom相关操作优化2.jquery提供更加方便与丰富事件处理3.jquery提供简单动画特效4.jquery提供ajax交互我们知道，要使用任何一个js框架，都是需要导入相关的js文件。关于其它常用js框架:1.dojo 面向对象的js框架2.extjs 学习成本比较高 它提供大量的丰富组件，它效果展示非常好3.prototype 早期比较流行js框架4.angularJS 它是一个mvc js框架，它提供双向数据绑定。。jquery它的插件机制特别丰富,在开发中可以选择非常多的相关插件，例如，表单校验插件，树型结构。。。</code></pre><h2 id="jQuery核心函数"><a href="#jQuery核心函数" class="headerlink" title="jQuery核心函数"></a>jQuery核心函数</h2>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;jQuery介绍&quot;&gt;&lt;a href=&quot;#jQuery介绍&quot; class=&quot;headerlink&quot; title=&quot;jQuery介绍&quot;&gt;&lt;/a&gt;jQuery介绍&lt;/h1&gt;&lt;pre&gt;&lt;code&gt;我们使用jquery可以更好完成以下操作
+1.html文档操作，对于dom相
+      
+    
+    </summary>
+    
+      <category term="Web进阶" scheme="HackerFreedom.github.io/categories/Web%E8%BF%9B%E9%98%B6/"/>
+    
+    
+      <category term="JQuery" scheme="HackerFreedom.github.io/tags/JQuery/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>JQuery知识点</title>
+    <link href="HackerFreedom.github.io/2018/01/19/Jsonp/"/>
+    <id>HackerFreedom.github.io/2018/01/19/Jsonp/</id>
+    <published>2018-01-19T09:02:37.000Z</published>
+    <updated>2018-01-19T09:32:30.474Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="理解什么是跨域"><a href="#理解什么是跨域" class="headerlink" title="理解什么是跨域"></a>理解什么是跨域</h1><p>  跨域：指的是在当前工程里面访问了不同域或者服务器中的资源，只要是协议、主机名、端口号有一个不一致就属于跨域<br>  JSONP 是json的一种”使用模式,可以解决主浏览器的跨域的数据访问问题。而且jsonp抓到的并不是json，而是JavaScript，<br>  用JavaScript直译器执行而不是json解析器解析<br> <em>解决跨域的问题（基本原理）</em><br>    我们在浏览器端通过ajax跨域向服务器发送请求时，需要在请求参数里面添加dataType:”jsonp”属性，这个时候浏览器会自动向服务器提供一个叫callback的参数，后台需要把json数据使用callback参数值包裹起来生成一个jsonp数据格式发送给页面，就可以跨域访问获取数据了</p><h1 id="jquery中解决跨域问题原理分析"><a href="#jquery中解决跨域问题原理分析" class="headerlink" title="jquery中解决跨域问题原理分析"></a>jquery中解决跨域问题原理分析</h1><pre><code>相当于通过dom操作，创建了script标签，添加src属性，同时传递一个回调函数，我们重写这个回调函数接收参数。</code></pre><p>   <strong>图片</strong>：<img src="D:\myblog\public\images\bgimg" alt=""> </p><h1 id="原理"><a href="#原理" class="headerlink" title="原理:"></a>原理:</h1><pre><code>$.post(“8081/servletDemo”) 底层XMLHttpRequest(有跨域限制),而script 的SRC是开放的,jquery会自动生成如下代码&lt;script src=&quot;http://其他域/?callback=cb&quot;&lt;/script&gt;和一个函数function cb(json) {    json就可以使用了    再调用我们的回调函数,传入json对象}    当服务器返回: cb(json)  这个cb()函数就会执行</code></pre><h1 id="getJSON解决跨域问题-掌握"><a href="#getJSON解决跨域问题-掌握" class="headerlink" title="$.getJSON解决跨域问题(掌握)"></a>$.getJSON解决跨域问题(掌握)</h1><pre><code>$.getJSON实际上就是$.ajax的简化操作，注意路径后面要拼接一个callback=?浏览器会随机生成一个数来代替?</code></pre><p>   <strong>JSONP解决跨域</strong></p><pre><code>* $.ajax() 最基本的方法，参数很多* $.getJSON() 专门请求跨域 //在服务器设置一个响应头解决跨域* response.setHeader(&quot;Access-Control-Allow-Origin&quot;, &quot;*&quot;);协议、主机名、端口号有一个不一致就属于跨域。</code></pre><h1 id="解决"><a href="#解决" class="headerlink" title="解决:"></a>解决:</h1><pre><code>页面:$.getJSON(url?callback=?,{},function(data){...});后台:String callback = request.getParameter(“callback”);reponse.getWriter().print(callback+ “(” + json + “)”);原理:XMLHttpRequest对象有跨域限制&lt;script src=”http://localhost:8081/web02/serveltDemo1?callback=cb” &gt;&lt;/script&gt;function cb(json) {}&lt;script&gt;cb(json)&lt;/script&gt;</code></pre><h2 id="javaee三层架构介绍"><a href="#javaee三层架构介绍" class="headerlink" title="javaee三层架构介绍"></a>javaee三层架构介绍</h2><p><em>web层</em>: 他主要包含<em>requent，response，session</em>，就是servlet的控制中心的地方<br><em>业务层</em>: service层主要是操作一些逻辑数据，调用dao层来获取需求的数据<br><em>数据交互层</em>: 主要与数据库进行操作，CRUD；</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;理解什么是跨域&quot;&gt;&lt;a href=&quot;#理解什么是跨域&quot; class=&quot;headerlink&quot; title=&quot;理解什么是跨域&quot;&gt;&lt;/a&gt;理解什么是跨域&lt;/h1&gt;&lt;p&gt;  跨域：指的是在当前工程里面访问了不同域或者服务器中的资源，只要是协议、主机名、端口号有一个不一致
+      
+    
+    </summary>
+    
+      <category term="Web进阶" scheme="HackerFreedom.github.io/categories/Web%E8%BF%9B%E9%98%B6/"/>
+    
+    
+      <category term="JQuery" scheme="HackerFreedom.github.io/tags/JQuery/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>MarkDownPad基本使用</title>
+    <link href="HackerFreedom.github.io/2018/01/19/Hexo/"/>
+    <id>HackerFreedom.github.io/2018/01/19/Hexo/</id>
+    <published>2018-01-18T17:39:59.000Z</published>
+    <updated>2018-01-19T07:51:46.999Z</updated>
+    
+    <content type="html"><![CDATA[<p>标题：</p><h1 id="一级标题"><a href="#一级标题" class="headerlink" title="一级标题"></a>一级标题</h1><h2 id="二级标题"><a href="#二级标题" class="headerlink" title="二级标题"></a>二级标题</h2><h3 id="三级标题"><a href="#三级标题" class="headerlink" title="三级标题"></a>三级标题</h3><h4 id="四级标题"><a href="#四级标题" class="headerlink" title="四级标题"></a>四级标题</h4><h5 id="五级标题"><a href="#五级标题" class="headerlink" title="五级标题"></a>五级标题</h5><blockquote><p>引用</p></blockquote><p>在文本前面添加&gt;</p><blockquote><p>图片与链接</p></blockquote><p>图片：<img src="图片地址" alt="">图片地址可以使本地图片路径，或者图片网址</p><p>网址：<a href=""></a></p><p>粗体与斜体</p><p>粗体：用两个<em>包含一段文本就是粗体。    例：<em>*粗体</em></em></p><p>斜体：用一个<em>包含一段文本就是斜体</em></p><p><em>表格</em></p><table><thead><tr><th>Tables</th><th style="text-align:center">Are</th><th style="text-align:right">Cool</th></tr></thead><tbody><tr><td>col 3 is</td><td style="text-align:center">right-aligned</td><td style="text-align:right">$1600</td></tr><tr><td>col 2 is</td><td style="text-align:center">centered</td><td style="text-align:right">$12</td></tr><tr><td>zebra stripes</td><td style="text-align:center">are neat</td><td style="text-align:right">$1</td></tr></tbody></table><p>生成的表格样式如下：</p><h2 id="TablesAreCool"><a href="#TablesAreCool" class="headerlink" title="TablesAreCool"></a>TablesAreCool</h2><p>col 3 isright-aligned$1600</p><p>col 2 iscentered$12</p><p>zebra stripesare neat$1</p><p>代码框</p><p>只需要用两个  <code>把中间的代码包含起来</code></p><html><br><head><br><title>我的第一个HTML页面</title><br></head><br><body><font color="”red”">早上好</font></body><br></html><pre><code>也可以使用tab键缩进4个空格</code></pre><p>分割线</p><hr><p>分割线的语法只需要加三个-号或*</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;标题：&lt;/p&gt;
+&lt;h1 id=&quot;一级标题&quot;&gt;&lt;a href=&quot;#一级标题&quot; class=&quot;headerlink&quot; title=&quot;一级标题&quot;&gt;&lt;/a&gt;一级标题&lt;/h1&gt;&lt;h2 id=&quot;二级标题&quot;&gt;&lt;a href=&quot;#二级标题&quot; class=&quot;headerlink&quot; title
+      
+    
+    </summary>
+    
+      <category term="Hexo教程" scheme="HackerFreedom.github.io/categories/Hexo%E6%95%99%E7%A8%8B/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Java基础知识</title>
+    <link href="HackerFreedom.github.io/2018/01/19/JavaSE%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%82%B9/"/>
+    <id>HackerFreedom.github.io/2018/01/19/JavaSE基础知识点/</id>
+    <published>2018-01-18T16:00:00.000Z</published>
+    <updated>2018-01-19T08:00:07.447Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="java语法基础"><a href="#java语法基础" class="headerlink" title="java语法基础"></a><em>java语法基础</em></h1><p>1.关键字：其实就是某种语言赋予了特殊含义的单词。<br>    保留字：其实就是还没有赋予特殊含义，但是准备日后要使用过的单词。<br>2.标示符：其实就是在程序中自定义的名词。比如类名，变量名，函数名。包含 0-9、a-z、$、_ ；<br>    注意：<br>    1），数字不可以开头。<br>    2），不可以使用关键字。<br>3.常量：是在程序中的不会变化的数据。<br>4.变量：其实就是内存中的一个存储空间，用于存储常量数据。<br>    作用：方便于运算。因为有些数据不确定。所以确定该数据的名词和存储空间。<br>    特点：变量空间可以重复使用。<br>什么时候定义变量？只要是数据不确定的时候，就定义变量。</p><p>变量空间的开辟需要什么要素呢？<br>    1，这个空间要存储什么数据？数据类型。<br>    2，这个空间叫什么名字啊？变量名称。<br>    3，这个空间的第一次的数据是什么？ 变量的初始化值。</p><p>变量的作用域和生存期:<br>变量的作用域：<br>    作用域从变量定义的位置开始，到该变量所在的那对大括号结束；<br>生命周期：<br>    变量从定义的位置开始就在内存中活了；<br>    变量到达它所在的作用域的时候就在内存中消失了；</p><h2 id="数据类型："><a href="#数据类型：" class="headerlink" title="数据类型："></a>数据类型：</h2><pre><code>1）：基本数据类型：byte、short、int、long、float、double、char、boolean 2）：引用数据类型: 数组、类、接口。</code></pre><p>级别从低到高为：byte,char,short(这三个平级)–&gt;int–&gt;float–&gt;long–&gt;double<br>自动类型转换：从低级别到高级别，系统自动转的；<br>强制类型转换：什么情况下使用?把一个高级别的数赋给一个别该数的级别低的变量；</p><p>运算符号：<br>    1）、算术运算符。</p><pre><code>    + - * / %   %:任何整数模2不是0就是1，所以只要改变被模数就可以实现开关运算。    +:连接符。    ++,--2）、赋值运算符。    =  += -= *= /= %=3）、比较运算符。    特点：该运算符的特点是：运算完的结果，要么是true，要么是false。 4）、逻辑运算符。    &amp;  |  ^  !   &amp;&amp;   ||    逻辑运算符除了 !  外都是用于连接两个boolean类型表达式。    &amp;: 只有两边都为true结果是true。否则就是false。    |:只要两边都为false结果是false，否则就是true    ^:异或：和或有点不一样。         两边结果一样，就为false。         两边结果不一样，就为true.    &amp; 和 &amp;&amp;区别： &amp; ：无论左边结果是什么，右边都参与运算。                  &amp;&amp;:短路与，如果左边为false，那么右边不参数与运算。    | 和|| 区别：|：两边都运算。                ||：短路或，如果左边为true，那么右边不参与运算。</code></pre><h2 id="语句"><a href="#语句" class="headerlink" title="语句"></a>语句</h2><pre><code>If  switch  do while   while  for 这些语句什么时候用？1）、当判断固定个数的值的时候，可以使用if，也可以使用switch。但是建议使用switch，效率相对较高。switch(变量){ case 值:要执行的语句;break; … default:要执行的语句;}</code></pre><p> 工作原理：用小括号中的变量的值依次和case后面的值进行对比，和哪个case后面的值相同了<br>          就执行哪个case后面的语句，如果没有相同的则执行default后面的语句；<br>     细节：1）：break是可以省略的，如果省略了就一直执行到遇到break为止；<br>       2）：switch 后面的小括号中的变量应该是byte,char,short,int四种类型中的一种；<br>       3）：default可以写在switch结构中的任意位置；如果将default语句放在了第一行，则不管expression与case中的value是否匹配，程序会从default开始执行直到第一个break出现。<br>    2）、当判断数据范围，获取判断运算结果boolean类型时，需要使用if。<br>    3）、当某些语句需要执行很多次时，就用循环结构。<br>    while和for可以进行互换。<br>    区别在于：如果需要定义变量控制循环次数。建议使用for。因为for循环完毕，变量在内存中释放。</p><pre><code>break:作用于switch ，和循环语句，用于跳出，或者称为结束。break语句单独存在时，下面不要定义其他语句，因为执行不到，编译会失败。当循环嵌套时，break只跳出当前所在循环。要跳出嵌套中的外部循环，只要给循环起名字即可，这个名字称之为标号。</code></pre><p>continue:只作用于循环结构，继续循环用的。<br>作用：结束本次循环，继续下次循环。该语句单独存在时，下面不可以定义语句，执行不到。</p><h3 id="函-数："><a href="#函-数：" class="headerlink" title="函 数："></a>函 数：</h3><p>为了提高代码的复用性，可以将其定义成一个单独的功能，该功能的体现就是java中的函数。函数就是体现之一。<br>java中的函数的定义格式：<br>    修饰符 返回值类型 函数名(参数类型 形式参数1，参数类型 形式参数1，…){<br>        执行语句；<br>        return 返回值；<br>    }<br>当函数没有具体的返回值时，返回的返回值类型用void关键字表示。<br>如果函数的返回值类型是void时，return语句可以省略不写的，系统会帮你自动加上。<br>return的作用：结束函数。结束功能。</p><p>如何定义一个函数？<br>    函数其实就是一个功能，定义函数就是实现功能，通过两个明确来完成：<br>    1）、明确该功能的运算完的结果，其实是在明确这个函数的返回值类型。<br>    2）、在实现该功能的过程中是否有未知内容参与了运算，其实就是在明确这个函数的参数列表(参数类型&amp;参数个数)。<br>函数的作用：<br>1）、用于定义功能。<br>2）、用于封装代码提高代码的复用性。<br>注意：函数中只能调用函数，不能定义函数。<br>主函数：<br>    1）、保证该类的独立运行。<br>    2）、因为它是程序的入口。<br>    3）、因为它在被jvm调用。</p><p>函数定义名称是为什么呢？<br>答：1）、为了对该功能进行标示，方便于调用。<br>    2）、为了通过名称就可以明确函数的功能，为了增加代码的阅读性。</p><p>重载的定义是：在一个类中，如果出现了两个或者两个以上的同名函数，只要它们的参数的个数，或者参数的类型不同，即可称之为该函数重载了。<br>如何区分重载：当函数同名时，只看参数列表。和返回值类型没关系。</p><h4 id="数-组："><a href="#数-组：" class="headerlink" title="数 组："></a>数 组：</h4><p>用于存储同一类型数据的一个容器。好处：可以对该容器中的数据进行编号，从0开始。数组用于封装数据，就是一个具体的实体。<br>如何在java中表现一个数组呢？两种表现形式。<br>1）、元素类型[] 变量名 = new 元素类型[元素的个数]；<br>2）、元素类型[] 变量名 = {元素1，元素2…}；</p><pre><code>元素类型[] 变量名 = new 元素类型[]{元素1，元素2...}；</code></pre><hr><p>//二分查找法。必须有前提：数组中的元素要有序。<br>    public static int halfSeach_2(int[] arr,int key){<br>        int min,max,mid;<br>        min = 0;<br>        max = arr.length-1;<br>        mid = (max+min)&gt;&gt;1; //(max+min)/2;<br>        while(arr[mid]!=key){<br>            if(key&gt;arr[mid]){<br>                min = mid + 1;<br>            }<br>            else if(key&lt;arr[mid])<br>                max = mid - 1;<br>            if(max<min) return="" -1;="" mid="(max+min)">&gt;1;<br>        }<br>        return mid;</min)></p><pre><code>}</code></pre><hr><p>java分了5片内存。<br>1：寄存器。2：本地方法区。3：方法区。4：栈。5：堆。<br>栈：存储的都是局部变量 ( 函数中定义的变量，函数上的参数，语句中的变量 )；<br>    只要数据运算完成所在的区域结束，该数据就会被释放。<br>堆：用于存储数组和对象，也就是实体。啥是实体啊？就是用于封装多个数据的。<br>1：每一个实体都有内存首地址值。<br>2：堆内存中的变量都有默认初始化值。因为数据类型不同，值也不一样。<br>3：垃圾回收机制。</p>]]></content>
+    
+    <summary type="html">
+    
+      Java基本使用
+    
+    </summary>
+    
+      <category term="Java" scheme="HackerFreedom.github.io/categories/Java/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="HackerFreedom.github.io/2018/01/16/hello-world/"/>
+    <id>HackerFreedom.github.io/2018/01/16/hello-world/</id>
+    <published>2018-01-16T13:31:55.492Z</published>
+    <updated>2018-01-16T13:31:55.492Z</updated>
+    
+    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+</feed>
