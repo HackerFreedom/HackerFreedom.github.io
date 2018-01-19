@@ -674,7 +674,7 @@ jquery它的插件机制特别丰富,在开发中可以选择非常多的相关�
             <h1 id="理解什么是跨域"><a href="#理解什么是跨域" class="headerlink" title="理解什么是跨域"></a>理解什么是跨域</h1><p>  跨域：指的是在当前工程里面访问了不同域或者服务器中的资源，只要是协议、主机名、端口号有一个不一致就属于跨域<br>  JSONP 是json的一种”使用模式,可以解决主浏览器的跨域的数据访问问题。而且jsonp抓到的并不是json，而是JavaScript，<br>  用JavaScript直译器执行而不是json解析器解析<br> <em>解决跨域的问题（基本原理）</em><br>    我们在浏览器端通过ajax跨域向服务器发送请求时，需要在请求参数里面添加dataType:”jsonp”属性，这个时候浏览器会自动向服务器提供一个叫callback的参数，后台需要把json数据使用callback参数值包裹起来生成一个jsonp数据格式发送给页面，就可以跨域访问获取数据了</p>
 <h1 id="jquery中解决跨域问题原理分析"><a href="#jquery中解决跨域问题原理分析" class="headerlink" title="jquery中解决跨域问题原理分析"></a>jquery中解决跨域问题原理分析</h1><pre><code>相当于通过dom操作，创建了script标签，添加src属性，同时传递一个回调函数，
 我们重写这个回调函数接收参数。
-</code></pre><p>   <strong>图片</strong>：<img src="\myblog\public\images\bgimg" alt=""> </p>
+</code></pre><p>   <strong>图片</strong>：<img src="myblog\public\images\bgimg" alt=""> </p>
 <h1 id="原理"><a href="#原理" class="headerlink" title="原理:"></a>原理:</h1><pre><code>$.post(“8081/servletDemo”) 底层XMLHttpRequest(有跨域限制),而script 的SRC是开放的,
 jquery会自动生成如下代码
 &lt;script src=&quot;http://其他域/?callback=cb&quot;&lt;/script&gt;
