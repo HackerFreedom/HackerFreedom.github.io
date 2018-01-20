@@ -74,7 +74,7 @@
 
 
 
-  <link rel="alternate" href="/atom.xml" title="HackerSpace" type="application/atom+xml" />
+  <link rel="alternate" href="/atom.xml" title="努力，孩子" type="application/atom+xml" />
 
 
 
@@ -83,13 +83,13 @@
 
 <meta name="description" content="一个热爱生活的B-boy">
 <meta property="og:type" content="website">
-<meta property="og:title" content="HackerSpace">
+<meta property="og:title" content="努力，孩子">
 <meta property="og:url" content="http://HackerFreedom.github.io/index.html">
-<meta property="og:site_name" content="HackerSpace">
+<meta property="og:site_name" content="努力，孩子">
 <meta property="og:description" content="一个热爱生活的B-boy">
 <meta property="og:locale" content="zh-Hans">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="HackerSpace">
+<meta name="twitter:title" content="努力，孩子">
 <meta name="twitter:description" content="一个热爱生活的B-boy">
 
 
@@ -126,7 +126,7 @@
 
 
 
-  <title>HackerSpace</title>
+  <title>努力，孩子</title>
   
 
 
@@ -161,7 +161,7 @@
     <div class="custom-logo-site-title">
       <a href="/"  class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">HackerSpace</span>
+        <span class="site-title">努力，孩子</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
@@ -194,6 +194,14 @@
         </li>
       
         
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+            分类
+          </a>
+        </li>
+      
+        
         <li class="menu-item menu-item-tags">
           <a href="/tags" rel="section">
             
@@ -205,20 +213,42 @@
         <li class="menu-item menu-item-archives">
           <a href="/archives" rel="section">
             
-            归档
+            总章
           </a>
         </li>
       
         
-        <li class="menu-item menu-item-something">
-          <a href="/something" rel="section">
+        <li class="menu-item menu-item-board">
+          <a href="/categories/留言" rel="section">
             
-            有料
+            留言
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-technology">
+          <a href="/categories/技术文章" rel="section">
+            
+            技术文章
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-essay">
+          <a href="/categories/随笔" rel="section">
+            
+            随笔
           </a>
         </li>
       
 
       
+   <div id="music163player">
+    <iframe frameborder="no" border="0" marginwidth="0" 
+      marginheight="0" width=0 height=200
+      src="//music.163.com/outchain/player?type=2&id=38358214&auto=0&height=2">
+    </iframe>
+  </div>
     </ul>
   
 
@@ -250,7 +280,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://HackerFreedom.github.io/2018/01/19/Ajax/">
+    <link itemprop="mainEntityOfPage" href="http://HackerFreedom.github.io/2018/01/20/linux/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Sam">
@@ -259,7 +289,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="HackerSpace">
+      <meta itemprop="name" content="努力，孩子">
     </span>
 
     
@@ -269,7 +299,165 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/01/19/Ajax/" itemprop="url">JQueryAjx知识点</a></h1>
+                <a class="post-title-link" href="/2018/01/20/linux/" itemprop="url">linux基本使用</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-20T10:45:33+08:00">
+                2018-01-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/技术文章/" itemprop="url" rel="index">
+                    <span itemprop="name">技术文章</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="linux常用命令"><a href="#linux常用命令" class="headerlink" title="linux常用命令"></a>linux常用命令</h1><pre><code>cd app    切换到app目录
+cd ..        切换到上一层目录
+cd /        切换到系统根目录
+cd ~        切换到用户主目录
+cd -        切换到上一个所在目录
+</code></pre><ol>
+<li><strong>ls ll 列出文件列表**</strong><br>ls(list)是一个非常有用的命令，用来显示当前目录下的内容。配合参数的使用，能以不同的方式显示目录内容。<br> ls -a  显示所有文件或目录（包含隐藏的文件）<ul>
+<li>ls -l  缩写成ll<br>在linux中以 . 开头的文件都是隐藏的文件</li>
+</ul>
+</li>
+</ol>
+<p>创建于删除目录<br>    mkdir(make directory)命令可用来创建子目录。<br>    mkdir app    在当前目录下创建app目录<br>    mkdir –p app2/test   级联创建aap2以及test目</p>
+<pre><code>rmdir(remove directory)命令可用来删除“空”的子目录：
+rmdir app    删除app目录
+</code></pre><p>浏览文件<br>    cat命令<br>    tail 命令 tail -f catalina.log    动态查看日志(<strong>*</strong>)<br>文件操作<br>    cp是copy操作<br>    cp(copy)命令可以将文件从一处复制到另一处。一般在使用cp命令时将一个文件复制成另一个文件或复制到某目录时，需要指定源文件名与目标文件名或目录</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+  <div>
+  
+  </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://HackerFreedom.github.io/2018/01/19/Ajax/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Sam">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/my.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="努力，孩子">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/01/19/Ajax/" itemprop="url">JQueryAjax知识点</a></h1>
         
 
         <div class="post-meta">
@@ -304,8 +492,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Web进阶/" itemprop="url" rel="index">
-                    <span itemprop="name">Web进阶</span>
+                  <a href="/categories/技术文章/" itemprop="url" rel="index">
+                    <span itemprop="name">技术文章</span>
                   </a>
                 </span>
 
@@ -430,7 +618,7 @@ xmlHttp.onreadystatechange = function(){
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="HackerSpace">
+      <meta itemprop="name" content="努力，孩子">
     </span>
 
     
@@ -475,8 +663,8 @@ xmlHttp.onreadystatechange = function(){
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Web进阶/" itemprop="url" rel="index">
-                    <span itemprop="name">Web进阶</span>
+                  <a href="/categories/技术文章/" itemprop="url" rel="index">
+                    <span itemprop="name">技术文章</span>
                   </a>
                 </span>
 
@@ -528,7 +716,56 @@ xmlHttp.onreadystatechange = function(){
 4.angularJS 它是一个mvc js框架，它提供双向数据绑定。。
 
 jquery它的插件机制特别丰富,在开发中可以选择非常多的相关插件，例如，表单校验插件，树型结构。。。
-</code></pre><h2 id="jQuery核心函数"><a href="#jQuery核心函数" class="headerlink" title="jQuery核心函数"></a>jQuery核心函数</h2>
+</code></pre><h2 id="jQuery核心函数"><a href="#jQuery核心函数" class="headerlink" title="jQuery核心函数"></a>jQuery核心函数</h2><pre><code>核心函数介绍
+1.入口函数：
+$(function() {
+                alert(&quot;hello jquery&quot;);
+    });
+$表示jQuery对象，不用记完整写法。
+
+2.DOM对象转jQuery对象 :   jQuery(html,[ownerDocument])：
+    $(&quot;&lt;div&gt;Hello&lt;/div&gt;&quot;)  //jquery 对象
+**图片**
+</code></pre><p>![“/“]</p>
+<h3 id="jquery选择器-基本选择器-掌握"><a href="#jquery选择器-基本选择器-掌握" class="headerlink" title="jquery选择器-基本选择器(掌握)"></a>jquery选择器-基本选择器(掌握)</h3><p><em>$(“#d1”)、$(“div”)、$(“.d”)、分别是使用id、元素、class获取一个元素的jQuery对象。</em><br><em>$(“.d,#d1”)是获取并集。</em><br>    html() : 无参数代表获取元素中的html代码，如果有参数代表设置元素的html信息<br>    text(): 无参数代表获取元素中的文本信息，如果有参数代表设置元素的文本信息<br>    each(function(index){}):它可以帮助我们遍历元素，可以传递一个函数each(function(n)),n就代表的是每一个元素    的序号，在函数中可以通过this来获取其dom对象<br>    index():获取元素索引值<br>    size():元素的个数</p>
+<pre><code>$(this)
+this就是js中的当前对象 一定要加$
+</code></pre><hr>
+<h3 id="jquery选择器-层级选择器-掌握"><a href="#jquery选择器-层级选择器-掌握" class="headerlink" title="jquery选择器-层级选择器(掌握)"></a>jquery选择器-层级选择器(掌握)</h3><pre><code>空格 ：获取某个元素下的所有子元素（包括孙子元素…）
+大于号&gt;：获取元素的直接子元素
+加号+：获取第一个兄弟元素
+波浪线~：获取所有的兄弟元素
+</code></pre><h3 id="jquery过滤器-基本过滤选择器-会查文档"><a href="#jquery过滤器-基本过滤选择器-会查文档" class="headerlink" title="jquery过滤器-基本过滤选择器(会查文档)"></a>jquery过滤器-基本过滤选择器(会查文档)</h3><p><em>过滤选择器的作用：首先是通过基本选择器和层级选择器获取到一部分元素之后，通过过滤选择器进行筛选；
+</em>过滤选择器一般是以：开头，但是属性过滤选择器是用[属性]包裹属性：*<br>    ：even 匹配所有索引值为偶数的元素，从0开始计数<br>    ：odd  匹配所有索引值为奇数的元素，从0开始计数</p>
+<h3 id="jquery过滤器-内容过滤选择器-了解"><a href="#jquery过滤器-内容过滤选择器-了解" class="headerlink" title="jquery过滤器-内容过滤选择器(了解)"></a>jquery过滤器-内容过滤选择器(了解)</h3><p><em>contains(text):匹配包含指定文本内容的元素</em></p>
+<pre><code>：empty：匹配空元素（没有子元素或者文本的元素）。
+</code></pre><p>：has(selector)：匹配包含selector所指定的元素的元素；（selector指定的元素可能是子元素或者孙子元素…）<br>    例如：所有包含 p 元素的 div 元素：$(“div:has(p)”)<br>        ：parent：匹配非空元素（含有子元素或者文本的元素），与empty相反<br>    例如：匹配含有子元素或者文本的td元素：$(“td:parent”)</p>
+<p><em>2、通过jQuery给一个元素添加class属性：$(“div”).addClass(“divClass”);</em></p>
+<h3 id="jquery过滤器-可见性过滤选择器-会查文档"><a href="#jquery过滤器-可见性过滤选择器-会查文档" class="headerlink" title="jquery过滤器-可见性过滤选择器(会查文档)"></a>jquery过滤器-可见性过滤选择器(会查文档)</h3><p>可见性选择器主要是来匹配display:none的元素和<input type="”hidden”">的表单元素。<br>    val() 获取元素当前 的值vlaue值<br>    show() 让元素显示出来<br>    hide（） 让元素隐藏起来</p>
+<h3 id="jquery过滤器-属性过滤选择器-建议掌握"><a href="#jquery过滤器-属性过滤选择器-建议掌握" class="headerlink" title="jquery过滤器-属性过滤选择器(建议掌握)"></a>jquery过滤器-属性过滤选择器(建议掌握)</h3><pre><code>^ =匹配开始
+$ =匹配结尾
+ * =匹配包含
+</code></pre><h3 id="jquery过滤器-子元素过滤选择器"><a href="#jquery过滤器-子元素过滤选择器" class="headerlink" title="jquery过滤器-子元素过滤选择器"></a>jquery过滤器-子元素过滤选择器</h3><pre><code>:nth-child  匹配其父元素的第N个子或奇偶数
+:onlu-child 如果某个元素是父元素中唯一的子元素，那将会被匹配
+</code></pre><h3 id="jquery过滤器-表单过滤选择器-掌握"><a href="#jquery过滤器-表单过滤选择器-掌握" class="headerlink" title="jquery过滤器-表单过滤选择器(掌握)"></a>jquery过滤器-表单过滤选择器(掌握)</h3><pre><code>方法：” hello”.trim();去掉首位空格或者$.trim(“hello”)也可以
+</code></pre><p><strong>常用事件</strong><br>        失去焦点事件：blur(function(){});//当失去焦点，会触发传递的function函数；<br>        单击事件：click(function(){});//当单击时，会触发传递的function函数；<br>        提交表单：submit()//提交表单；submit(function(){return false;});//阻止提交表单</p>
+<h3 id="jquery过滤器-表单元素属性过滤选择器"><a href="#jquery过滤器-表单元素属性过滤选择器" class="headerlink" title="jquery过滤器-表单元素属性过滤选择器"></a>jquery过滤器-表单元素属性过滤选择器</h3><p><em>掌握表单的：checked和：selected属性过滤选择器</em></p>
+<pre><code>选择器总结:
+    基本选择器：#id   .class   element  #id,.class,element组合
+    层级选择器：父子关系（$(“div #d”)   $(“div&gt;#d”)） 兄弟选择器（$(“div+p”)  $(“div~p”)）
+    基本过滤选择器：:first    :last      :not(selector)      :even     :odd 
+内容过滤选择器：:contains(text)   :empty    :has(selector) 
+属性过滤选择器：[attribute]    [attribute=value]    [attribute*=value]     [attrSel1][attrSel2][attrSelN] 
+表单元素过滤选择器：:input     :text     :password     :radio     :checkbox     :submit     :button 
+    表单元素属性过滤选择器：:checked    :selected 
+&lt;select name=”” multiple=”multiple”&gt;&lt;/select&gt;
+</code></pre><p>####jquery文档操作-插入(掌握)  ####<br>    父子关系<br>    $(“select”).append(“<option>研究生</option>”);  //添加儿子到最后<br>    $(“select”).prepend(“<option>学前班</option>”);  //添加儿子到最前面</p>
+<pre><code>兄弟关系
+$(“&lt;option&gt;本科&lt;/option&gt;”).after(“&lt;option&gt;研究生&lt;/option&gt;”);    //添加兄弟到自己后面
+$(“&lt;option&gt;小学&lt;/option&gt;”).before(“&lt;option&gt;学前班&lt;/option&gt;”);  //添加个兄弟到自己前面
+
+**最常用:append()****
+</code></pre>
           
         
       
@@ -587,7 +824,7 @@ jquery它的插件机制特别丰富,在开发中可以选择非常多的相关�
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="HackerSpace">
+      <meta itemprop="name" content="努力，孩子">
     </span>
 
     
@@ -632,8 +869,8 @@ jquery它的插件机制特别丰富,在开发中可以选择非常多的相关�
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Web进阶/" itemprop="url" rel="index">
-                    <span itemprop="name">Web进阶</span>
+                  <a href="/categories/技术文章/" itemprop="url" rel="index">
+                    <span itemprop="name">技术文章</span>
                   </a>
                 </span>
 
@@ -674,7 +911,7 @@ jquery它的插件机制特别丰富,在开发中可以选择非常多的相关�
             <h1 id="理解什么是跨域"><a href="#理解什么是跨域" class="headerlink" title="理解什么是跨域"></a>理解什么是跨域</h1><p>  跨域：指的是在当前工程里面访问了不同域或者服务器中的资源，只要是协议、主机名、端口号有一个不一致就属于跨域<br>  JSONP 是json的一种”使用模式,可以解决主浏览器的跨域的数据访问问题。而且jsonp抓到的并不是json，而是JavaScript，<br>  用JavaScript直译器执行而不是json解析器解析<br> <em>解决跨域的问题（基本原理）</em><br>    我们在浏览器端通过ajax跨域向服务器发送请求时，需要在请求参数里面添加dataType:”jsonp”属性，这个时候浏览器会自动向服务器提供一个叫callback的参数，后台需要把json数据使用callback参数值包裹起来生成一个jsonp数据格式发送给页面，就可以跨域访问获取数据了</p>
 <h1 id="jquery中解决跨域问题原理分析"><a href="#jquery中解决跨域问题原理分析" class="headerlink" title="jquery中解决跨域问题原理分析"></a>jquery中解决跨域问题原理分析</h1><pre><code>相当于通过dom操作，创建了script标签，添加src属性，同时传递一个回调函数，
 我们重写这个回调函数接收参数。
-</code></pre><p>   <strong>图片</strong>：<img src="myblog\public\images\bgimg" alt=""> </p>
+</code></pre><p>   <strong>图片</strong>：<img src="/myblog/public/images/bgimg" alt=""> </p>
 <h1 id="原理"><a href="#原理" class="headerlink" title="原理:"></a>原理:</h1><pre><code>$.post(“8081/servletDemo”) 底层XMLHttpRequest(有跨域限制),而script 的SRC是开放的,
 jquery会自动生成如下代码
 &lt;script src=&quot;http://其他域/?callback=cb&quot;&lt;/script&gt;
@@ -768,7 +1005,7 @@ function cb(json) {
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="HackerSpace">
+      <meta itemprop="name" content="努力，孩子">
     </span>
 
     
@@ -963,7 +1200,7 @@ function cb(json) {
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="HackerSpace">
+      <meta itemprop="name" content="努力，孩子">
     </span>
 
     
@@ -1008,8 +1245,8 @@ function cb(json) {
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Java/" itemprop="url" rel="index">
-                    <span itemprop="name">Java</span>
+                  <a href="/categories/技术文章/" itemprop="url" rel="index">
+                    <span itemprop="name">技术文章</span>
                   </a>
                 </span>
 
@@ -1111,7 +1348,7 @@ function cb(json) {
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="HackerSpace">
+      <meta itemprop="name" content="努力，孩子">
     </span>
 
     
@@ -1241,6 +1478,8 @@ function cb(json) {
       <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
     </div>
   </div>
+  
+  
 
   <aside id="sidebar" class="sidebar">
     
@@ -1269,7 +1508,7 @@ function cb(json) {
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1280,7 +1519,7 @@ function cb(json) {
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">2</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -1291,7 +1530,7 @@ function cb(json) {
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">标签</span>
                 
               </div>
@@ -1308,6 +1547,16 @@ function cb(json) {
             </div>
           
 
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/HackerFreedom" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+            </div>
           
 
           

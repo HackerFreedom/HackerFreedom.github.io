@@ -74,7 +74,7 @@
 
 
 
-  <link rel="alternate" href="/atom.xml" title="HackerSpace" type="application/atom+xml" />
+  <link rel="alternate" href="/atom.xml" title="努力，孩子" type="application/atom+xml" />
 
 
 
@@ -86,10 +86,10 @@
 <meta property="og:type" content="article">
 <meta property="og:title" content="JQuery知识点">
 <meta property="og:url" content="http://HackerFreedom.github.io/2018/01/19/Jquery/index.html">
-<meta property="og:site_name" content="HackerSpace">
+<meta property="og:site_name" content="努力，孩子">
 <meta property="og:description" content="jQuery介绍我们使用jquery可以更好完成以下操作 1.html文档操作，对于dom相关操作优化 2.jquery提供更加方便与丰富事件处理 3.jquery提供简单动画特效 4.jquery提供ajax交互 我们知道，要使用任何一个js框架，都是需要导入相关的js文件。  关于其它常用js框架: 1.dojo 面向对象的js框架 2.extjs 学习成本比较高 它提供大量的丰富组件，它效果">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-01-19T09:36:40.855Z">
+<meta property="og:updated_time" content="2018-01-20T06:20:43.018Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JQuery知识点">
 <meta name="twitter:description" content="jQuery介绍我们使用jquery可以更好完成以下操作 1.html文档操作，对于dom相关操作优化 2.jquery提供更加方便与丰富事件处理 3.jquery提供简单动画特效 4.jquery提供ajax交互 我们知道，要使用任何一个js框架，都是需要导入相关的js文件。  关于其它常用js框架: 1.dojo 面向对象的js框架 2.extjs 学习成本比较高 它提供大量的丰富组件，它效果">
@@ -128,7 +128,7 @@
 
 
 
-  <title>JQuery知识点 | HackerSpace</title>
+  <title>JQuery知识点 | 努力，孩子</title>
   
 
 
@@ -162,7 +162,7 @@
     <div class="custom-logo-site-title">
       <a href="/"  class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">HackerSpace</span>
+        <span class="site-title">努力，孩子</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
@@ -195,6 +195,14 @@
         </li>
       
         
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+            分类
+          </a>
+        </li>
+      
+        
         <li class="menu-item menu-item-tags">
           <a href="/tags" rel="section">
             
@@ -206,20 +214,42 @@
         <li class="menu-item menu-item-archives">
           <a href="/archives" rel="section">
             
-            归档
+            总章
           </a>
         </li>
       
         
-        <li class="menu-item menu-item-something">
-          <a href="/something" rel="section">
+        <li class="menu-item menu-item-board">
+          <a href="/categories/留言" rel="section">
             
-            有料
+            留言
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-technology">
+          <a href="/categories/技术文章" rel="section">
+            
+            技术文章
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-essay">
+          <a href="/categories/随笔" rel="section">
+            
+            随笔
           </a>
         </li>
       
 
       
+   <div id="music163player">
+    <iframe frameborder="no" border="0" marginwidth="0" 
+      marginheight="0" width=0 height=200
+      src="//music.163.com/outchain/player?type=2&id=38358214&auto=0&height=2">
+    </iframe>
+  </div>
     </ul>
   
 
@@ -260,7 +290,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="HackerSpace">
+      <meta itemprop="name" content="努力，孩子">
     </span>
 
     
@@ -303,8 +333,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Web进阶/" itemprop="url" rel="index">
-                    <span itemprop="name">Web进阶</span>
+                  <a href="/categories/技术文章/" itemprop="url" rel="index">
+                    <span itemprop="name">技术文章</span>
                   </a>
                 </span>
 
@@ -354,7 +384,56 @@
 4.angularJS 它是一个mvc js框架，它提供双向数据绑定。。
 
 jquery它的插件机制特别丰富,在开发中可以选择非常多的相关插件，例如，表单校验插件，树型结构。。。
-</code></pre><h2 id="jQuery核心函数"><a href="#jQuery核心函数" class="headerlink" title="jQuery核心函数"></a>jQuery核心函数</h2>
+</code></pre><h2 id="jQuery核心函数"><a href="#jQuery核心函数" class="headerlink" title="jQuery核心函数"></a>jQuery核心函数</h2><pre><code>核心函数介绍
+1.入口函数：
+$(function() {
+                alert(&quot;hello jquery&quot;);
+    });
+$表示jQuery对象，不用记完整写法。
+
+2.DOM对象转jQuery对象 :   jQuery(html,[ownerDocument])：
+    $(&quot;&lt;div&gt;Hello&lt;/div&gt;&quot;)  //jquery 对象
+**图片**
+</code></pre><p>![“/“]</p>
+<h3 id="jquery选择器-基本选择器-掌握"><a href="#jquery选择器-基本选择器-掌握" class="headerlink" title="jquery选择器-基本选择器(掌握)"></a>jquery选择器-基本选择器(掌握)</h3><p><em>$(“#d1”)、$(“div”)、$(“.d”)、分别是使用id、元素、class获取一个元素的jQuery对象。</em><br><em>$(“.d,#d1”)是获取并集。</em><br>    html() : 无参数代表获取元素中的html代码，如果有参数代表设置元素的html信息<br>    text(): 无参数代表获取元素中的文本信息，如果有参数代表设置元素的文本信息<br>    each(function(index){}):它可以帮助我们遍历元素，可以传递一个函数each(function(n)),n就代表的是每一个元素    的序号，在函数中可以通过this来获取其dom对象<br>    index():获取元素索引值<br>    size():元素的个数</p>
+<pre><code>$(this)
+this就是js中的当前对象 一定要加$
+</code></pre><hr>
+<h3 id="jquery选择器-层级选择器-掌握"><a href="#jquery选择器-层级选择器-掌握" class="headerlink" title="jquery选择器-层级选择器(掌握)"></a>jquery选择器-层级选择器(掌握)</h3><pre><code>空格 ：获取某个元素下的所有子元素（包括孙子元素…）
+大于号&gt;：获取元素的直接子元素
+加号+：获取第一个兄弟元素
+波浪线~：获取所有的兄弟元素
+</code></pre><h3 id="jquery过滤器-基本过滤选择器-会查文档"><a href="#jquery过滤器-基本过滤选择器-会查文档" class="headerlink" title="jquery过滤器-基本过滤选择器(会查文档)"></a>jquery过滤器-基本过滤选择器(会查文档)</h3><p><em>过滤选择器的作用：首先是通过基本选择器和层级选择器获取到一部分元素之后，通过过滤选择器进行筛选；
+</em>过滤选择器一般是以：开头，但是属性过滤选择器是用[属性]包裹属性：*<br>    ：even 匹配所有索引值为偶数的元素，从0开始计数<br>    ：odd  匹配所有索引值为奇数的元素，从0开始计数</p>
+<h3 id="jquery过滤器-内容过滤选择器-了解"><a href="#jquery过滤器-内容过滤选择器-了解" class="headerlink" title="jquery过滤器-内容过滤选择器(了解)"></a>jquery过滤器-内容过滤选择器(了解)</h3><p><em>contains(text):匹配包含指定文本内容的元素</em></p>
+<pre><code>：empty：匹配空元素（没有子元素或者文本的元素）。
+</code></pre><p>：has(selector)：匹配包含selector所指定的元素的元素；（selector指定的元素可能是子元素或者孙子元素…）<br>    例如：所有包含 p 元素的 div 元素：$(“div:has(p)”)<br>        ：parent：匹配非空元素（含有子元素或者文本的元素），与empty相反<br>    例如：匹配含有子元素或者文本的td元素：$(“td:parent”)</p>
+<p><em>2、通过jQuery给一个元素添加class属性：$(“div”).addClass(“divClass”);</em></p>
+<h3 id="jquery过滤器-可见性过滤选择器-会查文档"><a href="#jquery过滤器-可见性过滤选择器-会查文档" class="headerlink" title="jquery过滤器-可见性过滤选择器(会查文档)"></a>jquery过滤器-可见性过滤选择器(会查文档)</h3><p>可见性选择器主要是来匹配display:none的元素和<input type="”hidden”">的表单元素。<br>    val() 获取元素当前 的值vlaue值<br>    show() 让元素显示出来<br>    hide（） 让元素隐藏起来</p>
+<h3 id="jquery过滤器-属性过滤选择器-建议掌握"><a href="#jquery过滤器-属性过滤选择器-建议掌握" class="headerlink" title="jquery过滤器-属性过滤选择器(建议掌握)"></a>jquery过滤器-属性过滤选择器(建议掌握)</h3><pre><code>^ =匹配开始
+$ =匹配结尾
+ * =匹配包含
+</code></pre><h3 id="jquery过滤器-子元素过滤选择器"><a href="#jquery过滤器-子元素过滤选择器" class="headerlink" title="jquery过滤器-子元素过滤选择器"></a>jquery过滤器-子元素过滤选择器</h3><pre><code>:nth-child  匹配其父元素的第N个子或奇偶数
+:onlu-child 如果某个元素是父元素中唯一的子元素，那将会被匹配
+</code></pre><h3 id="jquery过滤器-表单过滤选择器-掌握"><a href="#jquery过滤器-表单过滤选择器-掌握" class="headerlink" title="jquery过滤器-表单过滤选择器(掌握)"></a>jquery过滤器-表单过滤选择器(掌握)</h3><pre><code>方法：” hello”.trim();去掉首位空格或者$.trim(“hello”)也可以
+</code></pre><p><strong>常用事件</strong><br>        失去焦点事件：blur(function(){});//当失去焦点，会触发传递的function函数；<br>        单击事件：click(function(){});//当单击时，会触发传递的function函数；<br>        提交表单：submit()//提交表单；submit(function(){return false;});//阻止提交表单</p>
+<h3 id="jquery过滤器-表单元素属性过滤选择器"><a href="#jquery过滤器-表单元素属性过滤选择器" class="headerlink" title="jquery过滤器-表单元素属性过滤选择器"></a>jquery过滤器-表单元素属性过滤选择器</h3><p><em>掌握表单的：checked和：selected属性过滤选择器</em></p>
+<pre><code>选择器总结:
+    基本选择器：#id   .class   element  #id,.class,element组合
+    层级选择器：父子关系（$(“div #d”)   $(“div&gt;#d”)） 兄弟选择器（$(“div+p”)  $(“div~p”)）
+    基本过滤选择器：:first    :last      :not(selector)      :even     :odd 
+内容过滤选择器：:contains(text)   :empty    :has(selector) 
+属性过滤选择器：[attribute]    [attribute=value]    [attribute*=value]     [attrSel1][attrSel2][attrSelN] 
+表单元素过滤选择器：:input     :text     :password     :radio     :checkbox     :submit     :button 
+    表单元素属性过滤选择器：:checked    :selected 
+&lt;select name=”” multiple=”multiple”&gt;&lt;/select&gt;
+</code></pre><p>####jquery文档操作-插入(掌握)  ####<br>    父子关系<br>    $(“select”).append(“<option>研究生</option>”);  //添加儿子到最后<br>    $(“select”).prepend(“<option>学前班</option>”);  //添加儿子到最前面</p>
+<pre><code>兄弟关系
+$(“&lt;option&gt;本科&lt;/option&gt;”).after(“&lt;option&gt;研究生&lt;/option&gt;”);    //添加兄弟到自己后面
+$(“&lt;option&gt;小学&lt;/option&gt;”).before(“&lt;option&gt;学前班&lt;/option&gt;”);  //添加个兄弟到自己前面
+
+**最常用:append()****
+</code></pre>
       
     </div>
     
@@ -402,8 +481,8 @@ jquery它的插件机制特别丰富,在开发中可以选择非常多的相关�
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/01/19/Ajax/" rel="prev" title="JQueryAjx知识点">
-                JQueryAjx知识点 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/01/19/Ajax/" rel="prev" title="JQueryAjax知识点">
+                JQueryAjax知识点 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -448,6 +527,8 @@ jquery它的插件机制特别丰富,在开发中可以选择非常多的相关�
       <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
     </div>
   </div>
+  
+  
 
   <aside id="sidebar" class="sidebar">
     
@@ -485,7 +566,7 @@ jquery它的插件机制特别丰富,在开发中可以选择非常多的相关�
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -496,7 +577,7 @@ jquery它的插件机制特别丰富,在开发中可以选择非常多的相关�
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">2</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -507,7 +588,7 @@ jquery它的插件机制特别丰富,在开发中可以选择非常多的相关�
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">标签</span>
                 
               </div>
@@ -524,6 +605,16 @@ jquery它的插件机制特别丰富,在开发中可以选择非常多的相关�
             </div>
           
 
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/HackerFreedom" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+            </div>
           
 
           
@@ -547,7 +638,7 @@ jquery它的插件机制特别丰富,在开发中可以选择非常多的相关�
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#jQuery介绍"><span class="nav-number">1.</span> <span class="nav-text">jQuery介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#jQuery核心函数"><span class="nav-number">1.1.</span> <span class="nav-text">jQuery核心函数</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#jQuery介绍"><span class="nav-number">1.</span> <span class="nav-text">jQuery介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#jQuery核心函数"><span class="nav-number">1.1.</span> <span class="nav-text">jQuery核心函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#jquery选择器-基本选择器-掌握"><span class="nav-number">1.1.1.</span> <span class="nav-text">jquery选择器-基本选择器(掌握)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#jquery选择器-层级选择器-掌握"><span class="nav-number">1.1.2.</span> <span class="nav-text">jquery选择器-层级选择器(掌握)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#jquery过滤器-基本过滤选择器-会查文档"><span class="nav-number">1.1.3.</span> <span class="nav-text">jquery过滤器-基本过滤选择器(会查文档)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#jquery过滤器-内容过滤选择器-了解"><span class="nav-number">1.1.4.</span> <span class="nav-text">jquery过滤器-内容过滤选择器(了解)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#jquery过滤器-可见性过滤选择器-会查文档"><span class="nav-number">1.1.5.</span> <span class="nav-text">jquery过滤器-可见性过滤选择器(会查文档)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#jquery过滤器-属性过滤选择器-建议掌握"><span class="nav-number">1.1.6.</span> <span class="nav-text">jquery过滤器-属性过滤选择器(建议掌握)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#jquery过滤器-子元素过滤选择器"><span class="nav-number">1.1.7.</span> <span class="nav-text">jquery过滤器-子元素过滤选择器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#jquery过滤器-表单过滤选择器-掌握"><span class="nav-number">1.1.8.</span> <span class="nav-text">jquery过滤器-表单过滤选择器(掌握)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#jquery过滤器-表单元素属性过滤选择器"><span class="nav-number">1.1.9.</span> <span class="nav-text">jquery过滤器-表单元素属性过滤选择器</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
