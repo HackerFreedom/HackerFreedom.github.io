@@ -106,12 +106,12 @@
 <meta property="og:site_name" content="努力，孩子">
 <meta property="og:description" content="Redis介绍edis是一个开源的使用ANSI C语言编写、支持网络、可基于内存亦可持久化的日志型、Key-Value数据库，并提供多种语言的API。** Redis是 NoSQL技术阵营中的一员，它通过多种键值数据类型来适应不同场景下的存储需求，借助一些高层级的接口使用其可以胜任，如缓存、队列系统的不同角色* Redis特性 Redis 与其他 key - value 缓存产品有以下三个特点：">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://hackerfreedom.github.io/2018/01/20/Redis/Redis/Redis.jpg">
+<meta property="og:image" content="http://hackerfreedom.github.io/2018/01/20/Redis/Redis.jpg">
 <meta property="og:updated_time" content="2018-01-21T11:48:34.659Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Redis概述">
 <meta name="twitter:description" content="Redis介绍edis是一个开源的使用ANSI C语言编写、支持网络、可基于内存亦可持久化的日志型、Key-Value数据库，并提供多种语言的API。** Redis是 NoSQL技术阵营中的一员，它通过多种键值数据类型来适应不同场景下的存储需求，借助一些高层级的接口使用其可以胜任，如缓存、队列系统的不同角色* Redis特性 Redis 与其他 key - value 缓存产品有以下三个特点：">
-<meta name="twitter:image" content="http://hackerfreedom.github.io/2018/01/20/Redis/Redis/Redis.jpg">
+<meta name="twitter:image" content="http://hackerfreedom.github.io/2018/01/20/Redis/Redis.jpg">
 
 
 
@@ -410,7 +410,7 @@ Redis的string可以包含任何数据，比如jpg图片(生成二进制)或者�
 
 Redis的Hash数据类型的value内部是一个HashMap,如果该Map的成员比较少，则会采用一维数组的方式
 </code></pre><ul>
-<li>采用String类型的存储对象，需要将对象进行序列化。<br><img src="Redis/Redis.jpg" alt=""></li>
+<li>采用String类型的存储对象，需要将对象进行序列化。<br><img src="/2018/01/20/Redis/Redis.jpg" alt=""></li>
 <li>增加了序列化/反序列化的开销，并且在需要修改其中一项信息时，需要把整个对象取回</li>
 <li>使用Hash数据类型则不需要</li>
 <li>Key仍然是用户ID, value是一个Map，这个Map的key是成员的属性名，value是属性值，这样对数据的修改和存取都可以直接通过其内部Map的Key(Redis里称内部Map的key为field), 也就是通过 key(用户ID) + field(属性标签) 就可以操作对应属性数据了，既不需要重复存储数据，也不会带来序列化和反序列化。</li>
