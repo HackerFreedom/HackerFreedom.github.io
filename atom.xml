@@ -42,29 +42,6 @@
   </entry>
   
   <entry>
-    <title></title>
-    <link href="http://HackerFreedom.github.io/2018/01/21/FileUploadAndDownLoad/"/>
-    <id>http://HackerFreedom.github.io/2018/01/21/FileUploadAndDownLoad/</id>
-    <published>2018-01-21T11:15:39.987Z</published>
-    <updated>2018-01-23T08:21:45.380Z</updated>
-    
-    <content type="html"><![CDATA[<hr><p>title: “文件上传和下载”<br>categories: ‘技术文章’<br>date: 2018-01-21 19:15:39</p><h2 id="tags-“文件上传和下载”"><a href="#tags-“文件上传和下载”" class="headerlink" title="tags: “文件上传和下载”"></a>tags: “文件上传和下载”</h2><p>#文件上传的概述  #</p><ul><li>什么是文件上传<br>  文件上传：将客户端的文件通过流写入到服务器中</li><li>文件上传的技术<br>  SPSmartUpload    ：应用在JSP上的文件上传和下载的组件。<br>  FileUpload        ：应用在Java环境上的文件上传的功能。<br>  Servlet3.0            ：提供文件上传的功能<br>  Struts2            ：提供文件上传的功能</li><li>文件上传的要素<br>  表单的提交的方式需要是POST<br>  表单中需要有<input type="”file”">元素，需要有name属性和值。<br>  表单enctype=”multipart/form-data”</li></ul><p><strong>总结:<br>设置了form 表单的enctype属性为multipart/form-data<br>请求体中,才会有文件的内容</strong></p><h1 id="文件上传的入门案例"><a href="#文件上传的入门案例" class="headerlink" title="文件上传的入门案例"></a>文件上传的入门案例</h1><blockquote><p>文件上传的原理:()<br>form设置了enctype=”multipart/form-data” 请求体中才有文件的内容.否则没有文件内容;<br>步骤:<br>1.获取请求头中的分割线<br>2.获取请求体中的所有内容(request.getIntstream())<br>3.通过分割线对内容进行分割,得到每个部分<br>4.判断每个部分(文件上传项或普通项)</p><p>文件上传3要素:<br>2.post提交<br>3.input type=file name=”info”<br>4.form enctype=”multipart/form-data”</p><p>1.创建工厂(磁盘文件项)<br>2.创建Servlet文件上传对象<br>3.解析request,得到List集合<br>4.遍历集合,判断每个项目是普通项还是文件上传项</p></blockquote><h2 id="文件上传的api之DiskFileItemFactory"><a href="#文件上传的api之DiskFileItemFactory" class="headerlink" title="文件上传的api之DiskFileItemFactory"></a>文件上传的api之DiskFileItemFactory</h2><p> <em>DiskFileItemFactory是创建FileItem对象的工厂，这个工厂类的常用方法：</em></p><p>public void setSizeThreshold（int sizeThreshold）：设置内存缓冲区的大小，默认值*为10K。当上传文件大于缓冲区大小时，fileupload组件将使用临时文件缓存上传文件。</p><p>public void setRepository（java.io.File repository）：指定临时文件目录，默认值为System.getProperty（“java.io.tmpdir”）。</p><p>public DiskFileItemFactory（int sizeThreshold，java.io.File repository）：构造函数</p><p><strong>API 的使用的代码</strong></p><p><img src="/year-01-21-FileUploadAndDownLoad/api.png" alt="">;</p><h2 id="文件上传的API之SERVLETFILEUPLOAD"><a href="#文件上传的API之SERVLETFILEUPLOAD" class="headerlink" title="文件上传的API之SERVLETFILEUPLOAD"></a>文件上传的API之SERVLETFILEUPLOAD</h2><p>ServletFileUpload负责处理上传的文件数据，并将表单中的每个输入项封装成一个FileItem对象中。常用方法有：</p><ul><li><p>boolean isMultipartContent（HttpServletRequest request）：判断上传表单是否为multipart / form-data类型</p></li><li><p>列表parseRequest（HttpServletRequest请求）：解析请求对象，并把表单中的每一个输入项包装成一个fileItem对象，并返回一个保存了所有FileItem的列表集合。</p></li><li><p>setFileSizeMax（long fileSizeMax）：设置上传文件的最大值</p><p>  setSizeMax（long sizeMax）：设置上传文件总量的最大值</p><p>  setHeaderEncoding（java.lang.String encoding）：设置编码格式</p><p>  setProgressListener（ProgressListener pListener）</p></li></ul><p><img src="/year-01-21-FileUploadAndDownLoad/servlet.png" alt="">;</p><h2 id="文件上传的API之FileItem’"><a href="#文件上传的API之FileItem’" class="headerlink" title="文件上传的API之FileItem’"></a>文件上传的API之FileItem’</h2><blockquote><p>1.boolean  isFormField()。isFormField方法用来判断FileItem对象里面封装的数据是一个普通文本表单字段，还是一个文件表单字段。如果是普通文本表单字段，返回一个true否则返回一个false。因此可以用该方法判断是否是普通表单域还是文件上传表单域。</p><p>  2.String getName（）。getName方法用来获得文件上传字段中的文件名。</p><p>  3.String getFieldName（）。getFieldName方法用来返回表单标签的name属性的值。</p><p>  4.void write(File file)。write方法将FileItem对象中的内容保存到某个指定的文件中。如果FileItem对象中的内容是保存在某个临时文件中，该方法完成后，临时文件可以会被删除。该方法也可以将普通表单字段保存在一个文件中，但最主要的用途是把上传的文件内容保存在本地文件系统中。</p><p>  5.String getString（）。getString（）方法将FileItem对象中保存的数据流内容以一个字符串返回。它有两个重载形式。public java.lang.String getString()和public java.lang.String getString(java.lang.String encodeing) throws java.io.UnsupportedEncodingException。前者使用缺省的字符集编码将主体内容转换成字符串，后者使用参数指定的字符集编码。如果在读取普通表单字段元素的内容时，出现了乱码现象，可以调用第二个方法，并传入 正确的字符集编码名称。</p><p>  6.String getContentType()。此方法用来获得上传文件的类型，即标段字段元素描述头属性“content-type”的值，如image/jpeg。如果FileItem对象对应的是普通的表单字段，将返回null。</p><p>  7.boolean isInMemory()。判断FileItem对象封装的数据是保存在内存中还是硬盘中。</p><p>  8.void  delete（）。此方法用来清空FileItem对象中封装的主体内容，如果内容是被保存在临时文件中，该方法会把临时文件删除。</p><p>  9.InputStream  getInputStream()。以流的形式返回上传文件的主体内容。</p><p>  10.long  getSize()。返回上传文件的大小。</p></blockquote><hr><h3 id="文件上传兼容浏览器问题及解决"><a href="#文件上传兼容浏览器问题及解决" class="headerlink" title="文件上传兼容浏览器问题及解决"></a>文件上传兼容浏览器问题及解决</h3><blockquote><p>如果使用IE老版本的浏览器出现一个文件名称获取错误问题。IE老版本获取文件名称的时候，会带有路径。<br><img src="/year-01-21-FileUploadAndDownLoad/IE.png" alt="">;</p></blockquote><h3 id="文件上传同一个目录下文件同名的问题及解决"><a href="#文件上传同一个目录下文件同名的问题及解决" class="headerlink" title="文件上传同一个目录下文件同名的问题及解决"></a>文件上传同一个目录下文件同名的问题及解决</h3><p>张三向服务器上传了一个文件aa.txt内容是hello world。李四向服务器上传了一个文件aa.txt内容hello Java。后上传的文件将先上传的文件覆盖了。</p><p>使用UUID对象随机生成一个字符串，然后使用这个字符串+后缀名最为文件的文件名。</p><p><img src="/year-01-21-FileUploadAndDownLoad/UUID.png" alt="">;</p><h3 id="文件上传同一个目录下文件过多的问题及解决"><a href="#文件上传同一个目录下文件过多的问题及解决" class="headerlink" title="文件上传同一个目录下文件过多的问题及解决"></a>文件上传同一个目录下文件过多的问题及解决</h3><p>按目录分离算法    ：按照某种特定算法进行分离。<br>上传一个文件，得到一个唯一的文件名。<br>唯一文件名获取其hashCode值。—–int类型的值（32位）<br>让hashCode的值 &amp; 0xf;—–得出的这个值作为一级目录。<br>让hashCode右移4位  &amp; 0xf;—-得出的这个值作为二级目录。<br>以此类推。<br><img src="/year-01-21-FileUploadAndDownLoad/file.png" alt=""><br><img src="/year-01-21-FileUploadAndDownLoad/file2.png" alt=""></p><h4 id="文件下载概述"><a href="#文件下载概述" class="headerlink" title="文件下载概述"></a>文件下载概述</h4><p>【方式一】：通过超链接下载：<a href="”资源路径”"></a><br>                缺点：如果浏览器支持显示这种数据格式就不会提示下载了。</p><p>【方式二】：通过代码的方式实现文件下载：<br>                主要是要设置两个头，并且使用response对象的getOutputStream()获取输出流向客户端写数据。</p><p>Content-Type                :文件的MIME的类型<br>Content-Disposition        :浏览器支持该格式的文件，提示下载<br>输入流<br>总结<br><strong>2个头,一个流</strong></p><hr><p>下载会出现的中文乱码的问题集<br>    下载中文文件，由于不同的浏览器在下载文件的显示文件名的编码码表不一样，导致要下载的文件名显示不出来。我们可以通过request请求获取User-Agent请求头判断用户使用的是什么浏览器，然后用对应的编码就行了。<br><img src="/year-01-21-FileUploadAndDownLoad/Agent.png" alt="">;<br><img src="/year-01-21-FileUploadAndDownLoad/Agent1.png" alt=""></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;hr&gt;
-&lt;p&gt;title: “文件上传和下载”&lt;br&gt;categories: ‘技术文章’&lt;br&gt;date: 2018-01-21 19:15:39&lt;/p&gt;
-&lt;h2 id=&quot;tags-“文件上传和下载”&quot;&gt;&lt;a href=&quot;#tags-“文件上传和下载”&quot; class=&quot;hea
-      
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
     <title>File</title>
     <link href="http://HackerFreedom.github.io/2018/01/21/suibi/"/>
     <id>http://HackerFreedom.github.io/2018/01/21/suibi/</id>
@@ -86,6 +63,34 @@
     </summary>
     
       <category term="随笔" scheme="http://HackerFreedom.github.io/categories/%E9%9A%8F%E7%AC%94/"/>
+    
+    
+      <category term="文件上传和下载" scheme="http://HackerFreedom.github.io/tags/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E5%92%8C%E4%B8%8B%E8%BD%BD/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>文件上传和下载</title>
+    <link href="http://HackerFreedom.github.io/2018/01/21/FileUploadAndDownLoad/"/>
+    <id>http://HackerFreedom.github.io/2018/01/21/FileUploadAndDownLoad/</id>
+    <published>2018-01-21T11:15:39.000Z</published>
+    <updated>2018-01-23T08:32:49.663Z</updated>
+    
+    <content type="html"><![CDATA[<p>#文件上传的概述  #</p><ul><li>什么是文件上传<br>  文件上传：将客户端的文件通过流写入到服务器中</li><li>文件上传的技术<br>  SPSmartUpload    ：应用在JSP上的文件上传和下载的组件。<br>  FileUpload        ：应用在Java环境上的文件上传的功能。<br>  Servlet3.0            ：提供文件上传的功能<br>  Struts2            ：提供文件上传的功能</li><li>文件上传的要素<br>  表单的提交的方式需要是POST<br>  表单中需要有<input type="”file”">元素，需要有name属性和值。<br>  表单enctype=”multipart/form-data”</li></ul><p><strong>总结:<br>设置了form 表单的enctype属性为multipart/form-data<br>请求体中,才会有文件的内容</strong></p><h1 id="文件上传的入门案例"><a href="#文件上传的入门案例" class="headerlink" title="文件上传的入门案例"></a>文件上传的入门案例</h1><blockquote><p>文件上传的原理:()<br>form设置了enctype=”multipart/form-data” 请求体中才有文件的内容.否则没有文件内容;<br>步骤:<br>1.获取请求头中的分割线<br>2.获取请求体中的所有内容(request.getIntstream())<br>3.通过分割线对内容进行分割,得到每个部分<br>4.判断每个部分(文件上传项或普通项)</p><p>文件上传3要素:<br>2.post提交<br>3.input type=file name=”info”<br>4.form enctype=”multipart/form-data”</p><p>1.创建工厂(磁盘文件项)<br>2.创建Servlet文件上传对象<br>3.解析request,得到List集合<br>4.遍历集合,判断每个项目是普通项还是文件上传项</p></blockquote><h2 id="文件上传的api之DiskFileItemFactory"><a href="#文件上传的api之DiskFileItemFactory" class="headerlink" title="文件上传的api之DiskFileItemFactory"></a>文件上传的api之DiskFileItemFactory</h2><p> <em>DiskFileItemFactory是创建FileItem对象的工厂，这个工厂类的常用方法：</em></p><p>public void setSizeThreshold（int sizeThreshold）：设置内存缓冲区的大小，默认值*为10K。当上传文件大于缓冲区大小时，fileupload组件将使用临时文件缓存上传文件。</p><p>public void setRepository（java.io.File repository）：指定临时文件目录，默认值为System.getProperty（“java.io.tmpdir”）。</p><p>public DiskFileItemFactory（int sizeThreshold，java.io.File repository）：构造函数</p><p><strong>API 的使用的代码</strong></p><p><img src="/FileUploadAndDownLoad/api.png" alt="">;</p><h2 id="文件上传的API之SERVLETFILEUPLOAD"><a href="#文件上传的API之SERVLETFILEUPLOAD" class="headerlink" title="文件上传的API之SERVLETFILEUPLOAD"></a>文件上传的API之SERVLETFILEUPLOAD</h2><p>ServletFileUpload负责处理上传的文件数据，并将表单中的每个输入项封装成一个FileItem对象中。常用方法有：</p><ul><li><p>boolean isMultipartContent（HttpServletRequest request）：判断上传表单是否为multipart / form-data类型</p></li><li><p>列表parseRequest（HttpServletRequest请求）：解析请求对象，并把表单中的每一个输入项包装成一个fileItem对象，并返回一个保存了所有FileItem的列表集合。</p></li><li><p>setFileSizeMax（long fileSizeMax）：设置上传文件的最大值</p><p>  setSizeMax（long sizeMax）：设置上传文件总量的最大值</p><p>  setHeaderEncoding（java.lang.String encoding）：设置编码格式</p><p>  setProgressListener（ProgressListener pListener）</p></li></ul><p><img src="/FileUploadAndDownLoad/servlet.png" alt="">;</p><h2 id="文件上传的API之FileItem’"><a href="#文件上传的API之FileItem’" class="headerlink" title="文件上传的API之FileItem’"></a>文件上传的API之FileItem’</h2><blockquote><p>1.boolean  isFormField()。isFormField方法用来判断FileItem对象里面封装的数据是一个普通文本表单字段，还是一个文件表单字段。如果是普通文本表单字段，返回一个true否则返回一个false。因此可以用该方法判断是否是普通表单域还是文件上传表单域。</p><p>  2.String getName（）。getName方法用来获得文件上传字段中的文件名。</p><p>  3.String getFieldName（）。getFieldName方法用来返回表单标签的name属性的值。</p><p>  4.void write(File file)。write方法将FileItem对象中的内容保存到某个指定的文件中。如果FileItem对象中的内容是保存在某个临时文件中，该方法完成后，临时文件可以会被删除。该方法也可以将普通表单字段保存在一个文件中，但最主要的用途是把上传的文件内容保存在本地文件系统中。</p><p>  5.String getString（）。getString（）方法将FileItem对象中保存的数据流内容以一个字符串返回。它有两个重载形式。public java.lang.String getString()和public java.lang.String getString(java.lang.String encodeing) throws java.io.UnsupportedEncodingException。前者使用缺省的字符集编码将主体内容转换成字符串，后者使用参数指定的字符集编码。如果在读取普通表单字段元素的内容时，出现了乱码现象，可以调用第二个方法，并传入 正确的字符集编码名称。</p><p>  6.String getContentType()。此方法用来获得上传文件的类型，即标段字段元素描述头属性“content-type”的值，如image/jpeg。如果FileItem对象对应的是普通的表单字段，将返回null。</p><p>  7.boolean isInMemory()。判断FileItem对象封装的数据是保存在内存中还是硬盘中。</p><p>  8.void  delete（）。此方法用来清空FileItem对象中封装的主体内容，如果内容是被保存在临时文件中，该方法会把临时文件删除。</p><p>  9.InputStream  getInputStream()。以流的形式返回上传文件的主体内容。</p><p>  10.long  getSize()。返回上传文件的大小。</p></blockquote><hr><h3 id="文件上传兼容浏览器问题及解决"><a href="#文件上传兼容浏览器问题及解决" class="headerlink" title="文件上传兼容浏览器问题及解决"></a>文件上传兼容浏览器问题及解决</h3><blockquote><p>如果使用IE老版本的浏览器出现一个文件名称获取错误问题。IE老版本获取文件名称的时候，会带有路径。<br><img src="/FileUploadAndDownLoad/IE.png" alt="">;</p></blockquote><h3 id="文件上传同一个目录下文件同名的问题及解决"><a href="#文件上传同一个目录下文件同名的问题及解决" class="headerlink" title="文件上传同一个目录下文件同名的问题及解决"></a>文件上传同一个目录下文件同名的问题及解决</h3><p>张三向服务器上传了一个文件aa.txt内容是hello world。李四向服务器上传了一个文件aa.txt内容hello Java。后上传的文件将先上传的文件覆盖了。</p><p>使用UUID对象随机生成一个字符串，然后使用这个字符串+后缀名最为文件的文件名。</p><p><img src="/FileUploadAndDownLoad/UUID.png" alt="">;</p><h3 id="文件上传同一个目录下文件过多的问题及解决"><a href="#文件上传同一个目录下文件过多的问题及解决" class="headerlink" title="文件上传同一个目录下文件过多的问题及解决"></a>文件上传同一个目录下文件过多的问题及解决</h3><p>按目录分离算法    ：按照某种特定算法进行分离。<br>上传一个文件，得到一个唯一的文件名。<br>唯一文件名获取其hashCode值。—–int类型的值（32位）<br>让hashCode的值 &amp; 0xf;—–得出的这个值作为一级目录。<br>让hashCode右移4位  &amp; 0xf;—-得出的这个值作为二级目录。<br>以此类推。<br><img src="/FileUploadAndDownLoad/file.png" alt=""><br><img src="/FileUploadAndDownLoad/file2.png" alt=""></p><h4 id="文件下载概述"><a href="#文件下载概述" class="headerlink" title="文件下载概述"></a>文件下载概述</h4><p>【方式一】：通过超链接下载：<a href="”资源路径”"></a><br>                缺点：如果浏览器支持显示这种数据格式就不会提示下载了。</p><p>【方式二】：通过代码的方式实现文件下载：<br>                主要是要设置两个头，并且使用response对象的getOutputStream()获取输出流向客户端写数据。</p><p>Content-Type                :文件的MIME的类型<br>Content-Disposition        :浏览器支持该格式的文件，提示下载<br>输入流<br>总结<br><strong>2个头,一个流</strong></p><hr><p>下载会出现的中文乱码的问题集<br>    下载中文文件，由于不同的浏览器在下载文件的显示文件名的编码码表不一样，导致要下载的文件名显示不出来。我们可以通过request请求获取User-Agent请求头判断用户使用的是什么浏览器，然后用对应的编码就行了。<br><img src="/FileUploadAndDownLoad/Agent.png" alt="">;<br><img src="/FileUploadAndDownLoad/Agent1.png" alt=""></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;#文件上传的概述  #&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;什么是文件上传&lt;br&gt;  文件上传：将客户端的文件通过流写入到服务器中&lt;/li&gt;
+&lt;li&gt;文件上传的技术&lt;br&gt;  SPSmartUpload    ：应用在JSP上的文件上传和下载的组件。&lt;br&gt;  FileUpload 
+      
+    
+    </summary>
+    
+      <category term="技术文章" scheme="http://HackerFreedom.github.io/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/"/>
     
     
       <category term="文件上传和下载" scheme="http://HackerFreedom.github.io/tags/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E5%92%8C%E4%B8%8B%E8%BD%BD/"/>
@@ -144,6 +149,31 @@ cd ..        切换
   </entry>
   
   <entry>
+    <title>JQueryAjax知识点</title>
+    <link href="http://HackerFreedom.github.io/2018/01/19/Ajax/"/>
+    <id>http://HackerFreedom.github.io/2018/01/19/Ajax/</id>
+    <published>2018-01-19T09:33:03.000Z</published>
+    <updated>2018-01-22T04:00:22.517Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="Jquery第二天"><a href="#Jquery第二天" class="headerlink" title="Jquery第二天"></a>Jquery第二天</h1><h2 id="ajax概述"><a href="#ajax概述" class="headerlink" title="ajax概述"></a>ajax概述</h2><p><em>通过在后台与服务器进行少量数据交换，ajax可以使网页实现异步更新。这意味着可以在不重新加载整个网页的情况下，对网页的某部分进行更新。传统的网页（不使用 ajax）如果需要更新内容，必需重载整个网页面</em><br>    ajax的开发步骤：<br>        【第一步】：创建异步对象(XMLHttpRequest对象)<br>        var xmlHttp = createXmlHttp();<br>        【第二步】：设置监听<br>        【第三步】：设置请求方式,URL<br>        xmlHttp.onreadystatechange = function() {}</p><pre><code>    xmlHttp.open(“GET”,”/web15/ServletDemo1”,true);【第四步】：发送请求xmlHttp.send(null);【第五步】：在回调函数中获取响应数据xmlHttp.onreadystatechange = function(){    if(xmlHttp.readyState == 4){ //         if(xmlHttp.status == 200){ //            alert(xmlHttp.responseText);        }    }}</code></pre><h2 id="XMLHttpRequest对象详解-重点"><a href="#XMLHttpRequest对象详解-重点" class="headerlink" title="XMLHttpRequest对象详解(重点)"></a>XMLHttpRequest对象详解(重点)</h2><ol><li>XMLHttpRequest对象的常用属性：<br>readyState属性：HTTP 请求的状态.当一个 XMLHttpRequest 初次创建时，这个属性的值从 0 开始，直到接收到完整的 HTTP 响应，这个值增加到 4。</li><li><p>status属性：由服务器返回的 HTTP 状态代码，如 200 表示成功，而 404 表示 “Not Found” 错误。当 readyState 小于 3 的时候读取这一属性会导致一个异常。</p></li><li><p>onreadystatechange事件：每次 readyState 属性改变的时候调用的事件句柄函数。</p><h2 id="XMLHttpRequest常用方法"><a href="#XMLHttpRequest常用方法" class="headerlink" title="XMLHttpRequest常用方法"></a>XMLHttpRequest常用方法</h2></li><li>open它是用于设置请求方式，url及是否异步<br>参数1：HTTP 请求方式  POST/GET。<br>参数2:url路径<br>参数3:true/false 代表是否异步</li><li><p>send它是真正向服务器发送请求<br>如果请求方式是get，那么我们使用send(null) 原因:get请求方式是没有http请求体<br>只有post请求方式时，才有请求体,所以send的参数只是在post请求时使用例如<br>Xmlhttp.send(“username=xxx&amp;password=xxx”);</p></li><li><p>setRequestHeader<br>注意：如果请求方式是POST,那么我们在使用时，必须设置一个请求头，就需要使用setRequestHeader方法来完成</p><h3 id="jquery的ajax开发-load介绍"><a href="#jquery的ajax开发-load介绍" class="headerlink" title="jquery的ajax开发-load介绍"></a>jquery的ajax开发-load介绍</h3><p><strong>load（）方法的调用：想要把结果插入到哪个元素中，就使用这个元素的jQuery对象调用load方法。也就是说，load方法发送请求是直接将结果插入到dom元素中。<br>当有参数传递给服务器时就是post请求，没有参数传递就是get请求。</strong></p><h3 id="jquery的ajax开发-post与-get介绍-重点"><a href="#jquery的ajax开发-post与-get介绍-重点" class="headerlink" title="jquery的ajax开发-$.post与$.get介绍(重点)"></a>jquery的ajax开发-$.post与$.get介绍(重点)</h3><p> $.get与$.post他们针对于 get和post请求<br> URL：发送请求地址<br> data：待发送的key/value参数<br> callback：发送成功时回调函数<br> type：放回内容格式xml.html ,sctipt, json ,text, _default</p></li></ol><h4 id="json介绍"><a href="#json介绍" class="headerlink" title="json介绍"></a>json介绍</h4><p><em>JSON(JavaScript Object Notation, JS 对象标记) 是一种轻量级的数据交换格式，说白了就是客户端与服务器之间传递的数据格式（json、xml…）。</em></p><h4 id="fastjson使用介绍"><a href="#fastjson使用介绍" class="headerlink" title="fastjson使用介绍"></a>fastjson使用介绍</h4><p><em>fastjson是阿里公司为我们提供的一个解析和封装json数据的开源类库。也就是说使用fastjson一定要导入相关的jar包。同时还有其它许多类似的开源类库。</em><br><strong>对于json处理插件有 fastjson  jsonlib  flexjson jackson</strong><br><strong>注意：JSONObject.toJSONString（Object object）；传入的是Object 。</strong><br><strong>如果java对象中存在日期类型属性java.util.Date,是否可以用指定的格式来转换成json。</strong><br><strong>简单方式(保留想要的属性) SerializeFilter filter =new SimplePropertyPreFiler(“”,””)将需要的属性指定</strong></p><h2 id="关于fastjson将java对象转换成json时的循环引用问题-通过SerializerFeature-DisableCirularReferenceDetect"><a href="#关于fastjson将java对象转换成json时的循环引用问题-通过SerializerFeature-DisableCirularReferenceDetect" class="headerlink" title="关于fastjson将java对象转换成json时的循环引用问题? 通过SerializerFeature.DisableCirularReferenceDetect"></a><strong>关于fastjson将java对象转换成json时的循环引用问题? 通过SerializerFeature.DisableCirularReferenceDetect</strong></h2>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;Jquery第二天&quot;&gt;&lt;a href=&quot;#Jquery第二天&quot; class=&quot;headerlink&quot; title=&quot;Jquery第二天&quot;&gt;&lt;/a&gt;Jquery第二天&lt;/h1&gt;&lt;h2 id=&quot;ajax概述&quot;&gt;&lt;a href=&quot;#ajax概述&quot; class=&quot;head
+      
+    
+    </summary>
+    
+      <category term="技术文章" scheme="http://HackerFreedom.github.io/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/"/>
+    
+    
+      <category term="JQueryAjax" scheme="http://HackerFreedom.github.io/tags/JQueryAjax/"/>
+    
+  </entry>
+  
+  <entry>
     <title>JQuery知识点</title>
     <link href="http://HackerFreedom.github.io/2018/01/19/Jquery/"/>
     <id>http://HackerFreedom.github.io/2018/01/19/Jquery/</id>
@@ -166,31 +196,6 @@ cd ..        切换
     
     
       <category term="JQuery" scheme="http://HackerFreedom.github.io/tags/JQuery/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>JQueryAjax知识点</title>
-    <link href="http://HackerFreedom.github.io/2018/01/19/Ajax/"/>
-    <id>http://HackerFreedom.github.io/2018/01/19/Ajax/</id>
-    <published>2018-01-19T09:33:03.000Z</published>
-    <updated>2018-01-22T04:00:22.517Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="Jquery第二天"><a href="#Jquery第二天" class="headerlink" title="Jquery第二天"></a>Jquery第二天</h1><h2 id="ajax概述"><a href="#ajax概述" class="headerlink" title="ajax概述"></a>ajax概述</h2><p><em>通过在后台与服务器进行少量数据交换，ajax可以使网页实现异步更新。这意味着可以在不重新加载整个网页的情况下，对网页的某部分进行更新。传统的网页（不使用 ajax）如果需要更新内容，必需重载整个网页面</em><br>    ajax的开发步骤：<br>        【第一步】：创建异步对象(XMLHttpRequest对象)<br>        var xmlHttp = createXmlHttp();<br>        【第二步】：设置监听<br>        【第三步】：设置请求方式,URL<br>        xmlHttp.onreadystatechange = function() {}</p><pre><code>    xmlHttp.open(“GET”,”/web15/ServletDemo1”,true);【第四步】：发送请求xmlHttp.send(null);【第五步】：在回调函数中获取响应数据xmlHttp.onreadystatechange = function(){    if(xmlHttp.readyState == 4){ //         if(xmlHttp.status == 200){ //            alert(xmlHttp.responseText);        }    }}</code></pre><h2 id="XMLHttpRequest对象详解-重点"><a href="#XMLHttpRequest对象详解-重点" class="headerlink" title="XMLHttpRequest对象详解(重点)"></a>XMLHttpRequest对象详解(重点)</h2><ol><li>XMLHttpRequest对象的常用属性：<br>readyState属性：HTTP 请求的状态.当一个 XMLHttpRequest 初次创建时，这个属性的值从 0 开始，直到接收到完整的 HTTP 响应，这个值增加到 4。</li><li><p>status属性：由服务器返回的 HTTP 状态代码，如 200 表示成功，而 404 表示 “Not Found” 错误。当 readyState 小于 3 的时候读取这一属性会导致一个异常。</p></li><li><p>onreadystatechange事件：每次 readyState 属性改变的时候调用的事件句柄函数。</p><h2 id="XMLHttpRequest常用方法"><a href="#XMLHttpRequest常用方法" class="headerlink" title="XMLHttpRequest常用方法"></a>XMLHttpRequest常用方法</h2></li><li>open它是用于设置请求方式，url及是否异步<br>参数1：HTTP 请求方式  POST/GET。<br>参数2:url路径<br>参数3:true/false 代表是否异步</li><li><p>send它是真正向服务器发送请求<br>如果请求方式是get，那么我们使用send(null) 原因:get请求方式是没有http请求体<br>只有post请求方式时，才有请求体,所以send的参数只是在post请求时使用例如<br>Xmlhttp.send(“username=xxx&amp;password=xxx”);</p></li><li><p>setRequestHeader<br>注意：如果请求方式是POST,那么我们在使用时，必须设置一个请求头，就需要使用setRequestHeader方法来完成</p><h3 id="jquery的ajax开发-load介绍"><a href="#jquery的ajax开发-load介绍" class="headerlink" title="jquery的ajax开发-load介绍"></a>jquery的ajax开发-load介绍</h3><p><strong>load（）方法的调用：想要把结果插入到哪个元素中，就使用这个元素的jQuery对象调用load方法。也就是说，load方法发送请求是直接将结果插入到dom元素中。<br>当有参数传递给服务器时就是post请求，没有参数传递就是get请求。</strong></p><h3 id="jquery的ajax开发-post与-get介绍-重点"><a href="#jquery的ajax开发-post与-get介绍-重点" class="headerlink" title="jquery的ajax开发-$.post与$.get介绍(重点)"></a>jquery的ajax开发-$.post与$.get介绍(重点)</h3><p> $.get与$.post他们针对于 get和post请求<br> URL：发送请求地址<br> data：待发送的key/value参数<br> callback：发送成功时回调函数<br> type：放回内容格式xml.html ,sctipt, json ,text, _default</p></li></ol><h4 id="json介绍"><a href="#json介绍" class="headerlink" title="json介绍"></a>json介绍</h4><p><em>JSON(JavaScript Object Notation, JS 对象标记) 是一种轻量级的数据交换格式，说白了就是客户端与服务器之间传递的数据格式（json、xml…）。</em></p><h4 id="fastjson使用介绍"><a href="#fastjson使用介绍" class="headerlink" title="fastjson使用介绍"></a>fastjson使用介绍</h4><p><em>fastjson是阿里公司为我们提供的一个解析和封装json数据的开源类库。也就是说使用fastjson一定要导入相关的jar包。同时还有其它许多类似的开源类库。</em><br><strong>对于json处理插件有 fastjson  jsonlib  flexjson jackson</strong><br><strong>注意：JSONObject.toJSONString（Object object）；传入的是Object 。</strong><br><strong>如果java对象中存在日期类型属性java.util.Date,是否可以用指定的格式来转换成json。</strong><br><strong>简单方式(保留想要的属性) SerializeFilter filter =new SimplePropertyPreFiler(“”,””)将需要的属性指定</strong></p><h2 id="关于fastjson将java对象转换成json时的循环引用问题-通过SerializerFeature-DisableCirularReferenceDetect"><a href="#关于fastjson将java对象转换成json时的循环引用问题-通过SerializerFeature-DisableCirularReferenceDetect" class="headerlink" title="关于fastjson将java对象转换成json时的循环引用问题? 通过SerializerFeature.DisableCirularReferenceDetect"></a><strong>关于fastjson将java对象转换成json时的循环引用问题? 通过SerializerFeature.DisableCirularReferenceDetect</strong></h2>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;Jquery第二天&quot;&gt;&lt;a href=&quot;#Jquery第二天&quot; class=&quot;headerlink&quot; title=&quot;Jquery第二天&quot;&gt;&lt;/a&gt;Jquery第二天&lt;/h1&gt;&lt;h2 id=&quot;ajax概述&quot;&gt;&lt;a href=&quot;#ajax概述&quot; class=&quot;head
-      
-    
-    </summary>
-    
-      <category term="技术文章" scheme="http://HackerFreedom.github.io/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/"/>
-    
-    
-      <category term="JQueryAjax" scheme="http://HackerFreedom.github.io/tags/JQueryAjax/"/>
     
   </entry>
   
