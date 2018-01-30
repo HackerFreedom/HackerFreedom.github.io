@@ -73,10 +73,10 @@
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
 
 
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png?v=5.1.4">
 
 
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.png?v=5.1.4">
 
 
   <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
@@ -106,7 +106,7 @@
 <meta property="og:site_name" content="努力，孩子">
 <meta property="og:description" content="监听器的概述监听器就是一个实现了特定接口的Java类，这个Java类用于监听另一个Java类的方法调用或者属性的改变。当被监听对象发生上述事件后，监听器某个方法将会立即被执行。监听器的用途用来监听其他对象的变化的。主要应用在图形化界面开发上 Servlet中的监听器 1、Servlet中的监听器主要监听的事件源是域对象：ServletContext、HttpSession,ServletReque">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-01-23T02:51:02.538Z">
+<meta property="og:updated_time" content="2018-01-23T15:09:15.500Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="监听器知识点">
 <meta name="twitter:description" content="监听器的概述监听器就是一个实现了特定接口的Java类，这个Java类用于监听另一个Java类的方法调用或者属性的改变。当被监听对象发生上述事件后，监听器某个方法将会立即被执行。监听器的用途用来监听其他对象的变化的。主要应用在图形化界面开发上 Servlet中的监听器 1、Servlet中的监听器主要监听的事件源是域对象：ServletContext、HttpSession,ServletReque">
@@ -167,7 +167,7 @@
   
   <div class="container sidebar-position-right page-post-detail">
     <div class="headband"></div>
-  <a href="https://github.com/HackerFreedom.github.io"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://camo.githubusercontent.com/567c3a48d796e2fc06ea80409cc9dd82bf714434/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_darkblue_121621.png"></a>
+  <a href="https://HackerFreedom.github.io"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://camo.githubusercontent.com/567c3a48d796e2fc06ea80409cc9dd82bf714434/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_darkblue_121621.png"></a>
 
 
 
@@ -236,29 +236,24 @@
         </li>
       
         
-        <li class="menu-item menu-item-technology">
-          <a href="/categories/技术文章" rel="section">
+        <li class="menu-item menu-item-life">
+          <a href="/life" rel="section">
             
-            技术文章
+            生活
           </a>
         </li>
       
         
-        <li class="menu-item menu-item-essay">
-          <a href="/categories/随笔" rel="section">
+        <li class="menu-item menu-item-photo">
+          <a href="/photo" rel="section">
             
-            随笔
+            相册
           </a>
         </li>
       
 
       
-   <div id="music163player">
-    <iframe frameborder="no" border="0" marginwidth="0" 
-      marginheight="0" width=0 height=200
-      src="//music.163.com/outchain/player?type=2&id=38358214&auto=0&height=2">
-    </iframe>
-  </div>
+   
     </ul>
   
 
@@ -384,16 +379,76 @@
 <p>1、Servlet中的监听器主要监听的事件源是域对象：ServletContext、HttpSession,ServletRequest</p>
 <p>2、Servlet中监听器的分类：<br>a)监听三个域对象的创建、销毁。（有三个域对象就对应有三个监听器）<br>b)监听三个域对象的属性变更 (存值、替换值、移除值)的监听器。（三个）<br>c)监听HttpSession中javabean的状态改变（钝化、活化、绑定、解绑）的监听器。（两个）</p>
 </blockquote>
-<h2 id="ServletContextListener监听器的使用"><a href="#ServletContextListener监听器的使用" class="headerlink" title="ServletContextListener监听器的使用"></a>ServletContextListener监听器的使用</h2><h2 id="HttpSessionListener监听器的使用"><a href="#HttpSessionListener监听器的使用" class="headerlink" title="HttpSessionListener监听器的使用"></a>HttpSessionListener监听器的使用</h2><h2 id="ServletRequestListener监听器的使用"><a href="#ServletRequestListener监听器的使用" class="headerlink" title="ServletRequestListener监听器的使用"></a>ServletRequestListener监听器的使用</h2><p><strong>三类八种</strong><br>    监听器(3类8种)<br>    第一类:监听3个域对象的创建和销毁<br>    ServletContextListener<br>    HttpSessionListener<br>    ServletRequestListener<br>    第二类:监听3个域对象属性的变更(属性添加,移除,替换)<br>    ServletContextAttributeListener<br>    HttpSessionAttributeListener<br>    ServletRequestAttributeListener<br>    第三类: 有点特殊,只监听HttpSession中JavaBean的绑定和解绑,钝化和活化<br>    不需要配置</p>
+<h2 id="ServletContextListener监听器的使用"><a href="#ServletContextListener监听器的使用" class="headerlink" title="ServletContextListener监听器的使用"></a>ServletContextListener监听器的使用</h2><p>ServletContextListener:监听ServletContext域对象的创建和销毁.</p>
+<pre><code>* 创建:
+* 服务器启动的时候创建ServletContext对象
+(一个web应用创建一个ServletContext)
+
+* 销毁:
+* 服务器关闭的时候.(项目从服务器中移除的时候.)
+</code></pre><p>ServletContextAttributeListener:监听ServletContext对象的属性变更（attributeAdded,attributeRemoved,attributeReplaced ）</p>
+<h2 id="HttpSessionListener监听器的使用"><a href="#HttpSessionListener监听器的使用" class="headerlink" title="HttpSessionListener监听器的使用"></a>HttpSessionListener监听器的使用</h2><p>HttpSessionAttributeListener:监听HttpSession中的属性变更<br><strong>重点（面试）</strong><br>    【HttpSession何时创建和销毁的】</p>
+<pre><code>* 创建:服务器端第一次调用getSession();
+* 销毁:
+    * 非正常关闭服务器(正常关闭session会序列化):
+    * session过期了(默认30分钟)
+    * 调用session.invalidate();
+
+【HttpSession的问题】
+* 访问Servlet会不会创建Session    : 不会
+* 访问JSP会不会创建Session        ：会. ??
+* 访问html会不会创建Session        ：不会
+</code></pre><h2 id="ServletRequestListener监听器的使用"><a href="#ServletRequestListener监听器的使用" class="headerlink" title="ServletRequestListener监听器的使用"></a>ServletRequestListener监听器的使用</h2><p>ServletRequestAttributeListener：监听ServletRequest对象的属性变更的:<br>【request对象何时创建和销毁】:</p>
+<ul>
+<li>创建：客户端向服务器发送一次请求,服务器就会创建request对象.</li>
+<li>销毁：服务器对这次请求作出响应后就会销毁request对象.</li>
+</ul>
+<ul>
+<li>访问一个Servlet会不会创建request对象:会</li>
+<li>访问一个JSP会不会创建request对象：会</li>
+<li>访问一个HTML会不会创建request对象:会</li>
+</ul>
+<p><em>*三类八种</em><br>    监听器(3类8种)<br>    第一类:监听3个域对象的创建和销毁<br>    ServletContextListener<br>    HttpSessionListener<br>    ServletRequestListener<br>    第二类:监听3个域对象属性的变更(属性添加,移除,替换)<br>    ServletContextAttributeListener<br>    HttpSessionAttributeListener<br>    ServletRequestAttributeListener<br>    第三类: 有点特殊,只监听HttpSession中JavaBean的绑定和解绑,钝化和活化<br>    不需要配置</p>
+<pre><code>Session的钝化实质是对于session的优化手段!!!
+    长时间不使用的session使其序列化.
+
+手动配置Session序列化:
+    * 手动配置Session的序列化通过标签&lt;Context&gt;标签.
+    * tomcat/conf/context.xml:代表所有的虚拟主机和所有虚拟路径按照这个配置来执行.
+    * tomcat/conf/Catalina/localhost/context.xml:代表所有localhost虚拟主机下的所有的项目都可以按照这个配置来执行.
+    * 工程META-INF/context.xml:代表只有当前的工程按照这个配置执行.
+
+    * 在context.xml中进行配置:
+    &lt;Context&gt;
+    &lt;!-- 
+        maxIdleSwap    :1.代表如果session一分钟没有使用的话,将session序列化到硬盘.
+        directory    :itcast. 将session序列化后,序列化文件保存在itcast的路径中.
+     --&gt;
+    &lt;Manager className=&quot;org.apache.catalina.session.PersistentManager&quot;
+        maxIdleSwap=&quot;1&quot;&gt;
+        &lt;Store className=&quot;org.apache.catalina.session.FileStore&quot;
+            directory=&quot;itcast&quot; /&gt;
+    &lt;/Manager&gt;
+&lt;/Context&gt;
+</code></pre><p><strong>总结</strong><br>第三类监听器,很特殊,1.只监听HttpSession, 2.不需要在web.XML中配置<br>1.HttpSessionBingingListerner 监听  某个Bean绑定到session和解除绑定<br>2.HttpSessionActivationListener 监听 某个Bean 钝化和活化<br>3.手动配置session钝化和活化</p>
 <h3 id="Filter的概述"><a href="#Filter的概述" class="headerlink" title="Filter的概述"></a>Filter的概述</h3><p>过滤器:Filter. 对客户端向服务器发送的请求进行过滤</p>
-<h3 id="FilterChain对象的概述"><a href="#FilterChain对象的概述" class="headerlink" title="FilterChain对象的概述"></a>FilterChain对象的概述</h3><h3 id="Filter的生命周期（了解）"><a href="#Filter的生命周期（了解）" class="headerlink" title="Filter的生命周期（了解）"></a>Filter的生命周期（了解）</h3><blockquote>
+<p><img src="" alt="Filter过滤原理">;</p>
+<h3 id="FilterChain对象的概述"><a href="#FilterChain对象的概述" class="headerlink" title="FilterChain对象的概述"></a>FilterChain对象的概述</h3><p>FilterChain称为过滤器链，web应用中可以存在很多个Filter过滤器，多个Filter过滤器组合起来就是一个过滤器链，受同一个FilterChain管理。</p>
+<p>过滤链中的Filter过滤器拦截是有先后顺序的，这个顺序取决于Filter在web.xml中<filter-mapping>的位置。<br><img src="" alt="FilterChain原理">;</filter-mapping></p>
+<blockquote>
+<p>注意:<br>过滤器的执行的顺序与<filter-mapping>的配置顺序有关.</filter-mapping></p>
+</blockquote>
+<h3 id="Filter的生命周期（了解）"><a href="#Filter的生命周期（了解）" class="headerlink" title="Filter的生命周期（了解）"></a>Filter的生命周期（了解）</h3><blockquote>
 <p>过滤器的创建和销毁:</p>
 <ul>
 <li>创建:服务器启动的时候.</li>
 <li>销毁:服务器关闭的时候.</li>
 </ul>
 </blockquote>
-<h3 id="FilterConfig对象的概述-了解"><a href="#FilterConfig对象的概述-了解" class="headerlink" title="FilterConfig对象的概述(了解)"></a>FilterConfig对象的概述(了解)</h3>
+<h3 id="FilterConfig对象的概述-了解"><a href="#FilterConfig对象的概述-了解" class="headerlink" title="FilterConfig对象的概述(了解)"></a>FilterConfig对象的概述(了解)</h3><blockquote>
+<p>增强一个类的方法<br>通过上面的分析，现在增强request的getParameter的方法。增强的过程要写在过滤器中。<br>如何增强一个类中的方法？<br>继承<br>必须要能够控制这个类的构造。<br>装饰者<br>被增强的类和增强的类需要实现相同的接口。<br>在增强的类中获得被增强的类的引用。<br>缺点：接口中的方法过多，重写很多其他的方法。<br>动态代理<br>类需要实现接口。</p>
+</blockquote>
+
       
     </div>
     
@@ -431,8 +486,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/01/21/suibi/" rel="next" title="File">
-                <i class="fa fa-chevron-left"></i> File
+              <a href="/2018/01/22/suibi/" rel="next" title="">
+                <i class="fa fa-chevron-left"></i> 
               </a>
             
           </div>
@@ -440,6 +495,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/01/28/nginx-svn/" rel="prev" title="nginx&svn">
+                nginx&svn <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -522,7 +581,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-count">16</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -533,7 +592,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -544,7 +603,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">标签</span>
                 
               </div>
@@ -580,7 +639,6 @@
           
 
           
-
         </div>
       </section>
 

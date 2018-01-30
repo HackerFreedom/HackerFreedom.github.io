@@ -73,10 +73,10 @@
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
 
 
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png?v=5.1.4">
 
 
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.png?v=5.1.4">
 
 
   <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
@@ -106,12 +106,12 @@
 <meta property="og:site_name" content="努力，孩子">
 <meta property="og:description" content="Redis介绍edis是一个开源的使用ANSI C语言编写、支持网络、可基于内存亦可持久化的日志型、Key-Value数据库，并提供多种语言的API。** Redis是 NoSQL技术阵营中的一员，它通过多种键值数据类型来适应不同场景下的存储需求，借助一些高层级的接口使用其可以胜任，如缓存、队列系统的不同角色* Redis特性 Redis 与其他 key - value 缓存产品有以下三个特点：">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://hackerfreedom.github.io/2018/01/20/Redis/Redis.jpg">
-<meta property="og:updated_time" content="2018-01-21T11:48:34.659Z">
+<meta property="og:image" content="http://hackerfreedom.github.io/2018/01/20/Redis/redis01.jpg">
+<meta property="og:updated_time" content="2018-01-28T00:51:11.041Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Redis概述">
 <meta name="twitter:description" content="Redis介绍edis是一个开源的使用ANSI C语言编写、支持网络、可基于内存亦可持久化的日志型、Key-Value数据库，并提供多种语言的API。** Redis是 NoSQL技术阵营中的一员，它通过多种键值数据类型来适应不同场景下的存储需求，借助一些高层级的接口使用其可以胜任，如缓存、队列系统的不同角色* Redis特性 Redis 与其他 key - value 缓存产品有以下三个特点：">
-<meta name="twitter:image" content="http://hackerfreedom.github.io/2018/01/20/Redis/Redis.jpg">
+<meta name="twitter:image" content="http://hackerfreedom.github.io/2018/01/20/Redis/redis01.jpg">
 
 
 
@@ -169,7 +169,7 @@
   
   <div class="container sidebar-position-right page-post-detail">
     <div class="headband"></div>
-  <a href="https://github.com/HackerFreedom.github.io"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://camo.githubusercontent.com/567c3a48d796e2fc06ea80409cc9dd82bf714434/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_darkblue_121621.png"></a>
+  <a href="https://HackerFreedom.github.io"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://camo.githubusercontent.com/567c3a48d796e2fc06ea80409cc9dd82bf714434/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_darkblue_121621.png"></a>
 
 
 
@@ -238,29 +238,24 @@
         </li>
       
         
-        <li class="menu-item menu-item-technology">
-          <a href="/categories/技术文章" rel="section">
+        <li class="menu-item menu-item-life">
+          <a href="/life" rel="section">
             
-            技术文章
+            生活
           </a>
         </li>
       
         
-        <li class="menu-item menu-item-essay">
-          <a href="/categories/随笔" rel="section">
+        <li class="menu-item menu-item-photo">
+          <a href="/photo" rel="section">
             
-            随笔
+            相册
           </a>
         </li>
       
 
       
-   <div id="music163player">
-    <iframe frameborder="no" border="0" marginwidth="0" 
-      marginheight="0" width=0 height=200
-      src="//music.163.com/outchain/player?type=2&id=38358214&auto=0&height=2">
-    </iframe>
-  </div>
+   
     </ul>
   
 
@@ -410,7 +405,7 @@ Redis的string可以包含任何数据，比如jpg图片(生成二进制)或者�
 
 Redis的Hash数据类型的value内部是一个HashMap,如果该Map的成员比较少，则会采用一维数组的方式
 </code></pre><ul>
-<li>采用String类型的存储对象，需要将对象进行序列化。<br><img src="/2018/01/20/Redis/Redis.jpg" alt=""></li>
+<li>采用String类型的存储对象，需要将对象进行序列化。<br><img src="/2018/01/20/Redis/redis01.jpg" alt="Redis"></li>
 <li>增加了序列化/反序列化的开销，并且在需要修改其中一项信息时，需要把整个对象取回</li>
 <li>使用Hash数据类型则不需要</li>
 <li>Key仍然是用户ID, value是一个Map，这个Map的key是成员的属性名，value是属性值，这样对数据的修改和存取都可以直接通过其内部Map的Key(Redis里称内部Map的key为field), 也就是通过 key(用户ID) + field(属性标签) 就可以操作对应属性数据了，既不需要重复存储数据，也不会带来序列化和反序列化。</li>
@@ -426,26 +421,24 @@ Redis的Hash数据类型的value内部是一个HashMap,如果该Map的成员比�
 
 不过带来了部分额外的内存开销。Redis内部的很多实现，
 包括发送缓冲队列等也都是用的这个数据结构
-</code></pre><p><strong>Set</strong><br>    它是string类型的无序集合。set是通过hash table实现的，可以进行添加、删除和查找。<br>    对集合我们可以取并集，交集，差集.</p>
-<pre><code>集合可以进行 交集、并集 如新浪微博中获取两个用户共同的关注人
+</code></pre><ul>
+<li><p><strong>Set</strong><br>  它是string类型的无序集合。set是通过hash table实现的，可以进行添加、删除和查找。<br>  对集合我们可以取并集，交集，差集.</p>
+<p>  集合可以进行 交集、并集 如新浪微博中获取两个用户共同的关注人</p>
+<p>  新浪微博使用redis有两种应用场景：</p>
+<ol>
+<li><p>直接把数据放到redis中进行存储，这些数据是独立的</p>
+</li>
+<li><p>有些数据包含表与表之间的逻辑关系，这些数据又访问比较频繁，<br> 如果直接从数据库中进行查询性能比较差。<br> 先将数据写到redis中，再将数据保存到mysql数据库</p>
+</li>
+</ol>
+</li>
+<li><p><strong>zset</strong></p>
+<p>Redis sorted set的使用场景与set类似，<br>区别是set不是自动有序的，<br>而sorted set可以通过用户额外提供一个优先级(score)的参数来为成员排序，<br>并且是插入有序的，即自动排序。</p>
+<p>可以理解为一列存 value,一列存顺序。操作中key理解为zset的名字.</p>
+<p>当你需要一个有序的并且不重复的集合列表，那么可以选择sorted set数据结构</p>
+</li>
+</ul>
 
-新浪微博使用redis有两种应用场景：
-
-1. 直接把数据放到redis中进行存储，这些数据是独立的
-
-2. 有些数据包含表与表之间的逻辑关系，这些数据又访问比较频繁，
-    如果直接从数据库中进行查询性能比较差。
-    先将数据写到redis中，再将数据保存到mysql数据库
-</code></pre><p><strong>zset</strong></p>
-<pre><code>Redis sorted set的使用场景与set类似，
-区别是set不是自动有序的，
-而sorted set可以通过用户额外提供一个优先级(score)的参数来为成员排序，
-并且是插入有序的，即自动排序。
-
-可以理解为一列存 value,一列存顺序。操作中key理解为zset的名字.
-
-当你需要一个有序的并且不重复的集合列表，那么可以选择sorted set数据结构
-</code></pre>
       
     </div>
     
@@ -483,8 +476,8 @@ Redis的Hash数据类型的value内部是一个HashMap,如果该Map的成员比�
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/01/19/Ajax/" rel="next" title="JQueryAjax知识点">
-                <i class="fa fa-chevron-left"></i> JQueryAjax知识点
+              <a href="/2018/01/20/linux/" rel="next" title="linux基本使用">
+                <i class="fa fa-chevron-left"></i> linux基本使用
               </a>
             
           </div>
@@ -493,8 +486,8 @@ Redis的Hash数据类型的value内部是一个HashMap,如果该Map的成员比�
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/01/20/linux/" rel="prev" title="linux基本使用">
-                linux基本使用 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/01/21/FileUploadAndDownLoad/" rel="prev" title="文件上传和下载">
+                文件上传和下载 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -578,7 +571,7 @@ Redis的Hash数据类型的value内部是一个HashMap,如果该Map的成员比�
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-count">16</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -589,7 +582,7 @@ Redis的Hash数据类型的value内部是一个HashMap,如果该Map的成员比�
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -600,7 +593,7 @@ Redis的Hash数据类型的value内部是一个HashMap,如果该Map的成员比�
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">标签</span>
                 
               </div>
@@ -636,7 +629,6 @@ Redis的Hash数据类型的value内部是一个HashMap,如果该Map的成员比�
           
 
           
-
         </div>
       </section>
 

@@ -73,10 +73,10 @@
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
 
 
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png?v=5.1.4">
 
 
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.png?v=5.1.4">
 
 
   <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
@@ -166,7 +166,7 @@
   <div class="container sidebar-position-right 
   page-home">
     <div class="headband"></div>
-  <a href="https://github.com/HackerFreedom.github.io"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://camo.githubusercontent.com/567c3a48d796e2fc06ea80409cc9dd82bf714434/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_darkblue_121621.png"></a>
+  <a href="https://HackerFreedom.github.io"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://camo.githubusercontent.com/567c3a48d796e2fc06ea80409cc9dd82bf714434/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_darkblue_121621.png"></a>
 
 
 
@@ -235,29 +235,24 @@
         </li>
       
         
-        <li class="menu-item menu-item-technology">
-          <a href="/categories/技术文章" rel="section">
+        <li class="menu-item menu-item-life">
+          <a href="/life" rel="section">
             
-            技术文章
+            生活
           </a>
         </li>
       
         
-        <li class="menu-item menu-item-essay">
-          <a href="/categories/随笔" rel="section">
+        <li class="menu-item menu-item-photo">
+          <a href="/photo" rel="section">
             
-            随笔
+            相册
           </a>
         </li>
       
 
       
-   <div id="music163player">
-    <iframe frameborder="no" border="0" marginwidth="0" 
-      marginheight="0" width=0 height=200
-      src="//music.163.com/outchain/player?type=2&id=38358214&auto=0&height=2">
-    </iframe>
-  </div>
+   
     </ul>
   
 
@@ -275,6 +270,908 @@
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://HackerFreedom.github.io/2018/01/29/Reflect/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Sam">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/my.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="努力，孩子">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/01/29/Reflect/" itemprop="url">Reflect&Porxy</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-29T14:01:02+08:00">
+                2018-01-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/技术文章/" itemprop="url" rel="index">
+                    <span itemprop="name">技术文章</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="反射介绍"><a href="#反射介绍" class="headerlink" title="反射介绍"></a>反射介绍</h1><p>反射:简单说,就是动态加载一个类,并获取该类中的所有内容,并使用他们.(构造,成员变量,成员方法)<br><img src="/2018/01/29/Reflect/reflect01.png" alt="">;</p>
+<p><em>优点</em></p>
+<ol>
+<li>反射提高程序的灵活性和扩展性；</li>
+<li>降低耦合性，提高自适应能力；</li>
+<li>它允许程序创建和控制任何类的对象，无序提前硬编码目标类</li>
+</ol>
+<p><em>缺点</em></p>
+<ol>
+<li>性能问题：使用反射基本是一种解释操作，用于字段和方法接入时要远慢于直接代码。因此反射机制主要应用在对灵活性和拓展性要求很高的系统框架上，普通程序不建议使用。</li>
+<li>使用反射会模糊程序内部逻辑；程序员希望在源代码中看到程序的逻辑，反射却绕过了源代码的技术，因而会带来维护的问题，    反射代码比相应的直接代码更复杂。</li>
+</ol>
+<ul>
+<li>java反射常用API<br><strong>class类的实例表示正在运行的java应用程序中的类和接口。枚举是一种类，注释是一种接口。</strong></li>
+</ul>
+<p>反射:动态加载一个类,得到Class对象,剖析Class对象,得到构造方法对象,成员变量对象,成员方法对象,并使用它们.<br>Class clazz = Class.forName(“com.itheima.Student”);<br>clazz.newInstance();</p>
+<p>Student stu = new Student ();</p>
+<h1 id="calss介绍及获取"><a href="#calss介绍及获取" class="headerlink" title="calss介绍及获取"></a>calss介绍及获取</h1><ul>
+<li>获取class对象的三种方式<br>   class clazz=Class.forName(“”)</li>
+</ul>
+<p><img src="/2018/01/29/Reflect/reflect02.png" alt="">;</p>
+<h1 id="Constructor介绍"><a href="#Constructor介绍" class="headerlink" title="# Constructor介绍"></a># Constructor介绍</h1><ul>
+<li>获取构造方法<ul>
+<li>getConstructor（Class&lt;?&gt;…parameterTyps）</li>
+<li>getDeclaredConstructor(Class&lt;?&gt;…parameterTypes);<br>总结: 有s获取多个,没s获取一个,Declared可获取private<br>最常用:<br>  Class.getConstructor().newInstance();<br>Class.newInstance()<h1 id="field介绍"><a href="#field介绍" class="headerlink" title="# field介绍"></a># field介绍</h1><ul>
+<li>获取成员变量</li>
+<li>获取多个<br>getFields()<br>getDeclaredFields()    </li>
+</ul>
+</li>
+<li>获取一个<br>  getField(“name”)<br>  getDeclaredField(“name”)<h1 id="Method获取介绍"><a href="#Method获取介绍" class="headerlink" title="# Method获取介绍"></a># Method获取介绍</h1></li>
+<li>获取成员方法</li>
+<li>Class对象<br>Method  getMethod(String);<br>Method[]  getMethods(String);</li>
+</ul>
+</li>
+</ul>
+<p><strong>invoke方法介绍</strong><br><img src="/2018/01/29/Reflect/invoke01.png" alt="">;</p>
+<p><em>invoke 参数1：方法所在的对象； 参数二：调用这个方法需要传递的参数   ；invoke 方法的返回值是被调用的方法的返回值</em></p>
+<h1 id="method中-invoke方法使用注意事项"><a href="#method中-invoke方法使用注意事项" class="headerlink" title="method中 invoke方法使用注意事项"></a>method中 invoke方法使用注意事项</h1><p><em>如果方法是静态的，在通过invoke调用时不需要传递对象</em></p>
+<p><img src="/2018/01/29/Reflect/invoke02.png" alt="">;<br><em>如果方法的参数是一个对象数组，通过invoke 调用要处理一下这个对象</em></p>
+<p><img src="/2018/01/29/Reflect/invoke03.png" alt="">;<br>解决方案：强制转换类型<br>    将数组再套上一层数组</p>
+<p><strong>反射总结</strong></p>
+<blockquote>
+<p>1.Class.forName(“包名.类名”);<br>2.Class.newInstance()<br>3.Class.getMethod(“方法名”).invoke(Object,args…);</p>
+</blockquote>
+<p><em>如何将map集合中的数据封装到JavaBean类中去</em></p>
+<p><img src="/2018/01/29/Reflect/invoke04.png" alt="">;</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+  <div>
+  
+  </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://HackerFreedom.github.io/2018/01/28/p2p项目思路/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Sam">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/my.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="努力，孩子">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/01/28/p2p项目思路/" itemprop="url">p2p项目</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-28T14:34:31+08:00">
+                2018-01-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/技术文章/" itemprop="url" rel="index">
+                    <span itemprop="name">技术文章</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="账户中心-产品购买"><a href="#账户中心-产品购买" class="headerlink" title="账户中心-产品购买"></a>账户中心-产品购买</h2><p>思路分析：： 产品购买，首先要对产品进行查询，在p2p_home中要查询产品信息，在p2p_management中提供<br>产品的CRUD操作，文档说要用到跨域（但是跨域的概念是 服务器中的端口 协议  不同）</p>
+<ol>
+<li>用户的账户表中信息一定要改变</li>
+<li>在product_account 中间表中插入 money 和 interest的字段名；</li>
+</ol>
+<p><em>整体思路</em></p>
+<ol>
+<li>产品信息要在moto.html中展现出来</li>
+<li>moto.js文件中拼装</li>
+<li><p>moto.html中产品信息生成 （在我要购买提加点击事件onclick） 写函数的时候看是否有参数是看在servlet是否需要参数接受<br>然后处理购买后的数据（）<br>配置结果–本金/</p>
+</li>
+<li><p>完成购买操作（金额 和产品信息传递给服务器，在服务器进行操作，修改账户信息，向product——account 修改账户信息，）</p>
+</li>
+<li><p>修改账户信息，向product_account表中插入数据（敏感数据的处理（bigdecimal的处理））</p>
+</li>
+<li>在product中插入数据  根据pid查询查询产品</li>
+<li><p>attar  prop 是什么属性</p>
+<p> 多表联查；</p>
+</li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+  <div>
+  
+  </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://HackerFreedom.github.io/2018/01/28/jsp-el-jstl/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Sam">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/my.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="努力，孩子">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/01/28/jsp-el-jstl/" itemprop="url">jsp&el&jstl</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-28T14:15:14+08:00">
+                2018-01-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/技术文章/" itemprop="url" rel="index">
+                    <span itemprop="name">技术文章</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="JSP"><a href="#JSP" class="headerlink" title="JSP"></a>JSP</h1><h2 id="jsp的基本介绍"><a href="#jsp的基本介绍" class="headerlink" title="jsp的基本介绍"></a>jsp的基本介绍</h2><p>Servlet技术生成动态网页的时候很麻烦，需要通过response获得输出流，调用print方法进行打印的。这种编程方式很麻烦，而且美工也不容易处理。SUN公司为了简化动态网页开发，推出JSP</p>
+<ul>
+<li><p>JSP脚本元素<br>&lt;%!    %&gt;    :JSP声明 翻译成 Servlet成员部分的内容。声明变量，方法，内部类。<br>&lt;%= %&gt;    :翻译out.print(),在service方法内部。用于生成HTML页面源码。<br>&lt;%    %&gt;    :嵌入Java代码 翻译成service方法内部的代码块。声明变量，内部类</p>
+</li>
+<li><p>JSP的运行原理<br>JSP在执行时，会被服务器翻译为Servlet编译执行，JSP就是一个Servlet。</p>
+</li>
+</ul>
+<h2 id="JSP的指令元素的概述"><a href="#JSP的指令元素的概述" class="headerlink" title="JSP的指令元素的概述"></a>JSP的指令元素的概述</h2><ul>
+<li>Jsp有如下三大指令：<blockquote>
+<p>page指令：用来设置jsp页面的某些属性和行为的；例如设置字符集等。。。<br>include指令：用来设置jsp页面包含哪些其他页面。<br>taglib指令：用来设置jsp页面引入了哪些标签库。</p>
+</blockquote>
+</li>
+</ul>
+<h2 id="Page指令属性"><a href="#Page指令属性" class="headerlink" title="Page指令属性"></a>Page指令属性</h2><blockquote>
+<p>import属性：        用于导入Java包或类。<br>一次导入多个包&lt;%@ page import=”java.util.Date , java.util.List” %&gt;<br>contentType属性：标明JSP被浏览器解析和打开的时候采用的默认的字符集。<br>pageEncoding属性：JSP文件及JSP翻译后的Servlet保存到硬盘上采用字符集。</p>
+</blockquote>
+<p>##JSP的指令-include和taglib指令  ##</p>
+<ul>
+<li>include指令作用：用来设置jsp页面静态包含其他页面</li>
+<li>2、include指令包含（静态包含）的原理和注意事项：<br><strong> 相当于代码复制,多个JSP会被翻译成一个Servlet</strong><br>  <img src="/2018/01/28/jsp-el-jstl/jsp01.png" alt="">;<br>  注意地方：<br>  应该将被包含的页面的结构去掉。<br>  在被包含的页面中定义变量，在包含的页面中还可以使用。</li>
+</ul>
+<h2 id="JSP的内置对象"><a href="#JSP的内置对象" class="headerlink" title="JSP的内置对象"></a>JSP的内置对象</h2><p><strong>内置对象就是可以在JSP页面中直接使用的对象。</strong></p>
+<blockquote>
+<p>request：客户端向服务器发送的请求对象。————————HttpServletRequest<br>response：服务器向客户端作的响应对象。————————–HttpServletResponse<br>session：客户端和服务器之间的会话对象。————————-HttpSession<br>application：整个应用——————————————————-ServletContext<br>page：当前jsp页面被翻译成的Servlet对象————————-Object<br>out：页面输出内容的对象————————————————-JspWriter<br>pageContext：当前jsp页面的上下文对象—————————–PageContext<br>config：当前jsp的ServletConfig对象———————————-ServletConfig<br>exception：当前页面的异常对象，只有当前页面的page指令中指明了isErrorPage=”true”才有此对象。——– Throwable</p>
+</blockquote>
+<p><em>pageContext对象的概述</em><br>pageContext对象<br>    可以存值，取值，移除值，查找值</p>
+<pre><code>pageContext的作用:
+1.作为域对象保存数据
+获取其他8大内置对象
+</code></pre><p><img src="/2018/01/28/jsp-el-jstl/jsp02.png" alt="获取其它的内置对象">);</p>
+<blockquote>
+<p>在JSP页面中可以直接使用out,request对象,为什么还需要用pageContext获取?<br>可以作为参数传递.</p>
+</blockquote>
+<h2 id="jsp四个作用范围"><a href="#jsp四个作用范围" class="headerlink" title="jsp四个作用范围"></a>jsp四个作用范围</h2><p>pageContext ：代表page域，就是指当前页面范围<br>requset：他是代表一个求链<br>session：整个回话，<br>aplication：整个web应用（servletContext）</p>
+<p>PAGE_SCOPE：页面范围<br>    页面范围：指的是在当前的页面内有效，出了这个页面，用pageContext保存的数据就无效了。<br>REQUEST_SCOPE：请求范围<br>    从客户端向服务器发送一次请求，直到服务器作出了响应之后，数据就无效，相当于Request域，也可以使用Request取值。<br>SESSION_SCOPE：会话范围<br>    从打开浏览器到关闭浏览器数以一次会话，在这个会话内数据都有效，相当于Session域。<br>APPLICATION_SCOPE：应用范围<br>    在整个应用中任意的地方都可以获取，相当于ServletContext域</p>
+<p><em>在page,request,session.application范围依次查找(findAttribute)</em></p>
+<h2 id="总结一点："><a href="#总结一点：" class="headerlink" title="##总结一点："></a>##总结一点：</h2><p>JSP=html+java+jsp特有东西<br>    a)JSP注释  // /**/  &lt;%– JSP注释 –%&gt;<br>    b)JSP页面指令<br>        1.&lt;%@ page import=”” %&gt;<br>        2.&lt;%@ include file=”” %&gt; 静态包含  代码复制<br>        3.&lt;%@ taglib uri=”” prefix=”” &gt;<br>    c)JSP内置对象<br>        1.pageContext request,response，session,application,,out,config,page,exception<br>        2.pageContext 的作用<br>    i.可以操作各个域<br>    a)findAttribute(“name”);</p>
+<pre><code>2.  可以获取其他8个内置对象
+</code></pre><h2 id="JSP动作标签"><a href="#JSP动作标签" class="headerlink" title="JSP动作标签"></a>JSP动作标签</h2><p>JSP的动作标签用于在JSP页面中提供业务逻辑功能，避免在JSP页面中直接编写Java代码，造成jsp页面难以维护。<br>常用动作标签：<br>    <jsp:forward>    ：请求转发。<br>    <jsp:include>：包含（动态包含）。<br>    <jsp:param>：传递参数<br><img src="/2018/01/28/jsp-el-jstl/jsp03.png" alt="静态包含和动态包含的区别">;</jsp:param></jsp:include></jsp:forward></p>
+<p>jsp中静态包含(include指令)与动态包含(include标签)区别?<br>1.静态包含包含的是内容，而动态包含包含的是结果。<br>2.静态包含不可以传递参数 ,而动态包含可以传递参数</p>
+<p>静态包含:(代码拷贝,合一个文件),动态:(独立Java文件)<br>开发如何选择:<br>没有特殊需求,2个都可以<br><strong>被包含文件独立性高,用jsp:include 标签</strong></p>
+<h3 id="ELd的概述"><a href="#ELd的概述" class="headerlink" title="ELd的概述"></a>ELd的概述</h3><p>EL主要是用来取代我们jsp页面的java代码，jsp页面一般是起显示数据作用的，所以不应该出现java代码，有java代码也不利于维护和合作开发，故出现了EL表达式。</p>
+<blockquote>
+<p>EL作用: 获取域中数据、执行运算、获取web常用对象。</p>
+<p>  语法：${ EL表达式}</p>
+</blockquote>
+<h3 id="EL获取数据（重点）"><a href="#EL获取数据（重点）" class="headerlink" title="EL获取数据（重点）"></a>EL获取数据（重点）</h3><p>EL表达式语句在执行的时候，会调用pageContext.findAttribute()方法。分别从<em>page、request、session、application</em>范围查找相应对象，找到就会<em>返回相应对象，找不到返回””(不是null，是空的字符串)</em>。EL所获取的数据需要在四个作用范围中</p>
+<h3 id="EL获取数组和集合中的数据"><a href="#EL获取数组和集合中的数据" class="headerlink" title="EL获取数组和集合中的数据"></a>EL获取数组和集合中的数据</h3><ol>
+<li>El获取数组中的数据</li>
+</ol>
+<p><img src="/2018/01/28/jsp-el-jstl/EL01.png" alt="">;</p>
+<ol>
+<li><p>EL获取list集合的数据<br><img src="/2018/01/28/jsp-el-jstl/EL02.png" alt="">;</p>
+</li>
+<li><p>EL获取map集合的数据</p>
+</li>
+</ol>
+<p><img src="/2018/01/28/jsp-el-jstl/EL03.png" alt="">;</p>
+<blockquote>
+<p>1.map集合的键要是String类型<br>2.当key中有特殊字符点时，map集合获取值就不能使用.了,使用下标的方式[“key”]</p>
+</blockquote>
+<h3 id="EL执行的运算"><a href="#EL执行的运算" class="headerlink" title="EL执行的运算"></a>EL执行的运算</h3><ol>
+<li>算术运算</li>
+<li>关系运算</li>
+<li>逻辑运算</li>
+<li>三元运算</li>
+<li>empty运算</li>
+</ol>
+<p>empty用于集合,可以判断集合是否有元素,size()=0</p>
+<p>&lt;%<br>List list = new ArrayList<string>();<br>request.setAttribute(“list”,list);<br>%&gt;<br>${empty list}  –返回true ,没有元素</string></p>
+<h3 id="EL获取web开发常用对象"><a href="#EL获取web开发常用对象" class="headerlink" title="EL获取web开发常用对象"></a>EL获取web开发常用对象</h3><p><strong>掌握param、paramValues、cookie、pageContext以及四个域对象的含义和用法</strong><br><img src="/2018/01/28/jsp-el-jstl/EL04.png" alt="">;</p>
+<p><strong>最常用</strong></p>
+<blockquote>
+<p>${cookie.remember.value}<br>${param[“name”]}</p>
+<form action="”${pageContext.request.contextPath}/Servlet”" method="”post”">
+
+
+</form></blockquote>
+<h4 id="JSTL概述"><a href="#JSTL概述" class="headerlink" title="JSTL概述"></a>JSTL概述</h4><p>是JSP标准标签库(JSTL)是一个jsp标签集合，封装了jsp应用的通用核心功能<br><em>JSTL支持通用的、结构化的任务，比如迭代，条件判断，XML文档操作，国际化标签，SQL标签。 除了这些，它还提供了一个框架来使用集成JSTL的自定义标签</em></p>
+<p>JSTL分为i下面5类</p>
+<blockquote>
+<p>核心标签—————————————–c标签<br>格式化标签（国际化标签）—————-fmt标签<br>SQL 标签—————————————–sql标签<br>XML 标签—————————————-xml标签<br>JSTL 函数—————————————（EL函数）</p>
+</blockquote>
+<h4 id="JSTL的if标签属性"><a href="#JSTL的if标签属性" class="headerlink" title="JSTL的if标签属性"></a>JSTL的if标签属性</h4><ol>
+<li>test：条件</li>
+<li>var：将test中的条件的值符给一个变量</li>
+<li>scope： 作用范围</li>
+</ol>
+<p><img src="/2018/01/28/jsp-el-jstl/JSTL01.png" alt="">;</p>
+<h4 id="JSTL的foreach标签（重点）"><a href="#JSTL的foreach标签（重点）" class="headerlink" title="JSTL的foreach标签（重点）"></a>JSTL的foreach标签（重点）</h4><ol>
+<li>items：要被循环的信息</li>
+<li>begin：开始的元素</li>
+<li>end:最后一个元素</li>
+<li>step：每一次增长的值</li>
+<li>var：代表当前条目的变量名称</li>
+<li>varStatus：代表循环抓太多变量名称<br><img src="/2018/01/28/jsp-el-jstl/JSTL02.png" alt="foreach基本使用">;<br><img src="/2018/01/28/jsp-el-jstl/JSTL03.png" alt="foreach遍历数组">;</li>
+</ol>
+<p><img src="/2018/01/28/jsp-el-jstl/JSTL04.png" alt="foreach遍历list集合">;</p>
+<p><img src="/2018/01/28/jsp-el-jstl/JSTL05.png" alt="foreach遍历map集合">;</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+  <div>
+  
+  </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://HackerFreedom.github.io/2018/01/28/Memoirs/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Sam">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/my.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="努力，孩子">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/01/28/Memoirs/" itemprop="url">大学时的生活</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-28T08:50:56+08:00">
+                2018-01-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/生活/" itemprop="url" rel="index">
+                    <span itemprop="name">生活</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>2015年我只为it梦来到了这个校园<br>2年时间我留下很多难难忘的回忆，和一个一生都忘不掉的人。<br>而这正是我，唯一依依不舍的理由。<br>感谢这个大学，即使现在还是一无所有，没有任何地点。<br>我还是那个热血的我，好奇的我，这一生我只想做一个有梦就追的男孩。<br>    当你想放弃的时候，你就想想当初为何要走，想走就继续，因为梦想还在，而你放弃，它就会一点点的侵犯你整个思想，直到你为之后悔莫及。<br>    当初爱上你，不是因为你的美丽，而是你在特殊的时间，给了我别人给不了的感觉，谢谢你陪我走过了这365天<br><img src="" alt=""></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+  <div>
+  
+  </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://HackerFreedom.github.io/2018/01/28/nginx-svn/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Sam">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/my.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="努力，孩子">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/01/28/nginx-svn/" itemprop="url">nginx&svn</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-28T08:50:56+08:00">
+                2018-01-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/技术文章/" itemprop="url" rel="index">
+                    <span itemprop="name">技术文章</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="nginx简介"><a href="#nginx简介" class="headerlink" title="nginx简介"></a>nginx简介</h1><p>Nginx的概念：Nginx (“engine x”) 是一个高性能的HTTP和反向代理服务器，也是一个电子邮件（IMAP/POP3/SMTP）服务器。<br>Nginx的要点：<br>1、Nginx 可以在大多数 Unix、Linux OS 上编译运行，并有 Windows 移植版<br>2、支持高并发操作，实现负载均衡<br>正向代理和反向代理的区别：<br><img src="/2018/01/28/nginx-svn/nginx01.png" alt="">;</p>
+<ul>
+<li>正向代理:出去访问外网</li>
+<li>反向代理:外网回来</li>
+<li></li>
+<li>正向代理它隐藏了客户端</li>
+<li>反向代理它隐藏的是服务器端</li>
+</ul>
+<p><img src="/2018/01/28/nginx-svn/nginx02.png" alt="反向代理">;</p>
+<h2 id="反向代理"><a href="#反向代理" class="headerlink" title="反向代理"></a>反向代理</h2><p>所谓的反向代理就是隐藏真实的服务器，通过proxy来指定要访问的服务端：</p>
+<p>##负载均衡  ##</p>
+<p>所谓的负载均衡简单说就是将一台服务原来承受的压力由多台服务器来分配，可以在nginx中实现tomcat集群，通过weight来分配权重。</p>
+<p><img src="/2018/01/28/nginx-svn/nginx.png" alt="负载均衡">;</p>
+<h2 id="nginx-amp-tomcat集群-amp-redis实现session共享"><a href="#nginx-amp-tomcat集群-amp-redis实现session共享" class="headerlink" title="nginx&amp;tomcat集群&amp;redis实现session共享"></a>nginx&amp;tomcat集群&amp;redis实现session共享</h2><p>在两个服务器中分别部署同一个项目：myweb,在该项目里面有一个index.jsp页面，在页面中获取了sessionid并显示在页面上。如果两个服务器中myweb项目里面的index.jsp中获取的sessionid一致，就说明session共享了。</p>
+<h3 id="svn概述（小乌龟）"><a href="#svn概述（小乌龟）" class="headerlink" title="svn概述（小乌龟）"></a>svn概述（小乌龟）</h3><p>SVN是Subversion的简称，是一个自由开源的版本控制系统。<br>Subversion将文件存放在中心版本库里，这个版本库很像一个普通的文件服务器，不同的是，它可以记录每一次文件和目录的修改情况，这样就可以借此将数据恢复到以前的版本，并可以查看数据的更改细节<br>早期版本控制使用的是CVS,后来SVN替代了CVS,随着android兴起，出现Git版本控制工具，后续我们会学到。</p>
+<p><img src="/2018/01/28/nginx-svn/svn01.png" alt="SVN">;<br>基本操作：</p>
+<ol>
+<li>Checkout：检出（从服务器上导出项目）</li>
+<li>Update：更新文件（指的是用户后续从服务器上down代码，也成为更新操作）</li>
+<li>Commit：提交文件（提交文件到服务器；）</li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+  <div>
+  
+  </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
     
       
 
@@ -387,16 +1284,76 @@
 <p>1、Servlet中的监听器主要监听的事件源是域对象：ServletContext、HttpSession,ServletRequest</p>
 <p>2、Servlet中监听器的分类：<br>a)监听三个域对象的创建、销毁。（有三个域对象就对应有三个监听器）<br>b)监听三个域对象的属性变更 (存值、替换值、移除值)的监听器。（三个）<br>c)监听HttpSession中javabean的状态改变（钝化、活化、绑定、解绑）的监听器。（两个）</p>
 </blockquote>
-<h2 id="ServletContextListener监听器的使用"><a href="#ServletContextListener监听器的使用" class="headerlink" title="ServletContextListener监听器的使用"></a>ServletContextListener监听器的使用</h2><h2 id="HttpSessionListener监听器的使用"><a href="#HttpSessionListener监听器的使用" class="headerlink" title="HttpSessionListener监听器的使用"></a>HttpSessionListener监听器的使用</h2><h2 id="ServletRequestListener监听器的使用"><a href="#ServletRequestListener监听器的使用" class="headerlink" title="ServletRequestListener监听器的使用"></a>ServletRequestListener监听器的使用</h2><p><strong>三类八种</strong><br>    监听器(3类8种)<br>    第一类:监听3个域对象的创建和销毁<br>    ServletContextListener<br>    HttpSessionListener<br>    ServletRequestListener<br>    第二类:监听3个域对象属性的变更(属性添加,移除,替换)<br>    ServletContextAttributeListener<br>    HttpSessionAttributeListener<br>    ServletRequestAttributeListener<br>    第三类: 有点特殊,只监听HttpSession中JavaBean的绑定和解绑,钝化和活化<br>    不需要配置</p>
+<h2 id="ServletContextListener监听器的使用"><a href="#ServletContextListener监听器的使用" class="headerlink" title="ServletContextListener监听器的使用"></a>ServletContextListener监听器的使用</h2><p>ServletContextListener:监听ServletContext域对象的创建和销毁.</p>
+<pre><code>* 创建:
+* 服务器启动的时候创建ServletContext对象
+(一个web应用创建一个ServletContext)
+
+* 销毁:
+* 服务器关闭的时候.(项目从服务器中移除的时候.)
+</code></pre><p>ServletContextAttributeListener:监听ServletContext对象的属性变更（attributeAdded,attributeRemoved,attributeReplaced ）</p>
+<h2 id="HttpSessionListener监听器的使用"><a href="#HttpSessionListener监听器的使用" class="headerlink" title="HttpSessionListener监听器的使用"></a>HttpSessionListener监听器的使用</h2><p>HttpSessionAttributeListener:监听HttpSession中的属性变更<br><strong>重点（面试）</strong><br>    【HttpSession何时创建和销毁的】</p>
+<pre><code>* 创建:服务器端第一次调用getSession();
+* 销毁:
+    * 非正常关闭服务器(正常关闭session会序列化):
+    * session过期了(默认30分钟)
+    * 调用session.invalidate();
+
+【HttpSession的问题】
+* 访问Servlet会不会创建Session    : 不会
+* 访问JSP会不会创建Session        ：会. ??
+* 访问html会不会创建Session        ：不会
+</code></pre><h2 id="ServletRequestListener监听器的使用"><a href="#ServletRequestListener监听器的使用" class="headerlink" title="ServletRequestListener监听器的使用"></a>ServletRequestListener监听器的使用</h2><p>ServletRequestAttributeListener：监听ServletRequest对象的属性变更的:<br>【request对象何时创建和销毁】:</p>
+<ul>
+<li>创建：客户端向服务器发送一次请求,服务器就会创建request对象.</li>
+<li>销毁：服务器对这次请求作出响应后就会销毁request对象.</li>
+</ul>
+<ul>
+<li>访问一个Servlet会不会创建request对象:会</li>
+<li>访问一个JSP会不会创建request对象：会</li>
+<li>访问一个HTML会不会创建request对象:会</li>
+</ul>
+<p><em>*三类八种</em><br>    监听器(3类8种)<br>    第一类:监听3个域对象的创建和销毁<br>    ServletContextListener<br>    HttpSessionListener<br>    ServletRequestListener<br>    第二类:监听3个域对象属性的变更(属性添加,移除,替换)<br>    ServletContextAttributeListener<br>    HttpSessionAttributeListener<br>    ServletRequestAttributeListener<br>    第三类: 有点特殊,只监听HttpSession中JavaBean的绑定和解绑,钝化和活化<br>    不需要配置</p>
+<pre><code>Session的钝化实质是对于session的优化手段!!!
+    长时间不使用的session使其序列化.
+
+手动配置Session序列化:
+    * 手动配置Session的序列化通过标签&lt;Context&gt;标签.
+    * tomcat/conf/context.xml:代表所有的虚拟主机和所有虚拟路径按照这个配置来执行.
+    * tomcat/conf/Catalina/localhost/context.xml:代表所有localhost虚拟主机下的所有的项目都可以按照这个配置来执行.
+    * 工程META-INF/context.xml:代表只有当前的工程按照这个配置执行.
+
+    * 在context.xml中进行配置:
+    &lt;Context&gt;
+    &lt;!-- 
+        maxIdleSwap    :1.代表如果session一分钟没有使用的话,将session序列化到硬盘.
+        directory    :itcast. 将session序列化后,序列化文件保存在itcast的路径中.
+     --&gt;
+    &lt;Manager className=&quot;org.apache.catalina.session.PersistentManager&quot;
+        maxIdleSwap=&quot;1&quot;&gt;
+        &lt;Store className=&quot;org.apache.catalina.session.FileStore&quot;
+            directory=&quot;itcast&quot; /&gt;
+    &lt;/Manager&gt;
+&lt;/Context&gt;
+</code></pre><p><strong>总结</strong><br>第三类监听器,很特殊,1.只监听HttpSession, 2.不需要在web.XML中配置<br>1.HttpSessionBingingListerner 监听  某个Bean绑定到session和解除绑定<br>2.HttpSessionActivationListener 监听 某个Bean 钝化和活化<br>3.手动配置session钝化和活化</p>
 <h3 id="Filter的概述"><a href="#Filter的概述" class="headerlink" title="Filter的概述"></a>Filter的概述</h3><p>过滤器:Filter. 对客户端向服务器发送的请求进行过滤</p>
-<h3 id="FilterChain对象的概述"><a href="#FilterChain对象的概述" class="headerlink" title="FilterChain对象的概述"></a>FilterChain对象的概述</h3><h3 id="Filter的生命周期（了解）"><a href="#Filter的生命周期（了解）" class="headerlink" title="Filter的生命周期（了解）"></a>Filter的生命周期（了解）</h3><blockquote>
+<p><img src="" alt="Filter过滤原理">;</p>
+<h3 id="FilterChain对象的概述"><a href="#FilterChain对象的概述" class="headerlink" title="FilterChain对象的概述"></a>FilterChain对象的概述</h3><p>FilterChain称为过滤器链，web应用中可以存在很多个Filter过滤器，多个Filter过滤器组合起来就是一个过滤器链，受同一个FilterChain管理。</p>
+<p>过滤链中的Filter过滤器拦截是有先后顺序的，这个顺序取决于Filter在web.xml中<filter-mapping>的位置。<br><img src="" alt="FilterChain原理">;</filter-mapping></p>
+<blockquote>
+<p>注意:<br>过滤器的执行的顺序与<filter-mapping>的配置顺序有关.</filter-mapping></p>
+</blockquote>
+<h3 id="Filter的生命周期（了解）"><a href="#Filter的生命周期（了解）" class="headerlink" title="Filter的生命周期（了解）"></a>Filter的生命周期（了解）</h3><blockquote>
 <p>过滤器的创建和销毁:</p>
 <ul>
 <li>创建:服务器启动的时候.</li>
 <li>销毁:服务器关闭的时候.</li>
 </ul>
 </blockquote>
-<h3 id="FilterConfig对象的概述-了解"><a href="#FilterConfig对象的概述-了解" class="headerlink" title="FilterConfig对象的概述(了解)"></a>FilterConfig对象的概述(了解)</h3>
+<h3 id="FilterConfig对象的概述-了解"><a href="#FilterConfig对象的概述-了解" class="headerlink" title="FilterConfig对象的概述(了解)"></a>FilterConfig对象的概述(了解)</h3><blockquote>
+<p>增强一个类的方法<br>通过上面的分析，现在增强request的getParameter的方法。增强的过程要写在过滤器中。<br>如何增强一个类中的方法？<br>继承<br>必须要能够控制这个类的构造。<br>装饰者<br>被增强的类和增强的类需要实现相同的接口。<br>在增强的类中获得被增强的类的引用。<br>缺点：接口中的方法过多，重写很多其他的方法。<br>动态代理<br>类需要实现接口。</p>
+</blockquote>
+
           
         
       
@@ -446,7 +1403,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://HackerFreedom.github.io/2018/01/21/suibi/">
+    <link itemprop="mainEntityOfPage" href="http://HackerFreedom.github.io/2018/01/22/suibi/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Sam">
@@ -465,7 +1422,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/01/21/suibi/" itemprop="url">File</a></h1>
+                <a class="post-title-link" href="/2018/01/22/suibi/" itemprop="url">未命名</a></h1>
         
 
         <div class="post-meta">
@@ -477,8 +1434,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-21T19:15:39+08:00">
-                2018-01-21
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-22T11:20:18+08:00">
+                2018-01-22
               </time>
             
 
@@ -487,28 +1444,6 @@
             
           </span>
 
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/随笔/" itemprop="url" rel="index">
-                    <span itemprop="name">随笔</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
           
 
           
@@ -539,63 +1474,9 @@
       
         
           
-            <p>#文件上传的概述  #</p>
-<ul>
-<li>什么是文件上传<br>  文件上传：将客户端的文件通过流写入到服务器中</li>
-<li>文件上传的技术<br>  SPSmartUpload    ：应用在JSP上的文件上传和下载的组件。<br>  FileUpload        ：应用在Java环境上的文件上传的功能。<br>  Servlet3.0            ：提供文件上传的功能<br>  Struts2            ：提供文件上传的功能</li>
-<li>文件上传的要素<br>  表单的提交的方式需要是POST<br>  表单中需要有<input type="”file”">元素，需要有name属性和值。<br>  表单enctype=”multipart/form-data”</li>
-</ul>
-<p><strong>总结:<br>设置了form 表单的enctype属性为multipart/form-data<br>请求体中,才会有文件的内容</strong></p>
-<h1 id="文件上传的入门案例"><a href="#文件上传的入门案例" class="headerlink" title="文件上传的入门案例"></a>文件上传的入门案例</h1><blockquote>
-<p>文件上传的原理:()<br>form设置了enctype=”multipart/form-data” 请求体中才有文件的内容.否则没有文件内容;<br>步骤:<br>1.获取请求头中的分割线<br>2.获取请求体中的所有内容(request.getIntstream())<br>3.通过分割线对内容进行分割,得到每个部分<br>4.判断每个部分(文件上传项或普通项)</p>
-<p>文件上传3要素:<br>2.post提交<br>3.input type=file name=”info”<br>4.form enctype=”multipart/form-data”</p>
-<p>1.创建工厂(磁盘文件项)<br>2.创建Servlet文件上传对象<br>3.解析request,得到List集合<br>4.遍历集合,判断每个项目是普通项还是文件上传项</p>
-</blockquote>
-<h2 id="文件上传的api之DiskFileItemFactory"><a href="#文件上传的api之DiskFileItemFactory" class="headerlink" title="文件上传的api之DiskFileItemFactory"></a>文件上传的api之DiskFileItemFactory</h2><p> <em>DiskFileItemFactory是创建FileItem对象的工厂，这个工厂类的常用方法：</em></p>
-<p>public void setSizeThreshold（int sizeThreshold）：设置内存缓冲区的大小，默认值*为10K。当上传文件大于缓冲区大小时，fileupload组件将使用临时文件缓存上传文件。</p>
-<p>public void setRepository（java.io.File repository）：指定临时文件目录，默认值为System.getProperty（“java.io.tmpdir”）。</p>
-<p>public DiskFileItemFactory（int sizeThreshold，java.io.File repository）：构造函数</p>
-<p><strong>API 的使用的代码</strong></p>
-<p><img src="/2018/01/21/suibi/%year-01-21-FileUploadAndDownLoad[api.jpg]%" alt="">;</p>
-<h2 id="文件上传的API之SERVLETFILEUPLOAD"><a href="#文件上传的API之SERVLETFILEUPLOAD" class="headerlink" title="文件上传的API之SERVLETFILEUPLOAD"></a>文件上传的API之SERVLETFILEUPLOAD</h2><p>ServletFileUpload负责处理上传的文件数据，并将表单中的每个输入项封装成一个FileItem对象中。常用方法有：</p>
-<ul>
-<li><p>boolean isMultipartContent（HttpServletRequest request）：判断上传表单是否为multipart / form-data类型</p>
-</li>
-<li><p>列表parseRequest（HttpServletRequest请求）：解析请求对象，并把表单中的每一个输入项包装成一个fileItem对象，并返回一个保存了所有FileItem的列表集合。</p>
-</li>
-<li><p>setFileSizeMax（long fileSizeMax）：设置上传文件的最大值</p>
-<p>  setSizeMax（long sizeMax）：设置上传文件总量的最大值</p>
-<p>  setHeaderEncoding（java.lang.String encoding）：设置编码格式</p>
-<p>  setProgressListener（ProgressListener pListener）</p>
-</li>
-</ul>
-<p><img src="/year-01-21-FileUploadAndDownLoad/servlet.png" alt="">;</p>
-<h2 id="文件上传的API之FileItem’"><a href="#文件上传的API之FileItem’" class="headerlink" title="文件上传的API之FileItem’"></a>文件上传的API之FileItem’</h2><blockquote>
-<p>1.boolean  isFormField()。isFormField方法用来判断FileItem对象里面封装的数据是一个普通文本表单字段，还是一个文件表单字段。如果是普通文本表单字段，返回一个true否则返回一个false。因此可以用该方法判断是否是普通表单域还是文件上传表单域。</p>
-<p>  2.String getName（）。getName方法用来获得文件上传字段中的文件名。</p>
-<p>  3.String getFieldName（）。getFieldName方法用来返回表单标签的name属性的值。</p>
-<p>  4.void write(File file)。write方法将FileItem对象中的内容保存到某个指定的文件中。如果FileItem对象中的内容是保存在某个临时文件中，该方法完成后，临时文件可以会被删除。该方法也可以将普通表单字段保存在一个文件中，但最主要的用途是把上传的文件内容保存在本地文件系统中。</p>
-<p>  5.String getString（）。getString（）方法将FileItem对象中保存的数据流内容以一个字符串返回。它有两个重载形式。public java.lang.String getString()和public java.lang.String getString(java.lang.String encodeing) throws java.io.UnsupportedEncodingException。前者使用缺省的字符集编码将主体内容转换成字符串，后者使用参数指定的字符集编码。如果在读取普通表单字段元素的内容时，出现了乱码现象，可以调用第二个方法，并传入 正确的字符集编码名称。</p>
-<p>  6.String getContentType()。此方法用来获得上传文件的类型，即标段字段元素描述头属性“content-type”的值，如image/jpeg。如果FileItem对象对应的是普通的表单字段，将返回null。</p>
-<p>  7.boolean isInMemory()。判断FileItem对象封装的数据是保存在内存中还是硬盘中。</p>
-<p>  8.void  delete（）。此方法用来清空FileItem对象中封装的主体内容，如果内容是被保存在临时文件中，该方法会把临时文件删除。</p>
-<p>  9.InputStream  getInputStream()。以流的形式返回上传文件的主体内容。</p>
-<p>  10.long  getSize()。返回上传文件的大小。</p>
-</blockquote>
-<hr>
-<h3 id="文件上传兼容浏览器问题及解决"><a href="#文件上传兼容浏览器问题及解决" class="headerlink" title="文件上传兼容浏览器问题及解决"></a>文件上传兼容浏览器问题及解决</h3><blockquote>
-<p>如果使用IE老版本的浏览器出现一个文件名称获取错误问题。IE老版本获取文件名称的时候，会带有路径。<br><img src="/year-01-21-FileUploadAndDownLoad/IE.png" alt="">;</p>
-</blockquote>
-<h3 id="文件上传同一个目录下文件同名的问题及解决"><a href="#文件上传同一个目录下文件同名的问题及解决" class="headerlink" title="文件上传同一个目录下文件同名的问题及解决"></a>文件上传同一个目录下文件同名的问题及解决</h3><p>张三向服务器上传了一个文件aa.txt内容是hello world。李四向服务器上传了一个文件aa.txt内容hello Java。后上传的文件将先上传的文件覆盖了。</p>
-<p>使用UUID对象随机生成一个字符串，然后使用这个字符串+后缀名最为文件的文件名。</p>
-<p><img src="/year-01-21-FileUploadAndDownLoad/UUID.png" alt="">;</p>
-<h3 id="文件上传同一个目录下文件过多的问题及解决"><a href="#文件上传同一个目录下文件过多的问题及解决" class="headerlink" title="文件上传同一个目录下文件过多的问题及解决"></a>文件上传同一个目录下文件过多的问题及解决</h3><p>按目录分离算法    ：按照某种特定算法进行分离。<br>上传一个文件，得到一个唯一的文件名。<br>唯一文件名获取其hashCode值。—–int类型的值（32位）<br>让hashCode的值 &amp; 0xf;—–得出的这个值作为一级目录。<br>让hashCode右移4位  &amp; 0xf;—-得出的这个值作为二级目录。<br>以此类推。<br><img src="/year-01-21-FileUploadAndDownLoad/file.png" alt=""><br><img src="/year-01-21-FileUploadAndDownLoad/file2.png" alt=""></p>
-<h4 id="文件下载概述"><a href="#文件下载概述" class="headerlink" title="文件下载概述"></a>文件下载概述</h4><p>【方式一】：通过超链接下载：<a href="”资源路径”"></a><br>                缺点：如果浏览器支持显示这种数据格式就不会提示下载了。</p>
-<p>【方式二】：通过代码的方式实现文件下载：<br>                主要是要设置两个头，并且使用response对象的getOutputStream()获取输出流向客户端写数据。</p>
-<p>Content-Type                :文件的MIME的类型<br>Content-Disposition        :浏览器支持该格式的文件，提示下载<br>输入流<br>总结<br><strong>2个头,一个流</strong></p>
-<hr>
-<p>下载会出现的中文乱码的问题集<br>    下载中文文件，由于不同的浏览器在下载文件的显示文件名的编码码表不一样，导致要下载的文件名显示不出来。我们可以通过request请求获取User-Agent请求头判断用户使用的是什么浏览器，然后用对应的编码就行了。<br><img src="/year-01-21-FileUploadAndDownLoad/Agent.png" alt="">;<br><img src="/year-01-21-FileUploadAndDownLoad/Agent1.png" alt=""></p>
-
+            <hr>
+<p>title: “File”<br>categories: 随笔<br>date: 2018-01-21 19:15:39</p>
+<h2 id="tags-“文件上传和下载”"><a href="#tags-“文件上传和下载”" class="headerlink" title="tags: “文件上传和下载”"></a>tags: “文件上传和下载”</h2>
           
         
       
@@ -742,7 +1623,7 @@
 <ul>
 <li>什么是文件上传<br>  文件上传：将客户端的文件通过流写入到服务器中</li>
 <li>文件上传的技术<br>  SPSmartUpload    ：应用在JSP上的文件上传和下载的组件。<br>  FileUpload        ：应用在Java环境上的文件上传的功能。<br>  Servlet3.0            ：提供文件上传的功能<br>  Struts2            ：提供文件上传的功能</li>
-<li>文件上传的要素<br>  表单的提交的方式需要是POST<br>  表单中需要有<input type="”file”">元素，需要有name属性和值。<br>  表单enctype=”multipart/form-data”</li>
+<li>文件上传的要素<br>  表单的提交的方式需要是POST<br>  表单中需要有’<input type="”file”">‘元素，需要有name属性和值。<br>  表单enctype=”multipart/form-data”</li>
 </ul>
 <p><strong>总结:<br>设置了form 表单的enctype属性为multipart/form-data<br>请求体中,才会有文件的内容</strong></p>
 <h1 id="文件上传的入门案例"><a href="#文件上传的入门案例" class="headerlink" title="文件上传的入门案例"></a>文件上传的入门案例</h1><blockquote>
@@ -755,7 +1636,7 @@
 <p>public void setRepository（java.io.File repository）：指定临时文件目录，默认值为System.getProperty（“java.io.tmpdir”）。</p>
 <p>public DiskFileItemFactory（int sizeThreshold，java.io.File repository）：构造函数</p>
 <p><strong>API 的使用的代码</strong></p>
-<p><img src="/FileUploadAndDownLoad/api.png" alt="">;</p>
+<p><img src="/2018/01/21/FileUploadAndDownLoad/api.png" alt="Api">;</p>
 <h2 id="文件上传的API之SERVLETFILEUPLOAD"><a href="#文件上传的API之SERVLETFILEUPLOAD" class="headerlink" title="文件上传的API之SERVLETFILEUPLOAD"></a>文件上传的API之SERVLETFILEUPLOAD</h2><p>ServletFileUpload负责处理上传的文件数据，并将表单中的每个输入项封装成一个FileItem对象中。常用方法有：</p>
 <ul>
 <li><p>boolean isMultipartContent（HttpServletRequest request）：判断上传表单是否为multipart / form-data类型</p>
@@ -768,7 +1649,7 @@
 <p>  setProgressListener（ProgressListener pListener）</p>
 </li>
 </ul>
-<p><img src="/FileUploadAndDownLoad/servlet.png" alt="">;</p>
+<p><img src="/2018/01/21/FileUploadAndDownLoad/servlet.png" alt="servlet">;</p>
 <h2 id="文件上传的API之FileItem’"><a href="#文件上传的API之FileItem’" class="headerlink" title="文件上传的API之FileItem’"></a>文件上传的API之FileItem’</h2><blockquote>
 <p>1.boolean  isFormField()。isFormField方法用来判断FileItem对象里面封装的数据是一个普通文本表单字段，还是一个文件表单字段。如果是普通文本表单字段，返回一个true否则返回一个false。因此可以用该方法判断是否是普通表单域还是文件上传表单域。</p>
 <p>  2.String getName（）。getName方法用来获得文件上传字段中的文件名。</p>
@@ -783,17 +1664,222 @@
 </blockquote>
 <hr>
 <h3 id="文件上传兼容浏览器问题及解决"><a href="#文件上传兼容浏览器问题及解决" class="headerlink" title="文件上传兼容浏览器问题及解决"></a>文件上传兼容浏览器问题及解决</h3><blockquote>
-<p>如果使用IE老版本的浏览器出现一个文件名称获取错误问题。IE老版本获取文件名称的时候，会带有路径。<br><img src="/FileUploadAndDownLoad/IE.png" alt="">;</p>
+<p>如果使用IE老版本的浏览器出现一个文件名称获取错误问题。IE老版本获取文件名称的时候，会带有路径。<br><img src="/2018/01/21/FileUploadAndDownLoad/IE.png" alt="IE">;</p>
 </blockquote>
 <h3 id="文件上传同一个目录下文件同名的问题及解决"><a href="#文件上传同一个目录下文件同名的问题及解决" class="headerlink" title="文件上传同一个目录下文件同名的问题及解决"></a>文件上传同一个目录下文件同名的问题及解决</h3><p>张三向服务器上传了一个文件aa.txt内容是hello world。李四向服务器上传了一个文件aa.txt内容hello Java。后上传的文件将先上传的文件覆盖了。</p>
 <p>使用UUID对象随机生成一个字符串，然后使用这个字符串+后缀名最为文件的文件名。</p>
-<p><img src="/FileUploadAndDownLoad/UUID.png" alt="">;</p>
-<h3 id="文件上传同一个目录下文件过多的问题及解决"><a href="#文件上传同一个目录下文件过多的问题及解决" class="headerlink" title="文件上传同一个目录下文件过多的问题及解决"></a>文件上传同一个目录下文件过多的问题及解决</h3><p>按目录分离算法    ：按照某种特定算法进行分离。<br>上传一个文件，得到一个唯一的文件名。<br>唯一文件名获取其hashCode值。—–int类型的值（32位）<br>让hashCode的值 &amp; 0xf;—–得出的这个值作为一级目录。<br>让hashCode右移4位  &amp; 0xf;—-得出的这个值作为二级目录。<br>以此类推。<br><img src="/FileUploadAndDownLoad/file.png" alt=""><br><img src="/FileUploadAndDownLoad/file2.png" alt=""></p>
+<p><img src="/2018/01/21/FileUploadAndDownLoad/UUID.png" alt="UUID">;</p>
+<h3 id="文件上传同一个目录下文件过多的问题及解决"><a href="#文件上传同一个目录下文件过多的问题及解决" class="headerlink" title="文件上传同一个目录下文件过多的问题及解决"></a>文件上传同一个目录下文件过多的问题及解决</h3><p>按目录分离算法    ：按照某种特定算法进行分离。<br>上传一个文件，得到一个唯一的文件名。<br>唯一文件名获取其hashCode值。—–int类型的值（32位）<br>让hashCode的值 &amp; 0xf;—–得出的这个值作为一级目录。<br>让hashCode右移4位  &amp; 0xf;—-得出的这个值作为二级目录。<br>以此类推。<br><img src="/2018/01/21/FileUploadAndDownLoad/file.png" alt="file"><br><img src="/2018/01/21/FileUploadAndDownLoad/file2.png" alt="file2"></p>
 <h4 id="文件下载概述"><a href="#文件下载概述" class="headerlink" title="文件下载概述"></a>文件下载概述</h4><p>【方式一】：通过超链接下载：<a href="”资源路径”"></a><br>                缺点：如果浏览器支持显示这种数据格式就不会提示下载了。</p>
 <p>【方式二】：通过代码的方式实现文件下载：<br>                主要是要设置两个头，并且使用response对象的getOutputStream()获取输出流向客户端写数据。</p>
 <p>Content-Type                :文件的MIME的类型<br>Content-Disposition        :浏览器支持该格式的文件，提示下载<br>输入流<br>总结<br><strong>2个头,一个流</strong></p>
 <hr>
-<p>下载会出现的中文乱码的问题集<br>    下载中文文件，由于不同的浏览器在下载文件的显示文件名的编码码表不一样，导致要下载的文件名显示不出来。我们可以通过request请求获取User-Agent请求头判断用户使用的是什么浏览器，然后用对应的编码就行了。<br><img src="/FileUploadAndDownLoad/Agent.png" alt="">;<br><img src="/FileUploadAndDownLoad/Agent1.png" alt=""></p>
+<p>下载会出现的中文乱码的问题集<br>    下载中文文件，由于不同的浏览器在下载文件的显示文件名的编码码表不一样，导致要下载的文件名显示不出来。我们可以通过request请求获取User-Agent请求头判断用户使用的是什么浏览器，然后用对应的编码就行了。<br><img src="/2018/01/21/FileUploadAndDownLoad/Agent.png" alt="Agent">;<br><img src="/2018/01/21/FileUploadAndDownLoad/Agent1.png" alt="Agent1"></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+  <div>
+  
+  </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://HackerFreedom.github.io/2018/01/20/Redis/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Sam">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/my.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="努力，孩子">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/01/20/Redis/" itemprop="url">Redis概述</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-20T19:14:03+08:00">
+                2018-01-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/技术文章/" itemprop="url" rel="index">
+                    <span itemprop="name">技术文章</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Redis介绍"><a href="#Redis介绍" class="headerlink" title="Redis介绍"></a>Redis介绍</h1><p><em>edis是一个开源的使用ANSI C语言编写、支持网络、可基于内存亦可持久化的日志型、Key-Value数据库，并提供多种语言的API。**
+</em>Redis是 NoSQL技术阵营中的一员，它通过多种键值数据类型来适应不同场景下的存储需求，借助一些高层级的接口使用其可以胜任，如缓存、队列系统的不同角色*</p>
+<h1 id="Redis特性"><a href="#Redis特性" class="headerlink" title="Redis特性"></a>Redis特性</h1><ul>
+<li>Redis 与其他 key - value 缓存产品有以下三个特点：</li>
+<li>Redis支持数据的持久化，可以将内存中的数据保存在磁盘中，重启的时候可以再次加载进行使用。</li>
+<li>Redis不仅仅支持简单的key-value类型的数据，同时还提供list，set，zset，hash等数据结构的存储。</li>
+<li>Redis支持数据的备份，即master-slave模式的数据备份<br>  1、速度快<br>  Redis是用C语言实现的；<br>  Redis的所有数据存储在内存中。<br>  2、持久化<br>  Redis的所有数据存储在内存中，对数据的更新将异步地保存到磁盘上。<br>  3、支持多种数据结构<br>  Redis支持五种数据结构：String、List、Set、Hash、Zset<br>  4、支持多种编程语言<br>  Java、php、Python、Ruby、Lua、Node.js<br>  5、功能丰富<br>  除了支持五种数据结构之外，还支持事务、流水线、发布/订阅、消息队列等功能。<br>  6、源码简单<br>  约23000行C语言源代码。<br>  7、主从复制<br>  主服务器（master）执行添加、修改、删除，从服务器执行查询。<br>  8、高可用及分布式<br>  Redis-Sentinel（v2.8）支持高可用<br>  Redis-Cluster（v3.0）支持分布式</li>
+</ul>
+<blockquote>
+<p>什么是高可用？<br>   一台服务器挂掉会有另一台服务器立马顶上，Redis-Sentinel监听所有的监听所有的Redis主从服务器，<br>   一旦发现主服务器挂掉了，他会从若干服务器中选择一台新的机器作为master，其他从服务器会成为这台新master的从服务器。</p>
+<p>什么是分布式？<br>在一台物理计算机上，把数据A放到数据库D1，把数据B放到数据库D2，把数据C放到数据库D3属于分布式，但由于数据库的访问连接池是有限的，所以这种分布式解决方案存在性能瓶颈；<br>把数据A放到计算机C1的数据库D1，把数据B放到计算机C1的数据库D2，把数据C放到计算机C3的数据库D3也属于分布式，这种分布式解决方案扩展性好，如果系统增加了新业务X，X产生的数据Y可以放到计算机C4的数据库D4中，理论上来说这种方式可以无限扩展，从而保证系统的性能最大化。<br>存在瓶颈且价格较高的高性能单台服务器-&gt;可无限扩展的分布式集群</p>
+</blockquote>
+<pre><code>Redis可执行文件说明： 
+redis-server.exe　　　　 Redis服务 
+redis-cli.exe　　　　　　Redis命令行客户端 
+redis-benchmark.exe　　Redis性能测试工具 
+redis-check-aof.exe　　 AOF文件修复工具 
+redis-check-dump.exe　RDB文件检测工具 
+redis-sentinel.exe　　　 Sentinel服务器（2.8以后）
+</code></pre><p>##Redis常用的五种数据类型  ##<br><strong>String</strong><br>    是最常用的一种数据类型，普通的key/value存储都可以归为此类。</p>
+<pre><code>一个Key对应一个Value，string类型是二进制安全的。
+
+Redis的string可以包含任何数据，比如jpg图片(生成二进制)或者序列化的对象。
+</code></pre><p><strong>Hash(Key-Value)</strong><br>    hash是一个string 类型的field和value的映射表。</p>
+<pre><code>hash特别适合存储对象。相对于将对象的每个字段存成单个string 类型。
+一个对象存储在hash类型中会占用更少的内存，并且可以更方便的存取整个对象。
+
+Redis的Hash数据类型的value内部是一个HashMap,如果该Map的成员比较少，则会采用一维数组的方式
+</code></pre><ul>
+<li>采用String类型的存储对象，需要将对象进行序列化。<br><img src="/2018/01/20/Redis/redis01.jpg" alt="Redis"></li>
+<li>增加了序列化/反序列化的开销，并且在需要修改其中一项信息时，需要把整个对象取回</li>
+<li>使用Hash数据类型则不需要</li>
+<li>Key仍然是用户ID, value是一个Map，这个Map的key是成员的属性名，value是属性值，这样对数据的修改和存取都可以直接通过其内部Map的Key(Redis里称内部Map的key为field), 也就是通过 key(用户ID) + field(属性标签) 就可以操作对应属性数据了，既不需要重复存储数据，也不会带来序列化和反序列化。</li>
+</ul>
+<p><strong>List</strong><br>    list是一个链表结构，主要功能是push, pop, 获取一个范围的所有的值等。操作中key理解为链表名字。</p>
+<pre><code>Redis的list类型其实就是一个每个子元素都是string类型的双向链表。
+
+我们可以通过push,pop操作从链表的头部或者尾部添加删除元素，
+
+这样list既可以作为栈，又可以作为队列（栈就是insertFirst+deleteFirst，
+
+队列就是insertLast+deleteFirst）。可以支持反向查找和遍历，方便操作，
+
+不过带来了部分额外的内存开销。Redis内部的很多实现，
+包括发送缓冲队列等也都是用的这个数据结构
+</code></pre><ul>
+<li><p><strong>Set</strong><br>  它是string类型的无序集合。set是通过hash table实现的，可以进行添加、删除和查找。<br>  对集合我们可以取并集，交集，差集.</p>
+<p>  集合可以进行 交集、并集 如新浪微博中获取两个用户共同的关注人</p>
+<p>  新浪微博使用redis有两种应用场景：</p>
+<ol>
+<li><p>直接把数据放到redis中进行存储，这些数据是独立的</p>
+</li>
+<li><p>有些数据包含表与表之间的逻辑关系，这些数据又访问比较频繁，<br> 如果直接从数据库中进行查询性能比较差。<br> 先将数据写到redis中，再将数据保存到mysql数据库</p>
+</li>
+</ol>
+</li>
+<li><p><strong>zset</strong></p>
+<p>Redis sorted set的使用场景与set类似，<br>区别是set不是自动有序的，<br>而sorted set可以通过用户额外提供一个优先级(score)的参数来为成员排序，<br>并且是插入有序的，即自动排序。</p>
+<p>可以理解为一列存 value,一列存顺序。操作中key理解为zset的名字.</p>
+<p>当你需要一个有序的并且不重复的集合列表，那么可以选择sorted set数据结构</p>
+</li>
+</ul>
 
           
         
@@ -1045,1114 +2131,6 @@ uname -a 显示本机详细信息。
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://HackerFreedom.github.io/2018/01/20/Redis/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Sam">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/my.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="努力，孩子">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/01/20/Redis/" itemprop="url">Redis概述</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-20T19:14:03+08:00">
-                2018-01-20
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/技术文章/" itemprop="url" rel="index">
-                    <span itemprop="name">技术文章</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="Redis介绍"><a href="#Redis介绍" class="headerlink" title="Redis介绍"></a>Redis介绍</h1><p><em>edis是一个开源的使用ANSI C语言编写、支持网络、可基于内存亦可持久化的日志型、Key-Value数据库，并提供多种语言的API。**
-</em>Redis是 NoSQL技术阵营中的一员，它通过多种键值数据类型来适应不同场景下的存储需求，借助一些高层级的接口使用其可以胜任，如缓存、队列系统的不同角色*</p>
-<h1 id="Redis特性"><a href="#Redis特性" class="headerlink" title="Redis特性"></a>Redis特性</h1><ul>
-<li>Redis 与其他 key - value 缓存产品有以下三个特点：</li>
-<li>Redis支持数据的持久化，可以将内存中的数据保存在磁盘中，重启的时候可以再次加载进行使用。</li>
-<li>Redis不仅仅支持简单的key-value类型的数据，同时还提供list，set，zset，hash等数据结构的存储。</li>
-<li>Redis支持数据的备份，即master-slave模式的数据备份<br>  1、速度快<br>  Redis是用C语言实现的；<br>  Redis的所有数据存储在内存中。<br>  2、持久化<br>  Redis的所有数据存储在内存中，对数据的更新将异步地保存到磁盘上。<br>  3、支持多种数据结构<br>  Redis支持五种数据结构：String、List、Set、Hash、Zset<br>  4、支持多种编程语言<br>  Java、php、Python、Ruby、Lua、Node.js<br>  5、功能丰富<br>  除了支持五种数据结构之外，还支持事务、流水线、发布/订阅、消息队列等功能。<br>  6、源码简单<br>  约23000行C语言源代码。<br>  7、主从复制<br>  主服务器（master）执行添加、修改、删除，从服务器执行查询。<br>  8、高可用及分布式<br>  Redis-Sentinel（v2.8）支持高可用<br>  Redis-Cluster（v3.0）支持分布式</li>
-</ul>
-<blockquote>
-<p>什么是高可用？<br>   一台服务器挂掉会有另一台服务器立马顶上，Redis-Sentinel监听所有的监听所有的Redis主从服务器，<br>   一旦发现主服务器挂掉了，他会从若干服务器中选择一台新的机器作为master，其他从服务器会成为这台新master的从服务器。</p>
-<p>什么是分布式？<br>在一台物理计算机上，把数据A放到数据库D1，把数据B放到数据库D2，把数据C放到数据库D3属于分布式，但由于数据库的访问连接池是有限的，所以这种分布式解决方案存在性能瓶颈；<br>把数据A放到计算机C1的数据库D1，把数据B放到计算机C1的数据库D2，把数据C放到计算机C3的数据库D3也属于分布式，这种分布式解决方案扩展性好，如果系统增加了新业务X，X产生的数据Y可以放到计算机C4的数据库D4中，理论上来说这种方式可以无限扩展，从而保证系统的性能最大化。<br>存在瓶颈且价格较高的高性能单台服务器-&gt;可无限扩展的分布式集群</p>
-</blockquote>
-<pre><code>Redis可执行文件说明： 
-redis-server.exe　　　　 Redis服务 
-redis-cli.exe　　　　　　Redis命令行客户端 
-redis-benchmark.exe　　Redis性能测试工具 
-redis-check-aof.exe　　 AOF文件修复工具 
-redis-check-dump.exe　RDB文件检测工具 
-redis-sentinel.exe　　　 Sentinel服务器（2.8以后）
-</code></pre><p>##Redis常用的五种数据类型  ##<br><strong>String</strong><br>    是最常用的一种数据类型，普通的key/value存储都可以归为此类。</p>
-<pre><code>一个Key对应一个Value，string类型是二进制安全的。
-
-Redis的string可以包含任何数据，比如jpg图片(生成二进制)或者序列化的对象。
-</code></pre><p><strong>Hash(Key-Value)</strong><br>    hash是一个string 类型的field和value的映射表。</p>
-<pre><code>hash特别适合存储对象。相对于将对象的每个字段存成单个string 类型。
-一个对象存储在hash类型中会占用更少的内存，并且可以更方便的存取整个对象。
-
-Redis的Hash数据类型的value内部是一个HashMap,如果该Map的成员比较少，则会采用一维数组的方式
-</code></pre><ul>
-<li>采用String类型的存储对象，需要将对象进行序列化。<br><img src="/2018/01/20/Redis/Redis.jpg" alt=""></li>
-<li>增加了序列化/反序列化的开销，并且在需要修改其中一项信息时，需要把整个对象取回</li>
-<li>使用Hash数据类型则不需要</li>
-<li>Key仍然是用户ID, value是一个Map，这个Map的key是成员的属性名，value是属性值，这样对数据的修改和存取都可以直接通过其内部Map的Key(Redis里称内部Map的key为field), 也就是通过 key(用户ID) + field(属性标签) 就可以操作对应属性数据了，既不需要重复存储数据，也不会带来序列化和反序列化。</li>
-</ul>
-<p><strong>List</strong><br>    list是一个链表结构，主要功能是push, pop, 获取一个范围的所有的值等。操作中key理解为链表名字。</p>
-<pre><code>Redis的list类型其实就是一个每个子元素都是string类型的双向链表。
-
-我们可以通过push,pop操作从链表的头部或者尾部添加删除元素，
-
-这样list既可以作为栈，又可以作为队列（栈就是insertFirst+deleteFirst，
-
-队列就是insertLast+deleteFirst）。可以支持反向查找和遍历，方便操作，
-
-不过带来了部分额外的内存开销。Redis内部的很多实现，
-包括发送缓冲队列等也都是用的这个数据结构
-</code></pre><p><strong>Set</strong><br>    它是string类型的无序集合。set是通过hash table实现的，可以进行添加、删除和查找。<br>    对集合我们可以取并集，交集，差集.</p>
-<pre><code>集合可以进行 交集、并集 如新浪微博中获取两个用户共同的关注人
-
-新浪微博使用redis有两种应用场景：
-
-1. 直接把数据放到redis中进行存储，这些数据是独立的
-
-2. 有些数据包含表与表之间的逻辑关系，这些数据又访问比较频繁，
-    如果直接从数据库中进行查询性能比较差。
-    先将数据写到redis中，再将数据保存到mysql数据库
-</code></pre><p><strong>zset</strong></p>
-<pre><code>Redis sorted set的使用场景与set类似，
-区别是set不是自动有序的，
-而sorted set可以通过用户额外提供一个优先级(score)的参数来为成员排序，
-并且是插入有序的，即自动排序。
-
-可以理解为一列存 value,一列存顺序。操作中key理解为zset的名字.
-
-当你需要一个有序的并且不重复的集合列表，那么可以选择sorted set数据结构
-</code></pre>
-          
-        
-      
-    </div>
-    
-    
-    
-  <div>
-  
-  </div>
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://HackerFreedom.github.io/2018/01/19/Ajax/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Sam">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/my.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="努力，孩子">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/01/19/Ajax/" itemprop="url">JQueryAjax知识点</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-19T17:33:03+08:00">
-                2018-01-19
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/技术文章/" itemprop="url" rel="index">
-                    <span itemprop="name">技术文章</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="Jquery第二天"><a href="#Jquery第二天" class="headerlink" title="Jquery第二天"></a>Jquery第二天</h1><h2 id="ajax概述"><a href="#ajax概述" class="headerlink" title="ajax概述"></a>ajax概述</h2><p><em>通过在后台与服务器进行少量数据交换，ajax可以使网页实现异步更新。这意味着可以在不重新加载整个网页的情况下，对网页的某部分进行更新。传统的网页（不使用 ajax）如果需要更新内容，必需重载整个网页面</em><br>    ajax的开发步骤：<br>        【第一步】：创建异步对象(XMLHttpRequest对象)<br>        var xmlHttp = createXmlHttp();<br>        【第二步】：设置监听<br>        【第三步】：设置请求方式,URL<br>        xmlHttp.onreadystatechange = function() {}</p>
-<pre><code>    xmlHttp.open(“GET”,”/web15/ServletDemo1”,true);
-【第四步】：发送请求
-xmlHttp.send(null);
-【第五步】：在回调函数中获取响应数据
-xmlHttp.onreadystatechange = function(){
-    if(xmlHttp.readyState == 4){ // 
-        if(xmlHttp.status == 200){ //
-            alert(xmlHttp.responseText);
-        }
-    }
-}
-</code></pre><h2 id="XMLHttpRequest对象详解-重点"><a href="#XMLHttpRequest对象详解-重点" class="headerlink" title="XMLHttpRequest对象详解(重点)"></a>XMLHttpRequest对象详解(重点)</h2><ol>
-<li>XMLHttpRequest对象的常用属性：<br>readyState属性：HTTP 请求的状态.当一个 XMLHttpRequest 初次创建时，这个属性的值从 0 开始，直到接收到完整的 HTTP 响应，这个值增加到 4。</li>
-<li><p>status属性：由服务器返回的 HTTP 状态代码，如 200 表示成功，而 404 表示 “Not Found” 错误。当 readyState 小于 3 的时候读取这一属性会导致一个异常。</p>
-</li>
-<li><p>onreadystatechange事件：每次 readyState 属性改变的时候调用的事件句柄函数。</p>
-<h2 id="XMLHttpRequest常用方法"><a href="#XMLHttpRequest常用方法" class="headerlink" title="XMLHttpRequest常用方法"></a>XMLHttpRequest常用方法</h2></li>
-<li>open它是用于设置请求方式，url及是否异步<br>参数1：HTTP 请求方式  POST/GET。<br>参数2:url路径<br>参数3:true/false 代表是否异步</li>
-<li><p>send它是真正向服务器发送请求<br>如果请求方式是get，那么我们使用send(null) 原因:get请求方式是没有http请求体<br>只有post请求方式时，才有请求体,所以send的参数只是在post请求时使用例如<br>Xmlhttp.send(“username=xxx&amp;password=xxx”);</p>
-</li>
-<li><p>setRequestHeader<br>注意：如果请求方式是POST,那么我们在使用时，必须设置一个请求头，就需要使用setRequestHeader方法来完成</p>
-<h3 id="jquery的ajax开发-load介绍"><a href="#jquery的ajax开发-load介绍" class="headerlink" title="jquery的ajax开发-load介绍"></a>jquery的ajax开发-load介绍</h3><p><strong>load（）方法的调用：想要把结果插入到哪个元素中，就使用这个元素的jQuery对象调用load方法。也就是说，load方法发送请求是直接将结果插入到dom元素中。<br>当有参数传递给服务器时就是post请求，没有参数传递就是get请求。</strong></p>
-<h3 id="jquery的ajax开发-post与-get介绍-重点"><a href="#jquery的ajax开发-post与-get介绍-重点" class="headerlink" title="jquery的ajax开发-$.post与$.get介绍(重点)"></a>jquery的ajax开发-$.post与$.get介绍(重点)</h3><p> $.get与$.post他们针对于 get和post请求<br> URL：发送请求地址<br> data：待发送的key/value参数<br> callback：发送成功时回调函数<br> type：放回内容格式xml.html ,sctipt, json ,text, _default</p>
-</li>
-</ol>
-<h4 id="json介绍"><a href="#json介绍" class="headerlink" title="json介绍"></a>json介绍</h4><p><em>JSON(JavaScript Object Notation, JS 对象标记) 是一种轻量级的数据交换格式，说白了就是客户端与服务器之间传递的数据格式（json、xml…）。</em></p>
-<h4 id="fastjson使用介绍"><a href="#fastjson使用介绍" class="headerlink" title="fastjson使用介绍"></a>fastjson使用介绍</h4><p><em>fastjson是阿里公司为我们提供的一个解析和封装json数据的开源类库。也就是说使用fastjson一定要导入相关的jar包。同时还有其它许多类似的开源类库。</em><br><strong>对于json处理插件有 fastjson  jsonlib  flexjson jackson</strong><br><strong>注意：JSONObject.toJSONString（Object object）；传入的是Object 。</strong><br><strong>如果java对象中存在日期类型属性java.util.Date,是否可以用指定的格式来转换成json。</strong><br><strong>简单方式(保留想要的属性) SerializeFilter filter =new SimplePropertyPreFiler(“”,””)将需要的属性指定</strong></p>
-<h2 id="关于fastjson将java对象转换成json时的循环引用问题-通过SerializerFeature-DisableCirularReferenceDetect"><a href="#关于fastjson将java对象转换成json时的循环引用问题-通过SerializerFeature-DisableCirularReferenceDetect" class="headerlink" title="关于fastjson将java对象转换成json时的循环引用问题? 通过SerializerFeature.DisableCirularReferenceDetect"></a><strong>关于fastjson将java对象转换成json时的循环引用问题? 通过SerializerFeature.DisableCirularReferenceDetect</strong></h2>
-          
-        
-      
-    </div>
-    
-    
-    
-  <div>
-  
-  </div>
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://HackerFreedom.github.io/2018/01/19/Jquery/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Sam">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/my.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="努力，孩子">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/01/19/Jquery/" itemprop="url">JQuery知识点</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-19T17:33:03+08:00">
-                2018-01-19
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/技术文章/" itemprop="url" rel="index">
-                    <span itemprop="name">技术文章</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="jQuery介绍"><a href="#jQuery介绍" class="headerlink" title="jQuery介绍"></a>jQuery介绍</h1><pre><code>我们使用jquery可以更好完成以下操作
-1.html文档操作，对于dom相关操作优化
-2.jquery提供更加方便与丰富事件处理
-3.jquery提供简单动画特效
-4.jquery提供ajax交互
-我们知道，要使用任何一个js框架，都是需要导入相关的js文件。
-
-关于其它常用js框架:
-1.dojo 面向对象的js框架
-2.extjs 学习成本比较高 它提供大量的丰富组件，它效果展示非常好
-3.prototype 早期比较流行js框架
-4.angularJS 它是一个mvc js框架，它提供双向数据绑定。。
-
-jquery它的插件机制特别丰富,在开发中可以选择非常多的相关插件，例如，表单校验插件，树型结构。。。
-</code></pre><h2 id="jQuery核心函数"><a href="#jQuery核心函数" class="headerlink" title="jQuery核心函数"></a>jQuery核心函数</h2><pre><code>核心函数介绍
-1.入口函数：
-$(function() {
-                alert(&quot;hello jquery&quot;);
-    });
-$表示jQuery对象，不用记完整写法。
-
-2.DOM对象转jQuery对象 :   jQuery(html,[ownerDocument])：
-    $(&quot;&lt;div&gt;Hello&lt;/div&gt;&quot;)  //jquery 对象
-**图片**
-</code></pre><p>![“/“]</p>
-<h3 id="jquery选择器-基本选择器-掌握"><a href="#jquery选择器-基本选择器-掌握" class="headerlink" title="jquery选择器-基本选择器(掌握)"></a>jquery选择器-基本选择器(掌握)</h3><p><em>$(“#d1”)、$(“div”)、$(“.d”)、分别是使用id、元素、class获取一个元素的jQuery对象。</em><br><em>$(“.d,#d1”)是获取并集。</em><br>    html() : 无参数代表获取元素中的html代码，如果有参数代表设置元素的html信息<br>    text(): 无参数代表获取元素中的文本信息，如果有参数代表设置元素的文本信息<br>    each(function(index){}):它可以帮助我们遍历元素，可以传递一个函数each(function(n)),n就代表的是每一个元素    的序号，在函数中可以通过this来获取其dom对象<br>    index():获取元素索引值<br>    size():元素的个数</p>
-<pre><code>$(this)
-this就是js中的当前对象 一定要加$
-</code></pre><hr>
-<h3 id="jquery选择器-层级选择器-掌握"><a href="#jquery选择器-层级选择器-掌握" class="headerlink" title="jquery选择器-层级选择器(掌握)"></a>jquery选择器-层级选择器(掌握)</h3><pre><code>空格 ：获取某个元素下的所有子元素（包括孙子元素…）
-大于号&gt;：获取元素的直接子元素
-加号+：获取第一个兄弟元素
-波浪线~：获取所有的兄弟元素
-</code></pre><h3 id="jquery过滤器-基本过滤选择器-会查文档"><a href="#jquery过滤器-基本过滤选择器-会查文档" class="headerlink" title="jquery过滤器-基本过滤选择器(会查文档)"></a>jquery过滤器-基本过滤选择器(会查文档)</h3><p><em>过滤选择器的作用：首先是通过基本选择器和层级选择器获取到一部分元素之后，通过过滤选择器进行筛选；
-</em>过滤选择器一般是以：开头，但是属性过滤选择器是用[属性]包裹属性：*<br>    ：even 匹配所有索引值为偶数的元素，从0开始计数<br>    ：odd  匹配所有索引值为奇数的元素，从0开始计数</p>
-<h3 id="jquery过滤器-内容过滤选择器-了解"><a href="#jquery过滤器-内容过滤选择器-了解" class="headerlink" title="jquery过滤器-内容过滤选择器(了解)"></a>jquery过滤器-内容过滤选择器(了解)</h3><p><em>contains(text):匹配包含指定文本内容的元素</em></p>
-<pre><code>：empty：匹配空元素（没有子元素或者文本的元素）。
-</code></pre><p>：has(selector)：匹配包含selector所指定的元素的元素；（selector指定的元素可能是子元素或者孙子元素…）<br>    例如：所有包含 p 元素的 div 元素：$(“div:has(p)”)<br>        ：parent：匹配非空元素（含有子元素或者文本的元素），与empty相反<br>    例如：匹配含有子元素或者文本的td元素：$(“td:parent”)</p>
-<p><em>2、通过jQuery给一个元素添加class属性：$(“div”).addClass(“divClass”);</em></p>
-<h3 id="jquery过滤器-可见性过滤选择器-会查文档"><a href="#jquery过滤器-可见性过滤选择器-会查文档" class="headerlink" title="jquery过滤器-可见性过滤选择器(会查文档)"></a>jquery过滤器-可见性过滤选择器(会查文档)</h3><p>可见性选择器主要是来匹配display:none的元素和<input type="”hidden”">的表单元素。<br>    val() 获取元素当前 的值vlaue值<br>    show() 让元素显示出来<br>    hide（） 让元素隐藏起来</p>
-<h3 id="jquery过滤器-属性过滤选择器-建议掌握"><a href="#jquery过滤器-属性过滤选择器-建议掌握" class="headerlink" title="jquery过滤器-属性过滤选择器(建议掌握)"></a>jquery过滤器-属性过滤选择器(建议掌握)</h3><pre><code>^ =匹配开始
-$ =匹配结尾
- * =匹配包含
-</code></pre><h3 id="jquery过滤器-子元素过滤选择器"><a href="#jquery过滤器-子元素过滤选择器" class="headerlink" title="jquery过滤器-子元素过滤选择器"></a>jquery过滤器-子元素过滤选择器</h3><pre><code>:nth-child  匹配其父元素的第N个子或奇偶数
-:onlu-child 如果某个元素是父元素中唯一的子元素，那将会被匹配
-</code></pre><h3 id="jquery过滤器-表单过滤选择器-掌握"><a href="#jquery过滤器-表单过滤选择器-掌握" class="headerlink" title="jquery过滤器-表单过滤选择器(掌握)"></a>jquery过滤器-表单过滤选择器(掌握)</h3><pre><code>方法：” hello”.trim();去掉首位空格或者$.trim(“hello”)也可以
-</code></pre><p><strong>常用事件</strong><br>        失去焦点事件：blur(function(){});//当失去焦点，会触发传递的function函数；<br>        单击事件：click(function(){});//当单击时，会触发传递的function函数；<br>        提交表单：submit()//提交表单；submit(function(){return false;});//阻止提交表单</p>
-<h3 id="jquery过滤器-表单元素属性过滤选择器"><a href="#jquery过滤器-表单元素属性过滤选择器" class="headerlink" title="jquery过滤器-表单元素属性过滤选择器"></a>jquery过滤器-表单元素属性过滤选择器</h3><p><em>掌握表单的：checked和：selected属性过滤选择器</em></p>
-<pre><code>选择器总结:
-    基本选择器：#id   .class   element  #id,.class,element组合
-    层级选择器：父子关系（$(“div #d”)   $(“div&gt;#d”)） 兄弟选择器（$(“div+p”)  $(“div~p”)）
-    基本过滤选择器：:first    :last      :not(selector)      :even     :odd 
-内容过滤选择器：:contains(text)   :empty    :has(selector) 
-属性过滤选择器：[attribute]    [attribute=value]    [attribute*=value]     [attrSel1][attrSel2][attrSelN] 
-表单元素过滤选择器：:input     :text     :password     :radio     :checkbox     :submit     :button 
-    表单元素属性过滤选择器：:checked    :selected 
-&lt;select name=”” multiple=”multiple”&gt;&lt;/select&gt;
-</code></pre><p>####jquery文档操作-插入(掌握)  ####<br>    父子关系<br>    $(“select”).append(“<option>研究生</option>”);  //添加儿子到最后<br>    $(“select”).prepend(“<option>学前班</option>”);  //添加儿子到最前面</p>
-<pre><code>兄弟关系
-$(“&lt;option&gt;本科&lt;/option&gt;”).after(“&lt;option&gt;研究生&lt;/option&gt;”);    //添加兄弟到自己后面
-$(“&lt;option&gt;小学&lt;/option&gt;”).before(“&lt;option&gt;学前班&lt;/option&gt;”);  //添加个兄弟到自己前面
-
-**最常用:append()****
-</code></pre>
-          
-        
-      
-    </div>
-    
-    
-    
-  <div>
-  
-  </div>
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://HackerFreedom.github.io/2018/01/19/Jsonp/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Sam">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/my.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="努力，孩子">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/01/19/Jsonp/" itemprop="url">JQuery知识点</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-19T17:02:37+08:00">
-                2018-01-19
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/技术文章/" itemprop="url" rel="index">
-                    <span itemprop="name">技术文章</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="理解什么是跨域"><a href="#理解什么是跨域" class="headerlink" title="理解什么是跨域"></a>理解什么是跨域</h1><p>  跨域：指的是在当前工程里面访问了不同域或者服务器中的资源，只要是协议、主机名、端口号有一个不一致就属于跨域<br>  JSONP 是json的一种”使用模式,可以解决主浏览器的跨域的数据访问问题。而且jsonp抓到的并不是json，而是JavaScript，<br>  用JavaScript直译器执行而不是json解析器解析<br> <em>解决跨域的问题（基本原理）</em><br>    我们在浏览器端通过ajax跨域向服务器发送请求时，需要在请求参数里面添加dataType:”jsonp”属性，这个时候浏览器会自动向服务器提供一个叫callback的参数，后台需要把json数据使用callback参数值包裹起来生成一个jsonp数据格式发送给页面，就可以跨域访问获取数据了</p>
-<h1 id="jquery中解决跨域问题原理分析"><a href="#jquery中解决跨域问题原理分析" class="headerlink" title="jquery中解决跨域问题原理分析"></a>jquery中解决跨域问题原理分析</h1><pre><code>相当于通过dom操作，创建了script标签，添加src属性，同时传递一个回调函数，
-我们重写这个回调函数接收参数。
-</code></pre><p>   <strong>图片</strong>：<img src="/myblog/public/images/bgimg" alt=""> </p>
-<h1 id="原理"><a href="#原理" class="headerlink" title="原理:"></a>原理:</h1><pre><code>$.post(“8081/servletDemo”) 底层XMLHttpRequest(有跨域限制),而script 的SRC是开放的,
-jquery会自动生成如下代码
-&lt;script src=&quot;http://其他域/?callback=cb&quot;&lt;/script&gt;
-和一个函数
-function cb(json) {
-    json就可以使用了
-    再调用我们的回调函数,传入json对象
-}
-    当服务器返回: cb(json)  这个cb()函数就会执行
-</code></pre><h1 id="getJSON解决跨域问题-掌握"><a href="#getJSON解决跨域问题-掌握" class="headerlink" title="$.getJSON解决跨域问题(掌握)"></a>$.getJSON解决跨域问题(掌握)</h1><pre><code>$.getJSON实际上就是$.ajax的简化操作，注意路径后面要拼接一个callback=?
-浏览器会随机生成一个数来代替?
-</code></pre><p>   <strong>JSONP解决跨域</strong></p>
-<pre><code>* $.ajax() 最基本的方法，参数很多
-* $.getJSON() 专门请求跨域
- //在服务器设置一个响应头解决跨域
-* response.setHeader(&quot;Access-Control-Allow-Origin&quot;, &quot;*&quot;);
-协议、主机名、端口号有一个不一致就属于跨域。
-</code></pre><h1 id="解决"><a href="#解决" class="headerlink" title="解决:"></a>解决:</h1><pre><code>页面:$.getJSON(url?callback=?,{},function(data){...});
-
-后台:
-String callback = request.getParameter(“callback”);
-reponse.getWriter().print(callback+ “(” + json + “)”);
-
-
-原理:
-XMLHttpRequest对象有跨域限制
-
-&lt;script src=”http://localhost:8081/web02/serveltDemo1?callback=cb” &gt;&lt;/script&gt;
-function cb(json) {
-}
-
-
-&lt;script&gt;cb(json)&lt;/script&gt;
-</code></pre><h2 id="javaee三层架构介绍"><a href="#javaee三层架构介绍" class="headerlink" title="javaee三层架构介绍"></a>javaee三层架构介绍</h2><p><em>web层</em>: 他主要包含<em>requent，response，session</em>，就是servlet的控制中心的地方<br><em>业务层</em>: service层主要是操作一些逻辑数据，调用dao层来获取需求的数据<br><em>数据交互层</em>: 主要与数据库进行操作，CRUD；</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-  <div>
-  
-  </div>
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://HackerFreedom.github.io/2018/01/19/year-01-19-Hexo/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Sam">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/my.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="努力，孩子">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/01/19/year-01-19-Hexo/" itemprop="url">MarkDownPad基本使用</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-19T01:39:59+08:00">
-                2018-01-19
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Hexo教程/" itemprop="url" rel="index">
-                    <span itemprop="name">Hexo教程</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>标题：</p>
-<h1 id="一级标题"><a href="#一级标题" class="headerlink" title="一级标题"></a>一级标题</h1><h2 id="二级标题"><a href="#二级标题" class="headerlink" title="二级标题"></a>二级标题</h2><h3 id="三级标题"><a href="#三级标题" class="headerlink" title="三级标题"></a>三级标题</h3><h4 id="四级标题"><a href="#四级标题" class="headerlink" title="四级标题"></a>四级标题</h4><h5 id="五级标题"><a href="#五级标题" class="headerlink" title="五级标题"></a>五级标题</h5><blockquote>
-<p>引用</p>
-</blockquote>
-<p>在文本前面添加&gt;</p>
-<blockquote>
-<p>图片与链接</p>
-</blockquote>
-<p>图片：<img src="/2018/01/19/year-01-19-Hexo/图片地址" alt="">图片地址可以使本地图片路径，或者图片网址</p>
-<p>网址：<a href=""></a></p>
-<p>粗体与斜体</p>
-<p>粗体：用两个<em>包含一段文本就是粗体。    例：<em>*粗体</em></em></p>
-<p>斜体：用一个<em>包含一段文本就是斜体</em></p>
-<p><em>表格</em></p>
-<table>
-<thead>
-<tr>
-<th>Tables</th>
-<th style="text-align:center">Are</th>
-<th style="text-align:right">Cool</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>col 3 is</td>
-<td style="text-align:center">right-aligned</td>
-<td style="text-align:right">$1600</td>
-</tr>
-<tr>
-<td>col 2 is</td>
-<td style="text-align:center">centered</td>
-<td style="text-align:right">$12</td>
-</tr>
-<tr>
-<td>zebra stripes</td>
-<td style="text-align:center">are neat</td>
-<td style="text-align:right">$1</td>
-</tr>
-</tbody>
-</table>
-<p>生成的表格样式如下：</p>
-<h2 id="TablesAreCool"><a href="#TablesAreCool" class="headerlink" title="TablesAreCool"></a>TablesAreCool</h2><p>col 3 isright-aligned$1600</p>
-<p>col 2 iscentered$12</p>
-<p>zebra stripesare neat$1</p>
-<p>代码框</p>
-<p>只需要用两个  <code>把中间的代码包含起来</code></p>
-<html><br><head><br><title>我的第一个HTML页面</title><br></head><br><body><font color="”red”">早上好</font></body><br></html>
-
-<pre><code>也可以使用tab键缩进4个空格
-</code></pre><p>分割线</p>
-<hr>
-<p>分割线的语法只需要加三个-号或*</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-  <div>
-  
-  </div>
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://HackerFreedom.github.io/2018/01/19/JavaSe/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Sam">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/my.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="努力，孩子">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/01/19/JavaSe/" itemprop="url">Java基础知识</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-19T00:00:00+08:00">
-                2018-01-19
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/技术文章/" itemprop="url" rel="index">
-                    <span itemprop="name">技术文章</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          Java基本使用
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/01/19/JavaSe/">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-  <div>
-  
-  </div>
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2209,7 +2187,7 @@ function cb(json) {
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-count">16</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2220,7 +2198,7 @@ function cb(json) {
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -2231,7 +2209,7 @@ function cb(json) {
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">标签</span>
                 
               </div>
@@ -2267,7 +2245,6 @@ function cb(json) {
           
 
           
-
         </div>
       </section>
 

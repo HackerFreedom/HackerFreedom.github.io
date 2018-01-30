@@ -73,10 +73,10 @@
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
 
 
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png?v=5.1.4">
 
 
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.png?v=5.1.4">
 
 
   <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
@@ -166,7 +166,7 @@
   <div class="container sidebar-position-right 
   page-home">
     <div class="headband"></div>
-  <a href="https://github.com/HackerFreedom.github.io"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://camo.githubusercontent.com/567c3a48d796e2fc06ea80409cc9dd82bf714434/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_darkblue_121621.png"></a>
+  <a href="https://HackerFreedom.github.io"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://camo.githubusercontent.com/567c3a48d796e2fc06ea80409cc9dd82bf714434/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_darkblue_121621.png"></a>
 
 
 
@@ -235,29 +235,24 @@
         </li>
       
         
-        <li class="menu-item menu-item-technology">
-          <a href="/categories/技术文章" rel="section">
+        <li class="menu-item menu-item-life">
+          <a href="/life" rel="section">
             
-            技术文章
+            生活
           </a>
         </li>
       
         
-        <li class="menu-item menu-item-essay">
-          <a href="/categories/随笔" rel="section">
+        <li class="menu-item menu-item-photo">
+          <a href="/photo" rel="section">
             
-            随笔
+            相册
           </a>
         </li>
       
 
       
-   <div id="music163player">
-    <iframe frameborder="no" border="0" marginwidth="0" 
-      marginheight="0" width=0 height=200
-      src="//music.163.com/outchain/player?type=2&id=38358214&auto=0&height=2">
-    </iframe>
-  </div>
+   
     </ul>
   
 
@@ -275,6 +270,910 @@
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://HackerFreedom.github.io/2018/01/19/Ajax/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Sam">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/my.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="努力，孩子">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/01/19/Ajax/" itemprop="url">JQueryAjax知识点</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-19T17:33:03+08:00">
+                2018-01-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/技术文章/" itemprop="url" rel="index">
+                    <span itemprop="name">技术文章</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Jquery第二天"><a href="#Jquery第二天" class="headerlink" title="Jquery第二天"></a>Jquery第二天</h1><h2 id="ajax概述"><a href="#ajax概述" class="headerlink" title="ajax概述"></a>ajax概述</h2><p><em>通过在后台与服务器进行少量数据交换，ajax可以使网页实现异步更新。这意味着可以在不重新加载整个网页的情况下，对网页的某部分进行更新。传统的网页（不使用 ajax）如果需要更新内容，必需重载整个网页面</em><br>    ajax的开发步骤：<br>        【第一步】：创建异步对象(XMLHttpRequest对象)<br>        var xmlHttp = createXmlHttp();<br>        【第二步】：设置监听<br>        【第三步】：设置请求方式,URL<br>        xmlHttp.onreadystatechange = function() {}</p>
+<pre><code>    xmlHttp.open(“GET”,”/web15/ServletDemo1”,true);
+【第四步】：发送请求
+xmlHttp.send(null);
+【第五步】：在回调函数中获取响应数据
+xmlHttp.onreadystatechange = function(){
+    if(xmlHttp.readyState == 4){ // 
+        if(xmlHttp.status == 200){ //
+            alert(xmlHttp.responseText);
+        }
+    }
+}
+</code></pre><h2 id="XMLHttpRequest对象详解-重点"><a href="#XMLHttpRequest对象详解-重点" class="headerlink" title="XMLHttpRequest对象详解(重点)"></a>XMLHttpRequest对象详解(重点)</h2><ol>
+<li>XMLHttpRequest对象的常用属性：<br>readyState属性：HTTP 请求的状态.当一个 XMLHttpRequest 初次创建时，这个属性的值从 0 开始，直到接收到完整的 HTTP 响应，这个值增加到 4。</li>
+<li><p>status属性：由服务器返回的 HTTP 状态代码，如 200 表示成功，而 404 表示 “Not Found” 错误。当 readyState 小于 3 的时候读取这一属性会导致一个异常。</p>
+</li>
+<li><p>onreadystatechange事件：每次 readyState 属性改变的时候调用的事件句柄函数。</p>
+<h2 id="XMLHttpRequest常用方法"><a href="#XMLHttpRequest常用方法" class="headerlink" title="XMLHttpRequest常用方法"></a>XMLHttpRequest常用方法</h2></li>
+<li>open它是用于设置请求方式，url及是否异步<br>参数1：HTTP 请求方式  POST/GET。<br>参数2:url路径<br>参数3:true/false 代表是否异步</li>
+<li><p>send它是真正向服务器发送请求<br>如果请求方式是get，那么我们使用send(null) 原因:get请求方式是没有http请求体<br>只有post请求方式时，才有请求体,所以send的参数只是在post请求时使用例如<br>Xmlhttp.send(“username=xxx&amp;password=xxx”);</p>
+</li>
+<li><p>setRequestHeader<br>注意：如果请求方式是POST,那么我们在使用时，必须设置一个请求头，就需要使用setRequestHeader方法来完成</p>
+<h3 id="jquery的ajax开发-load介绍"><a href="#jquery的ajax开发-load介绍" class="headerlink" title="jquery的ajax开发-load介绍"></a>jquery的ajax开发-load介绍</h3><p><strong>load（）方法的调用：想要把结果插入到哪个元素中，就使用这个元素的jQuery对象调用load方法。也就是说，load方法发送请求是直接将结果插入到dom元素中。<br>当有参数传递给服务器时就是post请求，没有参数传递就是get请求。</strong></p>
+<h3 id="jquery的ajax开发-post与-get介绍-重点"><a href="#jquery的ajax开发-post与-get介绍-重点" class="headerlink" title="jquery的ajax开发-$.post与$.get介绍(重点)"></a>jquery的ajax开发-$.post与$.get介绍(重点)</h3><p> $.get与$.post他们针对于 get和post请求<br> URL：发送请求地址<br> data：待发送的key/value参数<br> callback：发送成功时回调函数<br> type：放回内容格式xml.html ,sctipt, json ,text, _default</p>
+</li>
+</ol>
+<h4 id="json介绍"><a href="#json介绍" class="headerlink" title="json介绍"></a>json介绍</h4><p><em>JSON(JavaScript Object Notation, JS 对象标记) 是一种轻量级的数据交换格式，说白了就是客户端与服务器之间传递的数据格式（json、xml…）。</em></p>
+<h4 id="fastjson使用介绍"><a href="#fastjson使用介绍" class="headerlink" title="fastjson使用介绍"></a>fastjson使用介绍</h4><p><em>fastjson是阿里公司为我们提供的一个解析和封装json数据的开源类库。也就是说使用fastjson一定要导入相关的jar包。同时还有其它许多类似的开源类库。</em><br><strong>对于json处理插件有 fastjson  jsonlib  flexjson jackson</strong><br><strong>注意：JSONObject.toJSONString（Object object）；传入的是Object 。</strong><br><strong>如果java对象中存在日期类型属性java.util.Date,是否可以用指定的格式来转换成json。</strong><br><strong>简单方式(保留想要的属性) SerializeFilter filter =new SimplePropertyPreFiler(“”,””)将需要的属性指定</strong></p>
+<h2 id="关于fastjson将java对象转换成json时的循环引用问题-通过SerializerFeature-DisableCirularReferenceDetect"><a href="#关于fastjson将java对象转换成json时的循环引用问题-通过SerializerFeature-DisableCirularReferenceDetect" class="headerlink" title="关于fastjson将java对象转换成json时的循环引用问题? 通过SerializerFeature.DisableCirularReferenceDetect"></a><strong>关于fastjson将java对象转换成json时的循环引用问题? 通过SerializerFeature.DisableCirularReferenceDetect</strong></h2>
+          
+        
+      
+    </div>
+    
+    
+    
+  <div>
+  
+  </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://HackerFreedom.github.io/2018/01/19/Jquery/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Sam">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/my.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="努力，孩子">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/01/19/Jquery/" itemprop="url">JQuery知识点</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-19T17:33:03+08:00">
+                2018-01-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/技术文章/" itemprop="url" rel="index">
+                    <span itemprop="name">技术文章</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="jQuery介绍"><a href="#jQuery介绍" class="headerlink" title="jQuery介绍"></a>jQuery介绍</h1><pre><code>我们使用jquery可以更好完成以下操作
+1.html文档操作，对于dom相关操作优化
+2.jquery提供更加方便与丰富事件处理
+3.jquery提供简单动画特效
+4.jquery提供ajax交互
+我们知道，要使用任何一个js框架，都是需要导入相关的js文件。
+
+关于其它常用js框架:
+1.dojo 面向对象的js框架
+2.extjs 学习成本比较高 它提供大量的丰富组件，它效果展示非常好
+3.prototype 早期比较流行js框架
+4.angularJS 它是一个mvc js框架，它提供双向数据绑定。。
+
+jquery它的插件机制特别丰富,在开发中可以选择非常多的相关插件，例如，表单校验插件，树型结构。。。
+</code></pre><h2 id="jQuery核心函数"><a href="#jQuery核心函数" class="headerlink" title="jQuery核心函数"></a>jQuery核心函数</h2><pre><code>核心函数介绍
+1.入口函数：
+$(function() {
+                alert(&quot;hello jquery&quot;);
+    });
+$表示jQuery对象，不用记完整写法。
+
+2.DOM对象转jQuery对象 :   jQuery(html,[ownerDocument])：
+    $(&quot;&lt;div&gt;Hello&lt;/div&gt;&quot;)  //jquery 对象
+**图片**
+</code></pre><p>![“/“]</p>
+<h3 id="jquery选择器-基本选择器-掌握"><a href="#jquery选择器-基本选择器-掌握" class="headerlink" title="jquery选择器-基本选择器(掌握)"></a>jquery选择器-基本选择器(掌握)</h3><p><em>$(“#d1”)、$(“div”)、$(“.d”)、分别是使用id、元素、class获取一个元素的jQuery对象。</em><br><em>$(“.d,#d1”)是获取并集。</em><br>    html() : 无参数代表获取元素中的html代码，如果有参数代表设置元素的html信息<br>    text(): 无参数代表获取元素中的文本信息，如果有参数代表设置元素的文本信息<br>    each(function(index){}):它可以帮助我们遍历元素，可以传递一个函数each(function(n)),n就代表的是每一个元素    的序号，在函数中可以通过this来获取其dom对象<br>    index():获取元素索引值<br>    size():元素的个数</p>
+<pre><code>$(this)
+this就是js中的当前对象 一定要加$
+</code></pre><hr>
+<h3 id="jquery选择器-层级选择器-掌握"><a href="#jquery选择器-层级选择器-掌握" class="headerlink" title="jquery选择器-层级选择器(掌握)"></a>jquery选择器-层级选择器(掌握)</h3><pre><code>空格 ：获取某个元素下的所有子元素（包括孙子元素…）
+大于号&gt;：获取元素的直接子元素
+加号+：获取第一个兄弟元素
+波浪线~：获取所有的兄弟元素
+</code></pre><h3 id="jquery过滤器-基本过滤选择器-会查文档"><a href="#jquery过滤器-基本过滤选择器-会查文档" class="headerlink" title="jquery过滤器-基本过滤选择器(会查文档)"></a>jquery过滤器-基本过滤选择器(会查文档)</h3><p><em>过滤选择器的作用：首先是通过基本选择器和层级选择器获取到一部分元素之后，通过过滤选择器进行筛选；
+</em>过滤选择器一般是以：开头，但是属性过滤选择器是用[属性]包裹属性：*<br>    ：even 匹配所有索引值为偶数的元素，从0开始计数<br>    ：odd  匹配所有索引值为奇数的元素，从0开始计数</p>
+<h3 id="jquery过滤器-内容过滤选择器-了解"><a href="#jquery过滤器-内容过滤选择器-了解" class="headerlink" title="jquery过滤器-内容过滤选择器(了解)"></a>jquery过滤器-内容过滤选择器(了解)</h3><p><em>contains(text):匹配包含指定文本内容的元素</em></p>
+<pre><code>：empty：匹配空元素（没有子元素或者文本的元素）。
+</code></pre><p>：has(selector)：匹配包含selector所指定的元素的元素；（selector指定的元素可能是子元素或者孙子元素…）<br>    例如：所有包含 p 元素的 div 元素：$(“div:has(p)”)<br>        ：parent：匹配非空元素（含有子元素或者文本的元素），与empty相反<br>    例如：匹配含有子元素或者文本的td元素：$(“td:parent”)</p>
+<p><em>2、通过jQuery给一个元素添加class属性：$(“div”).addClass(“divClass”);</em></p>
+<h3 id="jquery过滤器-可见性过滤选择器-会查文档"><a href="#jquery过滤器-可见性过滤选择器-会查文档" class="headerlink" title="jquery过滤器-可见性过滤选择器(会查文档)"></a>jquery过滤器-可见性过滤选择器(会查文档)</h3><p>可见性选择器主要是来匹配display:none的元素和<input type="”hidden”">的表单元素。<br>    val() 获取元素当前 的值vlaue值<br>    show() 让元素显示出来<br>    hide（） 让元素隐藏起来</p>
+<h3 id="jquery过滤器-属性过滤选择器-建议掌握"><a href="#jquery过滤器-属性过滤选择器-建议掌握" class="headerlink" title="jquery过滤器-属性过滤选择器(建议掌握)"></a>jquery过滤器-属性过滤选择器(建议掌握)</h3><pre><code>^ =匹配开始
+$ =匹配结尾
+ * =匹配包含
+</code></pre><h3 id="jquery过滤器-子元素过滤选择器"><a href="#jquery过滤器-子元素过滤选择器" class="headerlink" title="jquery过滤器-子元素过滤选择器"></a>jquery过滤器-子元素过滤选择器</h3><pre><code>:nth-child  匹配其父元素的第N个子或奇偶数
+:onlu-child 如果某个元素是父元素中唯一的子元素，那将会被匹配
+</code></pre><h3 id="jquery过滤器-表单过滤选择器-掌握"><a href="#jquery过滤器-表单过滤选择器-掌握" class="headerlink" title="jquery过滤器-表单过滤选择器(掌握)"></a>jquery过滤器-表单过滤选择器(掌握)</h3><pre><code>方法：” hello”.trim();去掉首位空格或者$.trim(“hello”)也可以
+</code></pre><p><strong>常用事件</strong><br>        失去焦点事件：blur(function(){});//当失去焦点，会触发传递的function函数；<br>        单击事件：click(function(){});//当单击时，会触发传递的function函数；<br>        提交表单：submit()//提交表单；submit(function(){return false;});//阻止提交表单</p>
+<h3 id="jquery过滤器-表单元素属性过滤选择器"><a href="#jquery过滤器-表单元素属性过滤选择器" class="headerlink" title="jquery过滤器-表单元素属性过滤选择器"></a>jquery过滤器-表单元素属性过滤选择器</h3><p><em>掌握表单的：checked和：selected属性过滤选择器</em></p>
+<pre><code>选择器总结:
+    基本选择器：#id   .class   element  #id,.class,element组合
+    层级选择器：父子关系（$(“div #d”)   $(“div&gt;#d”)） 兄弟选择器（$(“div+p”)  $(“div~p”)）
+    基本过滤选择器：:first    :last      :not(selector)      :even     :odd 
+内容过滤选择器：:contains(text)   :empty    :has(selector) 
+属性过滤选择器：[attribute]    [attribute=value]    [attribute*=value]     [attrSel1][attrSel2][attrSelN] 
+表单元素过滤选择器：:input     :text     :password     :radio     :checkbox     :submit     :button 
+    表单元素属性过滤选择器：:checked    :selected 
+&lt;select name=”” multiple=”multiple”&gt;&lt;/select&gt;
+</code></pre><p>####jquery文档操作-插入(掌握)  ####<br>    父子关系<br>    $(“select”).append(“<option>研究生</option>”);  //添加儿子到最后<br>    $(“select”).prepend(“<option>学前班</option>”);  //添加儿子到最前面</p>
+<pre><code>兄弟关系
+$(“&lt;option&gt;本科&lt;/option&gt;”).after(“&lt;option&gt;研究生&lt;/option&gt;”);    //添加兄弟到自己后面
+$(“&lt;option&gt;小学&lt;/option&gt;”).before(“&lt;option&gt;学前班&lt;/option&gt;”);  //添加个兄弟到自己前面
+
+**最常用:append()****
+</code></pre>
+          
+        
+      
+    </div>
+    
+    
+    
+  <div>
+  
+  </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://HackerFreedom.github.io/2018/01/19/Jsonp/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Sam">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/my.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="努力，孩子">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/01/19/Jsonp/" itemprop="url">JQuery知识点</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-19T17:02:37+08:00">
+                2018-01-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/技术文章/" itemprop="url" rel="index">
+                    <span itemprop="name">技术文章</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="理解什么是跨域"><a href="#理解什么是跨域" class="headerlink" title="理解什么是跨域"></a>理解什么是跨域</h1><p>  跨域：指的是在当前工程里面访问了不同域或者服务器中的资源，只要是协议、主机名、端口号有一个不一致就属于跨域<br>  JSONP 是json的一种”使用模式,可以解决主浏览器的跨域的数据访问问题。而且jsonp抓到的并不是json，而是JavaScript，<br>  用JavaScript直译器执行而不是json解析器解析<br> <em>解决跨域的问题（基本原理）</em><br>    我们在浏览器端通过ajax跨域向服务器发送请求时，需要在请求参数里面添加dataType:”jsonp”属性，这个时候浏览器会自动向服务器提供一个叫callback的参数，后台需要把json数据使用callback参数值包裹起来生成一个jsonp数据格式发送给页面，就可以跨域访问获取数据了</p>
+<h1 id="jquery中解决跨域问题原理分析"><a href="#jquery中解决跨域问题原理分析" class="headerlink" title="jquery中解决跨域问题原理分析"></a>jquery中解决跨域问题原理分析</h1><pre><code>相当于通过dom操作，创建了script标签，添加src属性，同时传递一个回调函数，
+我们重写这个回调函数接收参数。
+</code></pre><p>   <strong>图片</strong>：<img src="/myblog/public/images/bgimg" alt=""> </p>
+<h1 id="原理"><a href="#原理" class="headerlink" title="原理:"></a>原理:</h1><pre><code>$.post(“8081/servletDemo”) 底层XMLHttpRequest(有跨域限制),而script 的SRC是开放的,
+jquery会自动生成如下代码
+&lt;script src=&quot;http://其他域/?callback=cb&quot;&lt;/script&gt;
+和一个函数
+function cb(json) {
+    json就可以使用了
+    再调用我们的回调函数,传入json对象
+}
+    当服务器返回: cb(json)  这个cb()函数就会执行
+</code></pre><h1 id="getJSON解决跨域问题-掌握"><a href="#getJSON解决跨域问题-掌握" class="headerlink" title="$.getJSON解决跨域问题(掌握)"></a>$.getJSON解决跨域问题(掌握)</h1><pre><code>$.getJSON实际上就是$.ajax的简化操作，注意路径后面要拼接一个callback=?
+浏览器会随机生成一个数来代替?
+</code></pre><p>   <strong>JSONP解决跨域</strong></p>
+<pre><code>* $.ajax() 最基本的方法，参数很多
+* $.getJSON() 专门请求跨域
+ //在服务器设置一个响应头解决跨域
+* response.setHeader(&quot;Access-Control-Allow-Origin&quot;, &quot;*&quot;);
+协议、主机名、端口号有一个不一致就属于跨域。
+</code></pre><h1 id="解决"><a href="#解决" class="headerlink" title="解决:"></a>解决:</h1><pre><code>页面:$.getJSON(url?callback=?,{},function(data){...});
+
+后台:
+String callback = request.getParameter(“callback”);
+reponse.getWriter().print(callback+ “(” + json + “)”);
+
+
+原理:
+XMLHttpRequest对象有跨域限制
+
+&lt;script src=”http://localhost:8081/web02/serveltDemo1?callback=cb” &gt;&lt;/script&gt;
+function cb(json) {
+}
+
+
+&lt;script&gt;cb(json)&lt;/script&gt;
+</code></pre><h2 id="javaee三层架构介绍"><a href="#javaee三层架构介绍" class="headerlink" title="javaee三层架构介绍"></a>javaee三层架构介绍</h2><p><em>web层</em>: 他主要包含<em>requent，response，session</em>，就是servlet的控制中心的地方<br><em>业务层</em>: service层主要是操作一些逻辑数据，调用dao层来获取需求的数据<br><em>数据交互层</em>: 主要与数据库进行操作，CRUD；</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+  <div>
+  
+  </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://HackerFreedom.github.io/2018/01/19/year-01-19-Hexo/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Sam">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/my.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="努力，孩子">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/01/19/year-01-19-Hexo/" itemprop="url">MarkDownPad基本使用</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-19T01:39:59+08:00">
+                2018-01-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Hexo教程/" itemprop="url" rel="index">
+                    <span itemprop="name">Hexo教程</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>标题：</p>
+<h1 id="一级标题"><a href="#一级标题" class="headerlink" title="一级标题"></a>一级标题</h1><h2 id="二级标题"><a href="#二级标题" class="headerlink" title="二级标题"></a>二级标题</h2><h3 id="三级标题"><a href="#三级标题" class="headerlink" title="三级标题"></a>三级标题</h3><h4 id="四级标题"><a href="#四级标题" class="headerlink" title="四级标题"></a>四级标题</h4><h5 id="五级标题"><a href="#五级标题" class="headerlink" title="五级标题"></a>五级标题</h5><blockquote>
+<p>引用</p>
+</blockquote>
+<p>在文本前面添加&gt;</p>
+<blockquote>
+<p>图片与链接</p>
+</blockquote>
+<p>`</p>
+<blockquote>
+<p>图片：<img src="/2018/01/19/year-01-19-Hexo/图片地址" alt="">图片地址可以使本地图片路径，或者图片网址</p>
+</blockquote>
+<p>网址：<a href=""></a><br>`</p>
+<p>粗体与斜体</p>
+<p>粗体：用两个<em>包含一段文本就是粗体。    例：<em>*粗体</em></em></p>
+<p>斜体：用一个<em>包含一段文本就是斜体</em></p>
+<p><em>表格</em></p>
+<table>
+<thead>
+<tr>
+<th>Tables</th>
+<th style="text-align:center">Are</th>
+<th style="text-align:right">Cool</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>col 3 is</td>
+<td style="text-align:center">right-aligned</td>
+<td style="text-align:right">$1600</td>
+</tr>
+<tr>
+<td>col 2 is</td>
+<td style="text-align:center">centered</td>
+<td style="text-align:right">$12</td>
+</tr>
+<tr>
+<td>zebra stripes</td>
+<td style="text-align:center">are neat</td>
+<td style="text-align:right">$1</td>
+</tr>
+</tbody>
+</table>
+<p>生成的表格样式如下：</p>
+<h2 id="TablesAreCool"><a href="#TablesAreCool" class="headerlink" title="TablesAreCool"></a>TablesAreCool</h2><p>col 3 isright-aligned$1600</p>
+<p>col 2 iscentered$12</p>
+<p>zebra stripesare neat$1</p>
+<p>代码框</p>
+<p>只需要用两个  <code>把中间的代码包含起来</code></p>
+<html><br><head><br><title>我的第一个HTML页面</title><br></head><br><body><font color="”red”">早上好</font></body><br></html>
+
+<pre><code>也可以使用tab键缩进4个空格
+</code></pre><p>分割线</p>
+<hr>
+<p>分割线的语法只需要加三个-号或*</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+  <div>
+  
+  </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://HackerFreedom.github.io/2018/01/19/JavaSe/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Sam">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/my.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="努力，孩子">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/01/19/JavaSe/" itemprop="url">Java基础知识</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-19T00:00:00+08:00">
+                2018-01-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/技术文章/" itemprop="url" rel="index">
+                    <span itemprop="name">技术文章</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          Java基本使用
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/01/19/JavaSe/">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+  <div>
+  
+  </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
     
       
 
@@ -462,7 +1361,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-count">16</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -473,7 +1372,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -484,7 +1383,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">标签</span>
                 
               </div>
@@ -520,7 +1419,6 @@
           
 
           
-
         </div>
       </section>
 
