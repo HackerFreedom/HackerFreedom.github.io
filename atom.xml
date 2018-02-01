@@ -243,31 +243,6 @@
   </entry>
   
   <entry>
-    <title>Redis概述</title>
-    <link href="http://HackerFreedom.github.io/2018/01/20/Redis/"/>
-    <id>http://HackerFreedom.github.io/2018/01/20/Redis/</id>
-    <published>2018-01-20T11:14:03.000Z</published>
-    <updated>2018-01-28T00:51:11.041Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="Redis介绍"><a href="#Redis介绍" class="headerlink" title="Redis介绍"></a>Redis介绍</h1><p><em>edis是一个开源的使用ANSI C语言编写、支持网络、可基于内存亦可持久化的日志型、Key-Value数据库，并提供多种语言的API。**</em>Redis是 NoSQL技术阵营中的一员，它通过多种键值数据类型来适应不同场景下的存储需求，借助一些高层级的接口使用其可以胜任，如缓存、队列系统的不同角色*</p><h1 id="Redis特性"><a href="#Redis特性" class="headerlink" title="Redis特性"></a>Redis特性</h1><ul><li>Redis 与其他 key - value 缓存产品有以下三个特点：</li><li>Redis支持数据的持久化，可以将内存中的数据保存在磁盘中，重启的时候可以再次加载进行使用。</li><li>Redis不仅仅支持简单的key-value类型的数据，同时还提供list，set，zset，hash等数据结构的存储。</li><li>Redis支持数据的备份，即master-slave模式的数据备份<br>  1、速度快<br>  Redis是用C语言实现的；<br>  Redis的所有数据存储在内存中。<br>  2、持久化<br>  Redis的所有数据存储在内存中，对数据的更新将异步地保存到磁盘上。<br>  3、支持多种数据结构<br>  Redis支持五种数据结构：String、List、Set、Hash、Zset<br>  4、支持多种编程语言<br>  Java、php、Python、Ruby、Lua、Node.js<br>  5、功能丰富<br>  除了支持五种数据结构之外，还支持事务、流水线、发布/订阅、消息队列等功能。<br>  6、源码简单<br>  约23000行C语言源代码。<br>  7、主从复制<br>  主服务器（master）执行添加、修改、删除，从服务器执行查询。<br>  8、高可用及分布式<br>  Redis-Sentinel（v2.8）支持高可用<br>  Redis-Cluster（v3.0）支持分布式</li></ul><blockquote><p>什么是高可用？<br>   一台服务器挂掉会有另一台服务器立马顶上，Redis-Sentinel监听所有的监听所有的Redis主从服务器，<br>   一旦发现主服务器挂掉了，他会从若干服务器中选择一台新的机器作为master，其他从服务器会成为这台新master的从服务器。</p><p>什么是分布式？<br>在一台物理计算机上，把数据A放到数据库D1，把数据B放到数据库D2，把数据C放到数据库D3属于分布式，但由于数据库的访问连接池是有限的，所以这种分布式解决方案存在性能瓶颈；<br>把数据A放到计算机C1的数据库D1，把数据B放到计算机C1的数据库D2，把数据C放到计算机C3的数据库D3也属于分布式，这种分布式解决方案扩展性好，如果系统增加了新业务X，X产生的数据Y可以放到计算机C4的数据库D4中，理论上来说这种方式可以无限扩展，从而保证系统的性能最大化。<br>存在瓶颈且价格较高的高性能单台服务器-&gt;可无限扩展的分布式集群</p></blockquote><pre><code>Redis可执行文件说明： redis-server.exe　　　　 Redis服务 redis-cli.exe　　　　　　Redis命令行客户端 redis-benchmark.exe　　Redis性能测试工具 redis-check-aof.exe　　 AOF文件修复工具 redis-check-dump.exe　RDB文件检测工具 redis-sentinel.exe　　　 Sentinel服务器（2.8以后）</code></pre><p>##Redis常用的五种数据类型  ##<br><strong>String</strong><br>    是最常用的一种数据类型，普通的key/value存储都可以归为此类。</p><pre><code>一个Key对应一个Value，string类型是二进制安全的。Redis的string可以包含任何数据，比如jpg图片(生成二进制)或者序列化的对象。</code></pre><p><strong>Hash(Key-Value)</strong><br>    hash是一个string 类型的field和value的映射表。</p><pre><code>hash特别适合存储对象。相对于将对象的每个字段存成单个string 类型。一个对象存储在hash类型中会占用更少的内存，并且可以更方便的存取整个对象。Redis的Hash数据类型的value内部是一个HashMap,如果该Map的成员比较少，则会采用一维数组的方式</code></pre><ul><li>采用String类型的存储对象，需要将对象进行序列化。<br><img src="/2018/01/20/Redis/redis01.jpg" alt="Redis"></li><li>增加了序列化/反序列化的开销，并且在需要修改其中一项信息时，需要把整个对象取回</li><li>使用Hash数据类型则不需要</li><li>Key仍然是用户ID, value是一个Map，这个Map的key是成员的属性名，value是属性值，这样对数据的修改和存取都可以直接通过其内部Map的Key(Redis里称内部Map的key为field), 也就是通过 key(用户ID) + field(属性标签) 就可以操作对应属性数据了，既不需要重复存储数据，也不会带来序列化和反序列化。</li></ul><p><strong>List</strong><br>    list是一个链表结构，主要功能是push, pop, 获取一个范围的所有的值等。操作中key理解为链表名字。</p><pre><code>Redis的list类型其实就是一个每个子元素都是string类型的双向链表。我们可以通过push,pop操作从链表的头部或者尾部添加删除元素，这样list既可以作为栈，又可以作为队列（栈就是insertFirst+deleteFirst，队列就是insertLast+deleteFirst）。可以支持反向查找和遍历，方便操作，不过带来了部分额外的内存开销。Redis内部的很多实现，包括发送缓冲队列等也都是用的这个数据结构</code></pre><ul><li><p><strong>Set</strong><br>  它是string类型的无序集合。set是通过hash table实现的，可以进行添加、删除和查找。<br>  对集合我们可以取并集，交集，差集.</p><p>  集合可以进行 交集、并集 如新浪微博中获取两个用户共同的关注人</p><p>  新浪微博使用redis有两种应用场景：</p><ol><li><p>直接把数据放到redis中进行存储，这些数据是独立的</p></li><li><p>有些数据包含表与表之间的逻辑关系，这些数据又访问比较频繁，<br> 如果直接从数据库中进行查询性能比较差。<br> 先将数据写到redis中，再将数据保存到mysql数据库</p></li></ol></li><li><p><strong>zset</strong></p><p>Redis sorted set的使用场景与set类似，<br>区别是set不是自动有序的，<br>而sorted set可以通过用户额外提供一个优先级(score)的参数来为成员排序，<br>并且是插入有序的，即自动排序。</p><p>可以理解为一列存 value,一列存顺序。操作中key理解为zset的名字.</p><p>当你需要一个有序的并且不重复的集合列表，那么可以选择sorted set数据结构</p></li></ul>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;Redis介绍&quot;&gt;&lt;a href=&quot;#Redis介绍&quot; class=&quot;headerlink&quot; title=&quot;Redis介绍&quot;&gt;&lt;/a&gt;Redis介绍&lt;/h1&gt;&lt;p&gt;&lt;em&gt;edis是一个开源的使用ANSI C语言编写、支持网络、可基于内存亦可持久化的日志型、Key
-      
-    
-    </summary>
-    
-      <category term="技术文章" scheme="http://HackerFreedom.github.io/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/"/>
-    
-    
-      <category term="redis基本知识" scheme="http://HackerFreedom.github.io/tags/redis%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86/"/>
-    
-  </entry>
-  
-  <entry>
     <title>linux基本使用</title>
     <link href="http://HackerFreedom.github.io/2018/01/20/linux/"/>
     <id>http://HackerFreedom.github.io/2018/01/20/linux/</id>
@@ -294,20 +269,19 @@ cd ..        切换
   </entry>
   
   <entry>
-    <title>JQuery知识点</title>
-    <link href="http://HackerFreedom.github.io/2018/01/19/Jquery/"/>
-    <id>http://HackerFreedom.github.io/2018/01/19/Jquery/</id>
-    <published>2018-01-19T09:33:03.000Z</published>
-    <updated>2018-01-20T06:20:43.018Z</updated>
+    <title>Redis概述</title>
+    <link href="http://HackerFreedom.github.io/2018/01/20/Redis/"/>
+    <id>http://HackerFreedom.github.io/2018/01/20/Redis/</id>
+    <published>2018-01-20T11:14:03.000Z</published>
+    <updated>2018-01-28T00:51:11.041Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="jQuery介绍"><a href="#jQuery介绍" class="headerlink" title="jQuery介绍"></a>jQuery介绍</h1><pre><code>我们使用jquery可以更好完成以下操作1.html文档操作，对于dom相关操作优化2.jquery提供更加方便与丰富事件处理3.jquery提供简单动画特效4.jquery提供ajax交互我们知道，要使用任何一个js框架，都是需要导入相关的js文件。关于其它常用js框架:1.dojo 面向对象的js框架2.extjs 学习成本比较高 它提供大量的丰富组件，它效果展示非常好3.prototype 早期比较流行js框架4.angularJS 它是一个mvc js框架，它提供双向数据绑定。。jquery它的插件机制特别丰富,在开发中可以选择非常多的相关插件，例如，表单校验插件，树型结构。。。</code></pre><h2 id="jQuery核心函数"><a href="#jQuery核心函数" class="headerlink" title="jQuery核心函数"></a>jQuery核心函数</h2><pre><code>核心函数介绍1.入口函数：$(function() {                alert(&quot;hello jquery&quot;);    });$表示jQuery对象，不用记完整写法。2.DOM对象转jQuery对象 :   jQuery(html,[ownerDocument])：    $(&quot;&lt;div&gt;Hello&lt;/div&gt;&quot;)  //jquery 对象**图片**</code></pre><p>![“/“]</p><h3 id="jquery选择器-基本选择器-掌握"><a href="#jquery选择器-基本选择器-掌握" class="headerlink" title="jquery选择器-基本选择器(掌握)"></a>jquery选择器-基本选择器(掌握)</h3><p><em>$(“#d1”)、$(“div”)、$(“.d”)、分别是使用id、元素、class获取一个元素的jQuery对象。</em><br><em>$(“.d,#d1”)是获取并集。</em><br>    html() : 无参数代表获取元素中的html代码，如果有参数代表设置元素的html信息<br>    text(): 无参数代表获取元素中的文本信息，如果有参数代表设置元素的文本信息<br>    each(function(index){}):它可以帮助我们遍历元素，可以传递一个函数each(function(n)),n就代表的是每一个元素    的序号，在函数中可以通过this来获取其dom对象<br>    index():获取元素索引值<br>    size():元素的个数</p><pre><code>$(this)this就是js中的当前对象 一定要加$</code></pre><hr><h3 id="jquery选择器-层级选择器-掌握"><a href="#jquery选择器-层级选择器-掌握" class="headerlink" title="jquery选择器-层级选择器(掌握)"></a>jquery选择器-层级选择器(掌握)</h3><pre><code>空格 ：获取某个元素下的所有子元素（包括孙子元素…）大于号&gt;：获取元素的直接子元素加号+：获取第一个兄弟元素波浪线~：获取所有的兄弟元素</code></pre><h3 id="jquery过滤器-基本过滤选择器-会查文档"><a href="#jquery过滤器-基本过滤选择器-会查文档" class="headerlink" title="jquery过滤器-基本过滤选择器(会查文档)"></a>jquery过滤器-基本过滤选择器(会查文档)</h3><p><em>过滤选择器的作用：首先是通过基本选择器和层级选择器获取到一部分元素之后，通过过滤选择器进行筛选；</em>过滤选择器一般是以：开头，但是属性过滤选择器是用[属性]包裹属性：*<br>    ：even 匹配所有索引值为偶数的元素，从0开始计数<br>    ：odd  匹配所有索引值为奇数的元素，从0开始计数</p><h3 id="jquery过滤器-内容过滤选择器-了解"><a href="#jquery过滤器-内容过滤选择器-了解" class="headerlink" title="jquery过滤器-内容过滤选择器(了解)"></a>jquery过滤器-内容过滤选择器(了解)</h3><p><em>contains(text):匹配包含指定文本内容的元素</em></p><pre><code>：empty：匹配空元素（没有子元素或者文本的元素）。</code></pre><p>：has(selector)：匹配包含selector所指定的元素的元素；（selector指定的元素可能是子元素或者孙子元素…）<br>    例如：所有包含 p 元素的 div 元素：$(“div:has(p)”)<br>        ：parent：匹配非空元素（含有子元素或者文本的元素），与empty相反<br>    例如：匹配含有子元素或者文本的td元素：$(“td:parent”)</p><p><em>2、通过jQuery给一个元素添加class属性：$(“div”).addClass(“divClass”);</em></p><h3 id="jquery过滤器-可见性过滤选择器-会查文档"><a href="#jquery过滤器-可见性过滤选择器-会查文档" class="headerlink" title="jquery过滤器-可见性过滤选择器(会查文档)"></a>jquery过滤器-可见性过滤选择器(会查文档)</h3><p>可见性选择器主要是来匹配display:none的元素和<input type="”hidden”">的表单元素。<br>    val() 获取元素当前 的值vlaue值<br>    show() 让元素显示出来<br>    hide（） 让元素隐藏起来</p><h3 id="jquery过滤器-属性过滤选择器-建议掌握"><a href="#jquery过滤器-属性过滤选择器-建议掌握" class="headerlink" title="jquery过滤器-属性过滤选择器(建议掌握)"></a>jquery过滤器-属性过滤选择器(建议掌握)</h3><pre><code>^ =匹配开始$ =匹配结尾 * =匹配包含</code></pre><h3 id="jquery过滤器-子元素过滤选择器"><a href="#jquery过滤器-子元素过滤选择器" class="headerlink" title="jquery过滤器-子元素过滤选择器"></a>jquery过滤器-子元素过滤选择器</h3><pre><code>:nth-child  匹配其父元素的第N个子或奇偶数:onlu-child 如果某个元素是父元素中唯一的子元素，那将会被匹配</code></pre><h3 id="jquery过滤器-表单过滤选择器-掌握"><a href="#jquery过滤器-表单过滤选择器-掌握" class="headerlink" title="jquery过滤器-表单过滤选择器(掌握)"></a>jquery过滤器-表单过滤选择器(掌握)</h3><pre><code>方法：” hello”.trim();去掉首位空格或者$.trim(“hello”)也可以</code></pre><p><strong>常用事件</strong><br>        失去焦点事件：blur(function(){});//当失去焦点，会触发传递的function函数；<br>        单击事件：click(function(){});//当单击时，会触发传递的function函数；<br>        提交表单：submit()//提交表单；submit(function(){return false;});//阻止提交表单</p><h3 id="jquery过滤器-表单元素属性过滤选择器"><a href="#jquery过滤器-表单元素属性过滤选择器" class="headerlink" title="jquery过滤器-表单元素属性过滤选择器"></a>jquery过滤器-表单元素属性过滤选择器</h3><p><em>掌握表单的：checked和：selected属性过滤选择器</em></p><pre><code>选择器总结:    基本选择器：#id   .class   element  #id,.class,element组合    层级选择器：父子关系（$(“div #d”)   $(“div&gt;#d”)） 兄弟选择器（$(“div+p”)  $(“div~p”)）    基本过滤选择器：:first    :last      :not(selector)      :even     :odd 内容过滤选择器：:contains(text)   :empty    :has(selector) 属性过滤选择器：[attribute]    [attribute=value]    [attribute*=value]     [attrSel1][attrSel2][attrSelN] 表单元素过滤选择器：:input     :text     :password     :radio     :checkbox     :submit     :button     表单元素属性过滤选择器：:checked    :selected &lt;select name=”” multiple=”multiple”&gt;&lt;/select&gt;</code></pre><p>####jquery文档操作-插入(掌握)  ####<br>    父子关系<br>    $(“select”).append(“<option>研究生</option>”);  //添加儿子到最后<br>    $(“select”).prepend(“<option>学前班</option>”);  //添加儿子到最前面</p><pre><code>兄弟关系$(“&lt;option&gt;本科&lt;/option&gt;”).after(“&lt;option&gt;研究生&lt;/option&gt;”);    //添加兄弟到自己后面$(“&lt;option&gt;小学&lt;/option&gt;”).before(“&lt;option&gt;学前班&lt;/option&gt;”);  //添加个兄弟到自己前面**最常用:append()****</code></pre>]]></content>
+    <content type="html"><![CDATA[<h1 id="Redis介绍"><a href="#Redis介绍" class="headerlink" title="Redis介绍"></a>Redis介绍</h1><p><em>edis是一个开源的使用ANSI C语言编写、支持网络、可基于内存亦可持久化的日志型、Key-Value数据库，并提供多种语言的API。**</em>Redis是 NoSQL技术阵营中的一员，它通过多种键值数据类型来适应不同场景下的存储需求，借助一些高层级的接口使用其可以胜任，如缓存、队列系统的不同角色*</p><h1 id="Redis特性"><a href="#Redis特性" class="headerlink" title="Redis特性"></a>Redis特性</h1><ul><li>Redis 与其他 key - value 缓存产品有以下三个特点：</li><li>Redis支持数据的持久化，可以将内存中的数据保存在磁盘中，重启的时候可以再次加载进行使用。</li><li>Redis不仅仅支持简单的key-value类型的数据，同时还提供list，set，zset，hash等数据结构的存储。</li><li>Redis支持数据的备份，即master-slave模式的数据备份<br>  1、速度快<br>  Redis是用C语言实现的；<br>  Redis的所有数据存储在内存中。<br>  2、持久化<br>  Redis的所有数据存储在内存中，对数据的更新将异步地保存到磁盘上。<br>  3、支持多种数据结构<br>  Redis支持五种数据结构：String、List、Set、Hash、Zset<br>  4、支持多种编程语言<br>  Java、php、Python、Ruby、Lua、Node.js<br>  5、功能丰富<br>  除了支持五种数据结构之外，还支持事务、流水线、发布/订阅、消息队列等功能。<br>  6、源码简单<br>  约23000行C语言源代码。<br>  7、主从复制<br>  主服务器（master）执行添加、修改、删除，从服务器执行查询。<br>  8、高可用及分布式<br>  Redis-Sentinel（v2.8）支持高可用<br>  Redis-Cluster（v3.0）支持分布式</li></ul><blockquote><p>什么是高可用？<br>   一台服务器挂掉会有另一台服务器立马顶上，Redis-Sentinel监听所有的监听所有的Redis主从服务器，<br>   一旦发现主服务器挂掉了，他会从若干服务器中选择一台新的机器作为master，其他从服务器会成为这台新master的从服务器。</p><p>什么是分布式？<br>在一台物理计算机上，把数据A放到数据库D1，把数据B放到数据库D2，把数据C放到数据库D3属于分布式，但由于数据库的访问连接池是有限的，所以这种分布式解决方案存在性能瓶颈；<br>把数据A放到计算机C1的数据库D1，把数据B放到计算机C1的数据库D2，把数据C放到计算机C3的数据库D3也属于分布式，这种分布式解决方案扩展性好，如果系统增加了新业务X，X产生的数据Y可以放到计算机C4的数据库D4中，理论上来说这种方式可以无限扩展，从而保证系统的性能最大化。<br>存在瓶颈且价格较高的高性能单台服务器-&gt;可无限扩展的分布式集群</p></blockquote><pre><code>Redis可执行文件说明： redis-server.exe　　　　 Redis服务 redis-cli.exe　　　　　　Redis命令行客户端 redis-benchmark.exe　　Redis性能测试工具 redis-check-aof.exe　　 AOF文件修复工具 redis-check-dump.exe　RDB文件检测工具 redis-sentinel.exe　　　 Sentinel服务器（2.8以后）</code></pre><p>##Redis常用的五种数据类型  ##<br><strong>String</strong><br>    是最常用的一种数据类型，普通的key/value存储都可以归为此类。</p><pre><code>一个Key对应一个Value，string类型是二进制安全的。Redis的string可以包含任何数据，比如jpg图片(生成二进制)或者序列化的对象。</code></pre><p><strong>Hash(Key-Value)</strong><br>    hash是一个string 类型的field和value的映射表。</p><pre><code>hash特别适合存储对象。相对于将对象的每个字段存成单个string 类型。一个对象存储在hash类型中会占用更少的内存，并且可以更方便的存取整个对象。Redis的Hash数据类型的value内部是一个HashMap,如果该Map的成员比较少，则会采用一维数组的方式</code></pre><ul><li>采用String类型的存储对象，需要将对象进行序列化。<br><img src="/2018/01/20/Redis/redis01.jpg" alt="Redis"></li><li>增加了序列化/反序列化的开销，并且在需要修改其中一项信息时，需要把整个对象取回</li><li>使用Hash数据类型则不需要</li><li>Key仍然是用户ID, value是一个Map，这个Map的key是成员的属性名，value是属性值，这样对数据的修改和存取都可以直接通过其内部Map的Key(Redis里称内部Map的key为field), 也就是通过 key(用户ID) + field(属性标签) 就可以操作对应属性数据了，既不需要重复存储数据，也不会带来序列化和反序列化。</li></ul><p><strong>List</strong><br>    list是一个链表结构，主要功能是push, pop, 获取一个范围的所有的值等。操作中key理解为链表名字。</p><pre><code>Redis的list类型其实就是一个每个子元素都是string类型的双向链表。我们可以通过push,pop操作从链表的头部或者尾部添加删除元素，这样list既可以作为栈，又可以作为队列（栈就是insertFirst+deleteFirst，队列就是insertLast+deleteFirst）。可以支持反向查找和遍历，方便操作，不过带来了部分额外的内存开销。Redis内部的很多实现，包括发送缓冲队列等也都是用的这个数据结构</code></pre><ul><li><p><strong>Set</strong><br>  它是string类型的无序集合。set是通过hash table实现的，可以进行添加、删除和查找。<br>  对集合我们可以取并集，交集，差集.</p><p>  集合可以进行 交集、并集 如新浪微博中获取两个用户共同的关注人</p><p>  新浪微博使用redis有两种应用场景：</p><ol><li><p>直接把数据放到redis中进行存储，这些数据是独立的</p></li><li><p>有些数据包含表与表之间的逻辑关系，这些数据又访问比较频繁，<br> 如果直接从数据库中进行查询性能比较差。<br> 先将数据写到redis中，再将数据保存到mysql数据库</p></li></ol></li><li><p><strong>zset</strong></p><p>Redis sorted set的使用场景与set类似，<br>区别是set不是自动有序的，<br>而sorted set可以通过用户额外提供一个优先级(score)的参数来为成员排序，<br>并且是插入有序的，即自动排序。</p><p>可以理解为一列存 value,一列存顺序。操作中key理解为zset的名字.</p><p>当你需要一个有序的并且不重复的集合列表，那么可以选择sorted set数据结构</p></li></ul>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;h1 id=&quot;jQuery介绍&quot;&gt;&lt;a href=&quot;#jQuery介绍&quot; class=&quot;headerlink&quot; title=&quot;jQuery介绍&quot;&gt;&lt;/a&gt;jQuery介绍&lt;/h1&gt;&lt;pre&gt;&lt;code&gt;我们使用jquery可以更好完成以下操作
-1.html文档操作，对于dom相
+        &lt;h1 id=&quot;Redis介绍&quot;&gt;&lt;a href=&quot;#Redis介绍&quot; class=&quot;headerlink&quot; title=&quot;Redis介绍&quot;&gt;&lt;/a&gt;Redis介绍&lt;/h1&gt;&lt;p&gt;&lt;em&gt;edis是一个开源的使用ANSI C语言编写、支持网络、可基于内存亦可持久化的日志型、Key
       
     
     </summary>
@@ -315,7 +289,7 @@ cd ..        切换
       <category term="技术文章" scheme="http://HackerFreedom.github.io/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/"/>
     
     
-      <category term="JQuery" scheme="http://HackerFreedom.github.io/tags/JQuery/"/>
+      <category term="redis基本知识" scheme="http://HackerFreedom.github.io/tags/redis%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86/"/>
     
   </entry>
   
@@ -341,6 +315,32 @@ cd ..        切换
     
     
       <category term="JQueryAjax" scheme="http://HackerFreedom.github.io/tags/JQueryAjax/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>JQuery知识点</title>
+    <link href="http://HackerFreedom.github.io/2018/01/19/Jquery/"/>
+    <id>http://HackerFreedom.github.io/2018/01/19/Jquery/</id>
+    <published>2018-01-19T09:33:03.000Z</published>
+    <updated>2018-01-20T06:20:43.018Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="jQuery介绍"><a href="#jQuery介绍" class="headerlink" title="jQuery介绍"></a>jQuery介绍</h1><pre><code>我们使用jquery可以更好完成以下操作1.html文档操作，对于dom相关操作优化2.jquery提供更加方便与丰富事件处理3.jquery提供简单动画特效4.jquery提供ajax交互我们知道，要使用任何一个js框架，都是需要导入相关的js文件。关于其它常用js框架:1.dojo 面向对象的js框架2.extjs 学习成本比较高 它提供大量的丰富组件，它效果展示非常好3.prototype 早期比较流行js框架4.angularJS 它是一个mvc js框架，它提供双向数据绑定。。jquery它的插件机制特别丰富,在开发中可以选择非常多的相关插件，例如，表单校验插件，树型结构。。。</code></pre><h2 id="jQuery核心函数"><a href="#jQuery核心函数" class="headerlink" title="jQuery核心函数"></a>jQuery核心函数</h2><pre><code>核心函数介绍1.入口函数：$(function() {                alert(&quot;hello jquery&quot;);    });$表示jQuery对象，不用记完整写法。2.DOM对象转jQuery对象 :   jQuery(html,[ownerDocument])：    $(&quot;&lt;div&gt;Hello&lt;/div&gt;&quot;)  //jquery 对象**图片**</code></pre><p>![“/“]</p><h3 id="jquery选择器-基本选择器-掌握"><a href="#jquery选择器-基本选择器-掌握" class="headerlink" title="jquery选择器-基本选择器(掌握)"></a>jquery选择器-基本选择器(掌握)</h3><p><em>$(“#d1”)、$(“div”)、$(“.d”)、分别是使用id、元素、class获取一个元素的jQuery对象。</em><br><em>$(“.d,#d1”)是获取并集。</em><br>    html() : 无参数代表获取元素中的html代码，如果有参数代表设置元素的html信息<br>    text(): 无参数代表获取元素中的文本信息，如果有参数代表设置元素的文本信息<br>    each(function(index){}):它可以帮助我们遍历元素，可以传递一个函数each(function(n)),n就代表的是每一个元素    的序号，在函数中可以通过this来获取其dom对象<br>    index():获取元素索引值<br>    size():元素的个数</p><pre><code>$(this)this就是js中的当前对象 一定要加$</code></pre><hr><h3 id="jquery选择器-层级选择器-掌握"><a href="#jquery选择器-层级选择器-掌握" class="headerlink" title="jquery选择器-层级选择器(掌握)"></a>jquery选择器-层级选择器(掌握)</h3><pre><code>空格 ：获取某个元素下的所有子元素（包括孙子元素…）大于号&gt;：获取元素的直接子元素加号+：获取第一个兄弟元素波浪线~：获取所有的兄弟元素</code></pre><h3 id="jquery过滤器-基本过滤选择器-会查文档"><a href="#jquery过滤器-基本过滤选择器-会查文档" class="headerlink" title="jquery过滤器-基本过滤选择器(会查文档)"></a>jquery过滤器-基本过滤选择器(会查文档)</h3><p><em>过滤选择器的作用：首先是通过基本选择器和层级选择器获取到一部分元素之后，通过过滤选择器进行筛选；</em>过滤选择器一般是以：开头，但是属性过滤选择器是用[属性]包裹属性：*<br>    ：even 匹配所有索引值为偶数的元素，从0开始计数<br>    ：odd  匹配所有索引值为奇数的元素，从0开始计数</p><h3 id="jquery过滤器-内容过滤选择器-了解"><a href="#jquery过滤器-内容过滤选择器-了解" class="headerlink" title="jquery过滤器-内容过滤选择器(了解)"></a>jquery过滤器-内容过滤选择器(了解)</h3><p><em>contains(text):匹配包含指定文本内容的元素</em></p><pre><code>：empty：匹配空元素（没有子元素或者文本的元素）。</code></pre><p>：has(selector)：匹配包含selector所指定的元素的元素；（selector指定的元素可能是子元素或者孙子元素…）<br>    例如：所有包含 p 元素的 div 元素：$(“div:has(p)”)<br>        ：parent：匹配非空元素（含有子元素或者文本的元素），与empty相反<br>    例如：匹配含有子元素或者文本的td元素：$(“td:parent”)</p><p><em>2、通过jQuery给一个元素添加class属性：$(“div”).addClass(“divClass”);</em></p><h3 id="jquery过滤器-可见性过滤选择器-会查文档"><a href="#jquery过滤器-可见性过滤选择器-会查文档" class="headerlink" title="jquery过滤器-可见性过滤选择器(会查文档)"></a>jquery过滤器-可见性过滤选择器(会查文档)</h3><p>可见性选择器主要是来匹配display:none的元素和<input type="”hidden”">的表单元素。<br>    val() 获取元素当前 的值vlaue值<br>    show() 让元素显示出来<br>    hide（） 让元素隐藏起来</p><h3 id="jquery过滤器-属性过滤选择器-建议掌握"><a href="#jquery过滤器-属性过滤选择器-建议掌握" class="headerlink" title="jquery过滤器-属性过滤选择器(建议掌握)"></a>jquery过滤器-属性过滤选择器(建议掌握)</h3><pre><code>^ =匹配开始$ =匹配结尾 * =匹配包含</code></pre><h3 id="jquery过滤器-子元素过滤选择器"><a href="#jquery过滤器-子元素过滤选择器" class="headerlink" title="jquery过滤器-子元素过滤选择器"></a>jquery过滤器-子元素过滤选择器</h3><pre><code>:nth-child  匹配其父元素的第N个子或奇偶数:onlu-child 如果某个元素是父元素中唯一的子元素，那将会被匹配</code></pre><h3 id="jquery过滤器-表单过滤选择器-掌握"><a href="#jquery过滤器-表单过滤选择器-掌握" class="headerlink" title="jquery过滤器-表单过滤选择器(掌握)"></a>jquery过滤器-表单过滤选择器(掌握)</h3><pre><code>方法：” hello”.trim();去掉首位空格或者$.trim(“hello”)也可以</code></pre><p><strong>常用事件</strong><br>        失去焦点事件：blur(function(){});//当失去焦点，会触发传递的function函数；<br>        单击事件：click(function(){});//当单击时，会触发传递的function函数；<br>        提交表单：submit()//提交表单；submit(function(){return false;});//阻止提交表单</p><h3 id="jquery过滤器-表单元素属性过滤选择器"><a href="#jquery过滤器-表单元素属性过滤选择器" class="headerlink" title="jquery过滤器-表单元素属性过滤选择器"></a>jquery过滤器-表单元素属性过滤选择器</h3><p><em>掌握表单的：checked和：selected属性过滤选择器</em></p><pre><code>选择器总结:    基本选择器：#id   .class   element  #id,.class,element组合    层级选择器：父子关系（$(“div #d”)   $(“div&gt;#d”)） 兄弟选择器（$(“div+p”)  $(“div~p”)）    基本过滤选择器：:first    :last      :not(selector)      :even     :odd 内容过滤选择器：:contains(text)   :empty    :has(selector) 属性过滤选择器：[attribute]    [attribute=value]    [attribute*=value]     [attrSel1][attrSel2][attrSelN] 表单元素过滤选择器：:input     :text     :password     :radio     :checkbox     :submit     :button     表单元素属性过滤选择器：:checked    :selected &lt;select name=”” multiple=”multiple”&gt;&lt;/select&gt;</code></pre><p>####jquery文档操作-插入(掌握)  ####<br>    父子关系<br>    $(“select”).append(“<option>研究生</option>”);  //添加儿子到最后<br>    $(“select”).prepend(“<option>学前班</option>”);  //添加儿子到最前面</p><pre><code>兄弟关系$(“&lt;option&gt;本科&lt;/option&gt;”).after(“&lt;option&gt;研究生&lt;/option&gt;”);    //添加兄弟到自己后面$(“&lt;option&gt;小学&lt;/option&gt;”).before(“&lt;option&gt;学前班&lt;/option&gt;”);  //添加个兄弟到自己前面**最常用:append()****</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;jQuery介绍&quot;&gt;&lt;a href=&quot;#jQuery介绍&quot; class=&quot;headerlink&quot; title=&quot;jQuery介绍&quot;&gt;&lt;/a&gt;jQuery介绍&lt;/h1&gt;&lt;pre&gt;&lt;code&gt;我们使用jquery可以更好完成以下操作
+1.html文档操作，对于dom相
+      
+    
+    </summary>
+    
+      <category term="技术文章" scheme="http://HackerFreedom.github.io/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/"/>
+    
+    
+      <category term="JQuery" scheme="http://HackerFreedom.github.io/tags/JQuery/"/>
     
   </entry>
   

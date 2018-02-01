@@ -1970,7 +1970,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://HackerFreedom.github.io/2018/01/20/Redis/">
+    <link itemprop="mainEntityOfPage" href="http://HackerFreedom.github.io/2018/01/20/linux/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Sam">
@@ -1989,7 +1989,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/01/20/Redis/" itemprop="url">Redis概述</a></h1>
+                <a class="post-title-link" href="/2018/01/20/linux/" itemprop="url">linux基本使用</a></h1>
         
 
         <div class="post-meta">
@@ -2063,68 +2063,77 @@
       
         
           
-            <h1 id="Redis介绍"><a href="#Redis介绍" class="headerlink" title="Redis介绍"></a>Redis介绍</h1><p><em>edis是一个开源的使用ANSI C语言编写、支持网络、可基于内存亦可持久化的日志型、Key-Value数据库，并提供多种语言的API。**
-</em>Redis是 NoSQL技术阵营中的一员，它通过多种键值数据类型来适应不同场景下的存储需求，借助一些高层级的接口使用其可以胜任，如缓存、队列系统的不同角色*</p>
-<h1 id="Redis特性"><a href="#Redis特性" class="headerlink" title="Redis特性"></a>Redis特性</h1><ul>
-<li>Redis 与其他 key - value 缓存产品有以下三个特点：</li>
-<li>Redis支持数据的持久化，可以将内存中的数据保存在磁盘中，重启的时候可以再次加载进行使用。</li>
-<li>Redis不仅仅支持简单的key-value类型的数据，同时还提供list，set，zset，hash等数据结构的存储。</li>
-<li>Redis支持数据的备份，即master-slave模式的数据备份<br>  1、速度快<br>  Redis是用C语言实现的；<br>  Redis的所有数据存储在内存中。<br>  2、持久化<br>  Redis的所有数据存储在内存中，对数据的更新将异步地保存到磁盘上。<br>  3、支持多种数据结构<br>  Redis支持五种数据结构：String、List、Set、Hash、Zset<br>  4、支持多种编程语言<br>  Java、php、Python、Ruby、Lua、Node.js<br>  5、功能丰富<br>  除了支持五种数据结构之外，还支持事务、流水线、发布/订阅、消息队列等功能。<br>  6、源码简单<br>  约23000行C语言源代码。<br>  7、主从复制<br>  主服务器（master）执行添加、修改、删除，从服务器执行查询。<br>  8、高可用及分布式<br>  Redis-Sentinel（v2.8）支持高可用<br>  Redis-Cluster（v3.0）支持分布式</li>
-</ul>
-<blockquote>
-<p>什么是高可用？<br>   一台服务器挂掉会有另一台服务器立马顶上，Redis-Sentinel监听所有的监听所有的Redis主从服务器，<br>   一旦发现主服务器挂掉了，他会从若干服务器中选择一台新的机器作为master，其他从服务器会成为这台新master的从服务器。</p>
-<p>什么是分布式？<br>在一台物理计算机上，把数据A放到数据库D1，把数据B放到数据库D2，把数据C放到数据库D3属于分布式，但由于数据库的访问连接池是有限的，所以这种分布式解决方案存在性能瓶颈；<br>把数据A放到计算机C1的数据库D1，把数据B放到计算机C1的数据库D2，把数据C放到计算机C3的数据库D3也属于分布式，这种分布式解决方案扩展性好，如果系统增加了新业务X，X产生的数据Y可以放到计算机C4的数据库D4中，理论上来说这种方式可以无限扩展，从而保证系统的性能最大化。<br>存在瓶颈且价格较高的高性能单台服务器-&gt;可无限扩展的分布式集群</p>
-</blockquote>
-<pre><code>Redis可执行文件说明： 
-redis-server.exe　　　　 Redis服务 
-redis-cli.exe　　　　　　Redis命令行客户端 
-redis-benchmark.exe　　Redis性能测试工具 
-redis-check-aof.exe　　 AOF文件修复工具 
-redis-check-dump.exe　RDB文件检测工具 
-redis-sentinel.exe　　　 Sentinel服务器（2.8以后）
-</code></pre><p>##Redis常用的五种数据类型  ##<br><strong>String</strong><br>    是最常用的一种数据类型，普通的key/value存储都可以归为此类。</p>
-<pre><code>一个Key对应一个Value，string类型是二进制安全的。
-
-Redis的string可以包含任何数据，比如jpg图片(生成二进制)或者序列化的对象。
-</code></pre><p><strong>Hash(Key-Value)</strong><br>    hash是一个string 类型的field和value的映射表。</p>
-<pre><code>hash特别适合存储对象。相对于将对象的每个字段存成单个string 类型。
-一个对象存储在hash类型中会占用更少的内存，并且可以更方便的存取整个对象。
-
-Redis的Hash数据类型的value内部是一个HashMap,如果该Map的成员比较少，则会采用一维数组的方式
+            <h1 id="linux常用命令"><a href="#linux常用命令" class="headerlink" title="linux常用命令"></a>linux常用命令</h1><pre><code>cd app    切换到app目录
+cd ..        切换到上一层目录
+cd /        切换到系统根目录
+cd ~        切换到用户主目录
+cd -        切换到上一个所在目录
 </code></pre><ul>
-<li>采用String类型的存储对象，需要将对象进行序列化。<br><img src="/2018/01/20/Redis/redis01.jpg" alt="Redis"></li>
-<li>增加了序列化/反序列化的开销，并且在需要修改其中一项信息时，需要把整个对象取回</li>
-<li>使用Hash数据类型则不需要</li>
-<li>Key仍然是用户ID, value是一个Map，这个Map的key是成员的属性名，value是属性值，这样对数据的修改和存取都可以直接通过其内部Map的Key(Redis里称内部Map的key为field), 也就是通过 key(用户ID) + field(属性标签) 就可以操作对应属性数据了，既不需要重复存储数据，也不会带来序列化和反序列化。</li>
+<li><strong>ls ll 列出文件列表**</strong><br>ls(list)是一个非常有用的命令，用来显示当前目录下的内容。配合参数的使用，能以不同的方式显示目录内容。<br>  ls -a  显示所有文件或目录（包含隐藏的文件）<ul>
+<li>ls -l  缩写成ll<br>在linux中以 . 开头的文件都是隐藏的文件</li>
 </ul>
-<p><strong>List</strong><br>    list是一个链表结构，主要功能是push, pop, 获取一个范围的所有的值等。操作中key理解为链表名字。</p>
-<pre><code>Redis的list类型其实就是一个每个子元素都是string类型的双向链表。
-
-我们可以通过push,pop操作从链表的头部或者尾部添加删除元素，
-
-这样list既可以作为栈，又可以作为队列（栈就是insertFirst+deleteFirst，
-
-队列就是insertLast+deleteFirst）。可以支持反向查找和遍历，方便操作，
-
-不过带来了部分额外的内存开销。Redis内部的很多实现，
-包括发送缓冲队列等也都是用的这个数据结构
-</code></pre><ul>
-<li><p><strong>Set</strong><br>  它是string类型的无序集合。set是通过hash table实现的，可以进行添加、删除和查找。<br>  对集合我们可以取并集，交集，差集.</p>
-<p>  集合可以进行 交集、并集 如新浪微博中获取两个用户共同的关注人</p>
-<p>  新浪微博使用redis有两种应用场景：</p>
-<ol>
-<li><p>直接把数据放到redis中进行存储，这些数据是独立的</p>
-</li>
-<li><p>有些数据包含表与表之间的逻辑关系，这些数据又访问比较频繁，<br> 如果直接从数据库中进行查询性能比较差。<br> 先将数据写到redis中，再将数据保存到mysql数据库</p>
-</li>
-</ol>
-</li>
-<li><p><strong>zset</strong></p>
-<p>Redis sorted set的使用场景与set类似，<br>区别是set不是自动有序的，<br>而sorted set可以通过用户额外提供一个优先级(score)的参数来为成员排序，<br>并且是插入有序的，即自动排序。</p>
-<p>可以理解为一列存 value,一列存顺序。操作中key理解为zset的名字.</p>
-<p>当你需要一个有序的并且不重复的集合列表，那么可以选择sorted set数据结构</p>
 </li>
 </ul>
+<ul>
+<li><p>创建于删除目录<br>  mkdir(make directory)命令可用来创建子目录。<br>  mkdir app    在当前目录下创建app目录<br>  mkdir –p app2/test  多 级联创建aap2以及test目</p>
+<p>  rmdir(remove directory)命令可用来删除“空”的子目录：<br>  rmdir app    删除app目录<br>  rm -rf   删除</p>
+</li>
+<li>浏览文件<br>  cat命令   输入文件夹来浏览文件<br>  tail 命令     tail -f catalina.log    动态查看日志(<strong>*</strong>) </li>
+<li>文件操作<br>  cp是copy操作<br>  cp(copy)命令可以将文件从一处复制到另一处。一般在使用cp命令时将一个文件复制成另一个文件或复制到某目录时，需要指定源文件名与目标文件名或目录</li>
+<li><p>打包压缩和解压<br>  <em>tar命令位于/bin目录下，它能够将用户所指定的文件或目录打包成一个文件，但不做压缩。一般Linux上常用的压缩方式是选用tar将许多文件打包成一个文件，再以gzip压缩命令压缩成xxx.tar.gz(或称为xxx.tgz)的文件。</em></p>
+<p>  常用参数：<br>  -c：创建一个新tar文件<br>  -v：显示运行过程的信息<br>  -f：指定文件名<br>  -z：调用gzip压缩命令进行压缩<br>  -t：查看压缩文件的内容<br>  -x：解开tar文件</p>
+<p>  打包：<br>  tar –cvf xxx.tar ./<em><br>  打包并且压缩：<br>  tar –zcvf xxx.tar.gz ./</em><br><strong>解压 **</strong><br>  tar –xvf xxx.tar<br>  tar -xvf xxx.tar.gz -C /usr/aaa**</p>
+</li>
+<li><p>文件查找<br><em>查找符合条件的文件find</em><br>  find / -name “ins<em>” 查找文件名称是以ins开头的文件<br>  find / -name “ins</em>” –ls<br>  find / –user itcast –ls 查找用户itcast的文件<br>  find / –user itcast –type d –ls 查找用户itcast的目录<br>  find /-perm -777 –type d-ls 查找权限是777的文件<br>查找文件里符合条件的字符串。<br><em>查找文件中符合条件的字符串grep</em><br>  grep lang anaconda-ks.cfg  在文件中查找lang</p>
+</li>
+<li><p>其它常用命令</p>
+</li>
+<li><strong>pwd</strong><br>  显示当前所在目录</li>
+<li>touch<br>   创建一个空文件</li>
+<li>ll -h<br>  友好显示文件大小</li>
+<li><p>weget<br>  下载资料<br>   <em>wget <a href="http://nginx.org/download/nginx-1.9.12.tar.gz" target="_blank" rel="noopener">http://nginx.org/download/nginx-1.9.12.tar.gz</a></em></p>
+<h2 id="VI与VIM编辑器-（基本的CRUD）"><a href="#VI与VIM编辑器-（基本的CRUD）" class="headerlink" title="VI与VIM编辑器 ##（基本的CRUD）"></a>VI与VIM编辑器 ##（基本的CRUD）</h2><p><strong>有三种模式 命令行  插入  底行</strong><br>  通过  vi（vim） 文件名  就可以对文件进行操作<br>  当操作时，开始是命令行模式   按I  o  a 切换到插入模式<br>  按esc 可以在重新切换到命令行模式<br><strong>在命令行模式下按 “:” 就可以切换到底行模式。</strong><br>  退出：esc  :q<br>  修改文件：输入i进入插入模式<br>  保存并退出：esc:wq</p>
+<p>  不保存退出：esc:q!</p>
+<p>  三种进入插入模式：<br>  i:在当前的光标所在处插入<br>  o:在当前光标所在的行的下一行插入<br>  a:在光标所在的下一个字符插入</p>
+</li>
+</ul>
+<p><strong>快捷键：<br>dd – 快速删除一行<br>yy - 复制当前行<br>nyy - 从当前行向后复制几行<br>p - 粘贴<br>R – 替换*
+</strong>重定向<em>*
+</em>重定向输出，覆盖原有内容<em>
+</em>重定向输出，又追加功能*<br>    cat /etc/passwd &gt; a.txt  将输出定向到a.txt中<br>    cat /etc/passwd &gt;&gt; a.txt  输出并且追加</p>
+<pre><code>ifconfig &gt; ifconfig.txt
+</code></pre><p><strong>管道</strong><br><em>管道是Linux命令中重要的一个概念，其作用是将一个命令的输出用作另一个命令的输入。</em><br>    ls –help | more  分页查询帮助信息<br>    ps –ef | grep java  查询名称中包含java的进程</p>
+<pre><code>ifconfig | more
+cat index.html | more
+ps –ef | grep aio
+</code></pre><p><strong>系统常用命令</strong></p>
+<pre><code>date 显示或设置系统时间
+date  显示当前系统时间
+date -s “2014-01-01 10:10:10“  设置系统时间
+df 显示磁盘信息
+df –h  友好显示大小
+free 显示内存状态
+free –m 以mb单位显示内存组昂头
+top 显示，管理执行中的程序
+
+clear 清屏幕
+
+ps 正在运行的某个进程的状态
+ps –ef  查看所有进程
+ps –ef | grep ssh 查找某一进程
+kill 杀掉某一进程
+kill 2868  杀掉2868编号的进程
+kill -9 2868  强制杀死进程
+
+du 显示目录或文件的大小。
+du –h 显示当前目录的大小
+
+who 显示目前登入系统的用户信息。
+
+uname 显示系统信息。
+uname -a 显示本机详细信息。
+依次为：内核名称(类别)，主机名，内核版本号，内核版本，内核编译日期，硬件名，处理器类型，硬件平台类型，操作系统名称
+</code></pre><p><strong>2018/1/20 19:14:21 </strong></p>
 
           
         
