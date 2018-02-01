@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://HackerFreedom.github.io/"/>
-  <updated>2018-01-30T08:40:35.135Z</updated>
+  <updated>2018-01-31T16:52:08.706Z</updated>
   <id>http://HackerFreedom.github.io/</id>
   
   <author>
@@ -17,13 +17,38 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>web阶段的总结</title>
+    <link href="http://HackerFreedom.github.io/2018/01/31/web%E9%98%B6%E6%AE%B5%E6%80%BB%E7%BB%93/"/>
+    <id>http://HackerFreedom.github.io/2018/01/31/web阶段总结/</id>
+    <published>2018-01-31T08:59:00.000Z</published>
+    <updated>2018-01-31T16:52:08.706Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="理解什么是前端和后端"><a href="#理解什么是前端和后端" class="headerlink" title="理解什么是前端和后端"></a>理解什么是前端和后端</h1><p><img src="/2018/01/31/web阶段的总结/web01.png" alt="">;</p><p>更深刻的来说<br>就是java的三层架构：数据访问层（dao层） 业务逻辑层（service层） 界面层（ui）<br>Service 层–引用对应的dao数据库操作，业务逻辑层不仅可以处理自身需求的功能还可以调用dao层来完成扩展的功能，<br>这样确实是有利于开发和维护，同时也体现了MVC的设计模式中model层的功能体现。<br>Action层–&gt;引用对应的Service层，在这里结合Struts的配置文件，跳转到指定的页面，当然也能接受页面传递的请求数据，也可以做些计算处理、前端输入合法性检验(前端可修改网页绕过前端合法性检验，需在后台加一层)。</p><blockquote><p>Action像服务员，顾客点什么菜，菜上给几号桌，都是ta的职责，Service是厨师，action的菜单上的菜都是ta做<br>dao是厨房的小工，和原材料（通过hibernate操作数据库）打交道</p></blockquote><p><strong>对象调用的流程:jsp–action–service–dao–hebernate–数据库</strong></p><p>service 层在mvc框架中的<br>mvc框架由model，view，controller组成，执行流程一般是：在controller访问model获取数据，通过view渲染页面。<br>mvc模式是web开发中的基础模式，采用的是分层设计，各层之间职责分明。然而事与愿违，当我们日积月累的基于mvc模式开发之后，会逐渐的感受到层与层之间存在粘连和职责模棱两可的地方，这就是service层出现的重要原因。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;理解什么是前端和后端&quot;&gt;&lt;a href=&quot;#理解什么是前端和后端&quot; class=&quot;headerlink&quot; title=&quot;理解什么是前端和后端&quot;&gt;&lt;/a&gt;理解什么是前端和后端&lt;/h1&gt;&lt;p&gt;&lt;img src=&quot;/2018/01/31/web阶段的总结/web01.p
+      
+    
+    </summary>
+    
+      <category term="随笔" scheme="http://HackerFreedom.github.io/categories/%E9%9A%8F%E7%AC%94/"/>
+    
+    
+      <category term="web阶段的总结" scheme="http://HackerFreedom.github.io/tags/web%E9%98%B6%E6%AE%B5%E7%9A%84%E6%80%BB%E7%BB%93/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Reflect&amp;Porxy</title>
     <link href="http://HackerFreedom.github.io/2018/01/29/Reflect/"/>
     <id>http://HackerFreedom.github.io/2018/01/29/Reflect/</id>
     <published>2018-01-29T06:01:02.000Z</published>
-    <updated>2018-01-30T08:40:35.135Z</updated>
+    <updated>2018-01-31T11:37:20.123Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="反射介绍"><a href="#反射介绍" class="headerlink" title="反射介绍"></a>反射介绍</h1><p>反射:简单说,就是动态加载一个类,并获取该类中的所有内容,并使用他们.(构造,成员变量,成员方法)<br><img src="/2018/01/29/Reflect/reflect01.png" alt="">;</p><p><em>优点</em></p><ol><li>反射提高程序的灵活性和扩展性；</li><li>降低耦合性，提高自适应能力；</li><li>它允许程序创建和控制任何类的对象，无序提前硬编码目标类</li></ol><p><em>缺点</em></p><ol><li>性能问题：使用反射基本是一种解释操作，用于字段和方法接入时要远慢于直接代码。因此反射机制主要应用在对灵活性和拓展性要求很高的系统框架上，普通程序不建议使用。</li><li>使用反射会模糊程序内部逻辑；程序员希望在源代码中看到程序的逻辑，反射却绕过了源代码的技术，因而会带来维护的问题，    反射代码比相应的直接代码更复杂。</li></ol><ul><li>java反射常用API<br><strong>class类的实例表示正在运行的java应用程序中的类和接口。枚举是一种类，注释是一种接口。</strong></li></ul><p>反射:动态加载一个类,得到Class对象,剖析Class对象,得到构造方法对象,成员变量对象,成员方法对象,并使用它们.<br>Class clazz = Class.forName(“com.itheima.Student”);<br>clazz.newInstance();</p><p>Student stu = new Student ();</p><h1 id="calss介绍及获取"><a href="#calss介绍及获取" class="headerlink" title="calss介绍及获取"></a>calss介绍及获取</h1><ul><li>获取class对象的三种方式<br>   class clazz=Class.forName(“”)</li></ul><p><img src="/2018/01/29/Reflect/reflect02.png" alt="">;</p><h1 id="Constructor介绍"><a href="#Constructor介绍" class="headerlink" title="Constructor介绍"></a>Constructor介绍</h1><ul><li>获取构造方法<ul><li>getConstructor（Class&lt;?&gt;…parameterTyps）</li><li>getDeclaredConstructor(Class&lt;?&gt;…parameterTypes);<br>总结: 有s获取多个,没s获取一个,Declared可获取private<br>最常用:<br>  Class.getConstructor().newInstance();<br>Class.newInstance()<h1 id="field介绍"><a href="#field介绍" class="headerlink" title="field介绍"></a>field介绍</h1><ul><li>获取成员变量</li><li>获取多个<br>getFields()<br>getDeclaredFields()    </li></ul></li><li>获取一个<br>  getField(“name”)<br>  getDeclaredField(“name”)<h1 id="Method获取介绍"><a href="#Method获取介绍" class="headerlink" title="Method获取介绍"></a>Method获取介绍</h1></li><li>获取成员方法</li><li>Class对象<br>Method  getMethod(String);<br>Method[]  getMethods(String);</li></ul></li></ul><p><strong>invoke方法介绍</strong><br><img src="/2018/01/29/Reflect/invoke01.png" alt="">;</p><p><em>invoke 参数1：方法所在的对象； 参数二：调用这个方法需要传递的参数   ；invoke 方法的返回值是被调用的方法的返回值</em></p><h1 id="method中-invoke方法使用注意事项"><a href="#method中-invoke方法使用注意事项" class="headerlink" title="method中 invoke方法使用注意事项"></a>method中 invoke方法使用注意事项</h1><p><em>如果方法是静态的，在通过invoke调用时不需要传递对象</em></p><p><img src="/2018/01/29/Reflect/invoke02.png" alt="">;<br><em>如果方法的参数是一个对象数组，通过invoke 调用要处理一下这个对象</em></p><p><img src="/2018/01/29/Reflect/invoke03.png" alt="">;<br>解决方案：强制转换类型<br>    将数组再套上一层数组</p><p><strong>反射总结</strong></p><blockquote><p>1.Class.forName(“包名.类名”);<br>2.Class.newInstance()<br>3.Class.getMethod(“方法名”).invoke(Object,args…);</p></blockquote><p><em>如何将map集合中的数据封装到JavaBean类中去</em></p><p><img src="/2018/01/29/Reflect/invoke04.png" alt="">;</p>]]></content>
+    <content type="html"><![CDATA[<h1 id="反射介绍"><a href="#反射介绍" class="headerlink" title="反射介绍"></a>反射介绍</h1><p>反射:简单说,就是动态加载一个类,并获取该类中的所有内容,并使用他们.(构造,成员变量,成员方法)<br><img src="/2018/01/29/Reflect/reflect01.png" alt="">;</p><p><em>优点</em></p><ol><li>反射提高程序的灵活性和扩展性；</li><li>降低耦合性，提高自适应能力；</li><li>它允许程序创建和控制任何类的对象，无序提前硬编码目标类</li></ol><p><em>缺点</em></p><ol><li>性能问题：使用反射基本是一种解释操作，用于字段和方法接入时要远慢于直接代码。因此反射机制主要应用在对灵活性和拓展性要求很高的系统框架上，普通程序不建议使用。</li><li>使用反射会模糊程序内部逻辑；程序员希望在源代码中看到程序的逻辑，反射却绕过了源代码的技术，因而会带来维护的问题，    反射代码比相应的直接代码更复杂。</li></ol><ul><li>java反射常用API<br><strong>class类的实例表示正在运行的java应用程序中的类和接口。枚举是一种类，注释是一种接口。</strong></li></ul><p>反射:动态加载一个类,得到Class对象,剖析Class对象,得到构造方法对象,成员变量对象,成员方法对象,并使用它们.<br>Class clazz = Class.forName(“com.itheima.Student”);<br>clazz.newInstance();</p><p>Student stu = new Student ();</p><h1 id="calss介绍及获取"><a href="#calss介绍及获取" class="headerlink" title="calss介绍及获取"></a>calss介绍及获取</h1><ul><li>获取class对象的三种方式<br>   class clazz=Class.forName(“”)</li></ul><p><img src="/2018/01/29/Reflect/reflect02.png" alt="">;</p><h1 id="Constructor介绍"><a href="#Constructor介绍" class="headerlink" title="Constructor介绍"></a>Constructor介绍</h1><ul><li>获取构造方法<ul><li>getConstructor（Class&lt;?&gt;…parameterTyps）</li><li>getDeclaredConstructor(Class&lt;?&gt;…parameterTypes);<br>总结: 有s获取多个,没s获取一个,Declared可获取private<br>最常用:<br>  Class.getConstructor().newInstance();<br>Class.newInstance()<h1 id="field介绍"><a href="#field介绍" class="headerlink" title="field介绍"></a>field介绍</h1><ul><li>获取成员变量</li><li>获取多个<br>getFields()<br>getDeclaredFields()    </li></ul></li><li>获取一个<br>  getField(“name”)<br>  getDeclaredField(“name”)<h1 id="Method获取介绍（重点-）"><a href="#Method获取介绍（重点-）" class="headerlink" title="Method获取介绍（重点 ）"></a>Method获取介绍（重点 ）</h1></li><li>获取成员方法</li><li>Class对象<br>Method  getMethod(String);<br>Method[]  getMethods(String);</li></ul></li></ul><p><strong>invoke方法介绍</strong><br><img src="/2018/01/29/Reflect/invoke01.png" alt="">;</p><p><em>invoke 参数1：方法所在的对象； 参数二：调用这个方法需要传递的参数   ；invoke 方法的返回值是被调用的方法的返回值</em></p><h1 id="method中-invoke方法使用注意事项"><a href="#method中-invoke方法使用注意事项" class="headerlink" title="method中 invoke方法使用注意事项"></a>method中 invoke方法使用注意事项</h1><p><em>如果方法是静态的，在通过invoke调用时不需要传递对象</em></p><p><img src="/2018/01/29/Reflect/invoke02.png" alt="">;<br><em>如果方法的参数是一个对象数组，通过invoke 调用要处理一下这个对象</em></p><p><img src="/2018/01/29/Reflect/invoke03.png" alt="">;<br>解决方案：强制转换类型<br>    将数组再套上一层数组</p><p><strong>反射总结</strong></p><blockquote><p>1.Class.forName(“包名.类名”);<br>2.Class.newInstance()<br>3.Class.getMethod(“方法名”).invoke(Object,args…);</p></blockquote><p><em>如何将map集合中的数据封装到JavaBean类中去</em></p><p><img src="/2018/01/29/Reflect/invoke04.png" alt="">;</p><h2 id="动态代理"><a href="#动态代理" class="headerlink" title="动态代理"></a>动态代理</h2><ol><li>静态代理：增强、包装、装饰者设计模式（Connection close、Request getParameter）</li><li>动态代理：Object Proxy.newProxyInstance(ClassLoader loader, Class [] interfaces, InvocationHandler h)</li></ol><h2 id="代理模式的介绍"><a href="#代理模式的介绍" class="headerlink" title="代理模式的介绍"></a>代理模式的介绍</h2><p>即proxyPatterm<br>代理模式的定义：为其他对象提供一种代理以控制对这个对象的访问。在某些情况下，一个对象不适合或者不能直接引用另一个对象，而代理对象可以在客户端和目标对象之间起到中介的作用。<br>总结来说就是，为其需找一个代替身（所谓影分身！！！）使其更加灵活，多变</p><p><strong>通过代理层这一中间层，有效的控制对于真实委托类对象的直接访问，同时可以实现自定义的控制策略（Spring的AOP机制），设计上获得更大的灵活性。</strong></p><ol><li>组成<br>抽象角色： 通过接口或者是抽象类声明真实角色实现的业务方法<br>代理角色： 实现抽象角色，是真实角色的代理<br>真实角色： 实现抽象角色，定义真实角色要实现的业务逻辑</li></ol><p>2.分类</p><ul><li>静态代理</li><li>动态代理</li><li><em>使用Proxy完成动态代理对象的创建</em><br>动态代理是在内存中直接生成代理对象<br><img src="/2018/01/29/Reflect/Proxy01.png" alt="">;</li></ul><ul><li><p><strong>java.lang.reflect.Proxy帮助我们完成动态代理创建</strong><br> // 方法 1: 该方法用于获取指定代理对象所关联的调用处理器<br> public static InvocationHandler getInvocationHandler(Object proxy) </p><p> // 方法 2：该方法用于获取关联于指定类装载器和一组接口的动态代理类的类对象<br> public static Class&lt;?&gt; getProxyClass(ClassLoader loader,<br> Class&lt;?&gt;… interfaces)</p><p> // 方法 3：该方法用于判断指定类对象是否是一个动态代理类<br> public static boolean isProxyClass(Class&lt;?&gt; cl) </p><p> // 方法 4：该方法用于为指定类装载器、一组接口及调用处理器生成动态代理类实例<br> public static Object newProxyInstance(ClassLoader loader,<br>  Class&lt;?&gt;[] interfaces,InvocationHandler h)</p></li></ul><ul><li><p><strong>invocationHandler:调用处理器接口，自定义invokle方法，用于实现对于真正委托类的代理访问。</strong></p><p>  /<em>*<br>   该方法负责集中处理动态代理类上的所有方法调用。<br>   第一个参数既是代理类实例，<br>   第二个参数是被调用的方法对象<br>   第三个方法是调用参数，方法的参数。<br>   调用处理器根据这三个参数进行预处理或分派到委托类实例上发射执行  </em>/<br>  public Object invoke(Object proxy, Method method, Object[] args)<br>  throws Throwable;</p></li></ul><ul><li><strong>java.lang.ClassLoader：类装载器类</strong>，将类的字节码装载到 Java 虚拟机（JVM）中并为其定义类对象，然后该类才能被使用。Proxy类与普通类的唯一区别就是其字节码是由 JVM 在运行时动态生成的而非预存在于任何一个 .class 文件中。 </li></ul><h2 id="动态代理机制"><a href="#动态代理机制" class="headerlink" title="动态代理机制"></a>动态代理机制</h2><p>对于一个动态代理的创建<br>    使用Proxy.newProxyInestance（classloader，Interface,invocationHandler）<br><img src="/2018/01/29/Reflect/Proxy.png" alt="动态代理">;</p><p>总结</p><blockquote><p>1.创建一个接口(抽象角色)<br>2.创建一个实现类实现接口(真实角色)<br>3.创建一个测试类,在测试类中,创建真实对象<br>a)创建代理对象(Proxy.newProxyInstance)<br>b)调用代理对象的方法</p><p>掌握Proxy.newProxyInstance()方法的使用(理解各参数的意义,返回值）</p></blockquote><h3 id="注解概述"><a href="#注解概述" class="headerlink" title="注解概述"></a>注解概述</h3><ol><li>注解的作用</li></ol><p><img src="/2018/01/29/Reflect/annotation01.png" alt=""></p><ol><li>java基本内置注解</li></ol><ul><li>@override实现或者重写父类或接口中的方法</li><li>@Deprecated用来标识过时的方法</li><li>@SupperssWarnnings(“all”)取消警告</li></ul><h3 id="元注解"><a href="#元注解" class="headerlink" title="元注解"></a>元注解</h3><p>元注解是一种基本注解，但是它是特殊的注解的标记，作用和目的就是给其他的普通注解进行解释说明</p><p><strong>元标签有 @Retention、@Documented、@Target、@Inherited、@Repeatable 5 种。</strong></p><ul><li>@Retention</li></ul><p>Retention 的英文意为保留期的意思。当 @Retention 应用到一个注解上的时候，它解释说明了这个注解的的存活时间。</p><blockquote><p>RetentionPolicy.SOURCE 注解只在源码阶段保留，在编译器进行编译时它将被丢弃忽视。<br> RetentionPolicy.CLASS 注解只被保留到编译进行的时候，它并不会被加载到 JVM 中。<br>RetentionPolicy.RUNTIME 注解可以保留到程序运行的时候，它会被加载进入到 JVM 中，所以在程序运行时可以获取到它们</p></blockquote><ul><li>@Documented</li></ul><p>顾名思义，这个元注解肯定是和文档有关。它的作用是能够将注解中的元素包含到 Javadoc 中去。</p><ul><li><p>@Target<br>当一个注解被 @Target 注解时，这个注解就被限定了运用的场景。</p><blockquote><p><strong>ElementType.ANNOTATION_TYPE</strong> 可以给一个注解进行注解<br>ElementType.CONSTRUCTOR 可以给构造方法进行注解<br><strong>ElementType.FIELD</strong> 可以给属性进行注解<br>ElementType.LOCAL_VARIABLE 可以给局部变量进行注解<br><strong>ElementType.METHOD</strong> 可以给方法进行注解<br>ElementType.PACKAGE 可以给一个包进行注解<br>ElementType.PARAMETER 可以给一个方法内的参数进行注解<br>ElementType.TYPE 可以给一个类型进行注解，比如类、接口、枚举</p></blockquote></li><li><p>@Inherited<br>Inherited 是继承的意思<br>注解Test 被 @Inherited 修饰，之后类 A 被 Test 注解，类 B 继承 A,类 B 也拥有 Test 这个注解。</p></li><li><p>@Repeatable<br>Repeatable 自然是可重复的意思。@Repeatable 是 Java 1.8 才加进来的，所以算是一个新的特性</p></li></ul>]]></content>
     
     <summary type="html">
     
@@ -92,31 +117,6 @@
   </entry>
   
   <entry>
-    <title>nginx&amp;svn</title>
-    <link href="http://HackerFreedom.github.io/2018/01/28/nginx-svn/"/>
-    <id>http://HackerFreedom.github.io/2018/01/28/nginx-svn/</id>
-    <published>2018-01-28T00:50:56.000Z</published>
-    <updated>2018-01-29T07:10:52.689Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="nginx简介"><a href="#nginx简介" class="headerlink" title="nginx简介"></a>nginx简介</h1><p>Nginx的概念：Nginx (“engine x”) 是一个高性能的HTTP和反向代理服务器，也是一个电子邮件（IMAP/POP3/SMTP）服务器。<br>Nginx的要点：<br>1、Nginx 可以在大多数 Unix、Linux OS 上编译运行，并有 Windows 移植版<br>2、支持高并发操作，实现负载均衡<br>正向代理和反向代理的区别：<br><img src="/2018/01/28/nginx-svn/nginx01.png" alt="">;</p><ul><li>正向代理:出去访问外网</li><li>反向代理:外网回来</li><li></li><li>正向代理它隐藏了客户端</li><li>反向代理它隐藏的是服务器端</li></ul><p><img src="/2018/01/28/nginx-svn/nginx02.png" alt="反向代理">;</p><h2 id="反向代理"><a href="#反向代理" class="headerlink" title="反向代理"></a>反向代理</h2><p>所谓的反向代理就是隐藏真实的服务器，通过proxy来指定要访问的服务端：</p><p>##负载均衡  ##</p><p>所谓的负载均衡简单说就是将一台服务原来承受的压力由多台服务器来分配，可以在nginx中实现tomcat集群，通过weight来分配权重。</p><p><img src="/2018/01/28/nginx-svn/nginx.png" alt="负载均衡">;</p><h2 id="nginx-amp-tomcat集群-amp-redis实现session共享"><a href="#nginx-amp-tomcat集群-amp-redis实现session共享" class="headerlink" title="nginx&amp;tomcat集群&amp;redis实现session共享"></a>nginx&amp;tomcat集群&amp;redis实现session共享</h2><p>在两个服务器中分别部署同一个项目：myweb,在该项目里面有一个index.jsp页面，在页面中获取了sessionid并显示在页面上。如果两个服务器中myweb项目里面的index.jsp中获取的sessionid一致，就说明session共享了。</p><h3 id="svn概述（小乌龟）"><a href="#svn概述（小乌龟）" class="headerlink" title="svn概述（小乌龟）"></a>svn概述（小乌龟）</h3><p>SVN是Subversion的简称，是一个自由开源的版本控制系统。<br>Subversion将文件存放在中心版本库里，这个版本库很像一个普通的文件服务器，不同的是，它可以记录每一次文件和目录的修改情况，这样就可以借此将数据恢复到以前的版本，并可以查看数据的更改细节<br>早期版本控制使用的是CVS,后来SVN替代了CVS,随着android兴起，出现Git版本控制工具，后续我们会学到。</p><p><img src="/2018/01/28/nginx-svn/svn01.png" alt="SVN">;<br>基本操作：</p><ol><li>Checkout：检出（从服务器上导出项目）</li><li>Update：更新文件（指的是用户后续从服务器上down代码，也成为更新操作）</li><li>Commit：提交文件（提交文件到服务器；）</li></ol>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;nginx简介&quot;&gt;&lt;a href=&quot;#nginx简介&quot; class=&quot;headerlink&quot; title=&quot;nginx简介&quot;&gt;&lt;/a&gt;nginx简介&lt;/h1&gt;&lt;p&gt;Nginx的概念：Nginx (“engine x”) 是一个高性能的HTTP和反向代理服务器，也是
-      
-    
-    </summary>
-    
-      <category term="技术文章" scheme="http://HackerFreedom.github.io/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/"/>
-    
-    
-      <category term="nginx&amp;svn基本知识" scheme="http://HackerFreedom.github.io/tags/nginx-svn%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86/"/>
-    
-  </entry>
-  
-  <entry>
     <title>大学时的生活</title>
     <link href="http://HackerFreedom.github.io/2018/01/28/Memoirs/"/>
     <id>http://HackerFreedom.github.io/2018/01/28/Memoirs/</id>
@@ -138,6 +138,31 @@
     
     
       <category term="时尚" scheme="http://HackerFreedom.github.io/tags/%E6%97%B6%E5%B0%9A/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>nginx&amp;svn</title>
+    <link href="http://HackerFreedom.github.io/2018/01/28/nginx-svn/"/>
+    <id>http://HackerFreedom.github.io/2018/01/28/nginx-svn/</id>
+    <published>2018-01-28T00:50:56.000Z</published>
+    <updated>2018-01-29T07:10:52.689Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="nginx简介"><a href="#nginx简介" class="headerlink" title="nginx简介"></a>nginx简介</h1><p>Nginx的概念：Nginx (“engine x”) 是一个高性能的HTTP和反向代理服务器，也是一个电子邮件（IMAP/POP3/SMTP）服务器。<br>Nginx的要点：<br>1、Nginx 可以在大多数 Unix、Linux OS 上编译运行，并有 Windows 移植版<br>2、支持高并发操作，实现负载均衡<br>正向代理和反向代理的区别：<br><img src="/2018/01/28/nginx-svn/nginx01.png" alt="">;</p><ul><li>正向代理:出去访问外网</li><li>反向代理:外网回来</li><li></li><li>正向代理它隐藏了客户端</li><li>反向代理它隐藏的是服务器端</li></ul><p><img src="/2018/01/28/nginx-svn/nginx02.png" alt="反向代理">;</p><h2 id="反向代理"><a href="#反向代理" class="headerlink" title="反向代理"></a>反向代理</h2><p>所谓的反向代理就是隐藏真实的服务器，通过proxy来指定要访问的服务端：</p><p>##负载均衡  ##</p><p>所谓的负载均衡简单说就是将一台服务原来承受的压力由多台服务器来分配，可以在nginx中实现tomcat集群，通过weight来分配权重。</p><p><img src="/2018/01/28/nginx-svn/nginx.png" alt="负载均衡">;</p><h2 id="nginx-amp-tomcat集群-amp-redis实现session共享"><a href="#nginx-amp-tomcat集群-amp-redis实现session共享" class="headerlink" title="nginx&amp;tomcat集群&amp;redis实现session共享"></a>nginx&amp;tomcat集群&amp;redis实现session共享</h2><p>在两个服务器中分别部署同一个项目：myweb,在该项目里面有一个index.jsp页面，在页面中获取了sessionid并显示在页面上。如果两个服务器中myweb项目里面的index.jsp中获取的sessionid一致，就说明session共享了。</p><h3 id="svn概述（小乌龟）"><a href="#svn概述（小乌龟）" class="headerlink" title="svn概述（小乌龟）"></a>svn概述（小乌龟）</h3><p>SVN是Subversion的简称，是一个自由开源的版本控制系统。<br>Subversion将文件存放在中心版本库里，这个版本库很像一个普通的文件服务器，不同的是，它可以记录每一次文件和目录的修改情况，这样就可以借此将数据恢复到以前的版本，并可以查看数据的更改细节<br>早期版本控制使用的是CVS,后来SVN替代了CVS,随着android兴起，出现Git版本控制工具，后续我们会学到。</p><p><img src="/2018/01/28/nginx-svn/svn01.png" alt="SVN">;<br>基本操作：</p><ol><li>Checkout：检出（从服务器上导出项目）</li><li>Update：更新文件（指的是用户后续从服务器上down代码，也成为更新操作）</li><li>Commit：提交文件（提交文件到服务器；）</li></ol>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;nginx简介&quot;&gt;&lt;a href=&quot;#nginx简介&quot; class=&quot;headerlink&quot; title=&quot;nginx简介&quot;&gt;&lt;/a&gt;nginx简介&lt;/h1&gt;&lt;p&gt;Nginx的概念：Nginx (“engine x”) 是一个高性能的HTTP和反向代理服务器，也是
+      
+    
+    </summary>
+    
+      <category term="技术文章" scheme="http://HackerFreedom.github.io/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/"/>
+    
+    
+      <category term="nginx&amp;svn基本知识" scheme="http://HackerFreedom.github.io/tags/nginx-svn%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86/"/>
     
   </entry>
   

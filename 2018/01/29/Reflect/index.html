@@ -112,7 +112,10 @@
 <meta property="og:image" content="http://hackerfreedom.github.io/2018/01/29/Reflect/invoke02.png">
 <meta property="og:image" content="http://hackerfreedom.github.io/2018/01/29/Reflect/invoke03.png">
 <meta property="og:image" content="http://hackerfreedom.github.io/2018/01/29/Reflect/invoke04.png">
-<meta property="og:updated_time" content="2018-01-30T08:40:35.135Z">
+<meta property="og:image" content="http://hackerfreedom.github.io/2018/01/29/Reflect/Proxy01.png">
+<meta property="og:image" content="http://hackerfreedom.github.io/2018/01/29/Reflect/Proxy.png">
+<meta property="og:image" content="http://hackerfreedom.github.io/2018/01/29/Reflect/annotation01.png">
+<meta property="og:updated_time" content="2018-01-31T11:37:20.123Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Reflect&amp;Porxy">
 <meta name="twitter:description" content="反射介绍反射:简单说,就是动态加载一个类,并获取该类中的所有内容,并使用他们.(构造,成员变量,成员方法); 优点  反射提高程序的灵活性和扩展性； 降低耦合性，提高自适应能力； 它允许程序创建和控制任何类的对象，无序提前硬编码目标类  缺点  性能问题：使用反射基本是一种解释操作，用于字段和方法接入时要远慢于直接代码。因此反射机制主要应用在对灵活性和拓展性要求很高的系统框架上，普通程序不建议使用">
@@ -247,6 +250,16 @@
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
             总章
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-board">
+          <a href="/board" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            留言
           </a>
         </li>
       
@@ -422,7 +435,7 @@
 <li>获取多个<br>getFields()<br>getDeclaredFields()    </li>
 </ul>
 </li>
-<li>获取一个<br>  getField(“name”)<br>  getDeclaredField(“name”)<h1 id="Method获取介绍"><a href="#Method获取介绍" class="headerlink" title="Method获取介绍"></a>Method获取介绍</h1></li>
+<li>获取一个<br>  getField(“name”)<br>  getDeclaredField(“name”)<h1 id="Method获取介绍（重点-）"><a href="#Method获取介绍（重点-）" class="headerlink" title="Method获取介绍（重点 ）"></a>Method获取介绍（重点 ）</h1></li>
 <li>获取成员方法</li>
 <li>Class对象<br>Method  getMethod(String);<br>Method[]  getMethods(String);</li>
 </ul>
@@ -439,6 +452,79 @@
 </blockquote>
 <p><em>如何将map集合中的数据封装到JavaBean类中去</em></p>
 <p><img src="/2018/01/29/Reflect/invoke04.png" alt="">;</p>
+<h2 id="动态代理"><a href="#动态代理" class="headerlink" title="动态代理"></a>动态代理</h2><ol>
+<li>静态代理：增强、包装、装饰者设计模式（Connection close、Request getParameter）</li>
+<li>动态代理：Object Proxy.newProxyInstance(ClassLoader loader, Class [] interfaces, InvocationHandler h)</li>
+</ol>
+<h2 id="代理模式的介绍"><a href="#代理模式的介绍" class="headerlink" title="代理模式的介绍"></a>代理模式的介绍</h2><p>即proxyPatterm<br>代理模式的定义：为其他对象提供一种代理以控制对这个对象的访问。在某些情况下，一个对象不适合或者不能直接引用另一个对象，而代理对象可以在客户端和目标对象之间起到中介的作用。<br>总结来说就是，为其需找一个代替身（所谓影分身！！！）使其更加灵活，多变</p>
+<p><strong>通过代理层这一中间层，有效的控制对于真实委托类对象的直接访问，同时可以实现自定义的控制策略（Spring的AOP机制），设计上获得更大的灵活性。</strong></p>
+<ol>
+<li>组成<br>抽象角色： 通过接口或者是抽象类声明真实角色实现的业务方法<br>代理角色： 实现抽象角色，是真实角色的代理<br>真实角色： 实现抽象角色，定义真实角色要实现的业务逻辑</li>
+</ol>
+<p>2.分类</p>
+<ul>
+<li>静态代理</li>
+<li>动态代理</li>
+<li><em>使用Proxy完成动态代理对象的创建</em><br>动态代理是在内存中直接生成代理对象<br><img src="/2018/01/29/Reflect/Proxy01.png" alt="">;</li>
+</ul>
+<ul>
+<li><p><strong>java.lang.reflect.Proxy帮助我们完成动态代理创建</strong><br> // 方法 1: 该方法用于获取指定代理对象所关联的调用处理器<br> public static InvocationHandler getInvocationHandler(Object proxy) </p>
+<p> // 方法 2：该方法用于获取关联于指定类装载器和一组接口的动态代理类的类对象<br> public static Class&lt;?&gt; getProxyClass(ClassLoader loader,<br> Class&lt;?&gt;… interfaces)</p>
+<p> // 方法 3：该方法用于判断指定类对象是否是一个动态代理类<br> public static boolean isProxyClass(Class&lt;?&gt; cl) </p>
+<p> // 方法 4：该方法用于为指定类装载器、一组接口及调用处理器生成动态代理类实例<br> public static Object newProxyInstance(ClassLoader loader,<br>  Class&lt;?&gt;[] interfaces,InvocationHandler h)</p>
+</li>
+</ul>
+<ul>
+<li><p><strong>invocationHandler:调用处理器接口，自定义invokle方法，用于实现对于真正委托类的代理访问。</strong></p>
+<p>  /<em>*<br>   该方法负责集中处理动态代理类上的所有方法调用。<br>   第一个参数既是代理类实例，<br>   第二个参数是被调用的方法对象<br>   第三个方法是调用参数，方法的参数。<br>   调用处理器根据这三个参数进行预处理或分派到委托类实例上发射执行
+  </em>/<br>  public Object invoke(Object proxy, Method method, Object[] args)<br>  throws Throwable;</p>
+</li>
+</ul>
+<ul>
+<li><strong>java.lang.ClassLoader：类装载器类</strong>，将类的字节码装载到 Java 虚拟机（JVM）中并为其定义类对象，然后该类才能被使用。Proxy类与普通类的唯一区别就是其字节码是由 JVM 在运行时动态生成的而非预存在于任何一个 .class 文件中。 </li>
+</ul>
+<h2 id="动态代理机制"><a href="#动态代理机制" class="headerlink" title="动态代理机制"></a>动态代理机制</h2><p>对于一个动态代理的创建<br>    使用Proxy.newProxyInestance（classloader，Interface,invocationHandler）<br><img src="/2018/01/29/Reflect/Proxy.png" alt="动态代理">;</p>
+<p>总结</p>
+<blockquote>
+<p>1.创建一个接口(抽象角色)<br>2.创建一个实现类实现接口(真实角色)<br>3.创建一个测试类,在测试类中,创建真实对象<br>a)创建代理对象(Proxy.newProxyInstance)<br>b)调用代理对象的方法</p>
+<p>掌握Proxy.newProxyInstance()方法的使用(理解各参数的意义,返回值）</p>
+</blockquote>
+<h3 id="注解概述"><a href="#注解概述" class="headerlink" title="注解概述"></a>注解概述</h3><ol>
+<li>注解的作用</li>
+</ol>
+<p><img src="/2018/01/29/Reflect/annotation01.png" alt=""></p>
+<ol>
+<li>java基本内置注解</li>
+</ol>
+<ul>
+<li>@override实现或者重写父类或接口中的方法</li>
+<li>@Deprecated用来标识过时的方法</li>
+<li>@SupperssWarnnings(“all”)取消警告</li>
+</ul>
+<h3 id="元注解"><a href="#元注解" class="headerlink" title="元注解"></a>元注解</h3><p>元注解是一种基本注解，但是它是特殊的注解的标记，作用和目的就是给其他的普通注解进行解释说明</p>
+<p><strong>元标签有 @Retention、@Documented、@Target、@Inherited、@Repeatable 5 种。</strong></p>
+<ul>
+<li>@Retention</li>
+</ul>
+<p>Retention 的英文意为保留期的意思。当 @Retention 应用到一个注解上的时候，它解释说明了这个注解的的存活时间。</p>
+<blockquote>
+<p>RetentionPolicy.SOURCE 注解只在源码阶段保留，在编译器进行编译时它将被丢弃忽视。<br> RetentionPolicy.CLASS 注解只被保留到编译进行的时候，它并不会被加载到 JVM 中。<br>RetentionPolicy.RUNTIME 注解可以保留到程序运行的时候，它会被加载进入到 JVM 中，所以在程序运行时可以获取到它们</p>
+</blockquote>
+<ul>
+<li>@Documented</li>
+</ul>
+<p>顾名思义，这个元注解肯定是和文档有关。它的作用是能够将注解中的元素包含到 Javadoc 中去。</p>
+<ul>
+<li><p>@Target<br>当一个注解被 @Target 注解时，这个注解就被限定了运用的场景。</p>
+<blockquote>
+<p><strong>ElementType.ANNOTATION_TYPE</strong> 可以给一个注解进行注解<br>ElementType.CONSTRUCTOR 可以给构造方法进行注解<br><strong>ElementType.FIELD</strong> 可以给属性进行注解<br>ElementType.LOCAL_VARIABLE 可以给局部变量进行注解<br><strong>ElementType.METHOD</strong> 可以给方法进行注解<br>ElementType.PACKAGE 可以给一个包进行注解<br>ElementType.PARAMETER 可以给一个方法内的参数进行注解<br>ElementType.TYPE 可以给一个类型进行注解，比如类、接口、枚举</p>
+</blockquote>
+</li>
+<li><p>@Inherited<br>Inherited 是继承的意思<br>注解Test 被 @Inherited 修饰，之后类 A 被 Test 注解，类 B 继承 A,类 B 也拥有 Test 这个注解。</p>
+</li>
+<li><p>@Repeatable<br>Repeatable 自然是可重复的意思。@Repeatable 是 Java 1.8 才加进来的，所以算是一个新的特性</p>
+</li>
+</ul>
 
       
     </div>
@@ -487,6 +573,10 @@
 
           <div class="post-nav-prev post-nav-item">
             
+              <a href="/2018/01/31/web阶段总结/" rel="prev" title="web阶段的总结">
+                web阶段的总结 <i class="fa fa-chevron-right"></i>
+              </a>
+            
           </div>
         </div>
       
@@ -513,6 +603,11 @@
 
 
           
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zMzc1NS8xMDMwOQ=="></div>
+    </div>
 
   
 
@@ -568,7 +663,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-count">17</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -579,7 +674,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -590,7 +685,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-count">12</span>
                   <span class="site-state-item-name">标签</span>
                 
               </div>
@@ -639,7 +734,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#反射介绍"><span class="nav-number">1.</span> <span class="nav-text">反射介绍</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#calss介绍及获取"><span class="nav-number">2.</span> <span class="nav-text">calss介绍及获取</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Constructor介绍"><span class="nav-number">3.</span> <span class="nav-text">Constructor介绍</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#field介绍"><span class="nav-number">4.</span> <span class="nav-text">field介绍</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Method获取介绍"><span class="nav-number">5.</span> <span class="nav-text">Method获取介绍</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#method中-invoke方法使用注意事项"><span class="nav-number">6.</span> <span class="nav-text">method中 invoke方法使用注意事项</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#反射介绍"><span class="nav-number">1.</span> <span class="nav-text">反射介绍</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#calss介绍及获取"><span class="nav-number">2.</span> <span class="nav-text">calss介绍及获取</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Constructor介绍"><span class="nav-number">3.</span> <span class="nav-text">Constructor介绍</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#field介绍"><span class="nav-number">4.</span> <span class="nav-text">field介绍</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Method获取介绍（重点-）"><span class="nav-number">5.</span> <span class="nav-text">Method获取介绍（重点 ）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#method中-invoke方法使用注意事项"><span class="nav-number">6.</span> <span class="nav-text">method中 invoke方法使用注意事项</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#动态代理"><span class="nav-number">6.1.</span> <span class="nav-text">动态代理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代理模式的介绍"><span class="nav-number">6.2.</span> <span class="nav-text">代理模式的介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#动态代理机制"><span class="nav-number">6.3.</span> <span class="nav-text">动态代理机制</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#注解概述"><span class="nav-number">6.3.1.</span> <span class="nav-text">注解概述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#元注解"><span class="nav-number">6.3.2.</span> <span class="nav-text">元注解</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
@@ -829,6 +924,17 @@
 
 
 
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
   
 
 

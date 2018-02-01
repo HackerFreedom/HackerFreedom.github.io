@@ -243,6 +243,16 @@
         </li>
       
         
+        <li class="menu-item menu-item-board">
+          <a href="/board" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            留言
+          </a>
+        </li>
+      
+        
         <li class="menu-item menu-item-life">
           <a href="/life" rel="section">
             
@@ -282,6 +292,156 @@
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://HackerFreedom.github.io/2018/01/31/web阶段总结/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Sam">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/my.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="TO BE BTTER ME">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/01/31/web阶段总结/" itemprop="url">web阶段的总结</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-31T16:59:00+08:00">
+                2018-01-31
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/随笔/" itemprop="url" rel="index">
+                    <span itemprop="name">随笔</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="理解什么是前端和后端"><a href="#理解什么是前端和后端" class="headerlink" title="理解什么是前端和后端"></a>理解什么是前端和后端</h1><p><img src="/2018/01/31/web阶段的总结/web01.png" alt="">;</p>
+<p>更深刻的来说<br>就是java的三层架构：数据访问层（dao层） 业务逻辑层（service层） 界面层（ui）<br>Service 层–引用对应的dao数据库操作，业务逻辑层不仅可以处理自身需求的功能还可以调用dao层来完成扩展的功能，<br>这样确实是有利于开发和维护，同时也体现了MVC的设计模式中model层的功能体现。<br>Action层–&gt;引用对应的Service层，在这里结合Struts的配置文件，跳转到指定的页面，当然也能接受页面传递的请求数据，也可以做些计算处理、前端输入合法性检验(前端可修改网页绕过前端合法性检验，需在后台加一层)。</p>
+<blockquote>
+<p>Action像服务员，顾客点什么菜，菜上给几号桌，都是ta的职责，Service是厨师，action的菜单上的菜都是ta做<br>dao是厨房的小工，和原材料（通过hibernate操作数据库）打交道</p>
+</blockquote>
+<p><strong>对象调用的流程:jsp–action–service–dao–hebernate–数据库</strong></p>
+<p>service 层在mvc框架中的<br>mvc框架由model，view，controller组成，执行流程一般是：在controller访问model获取数据，通过view渲染页面。<br>mvc模式是web开发中的基础模式，采用的是分层设计，各层之间职责分明。然而事与愿违，当我们日积月累的基于mvc模式开发之后，会逐渐的感受到层与层之间存在粘连和职责模棱两可的地方，这就是service层出现的重要原因。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+  <div>
+  
+  </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
     
       
 
@@ -418,7 +578,7 @@
 <li>获取多个<br>getFields()<br>getDeclaredFields()    </li>
 </ul>
 </li>
-<li>获取一个<br>  getField(“name”)<br>  getDeclaredField(“name”)<h1 id="Method获取介绍"><a href="#Method获取介绍" class="headerlink" title="Method获取介绍"></a>Method获取介绍</h1></li>
+<li>获取一个<br>  getField(“name”)<br>  getDeclaredField(“name”)<h1 id="Method获取介绍（重点-）"><a href="#Method获取介绍（重点-）" class="headerlink" title="Method获取介绍（重点 ）"></a>Method获取介绍（重点 ）</h1></li>
 <li>获取成员方法</li>
 <li>Class对象<br>Method  getMethod(String);<br>Method[]  getMethods(String);</li>
 </ul>
@@ -435,6 +595,79 @@
 </blockquote>
 <p><em>如何将map集合中的数据封装到JavaBean类中去</em></p>
 <p><img src="/2018/01/29/Reflect/invoke04.png" alt="">;</p>
+<h2 id="动态代理"><a href="#动态代理" class="headerlink" title="动态代理"></a>动态代理</h2><ol>
+<li>静态代理：增强、包装、装饰者设计模式（Connection close、Request getParameter）</li>
+<li>动态代理：Object Proxy.newProxyInstance(ClassLoader loader, Class [] interfaces, InvocationHandler h)</li>
+</ol>
+<h2 id="代理模式的介绍"><a href="#代理模式的介绍" class="headerlink" title="代理模式的介绍"></a>代理模式的介绍</h2><p>即proxyPatterm<br>代理模式的定义：为其他对象提供一种代理以控制对这个对象的访问。在某些情况下，一个对象不适合或者不能直接引用另一个对象，而代理对象可以在客户端和目标对象之间起到中介的作用。<br>总结来说就是，为其需找一个代替身（所谓影分身！！！）使其更加灵活，多变</p>
+<p><strong>通过代理层这一中间层，有效的控制对于真实委托类对象的直接访问，同时可以实现自定义的控制策略（Spring的AOP机制），设计上获得更大的灵活性。</strong></p>
+<ol>
+<li>组成<br>抽象角色： 通过接口或者是抽象类声明真实角色实现的业务方法<br>代理角色： 实现抽象角色，是真实角色的代理<br>真实角色： 实现抽象角色，定义真实角色要实现的业务逻辑</li>
+</ol>
+<p>2.分类</p>
+<ul>
+<li>静态代理</li>
+<li>动态代理</li>
+<li><em>使用Proxy完成动态代理对象的创建</em><br>动态代理是在内存中直接生成代理对象<br><img src="/2018/01/29/Reflect/Proxy01.png" alt="">;</li>
+</ul>
+<ul>
+<li><p><strong>java.lang.reflect.Proxy帮助我们完成动态代理创建</strong><br> // 方法 1: 该方法用于获取指定代理对象所关联的调用处理器<br> public static InvocationHandler getInvocationHandler(Object proxy) </p>
+<p> // 方法 2：该方法用于获取关联于指定类装载器和一组接口的动态代理类的类对象<br> public static Class&lt;?&gt; getProxyClass(ClassLoader loader,<br> Class&lt;?&gt;… interfaces)</p>
+<p> // 方法 3：该方法用于判断指定类对象是否是一个动态代理类<br> public static boolean isProxyClass(Class&lt;?&gt; cl) </p>
+<p> // 方法 4：该方法用于为指定类装载器、一组接口及调用处理器生成动态代理类实例<br> public static Object newProxyInstance(ClassLoader loader,<br>  Class&lt;?&gt;[] interfaces,InvocationHandler h)</p>
+</li>
+</ul>
+<ul>
+<li><p><strong>invocationHandler:调用处理器接口，自定义invokle方法，用于实现对于真正委托类的代理访问。</strong></p>
+<p>  /<em>*<br>   该方法负责集中处理动态代理类上的所有方法调用。<br>   第一个参数既是代理类实例，<br>   第二个参数是被调用的方法对象<br>   第三个方法是调用参数，方法的参数。<br>   调用处理器根据这三个参数进行预处理或分派到委托类实例上发射执行
+  </em>/<br>  public Object invoke(Object proxy, Method method, Object[] args)<br>  throws Throwable;</p>
+</li>
+</ul>
+<ul>
+<li><strong>java.lang.ClassLoader：类装载器类</strong>，将类的字节码装载到 Java 虚拟机（JVM）中并为其定义类对象，然后该类才能被使用。Proxy类与普通类的唯一区别就是其字节码是由 JVM 在运行时动态生成的而非预存在于任何一个 .class 文件中。 </li>
+</ul>
+<h2 id="动态代理机制"><a href="#动态代理机制" class="headerlink" title="动态代理机制"></a>动态代理机制</h2><p>对于一个动态代理的创建<br>    使用Proxy.newProxyInestance（classloader，Interface,invocationHandler）<br><img src="/2018/01/29/Reflect/Proxy.png" alt="动态代理">;</p>
+<p>总结</p>
+<blockquote>
+<p>1.创建一个接口(抽象角色)<br>2.创建一个实现类实现接口(真实角色)<br>3.创建一个测试类,在测试类中,创建真实对象<br>a)创建代理对象(Proxy.newProxyInstance)<br>b)调用代理对象的方法</p>
+<p>掌握Proxy.newProxyInstance()方法的使用(理解各参数的意义,返回值）</p>
+</blockquote>
+<h3 id="注解概述"><a href="#注解概述" class="headerlink" title="注解概述"></a>注解概述</h3><ol>
+<li>注解的作用</li>
+</ol>
+<p><img src="/2018/01/29/Reflect/annotation01.png" alt=""></p>
+<ol>
+<li>java基本内置注解</li>
+</ol>
+<ul>
+<li>@override实现或者重写父类或接口中的方法</li>
+<li>@Deprecated用来标识过时的方法</li>
+<li>@SupperssWarnnings(“all”)取消警告</li>
+</ul>
+<h3 id="元注解"><a href="#元注解" class="headerlink" title="元注解"></a>元注解</h3><p>元注解是一种基本注解，但是它是特殊的注解的标记，作用和目的就是给其他的普通注解进行解释说明</p>
+<p><strong>元标签有 @Retention、@Documented、@Target、@Inherited、@Repeatable 5 种。</strong></p>
+<ul>
+<li>@Retention</li>
+</ul>
+<p>Retention 的英文意为保留期的意思。当 @Retention 应用到一个注解上的时候，它解释说明了这个注解的的存活时间。</p>
+<blockquote>
+<p>RetentionPolicy.SOURCE 注解只在源码阶段保留，在编译器进行编译时它将被丢弃忽视。<br> RetentionPolicy.CLASS 注解只被保留到编译进行的时候，它并不会被加载到 JVM 中。<br>RetentionPolicy.RUNTIME 注解可以保留到程序运行的时候，它会被加载进入到 JVM 中，所以在程序运行时可以获取到它们</p>
+</blockquote>
+<ul>
+<li>@Documented</li>
+</ul>
+<p>顾名思义，这个元注解肯定是和文档有关。它的作用是能够将注解中的元素包含到 Javadoc 中去。</p>
+<ul>
+<li><p>@Target<br>当一个注解被 @Target 注解时，这个注解就被限定了运用的场景。</p>
+<blockquote>
+<p><strong>ElementType.ANNOTATION_TYPE</strong> 可以给一个注解进行注解<br>ElementType.CONSTRUCTOR 可以给构造方法进行注解<br><strong>ElementType.FIELD</strong> 可以给属性进行注解<br>ElementType.LOCAL_VARIABLE 可以给局部变量进行注解<br><strong>ElementType.METHOD</strong> 可以给方法进行注解<br>ElementType.PACKAGE 可以给一个包进行注解<br>ElementType.PARAMETER 可以给一个方法内的参数进行注解<br>ElementType.TYPE 可以给一个类型进行注解，比如类、接口、枚举</p>
+</blockquote>
+</li>
+<li><p>@Inherited<br>Inherited 是继承的意思<br>注解Test 被 @Inherited 修饰，之后类 A 被 Test 注解，类 B 继承 A,类 B 也拥有 Test 这个注解。</p>
+</li>
+<li><p>@Repeatable<br>Repeatable 自然是可重复的意思。@Repeatable 是 Java 1.8 才加进来的，所以算是一个新的特性</p>
+</li>
+</ul>
 
           
         
@@ -890,6 +1123,150 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://HackerFreedom.github.io/2018/01/28/Memoirs/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Sam">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/my.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="TO BE BTTER ME">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/01/28/Memoirs/" itemprop="url">大学时的生活</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-28T08:50:56+08:00">
+                2018-01-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/生活/" itemprop="url" rel="index">
+                    <span itemprop="name">生活</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>2015年我只为it梦来到了这个校园<br>2年时间我留下很多难难忘的回忆，和一个一生都忘不掉的人。<br>而这正是我，唯一依依不舍的理由。<br>感谢这个大学，即使现在还是一无所有，没有任何地点。<br>我还是那个热血的我，好奇的我，这一生我只想做一个有梦就追的男孩。<br>    当你想放弃的时候，你就想想当初为何要走，想走就继续，因为梦想还在，而你放弃，它就会一点点的侵犯你整个思想，直到你为之后悔莫及。<br>    当初爱上你，不是因为你的美丽，而是你在特殊的时间，给了我别人给不了的感觉，谢谢你陪我走过了这365天<br><img src="" alt=""></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+  <div>
+  
+  </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://HackerFreedom.github.io/2018/01/28/nginx-svn/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1004,150 +1381,6 @@
 <li>Update：更新文件（指的是用户后续从服务器上down代码，也成为更新操作）</li>
 <li>Commit：提交文件（提交文件到服务器；）</li>
 </ol>
-
-          
-        
-      
-    </div>
-    
-    
-    
-  <div>
-  
-  </div>
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://HackerFreedom.github.io/2018/01/28/Memoirs/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Sam">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/my.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="TO BE BTTER ME">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/01/28/Memoirs/" itemprop="url">大学时的生活</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-28T08:50:56+08:00">
-                2018-01-28
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/生活/" itemprop="url" rel="index">
-                    <span itemprop="name">生活</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>2015年我只为it梦来到了这个校园<br>2年时间我留下很多难难忘的回忆，和一个一生都忘不掉的人。<br>而这正是我，唯一依依不舍的理由。<br>感谢这个大学，即使现在还是一无所有，没有任何地点。<br>我还是那个热血的我，好奇的我，这一生我只想做一个有梦就追的男孩。<br>    当你想放弃的时候，你就想想当初为何要走，想走就继续，因为梦想还在，而你放弃，它就会一点点的侵犯你整个思想，直到你为之后悔莫及。<br>    当初爱上你，不是因为你的美丽，而是你在特殊的时间，给了我别人给不了的感觉，谢谢你陪我走过了这365天<br><img src="" alt=""></p>
 
           
         
@@ -1929,220 +2162,6 @@ Redis的Hash数据类型的value内部是一个HashMap,如果该Map的成员比�
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://HackerFreedom.github.io/2018/01/20/linux/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Sam">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/my.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="TO BE BTTER ME">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/01/20/linux/" itemprop="url">linux基本使用</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-20T19:14:03+08:00">
-                2018-01-20
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/技术文章/" itemprop="url" rel="index">
-                    <span itemprop="name">技术文章</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="linux常用命令"><a href="#linux常用命令" class="headerlink" title="linux常用命令"></a>linux常用命令</h1><pre><code>cd app    切换到app目录
-cd ..        切换到上一层目录
-cd /        切换到系统根目录
-cd ~        切换到用户主目录
-cd -        切换到上一个所在目录
-</code></pre><ul>
-<li><strong>ls ll 列出文件列表**</strong><br>ls(list)是一个非常有用的命令，用来显示当前目录下的内容。配合参数的使用，能以不同的方式显示目录内容。<br>  ls -a  显示所有文件或目录（包含隐藏的文件）<ul>
-<li>ls -l  缩写成ll<br>在linux中以 . 开头的文件都是隐藏的文件</li>
-</ul>
-</li>
-</ul>
-<ul>
-<li><p>创建于删除目录<br>  mkdir(make directory)命令可用来创建子目录。<br>  mkdir app    在当前目录下创建app目录<br>  mkdir –p app2/test  多 级联创建aap2以及test目</p>
-<p>  rmdir(remove directory)命令可用来删除“空”的子目录：<br>  rmdir app    删除app目录<br>  rm -rf   删除</p>
-</li>
-<li>浏览文件<br>  cat命令   输入文件夹来浏览文件<br>  tail 命令     tail -f catalina.log    动态查看日志(<strong>*</strong>) </li>
-<li>文件操作<br>  cp是copy操作<br>  cp(copy)命令可以将文件从一处复制到另一处。一般在使用cp命令时将一个文件复制成另一个文件或复制到某目录时，需要指定源文件名与目标文件名或目录</li>
-<li><p>打包压缩和解压<br>  <em>tar命令位于/bin目录下，它能够将用户所指定的文件或目录打包成一个文件，但不做压缩。一般Linux上常用的压缩方式是选用tar将许多文件打包成一个文件，再以gzip压缩命令压缩成xxx.tar.gz(或称为xxx.tgz)的文件。</em></p>
-<p>  常用参数：<br>  -c：创建一个新tar文件<br>  -v：显示运行过程的信息<br>  -f：指定文件名<br>  -z：调用gzip压缩命令进行压缩<br>  -t：查看压缩文件的内容<br>  -x：解开tar文件</p>
-<p>  打包：<br>  tar –cvf xxx.tar ./<em><br>  打包并且压缩：<br>  tar –zcvf xxx.tar.gz ./</em><br><strong>解压 **</strong><br>  tar –xvf xxx.tar<br>  tar -xvf xxx.tar.gz -C /usr/aaa**</p>
-</li>
-<li><p>文件查找<br><em>查找符合条件的文件find</em><br>  find / -name “ins<em>” 查找文件名称是以ins开头的文件<br>  find / -name “ins</em>” –ls<br>  find / –user itcast –ls 查找用户itcast的文件<br>  find / –user itcast –type d –ls 查找用户itcast的目录<br>  find /-perm -777 –type d-ls 查找权限是777的文件<br>查找文件里符合条件的字符串。<br><em>查找文件中符合条件的字符串grep</em><br>  grep lang anaconda-ks.cfg  在文件中查找lang</p>
-</li>
-<li><p>其它常用命令</p>
-</li>
-<li><strong>pwd</strong><br>  显示当前所在目录</li>
-<li>touch<br>   创建一个空文件</li>
-<li>ll -h<br>  友好显示文件大小</li>
-<li><p>weget<br>  下载资料<br>   <em>wget <a href="http://nginx.org/download/nginx-1.9.12.tar.gz" target="_blank" rel="noopener">http://nginx.org/download/nginx-1.9.12.tar.gz</a></em></p>
-<h2 id="VI与VIM编辑器-（基本的CRUD）"><a href="#VI与VIM编辑器-（基本的CRUD）" class="headerlink" title="VI与VIM编辑器 ##（基本的CRUD）"></a>VI与VIM编辑器 ##（基本的CRUD）</h2><p><strong>有三种模式 命令行  插入  底行</strong><br>  通过  vi（vim） 文件名  就可以对文件进行操作<br>  当操作时，开始是命令行模式   按I  o  a 切换到插入模式<br>  按esc 可以在重新切换到命令行模式<br><strong>在命令行模式下按 “:” 就可以切换到底行模式。</strong><br>  退出：esc  :q<br>  修改文件：输入i进入插入模式<br>  保存并退出：esc:wq</p>
-<p>  不保存退出：esc:q!</p>
-<p>  三种进入插入模式：<br>  i:在当前的光标所在处插入<br>  o:在当前光标所在的行的下一行插入<br>  a:在光标所在的下一个字符插入</p>
-</li>
-</ul>
-<p><strong>快捷键：<br>dd – 快速删除一行<br>yy - 复制当前行<br>nyy - 从当前行向后复制几行<br>p - 粘贴<br>R – 替换*
-</strong>重定向<em>*
-</em>重定向输出，覆盖原有内容<em>
-</em>重定向输出，又追加功能*<br>    cat /etc/passwd &gt; a.txt  将输出定向到a.txt中<br>    cat /etc/passwd &gt;&gt; a.txt  输出并且追加</p>
-<pre><code>ifconfig &gt; ifconfig.txt
-</code></pre><p><strong>管道</strong><br><em>管道是Linux命令中重要的一个概念，其作用是将一个命令的输出用作另一个命令的输入。</em><br>    ls –help | more  分页查询帮助信息<br>    ps –ef | grep java  查询名称中包含java的进程</p>
-<pre><code>ifconfig | more
-cat index.html | more
-ps –ef | grep aio
-</code></pre><p><strong>系统常用命令</strong></p>
-<pre><code>date 显示或设置系统时间
-date  显示当前系统时间
-date -s “2014-01-01 10:10:10“  设置系统时间
-df 显示磁盘信息
-df –h  友好显示大小
-free 显示内存状态
-free –m 以mb单位显示内存组昂头
-top 显示，管理执行中的程序
-
-clear 清屏幕
-
-ps 正在运行的某个进程的状态
-ps –ef  查看所有进程
-ps –ef | grep ssh 查找某一进程
-kill 杀掉某一进程
-kill 2868  杀掉2868编号的进程
-kill -9 2868  强制杀死进程
-
-du 显示目录或文件的大小。
-du –h 显示当前目录的大小
-
-who 显示目前登入系统的用户信息。
-
-uname 显示系统信息。
-uname -a 显示本机详细信息。
-依次为：内核名称(类别)，主机名，内核版本号，内核版本，内核编译日期，硬件名，处理器类型，硬件平台类型，操作系统名称
-</code></pre><p><strong>2018/1/20 19:14:21 </strong></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-  <div>
-  
-  </div>
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2199,7 +2218,7 @@ uname -a 显示本机详细信息。
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-count">17</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2210,7 +2229,7 @@ uname -a 显示本机详细信息。
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -2221,7 +2240,7 @@ uname -a 显示本机详细信息。
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-count">12</span>
                   <span class="site-state-item-name">标签</span>
                 
               </div>
