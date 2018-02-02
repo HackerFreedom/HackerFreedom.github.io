@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next pisces use-motion" lang="zh-Hans">
+<html class="theme-next mist use-motion" lang="zh-Hans">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -115,7 +115,7 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Pisces',
+    scheme: 'Mist',
     version: '5.1.4',
     sidebar: {"position":"right","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
@@ -243,6 +243,16 @@
         </li>
       
         
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user-circle"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
         <li class="menu-item menu-item-board">
           <a href="/board" rel="section">
             
@@ -294,7 +304,161 @@
   <section id="posts" class="posts-expand">
     
       
+  
 
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://HackerFreedom.github.io/2018/02/01/hexo修改的文件/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Sam">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/my.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="TO BE BTTER ME">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/02/01/hexo修改的文件/" itemprop="url">hexo修改的地方</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-01T19:35:00+08:00">
+                2018-02-01
+              </time>
+            
+
+            
+
+            
+          </span>
+        
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Hexo教程/" itemprop="url" rel="index">
+                    <span itemprop="name">Hexo教程</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          hexo clean #清除缓存 网页正常情况下可以忽略此条命令hexo g #生成静态网页hexo d #开始部署
+npm install hexo -g #安装npm update hexo -g #升级hexo init #初始化
+具体方法实现切换到根目录下，然后运行如下代码
+
+
+
+$ npm
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/02/01/hexo修改的文件/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+  <div>
+  
+  </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
   
 
   
@@ -346,7 +510,7 @@
 
             
           </span>
-
+        
           
             <span class="post-category" >
             
@@ -399,15 +563,16 @@
       
         
           
-            <h1 id="理解什么是前端和后端"><a href="#理解什么是前端和后端" class="headerlink" title="理解什么是前端和后端"></a>理解什么是前端和后端</h1><p><img src="/2018/01/31/web阶段的总结/web01.png" alt="">;</p>
-<p>更深刻的来说<br>就是java的三层架构：数据访问层（dao层） 业务逻辑层（service层） 界面层（ui）<br>Service 层–引用对应的dao数据库操作，业务逻辑层不仅可以处理自身需求的功能还可以调用dao层来完成扩展的功能，<br>这样确实是有利于开发和维护，同时也体现了MVC的设计模式中model层的功能体现。<br>Action层–&gt;引用对应的Service层，在这里结合Struts的配置文件，跳转到指定的页面，当然也能接受页面传递的请求数据，也可以做些计算处理、前端输入合法性检验(前端可修改网页绕过前端合法性检验，需在后台加一层)。</p>
-<blockquote>
-<p>Action像服务员，顾客点什么菜，菜上给几号桌，都是ta的职责，Service是厨师，action的菜单上的菜都是ta做<br>dao是厨房的小工，和原材料（通过hibernate操作数据库）打交道</p>
-</blockquote>
-<p><strong>对象调用的流程:jsp–action–service–dao–hebernate–数据库</strong></p>
-<p>service 层在mvc框架中的<br>mvc框架由model，view，controller组成，执行流程一般是：在controller访问model获取数据，通过view渲染页面。<br>mvc模式是web开发中的基础模式，采用的是分层设计，各层之间职责分明。然而事与愿违，当我们日积月累的基于mvc模式开发之后，会逐渐的感受到层与层之间存在粘连和职责模棱两可的地方，这就是service层出现的重要原因。</p>
-
-          
+          理解什么是前端和后端;
+更深刻的来说就是java的三层架构：数据访问层（dao层） 业务逻辑层（service层） 界面层（ui）Service 层–引用对应的dao数据库操作，业务逻辑层不仅可以处理自身需求的功能还可以调用dao层来完成扩展的功能，这样确实是有利于开发和维护，同时也体现了MVC的设
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/01/31/web阶段总结/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -444,7 +609,6 @@
 
     
       
-
   
 
   
@@ -496,7 +660,7 @@
 
             
           </span>
-
+        
           
             <span class="post-category" >
             
@@ -549,127 +713,24 @@
       
         
           
-            <h1 id="反射介绍"><a href="#反射介绍" class="headerlink" title="反射介绍"></a>反射介绍</h1><p>反射:简单说,就是动态加载一个类,并获取该类中的所有内容,并使用他们.(构造,成员变量,成员方法)<br><img src="/2018/01/29/Reflect/reflect01.png" alt="">;</p>
-<p><em>优点</em></p>
-<ol>
-<li>反射提高程序的灵活性和扩展性；</li>
-<li>降低耦合性，提高自适应能力；</li>
-<li>它允许程序创建和控制任何类的对象，无序提前硬编码目标类</li>
-</ol>
-<p><em>缺点</em></p>
-<ol>
-<li>性能问题：使用反射基本是一种解释操作，用于字段和方法接入时要远慢于直接代码。因此反射机制主要应用在对灵活性和拓展性要求很高的系统框架上，普通程序不建议使用。</li>
-<li>使用反射会模糊程序内部逻辑；程序员希望在源代码中看到程序的逻辑，反射却绕过了源代码的技术，因而会带来维护的问题，    反射代码比相应的直接代码更复杂。</li>
-</ol>
-<ul>
-<li>java反射常用API<br><strong>class类的实例表示正在运行的java应用程序中的类和接口。枚举是一种类，注释是一种接口。</strong></li>
-</ul>
-<p>反射:动态加载一个类,得到Class对象,剖析Class对象,得到构造方法对象,成员变量对象,成员方法对象,并使用它们.<br>Class clazz = Class.forName(“com.itheima.Student”);<br>clazz.newInstance();</p>
-<p>Student stu = new Student ();</p>
-<h1 id="calss介绍及获取"><a href="#calss介绍及获取" class="headerlink" title="calss介绍及获取"></a>calss介绍及获取</h1><ul>
-<li>获取class对象的三种方式<br>   class clazz=Class.forName(“”)</li>
-</ul>
-<p><img src="/2018/01/29/Reflect/reflect02.png" alt="">;</p>
-<h1 id="Constructor介绍"><a href="#Constructor介绍" class="headerlink" title="Constructor介绍"></a>Constructor介绍</h1><ul>
-<li>获取构造方法<ul>
-<li>getConstructor（Class&lt;?&gt;…parameterTyps）</li>
-<li>getDeclaredConstructor(Class&lt;?&gt;…parameterTypes);<br>总结: 有s获取多个,没s获取一个,Declared可获取private<br>最常用:<br>  Class.getConstructor().newInstance();<br>Class.newInstance()<h1 id="field介绍"><a href="#field介绍" class="headerlink" title="field介绍"></a>field介绍</h1><ul>
-<li>获取成员变量</li>
-<li>获取多个<br>getFields()<br>getDeclaredFields()    </li>
-</ul>
-</li>
-<li>获取一个<br>  getField(“name”)<br>  getDeclaredField(“name”)<h1 id="Method获取介绍（重点-）"><a href="#Method获取介绍（重点-）" class="headerlink" title="Method获取介绍（重点 ）"></a>Method获取介绍（重点 ）</h1></li>
-<li>获取成员方法</li>
-<li>Class对象<br>Method  getMethod(String);<br>Method[]  getMethods(String);</li>
-</ul>
-</li>
-</ul>
-<p><strong>invoke方法介绍</strong><br><img src="/2018/01/29/Reflect/invoke01.png" alt="">;</p>
-<p><em>invoke 参数1：方法所在的对象； 参数二：调用这个方法需要传递的参数   ；invoke 方法的返回值是被调用的方法的返回值</em></p>
-<h1 id="method中-invoke方法使用注意事项"><a href="#method中-invoke方法使用注意事项" class="headerlink" title="method中 invoke方法使用注意事项"></a>method中 invoke方法使用注意事项</h1><p><em>如果方法是静态的，在通过invoke调用时不需要传递对象</em></p>
-<p><img src="/2018/01/29/Reflect/invoke02.png" alt="">;<br><em>如果方法的参数是一个对象数组，通过invoke 调用要处理一下这个对象</em></p>
-<p><img src="/2018/01/29/Reflect/invoke03.png" alt="">;<br>解决方案：强制转换类型<br>    将数组再套上一层数组</p>
-<p><strong>反射总结</strong></p>
-<blockquote>
-<p>1.Class.forName(“包名.类名”);<br>2.Class.newInstance()<br>3.Class.getMethod(“方法名”).invoke(Object,args…);</p>
-</blockquote>
-<p><em>如何将map集合中的数据封装到JavaBean类中去</em></p>
-<p><img src="/2018/01/29/Reflect/invoke04.png" alt="">;</p>
-<h2 id="动态代理"><a href="#动态代理" class="headerlink" title="动态代理"></a>动态代理</h2><ol>
-<li>静态代理：增强、包装、装饰者设计模式（Connection close、Request getParameter）</li>
-<li>动态代理：Object Proxy.newProxyInstance(ClassLoader loader, Class [] interfaces, InvocationHandler h)</li>
-</ol>
-<h2 id="代理模式的介绍"><a href="#代理模式的介绍" class="headerlink" title="代理模式的介绍"></a>代理模式的介绍</h2><p>即proxyPatterm<br>代理模式的定义：为其他对象提供一种代理以控制对这个对象的访问。在某些情况下，一个对象不适合或者不能直接引用另一个对象，而代理对象可以在客户端和目标对象之间起到中介的作用。<br>总结来说就是，为其需找一个代替身（所谓影分身！！！）使其更加灵活，多变</p>
-<p><strong>通过代理层这一中间层，有效的控制对于真实委托类对象的直接访问，同时可以实现自定义的控制策略（Spring的AOP机制），设计上获得更大的灵活性。</strong></p>
-<ol>
-<li>组成<br>抽象角色： 通过接口或者是抽象类声明真实角色实现的业务方法<br>代理角色： 实现抽象角色，是真实角色的代理<br>真实角色： 实现抽象角色，定义真实角色要实现的业务逻辑</li>
-</ol>
-<p>2.分类</p>
-<ul>
-<li>静态代理</li>
-<li>动态代理</li>
-<li><em>使用Proxy完成动态代理对象的创建</em><br>动态代理是在内存中直接生成代理对象<br><img src="/2018/01/29/Reflect/Proxy01.png" alt="">;</li>
-</ul>
-<ul>
-<li><p><strong>java.lang.reflect.Proxy帮助我们完成动态代理创建</strong><br> // 方法 1: 该方法用于获取指定代理对象所关联的调用处理器<br> public static InvocationHandler getInvocationHandler(Object proxy) </p>
-<p> // 方法 2：该方法用于获取关联于指定类装载器和一组接口的动态代理类的类对象<br> public static Class&lt;?&gt; getProxyClass(ClassLoader loader,<br> Class&lt;?&gt;… interfaces)</p>
-<p> // 方法 3：该方法用于判断指定类对象是否是一个动态代理类<br> public static boolean isProxyClass(Class&lt;?&gt; cl) </p>
-<p> // 方法 4：该方法用于为指定类装载器、一组接口及调用处理器生成动态代理类实例<br> public static Object newProxyInstance(ClassLoader loader,<br>  Class&lt;?&gt;[] interfaces,InvocationHandler h)</p>
-</li>
-</ul>
-<ul>
-<li><p><strong>invocationHandler:调用处理器接口，自定义invokle方法，用于实现对于真正委托类的代理访问。</strong></p>
-<p>  /<em>*<br>   该方法负责集中处理动态代理类上的所有方法调用。<br>   第一个参数既是代理类实例，<br>   第二个参数是被调用的方法对象<br>   第三个方法是调用参数，方法的参数。<br>   调用处理器根据这三个参数进行预处理或分派到委托类实例上发射执行
-  </em>/<br>  public Object invoke(Object proxy, Method method, Object[] args)<br>  throws Throwable;</p>
-</li>
-</ul>
-<ul>
-<li><strong>java.lang.ClassLoader：类装载器类</strong>，将类的字节码装载到 Java 虚拟机（JVM）中并为其定义类对象，然后该类才能被使用。Proxy类与普通类的唯一区别就是其字节码是由 JVM 在运行时动态生成的而非预存在于任何一个 .class 文件中。 </li>
-</ul>
-<h2 id="动态代理机制"><a href="#动态代理机制" class="headerlink" title="动态代理机制"></a>动态代理机制</h2><p>对于一个动态代理的创建<br>    使用Proxy.newProxyInestance（classloader，Interface,invocationHandler）<br><img src="/2018/01/29/Reflect/Proxy.png" alt="动态代理">;</p>
-<p>总结</p>
-<blockquote>
-<p>1.创建一个接口(抽象角色)<br>2.创建一个实现类实现接口(真实角色)<br>3.创建一个测试类,在测试类中,创建真实对象<br>a)创建代理对象(Proxy.newProxyInstance)<br>b)调用代理对象的方法</p>
-<p>掌握Proxy.newProxyInstance()方法的使用(理解各参数的意义,返回值）</p>
-</blockquote>
-<h3 id="注解概述"><a href="#注解概述" class="headerlink" title="注解概述"></a>注解概述</h3><ol>
-<li>注解的作用</li>
-</ol>
-<p><img src="/2018/01/29/Reflect/annotation01.png" alt=""></p>
-<ol>
-<li>java基本内置注解</li>
-</ol>
-<ul>
-<li>@override实现或者重写父类或接口中的方法</li>
-<li>@Deprecated用来标识过时的方法</li>
-<li>@SupperssWarnnings(“all”)取消警告</li>
-</ul>
-<h3 id="元注解"><a href="#元注解" class="headerlink" title="元注解"></a>元注解</h3><p>元注解是一种基本注解，但是它是特殊的注解的标记，作用和目的就是给其他的普通注解进行解释说明</p>
-<p><strong>元标签有 @Retention、@Documented、@Target、@Inherited、@Repeatable 5 种。</strong></p>
-<ul>
-<li>@Retention</li>
-</ul>
-<p>Retention 的英文意为保留期的意思。当 @Retention 应用到一个注解上的时候，它解释说明了这个注解的的存活时间。</p>
-<blockquote>
-<p>RetentionPolicy.SOURCE 注解只在源码阶段保留，在编译器进行编译时它将被丢弃忽视。<br> RetentionPolicy.CLASS 注解只被保留到编译进行的时候，它并不会被加载到 JVM 中。<br>RetentionPolicy.RUNTIME 注解可以保留到程序运行的时候，它会被加载进入到 JVM 中，所以在程序运行时可以获取到它们</p>
-</blockquote>
-<ul>
-<li>@Documented</li>
-</ul>
-<p>顾名思义，这个元注解肯定是和文档有关。它的作用是能够将注解中的元素包含到 Javadoc 中去。</p>
-<ul>
-<li><p>@Target<br>当一个注解被 @Target 注解时，这个注解就被限定了运用的场景。</p>
-<blockquote>
-<p><strong>ElementType.ANNOTATION_TYPE</strong> 可以给一个注解进行注解<br>ElementType.CONSTRUCTOR 可以给构造方法进行注解<br><strong>ElementType.FIELD</strong> 可以给属性进行注解<br>ElementType.LOCAL_VARIABLE 可以给局部变量进行注解<br><strong>ElementType.METHOD</strong> 可以给方法进行注解<br>ElementType.PACKAGE 可以给一个包进行注解<br>ElementType.PARAMETER 可以给一个方法内的参数进行注解<br>ElementType.TYPE 可以给一个类型进行注解，比如类、接口、枚举</p>
-</blockquote>
-</li>
-<li><p>@Inherited<br>Inherited 是继承的意思<br>注解Test 被 @Inherited 修饰，之后类 A 被 Test 注解，类 B 继承 A,类 B 也拥有 Test 这个注解。</p>
-</li>
-<li><p>@Repeatable<br>Repeatable 自然是可重复的意思。@Repeatable 是 Java 1.8 才加进来的，所以算是一个新的特性</p>
-</li>
-</ul>
+          反射介绍反射:简单说,就是动态加载一个类,并获取该类中的所有内容,并使用他们.(构造,成员变量,成员方法);
+优点
 
-          
+反射提高程序的灵活性和扩展性；
+降低耦合性，提高自适应能力；
+它允许程序创建和控制任何类的对象，无序提前硬编码目标类
+
+缺点
+
+性能问题：使用反射基本是一种解释操作，用于字段和方法接
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/01/29/Reflect/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -706,7 +767,6 @@
 
     
       
-
   
 
   
@@ -758,7 +818,7 @@
 
             
           </span>
-
+        
           
             <span class="post-category" >
             
@@ -811,28 +871,18 @@
       
         
           
-            <h2 id="账户中心-产品购买"><a href="#账户中心-产品购买" class="headerlink" title="账户中心-产品购买"></a>账户中心-产品购买</h2><p>思路分析：： 产品购买，首先要对产品进行查询，在p2p_home中要查询产品信息，在p2p_management中提供<br>产品的CRUD操作，文档说要用到跨域（但是跨域的概念是 服务器中的端口 协议  不同）</p>
-<ol>
-<li>用户的账户表中信息一定要改变</li>
-<li>在product_account 中间表中插入 money 和 interest的字段名；</li>
-</ol>
-<p><em>整体思路</em></p>
-<ol>
-<li>产品信息要在moto.html中展现出来</li>
-<li>moto.js文件中拼装</li>
-<li><p>moto.html中产品信息生成 （在我要购买提加点击事件onclick） 写函数的时候看是否有参数是看在servlet是否需要参数接受<br>然后处理购买后的数据（）<br>配置结果–本金/</p>
-</li>
-<li><p>完成购买操作（金额 和产品信息传递给服务器，在服务器进行操作，修改账户信息，向product——account 修改账户信息，）</p>
-</li>
-<li><p>修改账户信息，向product_account表中插入数据（敏感数据的处理（bigdecimal的处理））</p>
-</li>
-<li>在product中插入数据  根据pid查询查询产品</li>
-<li><p>attar  prop 是什么属性</p>
-<p> 多表联查；</p>
-</li>
-</ol>
+          账户中心-产品购买思路分析：： 产品购买，首先要对产品进行查询，在p2p_home中要查询产品信息，在p2p_management中提供产品的CRUD操作，文档说要用到跨域（但是跨域的概念是 服务器中的端口 协议  不同）
 
-          
+用户的账户表中信息一定要改变
+在product_account 中间表中插
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/01/28/p2p项目思路/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -869,7 +919,6 @@
 
     
       
-
   
 
   
@@ -921,7 +970,7 @@
 
             
           </span>
-
+        
           
             <span class="post-category" >
             
@@ -974,107 +1023,17 @@
       
         
           
-            <h1 id="JSP"><a href="#JSP" class="headerlink" title="JSP"></a>JSP</h1><h2 id="jsp的基本介绍"><a href="#jsp的基本介绍" class="headerlink" title="jsp的基本介绍"></a>jsp的基本介绍</h2><p>Servlet技术生成动态网页的时候很麻烦，需要通过response获得输出流，调用print方法进行打印的。这种编程方式很麻烦，而且美工也不容易处理。SUN公司为了简化动态网页开发，推出JSP</p>
-<ul>
-<li><p>JSP脚本元素<br>&lt;%!    %&gt;    :JSP声明 翻译成 Servlet成员部分的内容。声明变量，方法，内部类。<br>&lt;%= %&gt;    :翻译out.print(),在service方法内部。用于生成HTML页面源码。<br>&lt;%    %&gt;    :嵌入Java代码 翻译成service方法内部的代码块。声明变量，内部类</p>
-</li>
-<li><p>JSP的运行原理<br>JSP在执行时，会被服务器翻译为Servlet编译执行，JSP就是一个Servlet。</p>
-</li>
-</ul>
-<h2 id="JSP的指令元素的概述"><a href="#JSP的指令元素的概述" class="headerlink" title="JSP的指令元素的概述"></a>JSP的指令元素的概述</h2><ul>
-<li>Jsp有如下三大指令：<blockquote>
-<p>page指令：用来设置jsp页面的某些属性和行为的；例如设置字符集等。。。<br>include指令：用来设置jsp页面包含哪些其他页面。<br>taglib指令：用来设置jsp页面引入了哪些标签库。</p>
-</blockquote>
-</li>
-</ul>
-<h2 id="Page指令属性"><a href="#Page指令属性" class="headerlink" title="Page指令属性"></a>Page指令属性</h2><blockquote>
-<p>import属性：        用于导入Java包或类。<br>一次导入多个包&lt;%@ page import=”java.util.Date , java.util.List” %&gt;<br>contentType属性：标明JSP被浏览器解析和打开的时候采用的默认的字符集。<br>pageEncoding属性：JSP文件及JSP翻译后的Servlet保存到硬盘上采用字符集。</p>
-</blockquote>
-<p>##JSP的指令-include和taglib指令  ##</p>
-<ul>
-<li>include指令作用：用来设置jsp页面静态包含其他页面</li>
-<li>2、include指令包含（静态包含）的原理和注意事项：<br><strong> 相当于代码复制,多个JSP会被翻译成一个Servlet</strong><br>  <img src="/2018/01/28/jsp-el-jstl/jsp01.png" alt="">;<br>  注意地方：<br>  应该将被包含的页面的结构去掉。<br>  在被包含的页面中定义变量，在包含的页面中还可以使用。</li>
-</ul>
-<h2 id="JSP的内置对象"><a href="#JSP的内置对象" class="headerlink" title="JSP的内置对象"></a>JSP的内置对象</h2><p><strong>内置对象就是可以在JSP页面中直接使用的对象。</strong></p>
-<blockquote>
-<p>request：客户端向服务器发送的请求对象。————————HttpServletRequest<br>response：服务器向客户端作的响应对象。————————–HttpServletResponse<br>session：客户端和服务器之间的会话对象。————————-HttpSession<br>application：整个应用——————————————————-ServletContext<br>page：当前jsp页面被翻译成的Servlet对象————————-Object<br>out：页面输出内容的对象————————————————-JspWriter<br>pageContext：当前jsp页面的上下文对象—————————–PageContext<br>config：当前jsp的ServletConfig对象———————————-ServletConfig<br>exception：当前页面的异常对象，只有当前页面的page指令中指明了isErrorPage=”true”才有此对象。——– Throwable</p>
-</blockquote>
-<p><em>pageContext对象的概述</em><br>pageContext对象<br>    可以存值，取值，移除值，查找值</p>
-<pre><code>pageContext的作用:
-1.作为域对象保存数据
-获取其他8大内置对象
-</code></pre><p><img src="/2018/01/28/jsp-el-jstl/jsp02.png" alt="获取其它的内置对象">);</p>
-<blockquote>
-<p>在JSP页面中可以直接使用out,request对象,为什么还需要用pageContext获取?<br>可以作为参数传递.</p>
-</blockquote>
-<h2 id="jsp四个作用范围"><a href="#jsp四个作用范围" class="headerlink" title="jsp四个作用范围"></a>jsp四个作用范围</h2><p>pageContext ：代表page域，就是指当前页面范围<br>requset：他是代表一个求链<br>session：整个回话，<br>aplication：整个web应用（servletContext）</p>
-<p>PAGE_SCOPE：页面范围<br>    页面范围：指的是在当前的页面内有效，出了这个页面，用pageContext保存的数据就无效了。<br>REQUEST_SCOPE：请求范围<br>    从客户端向服务器发送一次请求，直到服务器作出了响应之后，数据就无效，相当于Request域，也可以使用Request取值。<br>SESSION_SCOPE：会话范围<br>    从打开浏览器到关闭浏览器数以一次会话，在这个会话内数据都有效，相当于Session域。<br>APPLICATION_SCOPE：应用范围<br>    在整个应用中任意的地方都可以获取，相当于ServletContext域</p>
-<p><em>在page,request,session.application范围依次查找(findAttribute)</em></p>
-<h2 id="总结一点："><a href="#总结一点：" class="headerlink" title="##总结一点："></a>##总结一点：</h2><p>JSP=html+java+jsp特有东西<br>    a)JSP注释  // /**/  &lt;%– JSP注释 –%&gt;<br>    b)JSP页面指令<br>        1.&lt;%@ page import=”” %&gt;<br>        2.&lt;%@ include file=”” %&gt; 静态包含  代码复制<br>        3.&lt;%@ taglib uri=”” prefix=”” &gt;<br>    c)JSP内置对象<br>        1.pageContext request,response，session,application,,out,config,page,exception<br>        2.pageContext 的作用<br>    i.可以操作各个域<br>    a)findAttribute(“name”);</p>
-<pre><code>2.  可以获取其他8个内置对象
-</code></pre><h2 id="JSP动作标签"><a href="#JSP动作标签" class="headerlink" title="JSP动作标签"></a>JSP动作标签</h2><p>JSP的动作标签用于在JSP页面中提供业务逻辑功能，避免在JSP页面中直接编写Java代码，造成jsp页面难以维护。<br>常用动作标签：<br>    <jsp:forward>    ：请求转发。<br>    <jsp:include>：包含（动态包含）。<br>    <jsp:param>：传递参数<br><img src="/2018/01/28/jsp-el-jstl/jsp03.png" alt="静态包含和动态包含的区别">;</jsp:param></jsp:include></jsp:forward></p>
-<p>jsp中静态包含(include指令)与动态包含(include标签)区别?<br>1.静态包含包含的是内容，而动态包含包含的是结果。<br>2.静态包含不可以传递参数 ,而动态包含可以传递参数</p>
-<p>静态包含:(代码拷贝,合一个文件),动态:(独立Java文件)<br>开发如何选择:<br>没有特殊需求,2个都可以<br><strong>被包含文件独立性高,用jsp:include 标签</strong></p>
-<h3 id="ELd的概述"><a href="#ELd的概述" class="headerlink" title="ELd的概述"></a>ELd的概述</h3><p>EL主要是用来取代我们jsp页面的java代码，jsp页面一般是起显示数据作用的，所以不应该出现java代码，有java代码也不利于维护和合作开发，故出现了EL表达式。</p>
-<blockquote>
-<p>EL作用: 获取域中数据、执行运算、获取web常用对象。</p>
-<p>  语法：${ EL表达式}</p>
-</blockquote>
-<h3 id="EL获取数据（重点）"><a href="#EL获取数据（重点）" class="headerlink" title="EL获取数据（重点）"></a>EL获取数据（重点）</h3><p>EL表达式语句在执行的时候，会调用pageContext.findAttribute()方法。分别从<em>page、request、session、application</em>范围查找相应对象，找到就会<em>返回相应对象，找不到返回””(不是null，是空的字符串)</em>。EL所获取的数据需要在四个作用范围中</p>
-<h3 id="EL获取数组和集合中的数据"><a href="#EL获取数组和集合中的数据" class="headerlink" title="EL获取数组和集合中的数据"></a>EL获取数组和集合中的数据</h3><ol>
-<li>El获取数组中的数据</li>
-</ol>
-<p><img src="/2018/01/28/jsp-el-jstl/EL01.png" alt="">;</p>
-<ol>
-<li><p>EL获取list集合的数据<br><img src="/2018/01/28/jsp-el-jstl/EL02.png" alt="">;</p>
-</li>
-<li><p>EL获取map集合的数据</p>
-</li>
-</ol>
-<p><img src="/2018/01/28/jsp-el-jstl/EL03.png" alt="">;</p>
-<blockquote>
-<p>1.map集合的键要是String类型<br>2.当key中有特殊字符点时，map集合获取值就不能使用.了,使用下标的方式[“key”]</p>
-</blockquote>
-<h3 id="EL执行的运算"><a href="#EL执行的运算" class="headerlink" title="EL执行的运算"></a>EL执行的运算</h3><ol>
-<li>算术运算</li>
-<li>关系运算</li>
-<li>逻辑运算</li>
-<li>三元运算</li>
-<li>empty运算</li>
-</ol>
-<p>empty用于集合,可以判断集合是否有元素,size()=0</p>
-<p>&lt;%<br>List list = new ArrayList<string>();<br>request.setAttribute(“list”,list);<br>%&gt;<br>${empty list}  –返回true ,没有元素</string></p>
-<h3 id="EL获取web开发常用对象"><a href="#EL获取web开发常用对象" class="headerlink" title="EL获取web开发常用对象"></a>EL获取web开发常用对象</h3><p><strong>掌握param、paramValues、cookie、pageContext以及四个域对象的含义和用法</strong><br><img src="/2018/01/28/jsp-el-jstl/EL04.png" alt="">;</p>
-<p><strong>最常用</strong></p>
-<blockquote>
-<p>${cookie.remember.value}<br>${param[“name”]}</p>
-<form action="”${pageContext.request.contextPath}/Servlet”" method="”post”">
+          JSPjsp的基本介绍Servlet技术生成动态网页的时候很麻烦，需要通过response获得输出流，调用print方法进行打印的。这种编程方式很麻烦，而且美工也不容易处理。SUN公司为了简化动态网页开发，推出JSP
 
-
-</form></blockquote>
-<h4 id="JSTL概述"><a href="#JSTL概述" class="headerlink" title="JSTL概述"></a>JSTL概述</h4><p>是JSP标准标签库(JSTL)是一个jsp标签集合，封装了jsp应用的通用核心功能<br><em>JSTL支持通用的、结构化的任务，比如迭代，条件判断，XML文档操作，国际化标签，SQL标签。 除了这些，它还提供了一个框架来使用集成JSTL的自定义标签</em></p>
-<p>JSTL分为i下面5类</p>
-<blockquote>
-<p>核心标签—————————————–c标签<br>格式化标签（国际化标签）—————-fmt标签<br>SQL 标签—————————————–sql标签<br>XML 标签—————————————-xml标签<br>JSTL 函数—————————————（EL函数）</p>
-</blockquote>
-<h4 id="JSTL的if标签属性"><a href="#JSTL的if标签属性" class="headerlink" title="JSTL的if标签属性"></a>JSTL的if标签属性</h4><ol>
-<li>test：条件</li>
-<li>var：将test中的条件的值符给一个变量</li>
-<li>scope： 作用范围</li>
-</ol>
-<p><img src="/2018/01/28/jsp-el-jstl/JSTL01.png" alt="">;</p>
-<h4 id="JSTL的foreach标签（重点）"><a href="#JSTL的foreach标签（重点）" class="headerlink" title="JSTL的foreach标签（重点）"></a>JSTL的foreach标签（重点）</h4><ol>
-<li>items：要被循环的信息</li>
-<li>begin：开始的元素</li>
-<li>end:最后一个元素</li>
-<li>step：每一次增长的值</li>
-<li>var：代表当前条目的变量名称</li>
-<li>varStatus：代表循环抓太多变量名称<br><img src="/2018/01/28/jsp-el-jstl/JSTL02.png" alt="foreach基本使用">;<br><img src="/2018/01/28/jsp-el-jstl/JSTL03.png" alt="foreach遍历数组">;</li>
-</ol>
-<p><img src="/2018/01/28/jsp-el-jstl/JSTL04.png" alt="foreach遍历list集合">;</p>
-<p><img src="/2018/01/28/jsp-el-jstl/JSTL05.png" alt="foreach遍历map集合">;</p>
-
-          
+JSP脚本元素&lt;%!    %&gt;    :JSP声明 翻译成 Ser
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/01/28/jsp-el-jstl/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1111,7 +1070,155 @@
 
     
       
+  
 
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://HackerFreedom.github.io/2018/01/28/nginx-svn/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Sam">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/my.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="TO BE BTTER ME">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/01/28/nginx-svn/" itemprop="url">nginx&svn</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-28T08:50:56+08:00">
+                2018-01-28
+              </time>
+            
+
+            
+
+            
+          </span>
+        
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/技术文章/" itemprop="url" rel="index">
+                    <span itemprop="name">技术文章</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          nginx简介Nginx的概念：Nginx (“engine x”) 是一个高性能的HTTP和反向代理服务器，也是一个电子邮件（IMAP/POP3/SMTP）服务器。Nginx的要点：1、Nginx 可以在大多数 Unix、Linux OS 上编译运行，并有 Windows 移植版2、支持高并发操作
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/01/28/nginx-svn/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+  <div>
+  
+  </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
   
 
   
@@ -1163,7 +1270,7 @@
 
             
           </span>
-
+        
           
             <span class="post-category" >
             
@@ -1216,9 +1323,15 @@
       
         
           
-            <p>2015年我只为it梦来到了这个校园<br>2年时间我留下很多难难忘的回忆，和一个一生都忘不掉的人。<br>而这正是我，唯一依依不舍的理由。<br>感谢这个大学，即使现在还是一无所有，没有任何地点。<br>我还是那个热血的我，好奇的我，这一生我只想做一个有梦就追的男孩。<br>    当你想放弃的时候，你就想想当初为何要走，想走就继续，因为梦想还在，而你放弃，它就会一点点的侵犯你整个思想，直到你为之后悔莫及。<br>    当初爱上你，不是因为你的美丽，而是你在特殊的时间，给了我别人给不了的感觉，谢谢你陪我走过了这365天<br><img src="" alt=""></p>
-
-          
+          2015年我只为it梦来到了这个校园2年时间我留下很多难难忘的回忆，和一个一生都忘不掉的人。而这正是我，唯一依依不舍的理由。感谢这个大学，即使现在还是一无所有，没有任何地点。我还是那个热血的我，好奇的我，这一生我只想做一个有梦就追的男孩。    当你想放弃的时候，你就想想当初为何要走，想走就继续，因
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/01/28/Memoirs/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1255,171 +1368,6 @@
 
     
       
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://HackerFreedom.github.io/2018/01/28/nginx-svn/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Sam">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/my.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="TO BE BTTER ME">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/01/28/nginx-svn/" itemprop="url">nginx&svn</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-28T08:50:56+08:00">
-                2018-01-28
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/技术文章/" itemprop="url" rel="index">
-                    <span itemprop="name">技术文章</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="nginx简介"><a href="#nginx简介" class="headerlink" title="nginx简介"></a>nginx简介</h1><p>Nginx的概念：Nginx (“engine x”) 是一个高性能的HTTP和反向代理服务器，也是一个电子邮件（IMAP/POP3/SMTP）服务器。<br>Nginx的要点：<br>1、Nginx 可以在大多数 Unix、Linux OS 上编译运行，并有 Windows 移植版<br>2、支持高并发操作，实现负载均衡<br>正向代理和反向代理的区别：<br><img src="/2018/01/28/nginx-svn/nginx01.png" alt="">;</p>
-<ul>
-<li>正向代理:出去访问外网</li>
-<li>反向代理:外网回来</li>
-<li></li>
-<li>正向代理它隐藏了客户端</li>
-<li>反向代理它隐藏的是服务器端</li>
-</ul>
-<p><img src="/2018/01/28/nginx-svn/nginx02.png" alt="反向代理">;</p>
-<h2 id="反向代理"><a href="#反向代理" class="headerlink" title="反向代理"></a>反向代理</h2><p>所谓的反向代理就是隐藏真实的服务器，通过proxy来指定要访问的服务端：</p>
-<p>##负载均衡  ##</p>
-<p>所谓的负载均衡简单说就是将一台服务原来承受的压力由多台服务器来分配，可以在nginx中实现tomcat集群，通过weight来分配权重。</p>
-<p><img src="/2018/01/28/nginx-svn/nginx.png" alt="负载均衡">;</p>
-<h2 id="nginx-amp-tomcat集群-amp-redis实现session共享"><a href="#nginx-amp-tomcat集群-amp-redis实现session共享" class="headerlink" title="nginx&amp;tomcat集群&amp;redis实现session共享"></a>nginx&amp;tomcat集群&amp;redis实现session共享</h2><p>在两个服务器中分别部署同一个项目：myweb,在该项目里面有一个index.jsp页面，在页面中获取了sessionid并显示在页面上。如果两个服务器中myweb项目里面的index.jsp中获取的sessionid一致，就说明session共享了。</p>
-<h3 id="svn概述（小乌龟）"><a href="#svn概述（小乌龟）" class="headerlink" title="svn概述（小乌龟）"></a>svn概述（小乌龟）</h3><p>SVN是Subversion的简称，是一个自由开源的版本控制系统。<br>Subversion将文件存放在中心版本库里，这个版本库很像一个普通的文件服务器，不同的是，它可以记录每一次文件和目录的修改情况，这样就可以借此将数据恢复到以前的版本，并可以查看数据的更改细节<br>早期版本控制使用的是CVS,后来SVN替代了CVS,随着android兴起，出现Git版本控制工具，后续我们会学到。</p>
-<p><img src="/2018/01/28/nginx-svn/svn01.png" alt="SVN">;<br>基本操作：</p>
-<ol>
-<li>Checkout：检出（从服务器上导出项目）</li>
-<li>Update：更新文件（指的是用户后续从服务器上down代码，也成为更新操作）</li>
-<li>Commit：提交文件（提交文件到服务器；）</li>
-</ol>
-
-          
-        
-      
-    </div>
-    
-    
-    
-  <div>
-  
-  </div>
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
   
 
   
@@ -1471,7 +1419,7 @@
 
             
           </span>
-
+        
           
             <span class="post-category" >
             
@@ -1524,82 +1472,17 @@
       
         
           
-            <h1 id="监听器的概述"><a href="#监听器的概述" class="headerlink" title="监听器的概述"></a>监听器的概述</h1><p>监听器就是一个实现了特定接口的Java类，这个Java类用于监听另一个Java类的方法调用或者属性的改变。当被监听对象发生上述事件后，监听器某个方法将会立即被执行。<br>监听器的用途<br>用来监听其他对象的变化的。主要应用在图形化界面开发上</p>
-<h2 id="Servlet中的监听器"><a href="#Servlet中的监听器" class="headerlink" title="Servlet中的监听器"></a>Servlet中的监听器</h2><blockquote>
-<p>1、Servlet中的监听器主要监听的事件源是域对象：ServletContext、HttpSession,ServletRequest</p>
-<p>2、Servlet中监听器的分类：<br>a)监听三个域对象的创建、销毁。（有三个域对象就对应有三个监听器）<br>b)监听三个域对象的属性变更 (存值、替换值、移除值)的监听器。（三个）<br>c)监听HttpSession中javabean的状态改变（钝化、活化、绑定、解绑）的监听器。（两个）</p>
-</blockquote>
-<h2 id="ServletContextListener监听器的使用"><a href="#ServletContextListener监听器的使用" class="headerlink" title="ServletContextListener监听器的使用"></a>ServletContextListener监听器的使用</h2><p>ServletContextListener:监听ServletContext域对象的创建和销毁.</p>
-<pre><code>* 创建:
-* 服务器启动的时候创建ServletContext对象
-(一个web应用创建一个ServletContext)
-
-* 销毁:
-* 服务器关闭的时候.(项目从服务器中移除的时候.)
-</code></pre><p>ServletContextAttributeListener:监听ServletContext对象的属性变更（attributeAdded,attributeRemoved,attributeReplaced ）</p>
-<h2 id="HttpSessionListener监听器的使用"><a href="#HttpSessionListener监听器的使用" class="headerlink" title="HttpSessionListener监听器的使用"></a>HttpSessionListener监听器的使用</h2><p>HttpSessionAttributeListener:监听HttpSession中的属性变更<br><strong>重点（面试）</strong><br>    【HttpSession何时创建和销毁的】</p>
-<pre><code>* 创建:服务器端第一次调用getSession();
-* 销毁:
-    * 非正常关闭服务器(正常关闭session会序列化):
-    * session过期了(默认30分钟)
-    * 调用session.invalidate();
-
-【HttpSession的问题】
-* 访问Servlet会不会创建Session    : 不会
-* 访问JSP会不会创建Session        ：会. ??
-* 访问html会不会创建Session        ：不会
-</code></pre><h2 id="ServletRequestListener监听器的使用"><a href="#ServletRequestListener监听器的使用" class="headerlink" title="ServletRequestListener监听器的使用"></a>ServletRequestListener监听器的使用</h2><p>ServletRequestAttributeListener：监听ServletRequest对象的属性变更的:<br>【request对象何时创建和销毁】:</p>
-<ul>
-<li>创建：客户端向服务器发送一次请求,服务器就会创建request对象.</li>
-<li>销毁：服务器对这次请求作出响应后就会销毁request对象.</li>
-</ul>
-<ul>
-<li>访问一个Servlet会不会创建request对象:会</li>
-<li>访问一个JSP会不会创建request对象：会</li>
-<li>访问一个HTML会不会创建request对象:会</li>
-</ul>
-<p><em>*三类八种</em><br>    监听器(3类8种)<br>    第一类:监听3个域对象的创建和销毁<br>    ServletContextListener<br>    HttpSessionListener<br>    ServletRequestListener<br>    第二类:监听3个域对象属性的变更(属性添加,移除,替换)<br>    ServletContextAttributeListener<br>    HttpSessionAttributeListener<br>    ServletRequestAttributeListener<br>    第三类: 有点特殊,只监听HttpSession中JavaBean的绑定和解绑,钝化和活化<br>    不需要配置</p>
-<pre><code>Session的钝化实质是对于session的优化手段!!!
-    长时间不使用的session使其序列化.
-
-手动配置Session序列化:
-    * 手动配置Session的序列化通过标签&lt;Context&gt;标签.
-    * tomcat/conf/context.xml:代表所有的虚拟主机和所有虚拟路径按照这个配置来执行.
-    * tomcat/conf/Catalina/localhost/context.xml:代表所有localhost虚拟主机下的所有的项目都可以按照这个配置来执行.
-    * 工程META-INF/context.xml:代表只有当前的工程按照这个配置执行.
-
-    * 在context.xml中进行配置:
-    &lt;Context&gt;
-    &lt;!-- 
-        maxIdleSwap    :1.代表如果session一分钟没有使用的话,将session序列化到硬盘.
-        directory    :itcast. 将session序列化后,序列化文件保存在itcast的路径中.
-     --&gt;
-    &lt;Manager className=&quot;org.apache.catalina.session.PersistentManager&quot;
-        maxIdleSwap=&quot;1&quot;&gt;
-        &lt;Store className=&quot;org.apache.catalina.session.FileStore&quot;
-            directory=&quot;itcast&quot; /&gt;
-    &lt;/Manager&gt;
-&lt;/Context&gt;
-</code></pre><p><strong>总结</strong><br>第三类监听器,很特殊,1.只监听HttpSession, 2.不需要在web.XML中配置<br>1.HttpSessionBingingListerner 监听  某个Bean绑定到session和解除绑定<br>2.HttpSessionActivationListener 监听 某个Bean 钝化和活化<br>3.手动配置session钝化和活化</p>
-<h3 id="Filter的概述"><a href="#Filter的概述" class="headerlink" title="Filter的概述"></a>Filter的概述</h3><p>过滤器:Filter. 对客户端向服务器发送的请求进行过滤</p>
-<p><img src="" alt="Filter过滤原理">;</p>
-<h3 id="FilterChain对象的概述"><a href="#FilterChain对象的概述" class="headerlink" title="FilterChain对象的概述"></a>FilterChain对象的概述</h3><p>FilterChain称为过滤器链，web应用中可以存在很多个Filter过滤器，多个Filter过滤器组合起来就是一个过滤器链，受同一个FilterChain管理。</p>
-<p>过滤链中的Filter过滤器拦截是有先后顺序的，这个顺序取决于Filter在web.xml中<filter-mapping>的位置。<br><img src="" alt="FilterChain原理">;</filter-mapping></p>
-<blockquote>
-<p>注意:<br>过滤器的执行的顺序与<filter-mapping>的配置顺序有关.</filter-mapping></p>
-</blockquote>
-<h3 id="Filter的生命周期（了解）"><a href="#Filter的生命周期（了解）" class="headerlink" title="Filter的生命周期（了解）"></a>Filter的生命周期（了解）</h3><blockquote>
-<p>过滤器的创建和销毁:</p>
-<ul>
-<li>创建:服务器启动的时候.</li>
-<li>销毁:服务器关闭的时候.</li>
-</ul>
-</blockquote>
-<h3 id="FilterConfig对象的概述-了解"><a href="#FilterConfig对象的概述-了解" class="headerlink" title="FilterConfig对象的概述(了解)"></a>FilterConfig对象的概述(了解)</h3><blockquote>
-<p>增强一个类的方法<br>通过上面的分析，现在增强request的getParameter的方法。增强的过程要写在过滤器中。<br>如何增强一个类中的方法？<br>继承<br>必须要能够控制这个类的构造。<br>装饰者<br>被增强的类和增强的类需要实现相同的接口。<br>在增强的类中获得被增强的类的引用。<br>缺点：接口中的方法过多，重写很多其他的方法。<br>动态代理<br>类需要实现接口。</p>
-</blockquote>
-
-          
+          监听器的概述监听器就是一个实现了特定接口的Java类，这个Java类用于监听另一个Java类的方法调用或者属性的改变。当被监听对象发生上述事件后，监听器某个方法将会立即被执行。监听器的用途用来监听其他对象的变化的。主要应用在图形化界面开发上
+Servlet中的监听器
+1、Servlet中的监听器主要
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/01/23/Listener-Filter/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1636,7 +1519,6 @@
 
     
       
-
   
 
   
@@ -1688,7 +1570,7 @@
 
             
           </span>
-
+        
           
 
           
@@ -1719,10 +1601,17 @@
       
         
           
-            <hr>
-<p>title: “File”<br>categories: 随笔<br>date: 2018-01-21 19:15:39</p>
-<h2 id="tags-“文件上传和下载”"><a href="#tags-“文件上传和下载”" class="headerlink" title="tags: “文件上传和下载”"></a>tags: “文件上传和下载”</h2>
           
+title: “File”categories: 随笔date: 2018-01-21 19:15:39
+tags: “文件上传和下载”
+          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/01/22/suibi/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1759,7 +1648,6 @@
 
     
       
-
   
 
   
@@ -1811,7 +1699,7 @@
 
             
           </span>
-
+        
           
             <span class="post-category" >
             
@@ -1864,278 +1752,18 @@
       
         
           
-            <p>#文件上传的概述  #</p>
-<ul>
-<li>什么是文件上传<br>  文件上传：将客户端的文件通过流写入到服务器中</li>
-<li>文件上传的技术<br>  SPSmartUpload    ：应用在JSP上的文件上传和下载的组件。<br>  FileUpload        ：应用在Java环境上的文件上传的功能。<br>  Servlet3.0            ：提供文件上传的功能<br>  Struts2            ：提供文件上传的功能</li>
-<li>文件上传的要素<br>  表单的提交的方式需要是POST<br>  表单中需要有’<input type="”file”">‘元素，需要有name属性和值。<br>  表单enctype=”multipart/form-data”</li>
-</ul>
-<p><strong>总结:<br>设置了form 表单的enctype属性为multipart/form-data<br>请求体中,才会有文件的内容</strong></p>
-<h1 id="文件上传的入门案例"><a href="#文件上传的入门案例" class="headerlink" title="文件上传的入门案例"></a>文件上传的入门案例</h1><blockquote>
-<p>文件上传的原理:()<br>form设置了enctype=”multipart/form-data” 请求体中才有文件的内容.否则没有文件内容;<br>步骤:<br>1.获取请求头中的分割线<br>2.获取请求体中的所有内容(request.getIntstream())<br>3.通过分割线对内容进行分割,得到每个部分<br>4.判断每个部分(文件上传项或普通项)</p>
-<p>文件上传3要素:<br>2.post提交<br>3.input type=file name=”info”<br>4.form enctype=”multipart/form-data”</p>
-<p>1.创建工厂(磁盘文件项)<br>2.创建Servlet文件上传对象<br>3.解析request,得到List集合<br>4.遍历集合,判断每个项目是普通项还是文件上传项</p>
-</blockquote>
-<h2 id="文件上传的api之DiskFileItemFactory"><a href="#文件上传的api之DiskFileItemFactory" class="headerlink" title="文件上传的api之DiskFileItemFactory"></a>文件上传的api之DiskFileItemFactory</h2><p> <em>DiskFileItemFactory是创建FileItem对象的工厂，这个工厂类的常用方法：</em></p>
-<p>public void setSizeThreshold（int sizeThreshold）：设置内存缓冲区的大小，默认值*为10K。当上传文件大于缓冲区大小时，fileupload组件将使用临时文件缓存上传文件。</p>
-<p>public void setRepository（java.io.File repository）：指定临时文件目录，默认值为System.getProperty（“java.io.tmpdir”）。</p>
-<p>public DiskFileItemFactory（int sizeThreshold，java.io.File repository）：构造函数</p>
-<p><strong>API 的使用的代码</strong></p>
-<p><img src="/2018/01/21/FileUploadAndDownLoad/api.png" alt="Api">;</p>
-<h2 id="文件上传的API之SERVLETFILEUPLOAD"><a href="#文件上传的API之SERVLETFILEUPLOAD" class="headerlink" title="文件上传的API之SERVLETFILEUPLOAD"></a>文件上传的API之SERVLETFILEUPLOAD</h2><p>ServletFileUpload负责处理上传的文件数据，并将表单中的每个输入项封装成一个FileItem对象中。常用方法有：</p>
-<ul>
-<li><p>boolean isMultipartContent（HttpServletRequest request）：判断上传表单是否为multipart / form-data类型</p>
-</li>
-<li><p>列表parseRequest（HttpServletRequest请求）：解析请求对象，并把表单中的每一个输入项包装成一个fileItem对象，并返回一个保存了所有FileItem的列表集合。</p>
-</li>
-<li><p>setFileSizeMax（long fileSizeMax）：设置上传文件的最大值</p>
-<p>  setSizeMax（long sizeMax）：设置上传文件总量的最大值</p>
-<p>  setHeaderEncoding（java.lang.String encoding）：设置编码格式</p>
-<p>  setProgressListener（ProgressListener pListener）</p>
-</li>
-</ul>
-<p><img src="/2018/01/21/FileUploadAndDownLoad/servlet.png" alt="servlet">;</p>
-<h2 id="文件上传的API之FileItem’"><a href="#文件上传的API之FileItem’" class="headerlink" title="文件上传的API之FileItem’"></a>文件上传的API之FileItem’</h2><blockquote>
-<p>1.boolean  isFormField()。isFormField方法用来判断FileItem对象里面封装的数据是一个普通文本表单字段，还是一个文件表单字段。如果是普通文本表单字段，返回一个true否则返回一个false。因此可以用该方法判断是否是普通表单域还是文件上传表单域。</p>
-<p>  2.String getName（）。getName方法用来获得文件上传字段中的文件名。</p>
-<p>  3.String getFieldName（）。getFieldName方法用来返回表单标签的name属性的值。</p>
-<p>  4.void write(File file)。write方法将FileItem对象中的内容保存到某个指定的文件中。如果FileItem对象中的内容是保存在某个临时文件中，该方法完成后，临时文件可以会被删除。该方法也可以将普通表单字段保存在一个文件中，但最主要的用途是把上传的文件内容保存在本地文件系统中。</p>
-<p>  5.String getString（）。getString（）方法将FileItem对象中保存的数据流内容以一个字符串返回。它有两个重载形式。public java.lang.String getString()和public java.lang.String getString(java.lang.String encodeing) throws java.io.UnsupportedEncodingException。前者使用缺省的字符集编码将主体内容转换成字符串，后者使用参数指定的字符集编码。如果在读取普通表单字段元素的内容时，出现了乱码现象，可以调用第二个方法，并传入 正确的字符集编码名称。</p>
-<p>  6.String getContentType()。此方法用来获得上传文件的类型，即标段字段元素描述头属性“content-type”的值，如image/jpeg。如果FileItem对象对应的是普通的表单字段，将返回null。</p>
-<p>  7.boolean isInMemory()。判断FileItem对象封装的数据是保存在内存中还是硬盘中。</p>
-<p>  8.void  delete（）。此方法用来清空FileItem对象中封装的主体内容，如果内容是被保存在临时文件中，该方法会把临时文件删除。</p>
-<p>  9.InputStream  getInputStream()。以流的形式返回上传文件的主体内容。</p>
-<p>  10.long  getSize()。返回上传文件的大小。</p>
-</blockquote>
-<hr>
-<h3 id="文件上传兼容浏览器问题及解决"><a href="#文件上传兼容浏览器问题及解决" class="headerlink" title="文件上传兼容浏览器问题及解决"></a>文件上传兼容浏览器问题及解决</h3><blockquote>
-<p>如果使用IE老版本的浏览器出现一个文件名称获取错误问题。IE老版本获取文件名称的时候，会带有路径。<br><img src="/2018/01/21/FileUploadAndDownLoad/IE.png" alt="IE">;</p>
-</blockquote>
-<h3 id="文件上传同一个目录下文件同名的问题及解决"><a href="#文件上传同一个目录下文件同名的问题及解决" class="headerlink" title="文件上传同一个目录下文件同名的问题及解决"></a>文件上传同一个目录下文件同名的问题及解决</h3><p>张三向服务器上传了一个文件aa.txt内容是hello world。李四向服务器上传了一个文件aa.txt内容hello Java。后上传的文件将先上传的文件覆盖了。</p>
-<p>使用UUID对象随机生成一个字符串，然后使用这个字符串+后缀名最为文件的文件名。</p>
-<p><img src="/2018/01/21/FileUploadAndDownLoad/UUID.png" alt="UUID">;</p>
-<h3 id="文件上传同一个目录下文件过多的问题及解决"><a href="#文件上传同一个目录下文件过多的问题及解决" class="headerlink" title="文件上传同一个目录下文件过多的问题及解决"></a>文件上传同一个目录下文件过多的问题及解决</h3><p>按目录分离算法    ：按照某种特定算法进行分离。<br>上传一个文件，得到一个唯一的文件名。<br>唯一文件名获取其hashCode值。—–int类型的值（32位）<br>让hashCode的值 &amp; 0xf;—–得出的这个值作为一级目录。<br>让hashCode右移4位  &amp; 0xf;—-得出的这个值作为二级目录。<br>以此类推。<br><img src="/2018/01/21/FileUploadAndDownLoad/file.png" alt="file"><br><img src="/2018/01/21/FileUploadAndDownLoad/file2.png" alt="file2"></p>
-<h4 id="文件下载概述"><a href="#文件下载概述" class="headerlink" title="文件下载概述"></a>文件下载概述</h4><p>【方式一】：通过超链接下载：<a href="”资源路径”"></a><br>                缺点：如果浏览器支持显示这种数据格式就不会提示下载了。</p>
-<p>【方式二】：通过代码的方式实现文件下载：<br>                主要是要设置两个头，并且使用response对象的getOutputStream()获取输出流向客户端写数据。</p>
-<p>Content-Type                :文件的MIME的类型<br>Content-Disposition        :浏览器支持该格式的文件，提示下载<br>输入流<br>总结<br><strong>2个头,一个流</strong></p>
-<hr>
-<p>下载会出现的中文乱码的问题集<br>    下载中文文件，由于不同的浏览器在下载文件的显示文件名的编码码表不一样，导致要下载的文件名显示不出来。我们可以通过request请求获取User-Agent请求头判断用户使用的是什么浏览器，然后用对应的编码就行了。<br><img src="/2018/01/21/FileUploadAndDownLoad/Agent.png" alt="Agent">;<br><img src="/2018/01/21/FileUploadAndDownLoad/Agent1.png" alt="Agent1"></p>
+          #文件上传的概述  #
 
-          
-        
-      
-    </div>
-    
-    
-    
-  <div>
-  
-  </div>
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://HackerFreedom.github.io/2018/01/20/linux/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Sam">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/my.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="TO BE BTTER ME">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/01/20/linux/" itemprop="url">linux基本使用</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-20T19:14:03+08:00">
-                2018-01-20
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/技术文章/" itemprop="url" rel="index">
-                    <span itemprop="name">技术文章</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="linux常用命令"><a href="#linux常用命令" class="headerlink" title="linux常用命令"></a>linux常用命令</h1><pre><code>cd app    切换到app目录
-cd ..        切换到上一层目录
-cd /        切换到系统根目录
-cd ~        切换到用户主目录
-cd -        切换到上一个所在目录
-</code></pre><ul>
-<li><strong>ls ll 列出文件列表**</strong><br>ls(list)是一个非常有用的命令，用来显示当前目录下的内容。配合参数的使用，能以不同的方式显示目录内容。<br>  ls -a  显示所有文件或目录（包含隐藏的文件）<ul>
-<li>ls -l  缩写成ll<br>在linux中以 . 开头的文件都是隐藏的文件</li>
-</ul>
-</li>
-</ul>
-<ul>
-<li><p>创建于删除目录<br>  mkdir(make directory)命令可用来创建子目录。<br>  mkdir app    在当前目录下创建app目录<br>  mkdir –p app2/test  多 级联创建aap2以及test目</p>
-<p>  rmdir(remove directory)命令可用来删除“空”的子目录：<br>  rmdir app    删除app目录<br>  rm -rf   删除</p>
-</li>
-<li>浏览文件<br>  cat命令   输入文件夹来浏览文件<br>  tail 命令     tail -f catalina.log    动态查看日志(<strong>*</strong>) </li>
-<li>文件操作<br>  cp是copy操作<br>  cp(copy)命令可以将文件从一处复制到另一处。一般在使用cp命令时将一个文件复制成另一个文件或复制到某目录时，需要指定源文件名与目标文件名或目录</li>
-<li><p>打包压缩和解压<br>  <em>tar命令位于/bin目录下，它能够将用户所指定的文件或目录打包成一个文件，但不做压缩。一般Linux上常用的压缩方式是选用tar将许多文件打包成一个文件，再以gzip压缩命令压缩成xxx.tar.gz(或称为xxx.tgz)的文件。</em></p>
-<p>  常用参数：<br>  -c：创建一个新tar文件<br>  -v：显示运行过程的信息<br>  -f：指定文件名<br>  -z：调用gzip压缩命令进行压缩<br>  -t：查看压缩文件的内容<br>  -x：解开tar文件</p>
-<p>  打包：<br>  tar –cvf xxx.tar ./<em><br>  打包并且压缩：<br>  tar –zcvf xxx.tar.gz ./</em><br><strong>解压 **</strong><br>  tar –xvf xxx.tar<br>  tar -xvf xxx.tar.gz -C /usr/aaa**</p>
-</li>
-<li><p>文件查找<br><em>查找符合条件的文件find</em><br>  find / -name “ins<em>” 查找文件名称是以ins开头的文件<br>  find / -name “ins</em>” –ls<br>  find / –user itcast –ls 查找用户itcast的文件<br>  find / –user itcast –type d –ls 查找用户itcast的目录<br>  find /-perm -777 –type d-ls 查找权限是777的文件<br>查找文件里符合条件的字符串。<br><em>查找文件中符合条件的字符串grep</em><br>  grep lang anaconda-ks.cfg  在文件中查找lang</p>
-</li>
-<li><p>其它常用命令</p>
-</li>
-<li><strong>pwd</strong><br>  显示当前所在目录</li>
-<li>touch<br>   创建一个空文件</li>
-<li>ll -h<br>  友好显示文件大小</li>
-<li><p>weget<br>  下载资料<br>   <em>wget <a href="http://nginx.org/download/nginx-1.9.12.tar.gz" target="_blank" rel="noopener">http://nginx.org/download/nginx-1.9.12.tar.gz</a></em></p>
-<h2 id="VI与VIM编辑器-（基本的CRUD）"><a href="#VI与VIM编辑器-（基本的CRUD）" class="headerlink" title="VI与VIM编辑器 ##（基本的CRUD）"></a>VI与VIM编辑器 ##（基本的CRUD）</h2><p><strong>有三种模式 命令行  插入  底行</strong><br>  通过  vi（vim） 文件名  就可以对文件进行操作<br>  当操作时，开始是命令行模式   按I  o  a 切换到插入模式<br>  按esc 可以在重新切换到命令行模式<br><strong>在命令行模式下按 “:” 就可以切换到底行模式。</strong><br>  退出：esc  :q<br>  修改文件：输入i进入插入模式<br>  保存并退出：esc:wq</p>
-<p>  不保存退出：esc:q!</p>
-<p>  三种进入插入模式：<br>  i:在当前的光标所在处插入<br>  o:在当前光标所在的行的下一行插入<br>  a:在光标所在的下一个字符插入</p>
-</li>
-</ul>
-<p><strong>快捷键：<br>dd – 快速删除一行<br>yy - 复制当前行<br>nyy - 从当前行向后复制几行<br>p - 粘贴<br>R – 替换*
-</strong>重定向<em>*
-</em>重定向输出，覆盖原有内容<em>
-</em>重定向输出，又追加功能*<br>    cat /etc/passwd &gt; a.txt  将输出定向到a.txt中<br>    cat /etc/passwd &gt;&gt; a.txt  输出并且追加</p>
-<pre><code>ifconfig &gt; ifconfig.txt
-</code></pre><p><strong>管道</strong><br><em>管道是Linux命令中重要的一个概念，其作用是将一个命令的输出用作另一个命令的输入。</em><br>    ls –help | more  分页查询帮助信息<br>    ps –ef | grep java  查询名称中包含java的进程</p>
-<pre><code>ifconfig | more
-cat index.html | more
-ps –ef | grep aio
-</code></pre><p><strong>系统常用命令</strong></p>
-<pre><code>date 显示或设置系统时间
-date  显示当前系统时间
-date -s “2014-01-01 10:10:10“  设置系统时间
-df 显示磁盘信息
-df –h  友好显示大小
-free 显示内存状态
-free –m 以mb单位显示内存组昂头
-top 显示，管理执行中的程序
-
-clear 清屏幕
-
-ps 正在运行的某个进程的状态
-ps –ef  查看所有进程
-ps –ef | grep ssh 查找某一进程
-kill 杀掉某一进程
-kill 2868  杀掉2868编号的进程
-kill -9 2868  强制杀死进程
-
-du 显示目录或文件的大小。
-du –h 显示当前目录的大小
-
-who 显示目前登入系统的用户信息。
-
-uname 显示系统信息。
-uname -a 显示本机详细信息。
-依次为：内核名称(类别)，主机名，内核版本号，内核版本，内核编译日期，硬件名，处理器类型，硬件平台类型，操作系统名称
-</code></pre><p><strong>2018/1/20 19:14:21 </strong></p>
-
-          
+什么是文件上传  文件上传：将客户端的文件通过流写入到服务器中
+文件上传的技术  SPSmartUpload    ：应用在JSP上的文件上传和下载的组件。  FileUpload        ：应用在Java环境上的文件上传的功能。  Servlet3.0       
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/01/21/FileUploadAndDownLoad/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -2227,7 +1855,7 @@ uname -a 显示本机详细信息。
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">17</span>
+                  <span class="site-state-item-count">18</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2311,6 +1939,7 @@ uname -a 显示本机详细信息。
 
   
 </div>
+
 
 
 <div class="powered-by">
@@ -2431,13 +2060,6 @@ uname -a 显示本机详细信息。
 
   
   
-
-
-  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
-
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
-
-
 
   
 

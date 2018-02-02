@@ -2,16 +2,44 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://HackerFreedom.github.io/board/index.html</loc>
+    <loc>http://HackerFreedom.github.io/2018/02/01/hexo%E4%BF%AE%E6%94%B9%E7%9A%84%E6%96%87%E4%BB%B6/</loc>
     
-    <lastmod>2018-01-31T17:12:55.407Z</lastmod>
+    <lastmod>2018-02-02T01:53:04.588Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://HackerFreedom.github.io/about/index.html</loc>
+    
+    <lastmod>2018-02-01T13:02:48.491Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://HackerFreedom.github.io/2018/01/31/web%E9%98%B6%E6%AE%B5%E6%80%BB%E7%BB%93/</loc>
     
-    <lastmod>2018-01-31T16:52:08.706Z</lastmod>
+    <lastmod>2018-02-01T11:25:29.071Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://HackerFreedom.github.io/photo/index.html</loc>
+    
+    <lastmod>2018-02-01T11:21:06.460Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://HackerFreedom.github.io/board/index.html</loc>
+    
+    <lastmod>2018-02-01T07:17:42.439Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://HackerFreedom.github.io/2018/01/19/year-01-19-Hexo/</loc>
+    
+    <lastmod>2018-02-01T06:06:47.130Z</lastmod>
     
   </url>
   
@@ -51,13 +79,6 @@
   </url>
   
   <url>
-    <loc>http://HackerFreedom.github.io/photo/index.html</loc>
-    
-    <lastmod>2018-01-29T15:13:14.526Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://HackerFreedom.github.io/2018/01/28/jsp-el-jstl/</loc>
     
     <lastmod>2018-01-29T07:11:32.742Z</lastmod>
@@ -68,13 +89,6 @@
     <loc>http://HackerFreedom.github.io/2018/01/28/nginx-svn/</loc>
     
     <lastmod>2018-01-29T07:10:52.689Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://HackerFreedom.github.io/2018/01/19/year-01-19-Hexo/</loc>
-    
-    <lastmod>2018-01-29T06:56:50.307Z</lastmod>
     
   </url>
   
