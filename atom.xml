@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://HackerFreedom.github.io/"/>
-  <updated>2018-02-02T01:53:04.588Z</updated>
+  <updated>2018-02-03T16:36:27.577Z</updated>
   <id>http://HackerFreedom.github.io/</id>
   
   <author>
@@ -17,13 +17,65 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>oracle</title>
+    <link href="http://HackerFreedom.github.io/2018/02/02/ORACLE/"/>
+    <id>http://HackerFreedom.github.io/2018/02/02/ORACLE/</id>
+    <published>2018-02-02T07:34:00.000Z</published>
+    <updated>2018-02-03T16:36:27.577Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="oracle的简介"><a href="#oracle的简介" class="headerlink" title="oracle的简介"></a>oracle的简介</h1><p>tabs 查询所有的表</p><p>中文乱码解决<br>1.检查服务器编码: 执行SQL语法: select * from v$nls_parameters; 如果不是中文则执行2 2.设置本地客户端编码: 进入 我的电脑,属性,高级,环境变量,添加2项:LANG=zh_CN.GBK 和 NLS_LANG=”SIMPLIFIED CHINESE_CHINA.ZHS16GBK” 3. PL/SQL Developer设置并重新连接: 在pl/sql developer的菜单-&gt;tools-&gt;preferences-&gt;user interface-&gt;fonts 中修改为中文字体 OK了。</p><h2 id="单表查询"><a href="#单表查询" class="headerlink" title="单表查询"></a>单表查询</h2><ul><li><p>精确查找</p><p>  select * from T_owners where 条件</p></li><li><p>模糊查询<br>  select * from t_owners where name like’% 刘%’</p></li><li><p>and 运算符</p><p>  select * from t_owners where name like’% 刘%’and 条件</p></li><li><p>or 运算符</p><p>  select * from t_owners where name like’% 刘%’ or 条件</p></li><li><p>and和or运算符混用使用</p><p>  select *from  t_owners where（ name like’% 刘%’or 条件） and 条件 –由于and的优先级高</p></li><li><p>范围查询</p><p>  select * from t_account where usenum &gt;= 12313 and usenum &lt;22313</p></li><li>空值查询<br>  可以查询为空的记录<br>  select * from t_pricetable t where maxnum is not null</li><li><p>去掉重复记录</p><p>  select distinct addressid from t_owners<br><strong>distinct</strong></p></li><li><p>排序查询</p><ol><li><p>升序<br>默认</p></li><li><p>降序</p><p>select * from T_account order by usenum desc </p></li></ol></li></ul><p><strong>desc</strong></p><ul><li><p>伪列查询</p><ol><li><p><strong>ROWID</strong><br>获取每个数据的物理地址<br>select rowID ,t* form 地点 where 条件</p></li><li><p><strong>ROWNUM</strong><br>每次获取一行为 标识的一个行号<br>select rownum ,t*from </p></li></ol></li><li><p>聚合统计</p><ol><li><p>聚合函数</p><ul><li>sum 求和</li><li>avg 求平均数</li><li>max 求最大值</li><li>min 求最小值</li><li>count 求统计个数<ul><li>select count(*)from…where …</li></ul></li></ul></li><li><p>分组聚合Group by</p><ul><li>select areaid ,sum(money) from 表名 group by areaid </li></ul></li><li><p>分组后条件查询having</p><ul><li>select areaid ,sum(money) from 表名 group by areaid having 条件</li></ul></li></ol></li></ul><p><strong>总结</strong></p><p>select…from …where…group by…having</p><h3 id="多表查询"><a href="#多表查询" class="headerlink" title="多表查询"></a>多表查询</h3><ul><li>内连接</li><li></li><li>外连接<ol><li>左外连接查询</li><li>右外连接查询</li></ol></li></ul><h3 id="子查询"><a href="#子查询" class="headerlink" title="子查询"></a>子查询</h3><ul><li><p>单行子查询</p><ul><li>where 字句中的子查询<ol><li>只返回一条记录<ol><li>单行操作符  =    &gt;   &gt;=   &lt;    &lt;=   &lt;&gt;<br>select * from T_account where((条件包含条件)) </li></ol><ul><li>select 字句中的子查询</li></ul></li></ol></li></ul></li><li><p>多行子查询  in（范围） any all（记录允许多个记录）</p><ul><li><p>from字句中的子查询</p><p><em>关于多个表查询，先查两表关联的条件</em></p></li></ul></li><li><p>分页查询</p><ul><li>简单分页<ul><li>rownum  原理是按扫描的按顺序产生的，所以where条件不能用大于 或者等于</li></ul></li><li><p>基于排序分页</p></li><li></li></ul></li></ul><hr><p>子查询中空值的问题<br>      单行子查询的空值问题<br>    多行子查询中的null值问题<br>    如果表中有空值的话，不能用not in</p><h4 id="内置函数"><a href="#内置函数" class="headerlink" title="内置函数"></a>内置函数</h4><p>行列转换</p><ul><li>单行函数</li></ul><ul><li>行列转化</li></ul><p>alter user scott account unlock；<br>alter user scott </p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;oracle的简介&quot;&gt;&lt;a href=&quot;#oracle的简介&quot; class=&quot;headerlink&quot; title=&quot;oracle的简介&quot;&gt;&lt;/a&gt;oracle的简介&lt;/h1&gt;&lt;p&gt;tabs 查询所有的表&lt;/p&gt;
+&lt;p&gt;中文乱码解决&lt;br&gt;1.检查服务器编码: 执行
+      
+    
+    </summary>
+    
+      <category term="Oracle的基础知识" scheme="http://HackerFreedom.github.io/categories/Oracle%E7%9A%84%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/"/>
+    
+    
+      <category term="oracle基础知识" scheme="http://HackerFreedom.github.io/tags/oracle%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>oracle第三天</title>
+    <link href="http://HackerFreedom.github.io/2018/02/02/oracle%E7%AC%AC%E4%B8%89%E5%A4%A9/"/>
+    <id>http://HackerFreedom.github.io/2018/02/02/oracle第三天/</id>
+    <published>2018-02-02T07:34:00.000Z</published>
+    <updated>2018-02-05T01:20:14.587Z</updated>
+    
+    <content type="html"><![CDATA[<p>记录的结果是单行的，就是单行查询</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;记录的结果是单行的，就是单行查询&lt;/p&gt;
+
+      
+    
+    </summary>
+    
+      <category term="Oracle的基础知识" scheme="http://HackerFreedom.github.io/categories/Oracle%E7%9A%84%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/"/>
+    
+    
+      <category term="oracle基础知识" scheme="http://HackerFreedom.github.io/tags/oracle%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/"/>
+    
+  </entry>
+  
+  <entry>
     <title>hexo修改的地方</title>
     <link href="http://HackerFreedom.github.io/2018/02/01/hexo%E4%BF%AE%E6%94%B9%E7%9A%84%E6%96%87%E4%BB%B6/"/>
     <id>http://HackerFreedom.github.io/2018/02/01/hexo修改的文件/</id>
     <published>2018-02-01T11:35:00.000Z</published>
-    <updated>2018-02-02T01:53:04.588Z</updated>
+    <updated>2018-02-02T01:53:53.460Z</updated>
     
-    <content type="html"><![CDATA[<p>hexo clean #清除缓存 网页正常情况下可以忽略此条命令<br>hexo g #生成静态网页<br>hexo d #开始部署</p><p>npm install hexo -g #安装<br>npm update hexo -g #升级<br>hexo init #初始化</p><p>具体方法实现<br>切换到根目录下，然后运行如下代码</p><script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script><pre><code>$ npm install hexo-wordcount --save然后在/themes/next/layout/_partials/footer.swig文件尾部加上&lt;div class=&quot;theme-info&quot;&gt;  &lt;div class=&quot;powered-by&quot;&gt;&lt;/div&gt;  &lt;span class=&quot;post-count&quot;&gt;博客全站共{{ totalcount &#40 site &#41 }}字&lt;/span&gt;&lt;/div&gt;</code></pre>]]></content>
+    <content type="html"><![CDATA[<p>hexo clean #清除缓存 网页正常情况下可以忽略此条命令<br>hexo g #生成静态网页<br>hexo d #开始部署</p><p>npm install hexo -g #安装<br>npm update hexo -g #升级<br>hexo init #初始化</p><p>具体方法实现<br>切换到根目录下，然后运行如下代码</p><script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script><pre><code>$ npm install hexo-wordcount --save然后在/themes/next/layout/_partials/footer.swig文件尾部加上&lt;div class=&quot;theme-info&quot;&gt;  &lt;div class=&quot;powered-by&quot;&gt;&lt;/div&gt;  &lt;span class=&quot;post-count&quot;&gt;博客全站共{{ totalcount &#40 site &#41 }}字&lt;/span&gt;&lt;/div&gt;</code></pre><p>这些异常一般是文章中使用了now（），小括号（）属于特殊字符，在编译文章时将now（）当函数处理了，结果找不到函数，就报错了</p>]]></content>
     
     <summary type="html">
     
@@ -114,6 +166,60 @@
     
     
       <category term="nginx&amp;svn基本知识" scheme="http://HackerFreedom.github.io/tags/nginx-svn%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Cookie-Session</title>
+    <link href="http://HackerFreedom.github.io/2018/01/28/Cookie-Session/"/>
+    <id>http://HackerFreedom.github.io/2018/01/28/Cookie-Session/</id>
+    <published>2018-01-28T06:15:14.000Z</published>
+    <updated>2018-02-04T05:52:39.875Z</updated>
+    
+    <content type="html"><![CDATA[<p>DDL是tra  删除命令，没有事务回滚</p><h1 id="会话技术的概述"><a href="#会话技术的概述" class="headerlink" title="会话技术的概述"></a>会话技术的概述</h1><p>简单来说，就是用户打开浏览器，访问web资源，然后关闭浏览器的整个过程。而用户每次访问留下的数据，就需要<br>我们用会话技术来保存了。</p><p><img src="/2018/01/28/Cookie-Session/main01.png" alt="requset请求的数据保存">;</p><h1 id="会话技术的实现原理"><a href="#会话技术的实现原理" class="headerlink" title="会话技术的实现原理"></a>会话技术的实现原理</h1><ul><li>会话技术的分类<ol><li>会话技术分为cookie 和session <ul><li>cookie属于客户端技术<br> 通过响应头的形式来保存信息</li><li>session属于服务端技术<br> 会在服务器中开辟一处空间来存储数据<br><strong>cookie和session的区别</strong><br>   cookie是把数据保存到浏览器中，session是把数据存储到服务器中</li></ul></li></ol></li><li>Cookie和Session的实现原理<br><img src="/2018/01/28/Cookie-Session/main02.png" alt="cookie和session的实现">;<br><img src="/2018/01/28/Cookie-Session/main03.png" alt="cookie和session的实现">;</li></ul><h2 id="获取Cookie的方法"><a href="#获取Cookie的方法" class="headerlink" title="获取Cookie的方法"></a>获取Cookie的方法</h2><pre><code>- 创建一个cookie1. getName () 返回Cookie的key2. getValue（） 3. setValue- 保存一个cookie1. addcookie() -- HttpServletResponse接口的方法- 获取一个cookie1. getCookies()  --HttpServletRequest接口的方法</code></pre><p><em>可以记录用户第一次访问的时间，用Cookies的方法</em><br><img src="/2018/01/28/Cookie-Session/cookie01.png" alt=""></p><h2 id="Cookie的分类"><a href="#Cookie的分类" class="headerlink" title="Cookie的分类"></a>Cookie的分类</h2><ul><li><em>会话级别的Cookie</em><br>  顾名思义，它存在的时间默认是一次会话，直到关闭浏览器</li><li><em>持久化的Cookie</em><ul><li>见明知意，它是设置Cookie的有效时间，数据会被序列化，既存储在硬盘上了；</li></ul></li></ul><p><img src="/2018/01/28/Cookie-Session/cookie02.png" alt="cookie的设置"></p><p><strong>Cookies要注意的点</strong><br>1 浏览器存储cookie有大小和个数的限制，各种浏览器不宜<br>2、cookie默认是一次会话结束就消失，但是要删除持久化的cookie，只需要调用setMaxAge(0);<br><em>但是要设置cookie相同的path</em></p><h3 id="Session的概述"><a href="#Session的概述" class="headerlink" title="Session的概述"></a>Session的概述</h3><p>Session称为是一次会话，Cookie将用户产生的私有数据保存到浏览器端，而Session将用户产生的私有的数据保存到服务器端</p><p>cookie和session的区别<br>Cookie的局限性：</p><ul><li>Cookie保存的数据是有个数和大小的限制的。<ul><li>数据是保存客户端浏览器上（相对不是很安全）</li></ul></li></ul><p>session:</p><pre><code>- Session没有个数和大小限制- 数据保存到服务器上</code></pre><p><strong>Session对象由服务器创建，开发人员可以调用request对象的getSession方法得到Session对象</strong></p><h3 id="Session的原理"><a href="#Session的原理" class="headerlink" title="Session的原理"></a>Session的原理</h3><p>Session其实是基于Cookie实现的，因为服务器会将一个唯一的SessionId写到Cookie里面，响应给浏览器，浏览器再次访问服务器(浏览器不关闭)会带着这个Cookie里面的SessionId来找到对应的区域数据。</p><p>保存sessionID的cookie默认是会话级别的,只存在于浏览器的内存中,浏览器窗口关了就没了。</p><h3 id="Session作为域对象存储数据"><a href="#Session作为域对象存储数据" class="headerlink" title="Session作为域对象存储数据"></a>Session作为域对象存储数据</h3><p>Session作为域对象的API</p><ul><li>setAttribute (string name,Object value)  存入数据</li><li>getAttribute(String name)   获取数据</li><li>removeAttribute(String name)   移除数据</li></ul><h3 id="Servlet数据访问范围的总结"><a href="#Servlet数据访问范围的总结" class="headerlink" title="Servlet数据访问范围的总结"></a>Servlet数据访问范围的总结</h3><pre><code>1、请求范围（ServletRequest） a)、何时创建和销毁的创建：当用户向服务器发送一次请求，服务器创建一个request对象。销毁：当服务器对这次请求作出了响应，服务器就会销毁这个request对象。b)、如何存取数据存数据：void setAttribute(String name,Object value);取数据：Object getAttribute(String name);c)、作用范围：一次请求。（转发就是一次请求）。2、会话范围（HttpSession）a)、何时创建和销毁的创建：服务器端第一次调用getSession()方法的时候。(测试访问jsp.html,servlet)销毁：三种情况。①、Session过期，默认的过期时间30分钟(web.xml中配置)。②、非正常关闭服务器。（正常关闭服务器—session会被序列化）。③、手动调用session.invalidate();b)、如何存取数据存数据：void setAttribute(String name,Object value);取数据：Object getAttribute(String name);c)、作用范围：一次会话（多次请求）3、应用范围（ServletContext）a)、何时创建和销毁的创建：服务器启动的时候创建，为每个web项目创建一个单独ServletContext对象。 销毁：服务器关闭的时候，或者项目从服务器中移除的时候。b)、如何存取数据存数据：void setAttribute(String name,Object value);取数据：Object getAttribute(String name);c)、作用范围：整个应用</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;DDL是tra  删除命令，没有事务回滚&lt;/p&gt;
+&lt;h1 id=&quot;会话技术的概述&quot;&gt;&lt;a href=&quot;#会话技术的概述&quot; class=&quot;headerlink&quot; title=&quot;会话技术的概述&quot;&gt;&lt;/a&gt;会话技术的概述&lt;/h1&gt;&lt;p&gt;简单来说，就是用户打开浏览器，访问web资源
+      
+    
+    </summary>
+    
+      <category term="技术文章" scheme="http://HackerFreedom.github.io/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/"/>
+    
+    
+      <category term="Cookie-Session基础" scheme="http://HackerFreedom.github.io/tags/Cookie-Session%E5%9F%BA%E7%A1%80/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>面试-试题</title>
+    <link href="http://HackerFreedom.github.io/2018/01/28/%E9%9D%A2%E8%AF%95/"/>
+    <id>http://HackerFreedom.github.io/2018/01/28/面试/</id>
+    <published>2018-01-28T06:15:14.000Z</published>
+    <updated>2018-02-03T06:52:12.844Z</updated>
+    
+    <content type="html"><![CDATA[<ol><li><em>**</em>Spring的DI是什么（学员注：除了IOC，AOP这些概念，还不太清楚DI的概念）</li><li>*任意数字序列”123456”之类，输出它们所有的排列组合</li><li><p><strong>*</strong>什么是AOP（学员注：会用，但感觉说不清楚）<br>我注：由上面这些题，可以看出，思想很重要，只有琢磨思想和原理的人才能很好地回答这些问题！</p><p> String str = “xafdvs”;<br> char[] arr1 = str.toCharArray();<br> char[] arr2 = Arrays.copyOf(arr1,arr1.length);<br> for(int i=0;i&lt;arr1.length-1;i++)<br> {<br> for(int j = i+1;j&lt;arr2.length;j++){<br> syso: arr1[i] + “,” + arr2[j];<br> }<br> }</p></li></ol><p>1.概念介绍：所谓AOP，即Aspect orientied program,就是面向方面的编程，<br>2.解释什么是方面：贯穿到系统的各个模块中的系统一个功能就是一个方面，<br>比如，记录日志，统一异常处理，事务处理，全限检查，这些功能都是软件系统<br>的一个面，而不是一点，在各个模块中都要出现。<br>3.什么是面向方面编程：把系统的一个方面的功能封装成对象的形式来处理<br>4.怎么进行面向方面编程：把功能模块对应的对象作为切面嵌入到原来的各个系统模块中，<br>采用代理技术，代理会调用目标，同时把切面功能的代码（对象）加入进来，所以，<br>用spring配置代理对象时只要要配两个属性，分别表示目标和切面对象（Advisor）。</p><p>多线程的<br>异常</p><p>事务回滚</p><p>容器<br>Collections是容器的工具类<br>Collection是</p><p>反射</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;ol&gt;
+&lt;li&gt;&lt;em&gt;**&lt;/em&gt;Spring的DI是什么（学员注：除了IOC，AOP这些概念，还不太清楚DI的概念）&lt;/li&gt;
+&lt;li&gt;*任意数字序列”123456”之类，输出它们所有的排列组合&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;*&lt;/strong&gt;什么是AOP（学
+      
+    
+    </summary>
+    
+      <category term="技术文章" scheme="http://HackerFreedom.github.io/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/"/>
+    
+    
+      <category term="面试" scheme="http://HackerFreedom.github.io/tags/%E9%9D%A2%E8%AF%95/"/>
     
   </entry>
   
@@ -269,6 +375,31 @@
   </entry>
   
   <entry>
+    <title>Redis概述</title>
+    <link href="http://HackerFreedom.github.io/2018/01/20/Redis/"/>
+    <id>http://HackerFreedom.github.io/2018/01/20/Redis/</id>
+    <published>2018-01-20T11:14:03.000Z</published>
+    <updated>2018-01-28T00:51:11.041Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="Redis介绍"><a href="#Redis介绍" class="headerlink" title="Redis介绍"></a>Redis介绍</h1><p><em>edis是一个开源的使用ANSI C语言编写、支持网络、可基于内存亦可持久化的日志型、Key-Value数据库，并提供多种语言的API。**</em>Redis是 NoSQL技术阵营中的一员，它通过多种键值数据类型来适应不同场景下的存储需求，借助一些高层级的接口使用其可以胜任，如缓存、队列系统的不同角色*</p><h1 id="Redis特性"><a href="#Redis特性" class="headerlink" title="Redis特性"></a>Redis特性</h1><ul><li>Redis 与其他 key - value 缓存产品有以下三个特点：</li><li>Redis支持数据的持久化，可以将内存中的数据保存在磁盘中，重启的时候可以再次加载进行使用。</li><li>Redis不仅仅支持简单的key-value类型的数据，同时还提供list，set，zset，hash等数据结构的存储。</li><li>Redis支持数据的备份，即master-slave模式的数据备份<br>  1、速度快<br>  Redis是用C语言实现的；<br>  Redis的所有数据存储在内存中。<br>  2、持久化<br>  Redis的所有数据存储在内存中，对数据的更新将异步地保存到磁盘上。<br>  3、支持多种数据结构<br>  Redis支持五种数据结构：String、List、Set、Hash、Zset<br>  4、支持多种编程语言<br>  Java、php、Python、Ruby、Lua、Node.js<br>  5、功能丰富<br>  除了支持五种数据结构之外，还支持事务、流水线、发布/订阅、消息队列等功能。<br>  6、源码简单<br>  约23000行C语言源代码。<br>  7、主从复制<br>  主服务器（master）执行添加、修改、删除，从服务器执行查询。<br>  8、高可用及分布式<br>  Redis-Sentinel（v2.8）支持高可用<br>  Redis-Cluster（v3.0）支持分布式</li></ul><blockquote><p>什么是高可用？<br>   一台服务器挂掉会有另一台服务器立马顶上，Redis-Sentinel监听所有的监听所有的Redis主从服务器，<br>   一旦发现主服务器挂掉了，他会从若干服务器中选择一台新的机器作为master，其他从服务器会成为这台新master的从服务器。</p><p>什么是分布式？<br>在一台物理计算机上，把数据A放到数据库D1，把数据B放到数据库D2，把数据C放到数据库D3属于分布式，但由于数据库的访问连接池是有限的，所以这种分布式解决方案存在性能瓶颈；<br>把数据A放到计算机C1的数据库D1，把数据B放到计算机C1的数据库D2，把数据C放到计算机C3的数据库D3也属于分布式，这种分布式解决方案扩展性好，如果系统增加了新业务X，X产生的数据Y可以放到计算机C4的数据库D4中，理论上来说这种方式可以无限扩展，从而保证系统的性能最大化。<br>存在瓶颈且价格较高的高性能单台服务器-&gt;可无限扩展的分布式集群</p></blockquote><pre><code>Redis可执行文件说明： redis-server.exe　　　　 Redis服务 redis-cli.exe　　　　　　Redis命令行客户端 redis-benchmark.exe　　Redis性能测试工具 redis-check-aof.exe　　 AOF文件修复工具 redis-check-dump.exe　RDB文件检测工具 redis-sentinel.exe　　　 Sentinel服务器（2.8以后）</code></pre><p>##Redis常用的五种数据类型  ##<br><strong>String</strong><br>    是最常用的一种数据类型，普通的key/value存储都可以归为此类。</p><pre><code>一个Key对应一个Value，string类型是二进制安全的。Redis的string可以包含任何数据，比如jpg图片(生成二进制)或者序列化的对象。</code></pre><p><strong>Hash(Key-Value)</strong><br>    hash是一个string 类型的field和value的映射表。</p><pre><code>hash特别适合存储对象。相对于将对象的每个字段存成单个string 类型。一个对象存储在hash类型中会占用更少的内存，并且可以更方便的存取整个对象。Redis的Hash数据类型的value内部是一个HashMap,如果该Map的成员比较少，则会采用一维数组的方式</code></pre><ul><li>采用String类型的存储对象，需要将对象进行序列化。<br><img src="/2018/01/20/Redis/redis01.jpg" alt="Redis"></li><li>增加了序列化/反序列化的开销，并且在需要修改其中一项信息时，需要把整个对象取回</li><li>使用Hash数据类型则不需要</li><li>Key仍然是用户ID, value是一个Map，这个Map的key是成员的属性名，value是属性值，这样对数据的修改和存取都可以直接通过其内部Map的Key(Redis里称内部Map的key为field), 也就是通过 key(用户ID) + field(属性标签) 就可以操作对应属性数据了，既不需要重复存储数据，也不会带来序列化和反序列化。</li></ul><p><strong>List</strong><br>    list是一个链表结构，主要功能是push, pop, 获取一个范围的所有的值等。操作中key理解为链表名字。</p><pre><code>Redis的list类型其实就是一个每个子元素都是string类型的双向链表。我们可以通过push,pop操作从链表的头部或者尾部添加删除元素，这样list既可以作为栈，又可以作为队列（栈就是insertFirst+deleteFirst，队列就是insertLast+deleteFirst）。可以支持反向查找和遍历，方便操作，不过带来了部分额外的内存开销。Redis内部的很多实现，包括发送缓冲队列等也都是用的这个数据结构</code></pre><ul><li><p><strong>Set</strong><br>  它是string类型的无序集合。set是通过hash table实现的，可以进行添加、删除和查找。<br>  对集合我们可以取并集，交集，差集.</p><p>  集合可以进行 交集、并集 如新浪微博中获取两个用户共同的关注人</p><p>  新浪微博使用redis有两种应用场景：</p><ol><li><p>直接把数据放到redis中进行存储，这些数据是独立的</p></li><li><p>有些数据包含表与表之间的逻辑关系，这些数据又访问比较频繁，<br> 如果直接从数据库中进行查询性能比较差。<br> 先将数据写到redis中，再将数据保存到mysql数据库</p></li></ol></li><li><p><strong>zset</strong></p><p>Redis sorted set的使用场景与set类似，<br>区别是set不是自动有序的，<br>而sorted set可以通过用户额外提供一个优先级(score)的参数来为成员排序，<br>并且是插入有序的，即自动排序。</p><p>可以理解为一列存 value,一列存顺序。操作中key理解为zset的名字.</p><p>当你需要一个有序的并且不重复的集合列表，那么可以选择sorted set数据结构</p></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;Redis介绍&quot;&gt;&lt;a href=&quot;#Redis介绍&quot; class=&quot;headerlink&quot; title=&quot;Redis介绍&quot;&gt;&lt;/a&gt;Redis介绍&lt;/h1&gt;&lt;p&gt;&lt;em&gt;edis是一个开源的使用ANSI C语言编写、支持网络、可基于内存亦可持久化的日志型、Key
+      
+    
+    </summary>
+    
+      <category term="技术文章" scheme="http://HackerFreedom.github.io/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/"/>
+    
+    
+      <category term="redis基本知识" scheme="http://HackerFreedom.github.io/tags/redis%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86/"/>
+    
+  </entry>
+  
+  <entry>
     <title>linux基本使用</title>
     <link href="http://HackerFreedom.github.io/2018/01/20/linux/"/>
     <id>http://HackerFreedom.github.io/2018/01/20/linux/</id>
@@ -295,19 +426,19 @@ cd ..        切换
   </entry>
   
   <entry>
-    <title>Redis概述</title>
-    <link href="http://HackerFreedom.github.io/2018/01/20/Redis/"/>
-    <id>http://HackerFreedom.github.io/2018/01/20/Redis/</id>
-    <published>2018-01-20T11:14:03.000Z</published>
-    <updated>2018-01-28T00:51:11.041Z</updated>
+    <title>JQueryAjax知识点</title>
+    <link href="http://HackerFreedom.github.io/2018/01/19/Ajax/"/>
+    <id>http://HackerFreedom.github.io/2018/01/19/Ajax/</id>
+    <published>2018-01-19T09:33:03.000Z</published>
+    <updated>2018-01-22T04:00:22.517Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="Redis介绍"><a href="#Redis介绍" class="headerlink" title="Redis介绍"></a>Redis介绍</h1><p><em>edis是一个开源的使用ANSI C语言编写、支持网络、可基于内存亦可持久化的日志型、Key-Value数据库，并提供多种语言的API。**</em>Redis是 NoSQL技术阵营中的一员，它通过多种键值数据类型来适应不同场景下的存储需求，借助一些高层级的接口使用其可以胜任，如缓存、队列系统的不同角色*</p><h1 id="Redis特性"><a href="#Redis特性" class="headerlink" title="Redis特性"></a>Redis特性</h1><ul><li>Redis 与其他 key - value 缓存产品有以下三个特点：</li><li>Redis支持数据的持久化，可以将内存中的数据保存在磁盘中，重启的时候可以再次加载进行使用。</li><li>Redis不仅仅支持简单的key-value类型的数据，同时还提供list，set，zset，hash等数据结构的存储。</li><li>Redis支持数据的备份，即master-slave模式的数据备份<br>  1、速度快<br>  Redis是用C语言实现的；<br>  Redis的所有数据存储在内存中。<br>  2、持久化<br>  Redis的所有数据存储在内存中，对数据的更新将异步地保存到磁盘上。<br>  3、支持多种数据结构<br>  Redis支持五种数据结构：String、List、Set、Hash、Zset<br>  4、支持多种编程语言<br>  Java、php、Python、Ruby、Lua、Node.js<br>  5、功能丰富<br>  除了支持五种数据结构之外，还支持事务、流水线、发布/订阅、消息队列等功能。<br>  6、源码简单<br>  约23000行C语言源代码。<br>  7、主从复制<br>  主服务器（master）执行添加、修改、删除，从服务器执行查询。<br>  8、高可用及分布式<br>  Redis-Sentinel（v2.8）支持高可用<br>  Redis-Cluster（v3.0）支持分布式</li></ul><blockquote><p>什么是高可用？<br>   一台服务器挂掉会有另一台服务器立马顶上，Redis-Sentinel监听所有的监听所有的Redis主从服务器，<br>   一旦发现主服务器挂掉了，他会从若干服务器中选择一台新的机器作为master，其他从服务器会成为这台新master的从服务器。</p><p>什么是分布式？<br>在一台物理计算机上，把数据A放到数据库D1，把数据B放到数据库D2，把数据C放到数据库D3属于分布式，但由于数据库的访问连接池是有限的，所以这种分布式解决方案存在性能瓶颈；<br>把数据A放到计算机C1的数据库D1，把数据B放到计算机C1的数据库D2，把数据C放到计算机C3的数据库D3也属于分布式，这种分布式解决方案扩展性好，如果系统增加了新业务X，X产生的数据Y可以放到计算机C4的数据库D4中，理论上来说这种方式可以无限扩展，从而保证系统的性能最大化。<br>存在瓶颈且价格较高的高性能单台服务器-&gt;可无限扩展的分布式集群</p></blockquote><pre><code>Redis可执行文件说明： redis-server.exe　　　　 Redis服务 redis-cli.exe　　　　　　Redis命令行客户端 redis-benchmark.exe　　Redis性能测试工具 redis-check-aof.exe　　 AOF文件修复工具 redis-check-dump.exe　RDB文件检测工具 redis-sentinel.exe　　　 Sentinel服务器（2.8以后）</code></pre><p>##Redis常用的五种数据类型  ##<br><strong>String</strong><br>    是最常用的一种数据类型，普通的key/value存储都可以归为此类。</p><pre><code>一个Key对应一个Value，string类型是二进制安全的。Redis的string可以包含任何数据，比如jpg图片(生成二进制)或者序列化的对象。</code></pre><p><strong>Hash(Key-Value)</strong><br>    hash是一个string 类型的field和value的映射表。</p><pre><code>hash特别适合存储对象。相对于将对象的每个字段存成单个string 类型。一个对象存储在hash类型中会占用更少的内存，并且可以更方便的存取整个对象。Redis的Hash数据类型的value内部是一个HashMap,如果该Map的成员比较少，则会采用一维数组的方式</code></pre><ul><li>采用String类型的存储对象，需要将对象进行序列化。<br><img src="/2018/01/20/Redis/redis01.jpg" alt="Redis"></li><li>增加了序列化/反序列化的开销，并且在需要修改其中一项信息时，需要把整个对象取回</li><li>使用Hash数据类型则不需要</li><li>Key仍然是用户ID, value是一个Map，这个Map的key是成员的属性名，value是属性值，这样对数据的修改和存取都可以直接通过其内部Map的Key(Redis里称内部Map的key为field), 也就是通过 key(用户ID) + field(属性标签) 就可以操作对应属性数据了，既不需要重复存储数据，也不会带来序列化和反序列化。</li></ul><p><strong>List</strong><br>    list是一个链表结构，主要功能是push, pop, 获取一个范围的所有的值等。操作中key理解为链表名字。</p><pre><code>Redis的list类型其实就是一个每个子元素都是string类型的双向链表。我们可以通过push,pop操作从链表的头部或者尾部添加删除元素，这样list既可以作为栈，又可以作为队列（栈就是insertFirst+deleteFirst，队列就是insertLast+deleteFirst）。可以支持反向查找和遍历，方便操作，不过带来了部分额外的内存开销。Redis内部的很多实现，包括发送缓冲队列等也都是用的这个数据结构</code></pre><ul><li><p><strong>Set</strong><br>  它是string类型的无序集合。set是通过hash table实现的，可以进行添加、删除和查找。<br>  对集合我们可以取并集，交集，差集.</p><p>  集合可以进行 交集、并集 如新浪微博中获取两个用户共同的关注人</p><p>  新浪微博使用redis有两种应用场景：</p><ol><li><p>直接把数据放到redis中进行存储，这些数据是独立的</p></li><li><p>有些数据包含表与表之间的逻辑关系，这些数据又访问比较频繁，<br> 如果直接从数据库中进行查询性能比较差。<br> 先将数据写到redis中，再将数据保存到mysql数据库</p></li></ol></li><li><p><strong>zset</strong></p><p>Redis sorted set的使用场景与set类似，<br>区别是set不是自动有序的，<br>而sorted set可以通过用户额外提供一个优先级(score)的参数来为成员排序，<br>并且是插入有序的，即自动排序。</p><p>可以理解为一列存 value,一列存顺序。操作中key理解为zset的名字.</p><p>当你需要一个有序的并且不重复的集合列表，那么可以选择sorted set数据结构</p></li></ul>]]></content>
+    <content type="html"><![CDATA[<h1 id="Jquery第二天"><a href="#Jquery第二天" class="headerlink" title="Jquery第二天"></a>Jquery第二天</h1><h2 id="ajax概述"><a href="#ajax概述" class="headerlink" title="ajax概述"></a>ajax概述</h2><p><em>通过在后台与服务器进行少量数据交换，ajax可以使网页实现异步更新。这意味着可以在不重新加载整个网页的情况下，对网页的某部分进行更新。传统的网页（不使用 ajax）如果需要更新内容，必需重载整个网页面</em><br>    ajax的开发步骤：<br>        【第一步】：创建异步对象(XMLHttpRequest对象)<br>        var xmlHttp = createXmlHttp();<br>        【第二步】：设置监听<br>        【第三步】：设置请求方式,URL<br>        xmlHttp.onreadystatechange = function() {}</p><pre><code>    xmlHttp.open(“GET”,”/web15/ServletDemo1”,true);【第四步】：发送请求xmlHttp.send(null);【第五步】：在回调函数中获取响应数据xmlHttp.onreadystatechange = function(){    if(xmlHttp.readyState == 4){ //         if(xmlHttp.status == 200){ //            alert(xmlHttp.responseText);        }    }}</code></pre><h2 id="XMLHttpRequest对象详解-重点"><a href="#XMLHttpRequest对象详解-重点" class="headerlink" title="XMLHttpRequest对象详解(重点)"></a>XMLHttpRequest对象详解(重点)</h2><ol><li>XMLHttpRequest对象的常用属性：<br>readyState属性：HTTP 请求的状态.当一个 XMLHttpRequest 初次创建时，这个属性的值从 0 开始，直到接收到完整的 HTTP 响应，这个值增加到 4。</li><li><p>status属性：由服务器返回的 HTTP 状态代码，如 200 表示成功，而 404 表示 “Not Found” 错误。当 readyState 小于 3 的时候读取这一属性会导致一个异常。</p></li><li><p>onreadystatechange事件：每次 readyState 属性改变的时候调用的事件句柄函数。</p><h2 id="XMLHttpRequest常用方法"><a href="#XMLHttpRequest常用方法" class="headerlink" title="XMLHttpRequest常用方法"></a>XMLHttpRequest常用方法</h2></li><li>open它是用于设置请求方式，url及是否异步<br>参数1：HTTP 请求方式  POST/GET。<br>参数2:url路径<br>参数3:true/false 代表是否异步</li><li><p>send它是真正向服务器发送请求<br>如果请求方式是get，那么我们使用send(null) 原因:get请求方式是没有http请求体<br>只有post请求方式时，才有请求体,所以send的参数只是在post请求时使用例如<br>Xmlhttp.send(“username=xxx&amp;password=xxx”);</p></li><li><p>setRequestHeader<br>注意：如果请求方式是POST,那么我们在使用时，必须设置一个请求头，就需要使用setRequestHeader方法来完成</p><h3 id="jquery的ajax开发-load介绍"><a href="#jquery的ajax开发-load介绍" class="headerlink" title="jquery的ajax开发-load介绍"></a>jquery的ajax开发-load介绍</h3><p><strong>load（）方法的调用：想要把结果插入到哪个元素中，就使用这个元素的jQuery对象调用load方法。也就是说，load方法发送请求是直接将结果插入到dom元素中。<br>当有参数传递给服务器时就是post请求，没有参数传递就是get请求。</strong></p><h3 id="jquery的ajax开发-post与-get介绍-重点"><a href="#jquery的ajax开发-post与-get介绍-重点" class="headerlink" title="jquery的ajax开发-$.post与$.get介绍(重点)"></a>jquery的ajax开发-$.post与$.get介绍(重点)</h3><p> $.get与$.post他们针对于 get和post请求<br> URL：发送请求地址<br> data：待发送的key/value参数<br> callback：发送成功时回调函数<br> type：放回内容格式xml.html ,sctipt, json ,text, _default</p></li></ol><h4 id="json介绍"><a href="#json介绍" class="headerlink" title="json介绍"></a>json介绍</h4><p><em>JSON(JavaScript Object Notation, JS 对象标记) 是一种轻量级的数据交换格式，说白了就是客户端与服务器之间传递的数据格式（json、xml…）。</em></p><h4 id="fastjson使用介绍"><a href="#fastjson使用介绍" class="headerlink" title="fastjson使用介绍"></a>fastjson使用介绍</h4><p><em>fastjson是阿里公司为我们提供的一个解析和封装json数据的开源类库。也就是说使用fastjson一定要导入相关的jar包。同时还有其它许多类似的开源类库。</em><br><strong>对于json处理插件有 fastjson  jsonlib  flexjson jackson</strong><br><strong>注意：JSONObject.toJSONString（Object object）；传入的是Object 。</strong><br><strong>如果java对象中存在日期类型属性java.util.Date,是否可以用指定的格式来转换成json。</strong><br><strong>简单方式(保留想要的属性) SerializeFilter filter =new SimplePropertyPreFiler(“”,””)将需要的属性指定</strong></p><h2 id="关于fastjson将java对象转换成json时的循环引用问题-通过SerializerFeature-DisableCirularReferenceDetect"><a href="#关于fastjson将java对象转换成json时的循环引用问题-通过SerializerFeature-DisableCirularReferenceDetect" class="headerlink" title="关于fastjson将java对象转换成json时的循环引用问题? 通过SerializerFeature.DisableCirularReferenceDetect"></a><strong>关于fastjson将java对象转换成json时的循环引用问题? 通过SerializerFeature.DisableCirularReferenceDetect</strong></h2>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;h1 id=&quot;Redis介绍&quot;&gt;&lt;a href=&quot;#Redis介绍&quot; class=&quot;headerlink&quot; title=&quot;Redis介绍&quot;&gt;&lt;/a&gt;Redis介绍&lt;/h1&gt;&lt;p&gt;&lt;em&gt;edis是一个开源的使用ANSI C语言编写、支持网络、可基于内存亦可持久化的日志型、Key
+        &lt;h1 id=&quot;Jquery第二天&quot;&gt;&lt;a href=&quot;#Jquery第二天&quot; class=&quot;headerlink&quot; title=&quot;Jquery第二天&quot;&gt;&lt;/a&gt;Jquery第二天&lt;/h1&gt;&lt;h2 id=&quot;ajax概述&quot;&gt;&lt;a href=&quot;#ajax概述&quot; class=&quot;head
       
     
     </summary>
@@ -315,7 +446,7 @@ cd ..        切换
       <category term="技术文章" scheme="http://HackerFreedom.github.io/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/"/>
     
     
-      <category term="redis基本知识" scheme="http://HackerFreedom.github.io/tags/redis%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86/"/>
+      <category term="JQueryAjax" scheme="http://HackerFreedom.github.io/tags/JQueryAjax/"/>
     
   </entry>
   
@@ -342,31 +473,6 @@ cd ..        切换
     
     
       <category term="JQuery" scheme="http://HackerFreedom.github.io/tags/JQuery/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>JQueryAjax知识点</title>
-    <link href="http://HackerFreedom.github.io/2018/01/19/Ajax/"/>
-    <id>http://HackerFreedom.github.io/2018/01/19/Ajax/</id>
-    <published>2018-01-19T09:33:03.000Z</published>
-    <updated>2018-01-22T04:00:22.517Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="Jquery第二天"><a href="#Jquery第二天" class="headerlink" title="Jquery第二天"></a>Jquery第二天</h1><h2 id="ajax概述"><a href="#ajax概述" class="headerlink" title="ajax概述"></a>ajax概述</h2><p><em>通过在后台与服务器进行少量数据交换，ajax可以使网页实现异步更新。这意味着可以在不重新加载整个网页的情况下，对网页的某部分进行更新。传统的网页（不使用 ajax）如果需要更新内容，必需重载整个网页面</em><br>    ajax的开发步骤：<br>        【第一步】：创建异步对象(XMLHttpRequest对象)<br>        var xmlHttp = createXmlHttp();<br>        【第二步】：设置监听<br>        【第三步】：设置请求方式,URL<br>        xmlHttp.onreadystatechange = function() {}</p><pre><code>    xmlHttp.open(“GET”,”/web15/ServletDemo1”,true);【第四步】：发送请求xmlHttp.send(null);【第五步】：在回调函数中获取响应数据xmlHttp.onreadystatechange = function(){    if(xmlHttp.readyState == 4){ //         if(xmlHttp.status == 200){ //            alert(xmlHttp.responseText);        }    }}</code></pre><h2 id="XMLHttpRequest对象详解-重点"><a href="#XMLHttpRequest对象详解-重点" class="headerlink" title="XMLHttpRequest对象详解(重点)"></a>XMLHttpRequest对象详解(重点)</h2><ol><li>XMLHttpRequest对象的常用属性：<br>readyState属性：HTTP 请求的状态.当一个 XMLHttpRequest 初次创建时，这个属性的值从 0 开始，直到接收到完整的 HTTP 响应，这个值增加到 4。</li><li><p>status属性：由服务器返回的 HTTP 状态代码，如 200 表示成功，而 404 表示 “Not Found” 错误。当 readyState 小于 3 的时候读取这一属性会导致一个异常。</p></li><li><p>onreadystatechange事件：每次 readyState 属性改变的时候调用的事件句柄函数。</p><h2 id="XMLHttpRequest常用方法"><a href="#XMLHttpRequest常用方法" class="headerlink" title="XMLHttpRequest常用方法"></a>XMLHttpRequest常用方法</h2></li><li>open它是用于设置请求方式，url及是否异步<br>参数1：HTTP 请求方式  POST/GET。<br>参数2:url路径<br>参数3:true/false 代表是否异步</li><li><p>send它是真正向服务器发送请求<br>如果请求方式是get，那么我们使用send(null) 原因:get请求方式是没有http请求体<br>只有post请求方式时，才有请求体,所以send的参数只是在post请求时使用例如<br>Xmlhttp.send(“username=xxx&amp;password=xxx”);</p></li><li><p>setRequestHeader<br>注意：如果请求方式是POST,那么我们在使用时，必须设置一个请求头，就需要使用setRequestHeader方法来完成</p><h3 id="jquery的ajax开发-load介绍"><a href="#jquery的ajax开发-load介绍" class="headerlink" title="jquery的ajax开发-load介绍"></a>jquery的ajax开发-load介绍</h3><p><strong>load（）方法的调用：想要把结果插入到哪个元素中，就使用这个元素的jQuery对象调用load方法。也就是说，load方法发送请求是直接将结果插入到dom元素中。<br>当有参数传递给服务器时就是post请求，没有参数传递就是get请求。</strong></p><h3 id="jquery的ajax开发-post与-get介绍-重点"><a href="#jquery的ajax开发-post与-get介绍-重点" class="headerlink" title="jquery的ajax开发-$.post与$.get介绍(重点)"></a>jquery的ajax开发-$.post与$.get介绍(重点)</h3><p> $.get与$.post他们针对于 get和post请求<br> URL：发送请求地址<br> data：待发送的key/value参数<br> callback：发送成功时回调函数<br> type：放回内容格式xml.html ,sctipt, json ,text, _default</p></li></ol><h4 id="json介绍"><a href="#json介绍" class="headerlink" title="json介绍"></a>json介绍</h4><p><em>JSON(JavaScript Object Notation, JS 对象标记) 是一种轻量级的数据交换格式，说白了就是客户端与服务器之间传递的数据格式（json、xml…）。</em></p><h4 id="fastjson使用介绍"><a href="#fastjson使用介绍" class="headerlink" title="fastjson使用介绍"></a>fastjson使用介绍</h4><p><em>fastjson是阿里公司为我们提供的一个解析和封装json数据的开源类库。也就是说使用fastjson一定要导入相关的jar包。同时还有其它许多类似的开源类库。</em><br><strong>对于json处理插件有 fastjson  jsonlib  flexjson jackson</strong><br><strong>注意：JSONObject.toJSONString（Object object）；传入的是Object 。</strong><br><strong>如果java对象中存在日期类型属性java.util.Date,是否可以用指定的格式来转换成json。</strong><br><strong>简单方式(保留想要的属性) SerializeFilter filter =new SimplePropertyPreFiler(“”,””)将需要的属性指定</strong></p><h2 id="关于fastjson将java对象转换成json时的循环引用问题-通过SerializerFeature-DisableCirularReferenceDetect"><a href="#关于fastjson将java对象转换成json时的循环引用问题-通过SerializerFeature-DisableCirularReferenceDetect" class="headerlink" title="关于fastjson将java对象转换成json时的循环引用问题? 通过SerializerFeature.DisableCirularReferenceDetect"></a><strong>关于fastjson将java对象转换成json时的循环引用问题? 通过SerializerFeature.DisableCirularReferenceDetect</strong></h2>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;Jquery第二天&quot;&gt;&lt;a href=&quot;#Jquery第二天&quot; class=&quot;headerlink&quot; title=&quot;Jquery第二天&quot;&gt;&lt;/a&gt;Jquery第二天&lt;/h1&gt;&lt;h2 id=&quot;ajax概述&quot;&gt;&lt;a href=&quot;#ajax概述&quot; class=&quot;head
-      
-    
-    </summary>
-    
-      <category term="技术文章" scheme="http://HackerFreedom.github.io/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/"/>
-    
-    
-      <category term="JQueryAjax" scheme="http://HackerFreedom.github.io/tags/JQueryAjax/"/>
     
   </entry>
   
@@ -418,47 +524,6 @@ cd ..        切换
     
     
       <category term="hexo#文章標籤 可以省略" scheme="http://HackerFreedom.github.io/tags/hexo-%E6%96%87%E7%AB%A0%E6%A8%99%E7%B1%A4-%E5%8F%AF%E4%BB%A5%E7%9C%81%E7%95%A5/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Java基础知识</title>
-    <link href="http://HackerFreedom.github.io/2018/01/19/JavaSe/"/>
-    <id>http://HackerFreedom.github.io/2018/01/19/JavaSe/</id>
-    <published>2018-01-18T16:00:00.000Z</published>
-    <updated>2018-01-20T03:10:33.777Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="java语法基础"><a href="#java语法基础" class="headerlink" title="java语法基础"></a><em>java语法基础</em></h1><p>1.关键字：其实就是某种语言赋予了特殊含义的单词。<br>    保留字：其实就是还没有赋予特殊含义，但是准备日后要使用过的单词。<br>2.标示符：其实就是在程序中自定义的名词。比如类名，变量名，函数名。包含 0-9、a-z、$、_ ；<br>    注意：<br>    1），数字不可以开头。<br>    2），不可以使用关键字。<br>3.常量：是在程序中的不会变化的数据。<br>4.变量：其实就是内存中的一个存储空间，用于存储常量数据。<br>    作用：方便于运算。因为有些数据不确定。所以确定该数据的名词和存储空间。<br>    特点：变量空间可以重复使用。<br>什么时候定义变量？只要是数据不确定的时候，就定义变量。</p><p>变量空间的开辟需要什么要素呢？<br>    1，这个空间要存储什么数据？数据类型。<br>    2，这个空间叫什么名字啊？变量名称。<br>    3，这个空间的第一次的数据是什么？ 变量的初始化值。</p><p>变量的作用域和生存期:<br>变量的作用域：<br>    作用域从变量定义的位置开始，到该变量所在的那对大括号结束；<br>生命周期：<br>    变量从定义的位置开始就在内存中活了；<br>    变量到达它所在的作用域的时候就在内存中消失了；</p><h2 id="数据类型："><a href="#数据类型：" class="headerlink" title="数据类型："></a>数据类型：</h2><pre><code>1）：基本数据类型：byte、short、int、long、float、double、char、boolean 2）：引用数据类型: 数组、类、接口。</code></pre><p>级别从低到高为：byte,char,short(这三个平级)–&gt;int–&gt;float–&gt;long–&gt;double<br>自动类型转换：从低级别到高级别，系统自动转的；<br>强制类型转换：什么情况下使用?把一个高级别的数赋给一个别该数的级别低的变量；</p><p>运算符号：<br>    1）、算术运算符。</p><pre><code>    + - * / %   %:任何整数模2不是0就是1，所以只要改变被模数就可以实现开关运算。    +:连接符。    ++,--2）、赋值运算符。    =  += -= *= /= %=3）、比较运算符。    特点：该运算符的特点是：运算完的结果，要么是true，要么是false。 4）、逻辑运算符。    &amp;  |  ^  !   &amp;&amp;   ||    逻辑运算符除了 !  外都是用于连接两个boolean类型表达式。    &amp;: 只有两边都为true结果是true。否则就是false。    |:只要两边都为false结果是false，否则就是true    ^:异或：和或有点不一样。         两边结果一样，就为false。         两边结果不一样，就为true.    &amp; 和 &amp;&amp;区别： &amp; ：无论左边结果是什么，右边都参与运算。                  &amp;&amp;:短路与，如果左边为false，那么右边不参数与运算。    | 和|| 区别：|：两边都运算。                ||：短路或，如果左边为true，那么右边不参与运算。</code></pre><h2 id="语句"><a href="#语句" class="headerlink" title="语句"></a>语句</h2><pre><code>If  switch  do while   while  for 这些语句什么时候用？1）、当判断固定个数的值的时候，可以使用if，也可以使用switch。但是建议使用switch，效率相对较高。switch(变量){ case 值:要执行的语句;break; … default:要执行的语句;}</code></pre><p> 工作原理：用小括号中的变量的值依次和case后面的值进行对比，和哪个case后面的值相同了<br>          就执行哪个case后面的语句，如果没有相同的则执行default后面的语句；<br>     细节：1）：break是可以省略的，如果省略了就一直执行到遇到break为止；<br>       2）：switch 后面的小括号中的变量应该是byte,char,short,int四种类型中的一种；<br>       3）：default可以写在switch结构中的任意位置；如果将default语句放在了第一行，则不管expression与case中的value是否匹配，程序会从default开始执行直到第一个break出现。<br>    2）、当判断数据范围，获取判断运算结果boolean类型时，需要使用if。<br>    3）、当某些语句需要执行很多次时，就用循环结构。<br>    while和for可以进行互换。<br>    区别在于：如果需要定义变量控制循环次数。建议使用for。因为for循环完毕，变量在内存中释放。</p><pre><code>break:作用于switch ，和循环语句，用于跳出，或者称为结束。break语句单独存在时，下面不要定义其他语句，因为执行不到，编译会失败。当循环嵌套时，break只跳出当前所在循环。要跳出嵌套中的外部循环，只要给循环起名字即可，这个名字称之为标号。</code></pre><p>continue:只作用于循环结构，继续循环用的。<br>作用：结束本次循环，继续下次循环。该语句单独存在时，下面不可以定义语句，执行不到。</p><h3 id="函-数："><a href="#函-数：" class="headerlink" title="函 数："></a>函 数：</h3><p>为了提高代码的复用性，可以将其定义成一个单独的功能，该功能的体现就是java中的函数。函数就是体现之一。<br>java中的函数的定义格式：<br>    修饰符 返回值类型 函数名(参数类型 形式参数1，参数类型 形式参数1，…){<br>        执行语句；<br>        return 返回值；<br>    }<br>当函数没有具体的返回值时，返回的返回值类型用void关键字表示。<br>如果函数的返回值类型是void时，return语句可以省略不写的，系统会帮你自动加上。<br>return的作用：结束函数。结束功能。</p><p>如何定义一个函数？<br>    函数其实就是一个功能，定义函数就是实现功能，通过两个明确来完成：<br>    1）、明确该功能的运算完的结果，其实是在明确这个函数的返回值类型。<br>    2）、在实现该功能的过程中是否有未知内容参与了运算，其实就是在明确这个函数的参数列表(参数类型&amp;参数个数)。<br>函数的作用：<br>1）、用于定义功能。<br>2）、用于封装代码提高代码的复用性。<br>注意：函数中只能调用函数，不能定义函数。<br>主函数：<br>    1）、保证该类的独立运行。<br>    2）、因为它是程序的入口。<br>    3）、因为它在被jvm调用。</p><p>函数定义名称是为什么呢？<br>答：1）、为了对该功能进行标示，方便于调用。<br>    2）、为了通过名称就可以明确函数的功能，为了增加代码的阅读性。</p><p>重载的定义是：在一个类中，如果出现了两个或者两个以上的同名函数，只要它们的参数的个数，或者参数的类型不同，即可称之为该函数重载了。<br>如何区分重载：当函数同名时，只看参数列表。和返回值类型没关系。</p><h4 id="数-组："><a href="#数-组：" class="headerlink" title="数 组："></a>数 组：</h4><p>用于存储同一类型数据的一个容器。好处：可以对该容器中的数据进行编号，从0开始。数组用于封装数据，就是一个具体的实体。<br>如何在java中表现一个数组呢？两种表现形式。<br>1）、元素类型[] 变量名 = new 元素类型[元素的个数]；<br>2）、元素类型[] 变量名 = {元素1，元素2…}；</p><pre><code>元素类型[] 变量名 = new 元素类型[]{元素1，元素2...}；</code></pre><hr><p>//二分查找法。必须有前提：数组中的元素要有序。<br>    public static int halfSeach_2(int[] arr,int key){<br>        int min,max,mid;<br>        min = 0;<br>        max = arr.length-1;<br>        mid = (max+min)&gt;&gt;1; //(max+min)/2;<br>        while(arr[mid]!=key){<br>            if(key&gt;arr[mid]){<br>                min = mid + 1;<br>            }<br>            else if(key&lt;arr[mid])<br>                max = mid - 1;<br>            if(max<min) return="" -1;="" mid="(max+min)">&gt;1;<br>        }<br>        return mid;</min)></p><pre><code>}</code></pre><hr><p>java分了5片内存。<br>1：寄存器。2：本地方法区。3：方法区。4：栈。5：堆。<br>栈：存储的都是局部变量 ( 函数中定义的变量，函数上的参数，语句中的变量 )；<br>    只要数据运算完成所在的区域结束，该数据就会被释放。<br>堆：用于存储数组和对象，也就是实体。啥是实体啊？就是用于封装多个数据的。<br>1：每一个实体都有内存首地址值。<br>2：堆内存中的变量都有默认初始化值。因为数据类型不同，值也不一样。<br>3：垃圾回收机制。</p>]]></content>
-    
-    <summary type="html">
-    
-      Java基本使用
-    
-    </summary>
-    
-      <category term="技术文章" scheme="http://HackerFreedom.github.io/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>Hello World</title>
-    <link href="http://HackerFreedom.github.io/2018/01/16/hello-world/"/>
-    <id>http://HackerFreedom.github.io/2018/01/16/hello-world/</id>
-    <published>2018-01-16T13:31:55.492Z</published>
-    <updated>2018-01-16T13:31:55.492Z</updated>
-    
-    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.
-      
-    
-    </summary>
-    
     
   </entry>
   
