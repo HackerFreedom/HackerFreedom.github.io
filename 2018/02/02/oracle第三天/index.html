@@ -98,18 +98,18 @@
 
 
 
-<meta name="description" content="记录的结果是单行的，就是单行查询">
+<meta name="description" content="记录的结果是单行的，就是单行查询 #什么是视图  # 视图是一种数据库对象，是从一个或者多个表达式或视图中导出的虚表，视图对应的数据并不真正地存储视图中。  使用视图的优点：  简化数据操作: 视图可以简化用户处理数据的方式。 着重于特定数据： 不必要的数据或敏感数据可以不出现在视图中 可以对于不同的用户进行限定访问。   创建或修改视图语法  create 【OR REPLACE】 [FORCE">
 <meta name="keywords" content="oracle基础知识">
 <meta property="og:type" content="article">
 <meta property="og:title" content="oracle第三天">
 <meta property="og:url" content="http://HackerFreedom.github.io/2018/02/02/oracle第三天/index.html">
 <meta property="og:site_name" content="TO BE BTTER ME">
-<meta property="og:description" content="记录的结果是单行的，就是单行查询">
+<meta property="og:description" content="记录的结果是单行的，就是单行查询 #什么是视图  # 视图是一种数据库对象，是从一个或者多个表达式或视图中导出的虚表，视图对应的数据并不真正地存储视图中。  使用视图的优点：  简化数据操作: 视图可以简化用户处理数据的方式。 着重于特定数据： 不必要的数据或敏感数据可以不出现在视图中 可以对于不同的用户进行限定访问。   创建或修改视图语法  create 【OR REPLACE】 [FORCE">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-02-05T01:20:14.587Z">
+<meta property="og:updated_time" content="2018-02-05T13:27:07.560Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="oracle第三天">
-<meta name="twitter:description" content="记录的结果是单行的，就是单行查询">
+<meta name="twitter:description" content="记录的结果是单行的，就是单行查询 #什么是视图  # 视图是一种数据库对象，是从一个或者多个表达式或视图中导出的虚表，视图对应的数据并不真正地存储视图中。  使用视图的优点：  简化数据操作: 视图可以简化用户处理数据的方式。 着重于特定数据： 不必要的数据或敏感数据可以不出现在视图中 可以对于不同的用户进行限定访问。   创建或修改视图语法  create 【OR REPLACE】 [FORCE">
 
 
 
@@ -220,16 +220,6 @@
               <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
             
             分类
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-tags">
-          <a href="/tags" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
-            
-            标签
           </a>
         </li>
       
@@ -406,6 +396,200 @@
 
       
         <p>记录的结果是单行的，就是单行查询</p>
+<p>#什么是视图  #<br> 视图是一种数据库对象，是从一个或者多个表达式或视图中导出的虚表，视图对应的数据并不真正地存储视图中。</p>
+<ul>
+<li><p>使用视图的优点：</p>
+<ol>
+<li>简化数据操作: 视图可以简化用户处理数据的方式。</li>
+<li>着重于特定数据： 不必要的数据或敏感数据可以不出现在视图中</li>
+<li>可以对于不同的用户进行限定访问。</li>
+</ol>
+</li>
+<li><p>创建或修改视图语法<br>  create 【OR REPLACE】 [FORCE] VIEW view_name<br>  as subquery<br>  [wtth check option]<br>  [wtth reao only]</p>
+<p>  OR REPLACE ：若所创建的试图已经存在，ORACLE 自动重建该视图；<br>  FORCE ：不管基表是否存在 ORACLE 都会自动创建该视图；<br>  subquery ：一条完整的 SELECT 语句，可以在该语句中定义别名；<br>  WITH CHECK OPTION ：插入或修改的数据行必须满足视图定义的约束；<br>  WITH READ ONLY ：该视图上不能进行任何 DML 操作。</p>
+</li>
+<li><p>删除视图语法<br>  DROP VIEW view_name</p>
+</li>
+<li><p>简单视图的创建和使用<br>只是单纯的单表查询，并没有聚合函数</p>
+</li>
+<li><p>带约束的视图<br>要注意我们只能修改带有除主键相关的数，因为修改不了。<br>会报错： ！<a href="/2018/02/02/oracle第三天/oracle01.png"></a>;</p>
+</li>
+<li><p>只读视图的创建于使用<br>创建语句时指定wtth read only 选项，如果如果要修改其中的语句，就会报错<br>！<a href="/2018/02/02/oracle第三天/oracle02.png"></a>;</p>
+</li>
+<li><p>创建带错误的视图<br>就是在不存在的表中给出提示</p>
+</li>
+</ul>
+<ul>
+<li>复杂的视图的创建和使用<br>所有复杂的视图，有聚合函数或者多表关联查询<br>！<a href="/2018/02/02/oracle第三天/oracle03.png"></a>;<br> <em>这里会遇到一个键保留列 的概念</em><br>  意思是说我们在视图中，该表中的主键会显示出来，而且是唯一非空的，也就是表的键值在一个连接着视图中也是键值，<br>  那么就称这个表为键保留表。<br>  所以非键保留表是不能更新的；</li>
+</ul>
+<p><em>主键的介绍</em><br>  关系型数据库中的一条记录中有若干个属性，若其中某一个属性组(注意是组)能唯一标识一条记录，该属性组就可以成为一个主键。<br>    主键是能确定一条记录的唯一标识，比如，一条记录包括身份正号，姓名，年龄。身份证号是唯一能确定你这个人的，其他都可能有重复，所以，身份证号是主键。</p>
+<pre><code>外键用于与另一张表的关联。是能确定另一张表记录的字段，用于保持数据的一致性。比如，A表中的一个字段，是B表的主键，那他就可以是A表的外键。
+</code></pre><h2 id="物化视图"><a href="#物化视图" class="headerlink" title="物化视图"></a>物化视图</h2><ul>
+<li>什么是物化视图<br>视图就是一个虚拟的表，基于它创建时指定的查询语句返回的结果集。（就是把一个每次访问都执行这个查询，封装起来，也叫实体化视图）</li>
+</ul>
+<ul>
+<li><p><strong>创建物化视图 语法</strong></p>
+<p>  CREATE meterialized VIEW view_name</p>
+<p>  [BUILD IMMEDIATE | BUILD DEFERRED ]<br>  REFRESH [FAST|COMPLETE|FORCE]<br>  [<br>  ON [COMMIT |DEMAND ] | START WITH (start_time) NEXT<br>  (next_time)<br>  ]<br>  AS<br>  subquery</p>
+<p>  BUILD IMMEDIATE 是在创建物化视图的时候就生成数据<br>  BUILD DEFERRED 则在创建时不生成数据，以后根据需要再生成数据。<br>  默认为 build immediate。<br>  刷新（refresh）：指当基表发生了 DML 操作后，物化视图何时采用哪种<br>  方式和基表进行同步。<br>  REFRESH 后跟着指定的刷新方法有三种： FAST、 COMPLETE、 FORCE。 FAST<br>  刷新采用增量刷新，只刷新自上次刷新以后进行的修改。<br>   COMPLETE 刷新对整个物化视图进行完全的刷新。<br>  如果选择 FORCE 方式，则 Oracle 在刷新时会去判断是否可以进行快速刷新，<br>  如果可以则采用 FAST 方式，否则采用 COMPLETE的方式。 FORCE 是默认的方式。</p>
+<p>  刷新的模式有两种：ON DEMAND 和 ON COMMIT。<br>   ON DEMAND 指需要    手动刷新物化视图（默认）</p>
+<pre><code>ON COMMIT 指在基表发生 COMMIT 操作时自动刷新。
+</code></pre></li>
+</ul>
+<ul>
+<li><p>案例</p>
+<ol>
+<li><ol>
+<li>创建手动刷新的物化视图<br>create materialized view mv_address<br>as<br>select ad.id ,ad.name adname,ar.name ar_name<br>form t_address ad  , t_area ar<br>where ad.areaid=ar.id</li>
+</ol>
+</li>
+<li><ol>
+<li>插入数据<br>insert into t_address values(8,’’,1,1);</li>
+</ol>
+</li>
+<li><ol>
+<li>要手动刷新物化视图，才能提交到数据<br>begin<br>  dbms_mview.refresh(‘mv_address’,’C’);<br>end;</li>
+</ol>
+</li>
+</ol>
+</li>
+</ul>
+<pre><code>    或者在命名行cmd中刷新物化视图
+    exec dbms_mview.refresh(&apos;mv_address&apos;,&apos;C&apos;)
+
+2. 1. 创建自动刷新的物化视图
+
+create materialized view mv_address 
+refresh
+on commit
+as 
+select ad.id ,ad.name adname,ar.name ar_name
+form t_address ad  , t_area ar
+where ad.areaid=ar.id
+
+创建此物化视图后，当 T_ADDRESS 表(基表）发生变化时，MV_ADDRESS2 自动跟着
+改变。
+
+ 3. 1. 创建不生成数据的物化的视图
+create materialized view mv_address2 
+build deferred
+refresh
+on commit
+as 
+select ad.id ,ad.name adname,ar.name ar_name
+form t_address ad  , t_area ar
+where ad.areaid=ar.id
+3. 2. 查询结果为空
+3. 3. 执行下列语句后就生成了语句，由于创建是自动提交的刷新
+    begin 
+        dbms_mview.refresh(&apos;mv_address2&apos;,&apos;C&apos;);
+    end 
+
+4. 1. 创建增量刷新的物化视图
+ 4. 2. 如果要创建增量刷新的物化视图，必须首先要创建物化视图的日志
+     create materialized view log on t_address with rowid；
+    create materialized view log on t_area with rowid
+创建的物化视图日志名称为MLOG$_表名称
+    4. 3. 创建物化视图
+</code></pre><p><strong>注意创建增量的刷新的物化视图</strong></p>
+<pre><code>1. 创建物化视图前提是要先创建物化视图的日志
+2. 在查询语句中，必须包含所有表的rowid（以towid方式建立物理化视图日志）
+3. 在物理化视图中， 
+    SNAPTIME$$：用于表示刷新时间。
+    DMLTYPE$$：用于表示 DML 操作类型，I 表示 INSERT，D 表示 DELETE，U
+表示 UPDATE。
+OLD_NEW$$：用于表示这个值是新值还是旧值。 N（EW）表示新值，O（LD）
+表示旧值，U 表示 UPDATE 操作。
+CHANGE_VECTOR$$：表示修改矢量，用来表示被修改的是哪个或哪几个字段。
+此列是 RAW 类型，其实 Oracle 采用的方式就是用每个 BIT 位去映射一个列。
+插入操作显示为：FE, 删除显示为：OO 更新操作则根据更新字段的位置而显示
+不同的值
+键保留表的可以修改
+</code></pre><p><em>如果是自动刷新的话，在提交数据的时候会跳过日志，直接提交给视图中，</em></p>
+<h3 id="序列"><a href="#序列" class="headerlink" title="序列"></a>序列</h3><h3 id="什么是序列"><a href="#什么是序列" class="headerlink" title="什么是序列"></a>什么是序列</h3><p>序列是oracle中提供能产生唯一数字的数据库对象</p>
+<h3 id="创建与使用"><a href="#创建与使用" class="headerlink" title="创建与使用"></a>创建与使用</h3><ul>
+<li>创建序列语法：<ul>
+<li>create sequence 序列名称</li>
+<li>通过序列的伪列来访问序列的值<ul>
+<li>nextval返回序列的下一值</li>
+<li>currval 返回序列的当前值<br><em>注意：我们在刚建立序列后，无法提取当前值，只有先提取下一个值时才能再次提取当前值</em><br>提取下一个值<br>select 序列名.nextval from dual<br>提取当前值<br>select 序列名称.currval from dual</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>创建复杂序列<pre><code>CREATE SEQUENCE sequence //创建序列名称
+[INCREMENT BY n] //递增的序列值是 n 如果 n 是正数就递增,如果是负数就递减 默
+认是 1
+[START WITH n] //开始的值,递增默认是 minvalue 递减是 maxvalue
+[{MAXVALUE n | NOMAXVALUE}] //最大值
+[{MINVALUE n | NOMINVALUE}] //最小值
+[{CYCLE | NOCYCLE}] //循环/不循环
+[{CACHE n | NOCACHE}];//分配并存入到内存中
+</code></pre></li>
+<li>案例<ol>
+<li>有最大值的非循环序列<ol>
+<li>创建序列语句：<br>create sequence seq_test1<br>increment by 10<br>start with 10<br>maxvalue 300<br>minvalue 20<br>以上的错误，是由于我们的开始值小于最小值 。开始值不能小于最小值，修改<br>create sequence seq_test1<br>increment by 10<br>start with 10<br>maxvalue 300<br>minvalue 5</li>
+<li>有最大值的循环序列<br>create sequence seq_test2<br>increment by 10<br>start with 10<br>maxvalue 300<br>minvalue 5<br>cycle；</li>
+</ol>
+</li>
+</ol>
+</li>
+</ul>
+<p><em>循环的序列，第一次循环是从开始值开始循环，而第二次循环是从最小值开始循环。</em></p>
+<ol>
+<li><p>带缓存的序列：<br> create sequence seq_test3<br>   increment by 10<br>   start with 10<br>   maxvalue 300<br>   minvalue 5<br>   cycle<br>   cache 50;<br>我们缓存设定的值是 50，而最大值是 300，那么为什么还会提示这样的信息呢（CACHE must be less than one cycle）？<br>其实我们的 cache 虽然是 50，但是我们每次增长值是 10。这样 50 次缓存提取出<br>的数是 500 （50*10）</p>
+<p>create sequence seq_test5<br>increment by 10<br>start with 10<br>maxvalue 501<br>minvalue 5<br>cycle<br>   cache 50;</p>
+</li>
+</ol>
+<p><em>把最小值减 1，或把最大值加 1，都可以通过。</em></p>
+<pre><code>4. 修改和删除序列
+    1. 修改序列：使用 ALTER SEQUENCE 语句修改序列，不能更改序列的 STARTWITH 参数
+    2. 删除序列： DROP SEQUENCE 序列名称;
+</code></pre><h4 id="同义词"><a href="#同义词" class="headerlink" title="同义词"></a>同义词</h4><p>同义词实质上就是指定方案对象的一个别名，，你可以创建公共同义词和私有同义词。其中，公共同义词属于 PUBLIC 特殊<br>用户组，数据库的所有用户都能访问；而私有同义词包含在特定用户的方案中，<br>只允许特定用户或者有基对象访问权限的用户进行访问<br>同义词本身不涉及安全，当你赋予一个同义词对象权限时，你实质上是在给<br>同义词的基对象赋予权限，同义词只是基对象的一个别名。</p>
+<h4 id="创建使用同义词"><a href="#创建使用同义词" class="headerlink" title="创建使用同义词"></a>创建使用同义词</h4><ul>
+<li><p>创建同义词的语法</p>
+<p>  create 【public】 synonym for Object；<br>  其中 synonym 表示要创建的同义词的名称，object 表示表，视图，序列等我们要<br>  创建同义词的对象的名称。</p>
+</li>
+<li><p>案例</p>
+<pre><code>`create synonym OWNERS for T_OWNERS;
+  使用同义词：
+select *from owners;
+`
+</code></pre></li>
+<li>公有同义词 （所有用户都可以访问）</li>
+<li>私有同义词 （只能被使用的用户调用访问）</li>
+</ul>
+<h4 id="索引"><a href="#索引" class="headerlink" title="索引"></a>索引</h4><ul>
+<li><p>什么是索引<br><em>索引是用于加速数据存取的数据对象。合理的使用索引可以大大降低 i/o 次数,从而提高数据访问性能</em><br>索引是有存储空间的，所以存储的每条记录都是有物理地址的，也就是我们rowid伪列</p>
+</li>
+<li><p>普通索引</p>
+</li>
+</ul>
+<p>`create index 索引名称 on 表名(列名）``</p>
+<p>索引性能的测试：<br><em>发现通过物理地址查询数据的效率高于通过普通索引</em>    </p>
+<ul>
+<li>唯一索引<ul>
+<li>语法： `create unique index 索引名称 on 表名(列名）``</li>
+</ul>
+</li>
+<li><p>复合索引</p>
+<ul>
+<li>语法： create index 索引名称 on 表名(列名。列名。。）``</li>
+</ul>
+<ul>
+<li>反向键的索引<br>当某个字段的值为连续增长的值，如果构建标准索引，会形成歪脖子<br>树。这样会增加查询的层数，性能会下降。建立反向键索引，可以使索引的值变<br>得不规则，从而使索引树能够均匀分布。</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>位图索引</p>
+<p>位图索引适合创建在低基数列上<br><strong>优点</strong><br>减少响应时间，节省空间占用<br>create bitmap index 索引名称 on 表名（ 列名）</p>
+</li>
+</ul>
+<p>物化视图，是不能upate</p>
+<p>一次缓存的数量必须要小于一次</p>
+<p>所以</p>
+<p>序列：<br>    循环<br>        默认缓存想啊想和·cache 20<br>        缓存的数量小于一次循环的数量<br>索引：<br>只对 有特点的数据进行创建索引<br>    有特点的数据 （自增长的数据创建反向键索引比较合适）<br>    低基数创建位图索引标胶·比较合适</p>
 
       
     </div>
@@ -444,8 +628,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/02/01/hexo修改的文件/" rel="next" title="hexo修改的地方">
-                <i class="fa fa-chevron-left"></i> hexo修改的地方
+              <a href="/2018/02/02/ORACLE/" rel="next" title="oracle">
+                <i class="fa fa-chevron-left"></i> oracle
               </a>
             
           </div>
@@ -454,8 +638,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/02/02/ORACLE/" rel="prev" title="oracle">
-                oracle <i class="fa fa-chevron-right"></i>
+              <a href="/2018/02/06/oracle第四天/" rel="prev" title="oracle第四天">
+                oracle第四天 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -474,6 +658,32 @@
 
 
     <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+<span class="jiathis_txt">分享到：</span>
+<a class="jiathis_button_fav">收藏夹</a>
+<a class="jiathis_button_copy">复制网址</a>
+<a class="jiathis_button_email">邮件</a>
+<a class="jiathis_button_weixin">微信</a>
+<a class="jiathis_button_qzone">QQ空间</a>
+<a class="jiathis_button_tqq">腾讯微博</a>
+<a class="jiathis_button_douban">豆瓣</a>
+<a class="jiathis_button_share">一键分享</a>
+
+<a href="http://www.jiathis.com/share?uid=2140465" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
+<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+var jiathis_config={
+  data_track_clickback:true,
+  summary:"",
+  shortUrl:false,
+  hideMore:false
+}
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=" charset="utf-8"></script>
+<!-- JiaThis Button END -->
       
     </div>
   </div>
@@ -515,8 +725,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -535,7 +754,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">22</span>
+                  <span class="site-state-item-count">33</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -546,7 +765,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">23</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -557,7 +776,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-count">24</span>
                   <span class="site-state-item-name">标签</span>
                 
               </div>
@@ -583,6 +802,12 @@
                         <i class="fa fa-fw fa-github"></i>GitHub</a>
                   </span>
                 
+                  <span class="links-of-author-item">
+                    <a href="mailto:614190293@gmail.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
             </div>
           
 
@@ -596,6 +821,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#物化视图"><span class="nav-number">1.</span> <span class="nav-text">物化视图</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#序列"><span class="nav-number">1.1.</span> <span class="nav-text">序列</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是序列"><span class="nav-number">1.2.</span> <span class="nav-text">什么是序列</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建与使用"><span class="nav-number">1.3.</span> <span class="nav-text">创建与使用</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#同义词"><span class="nav-number">1.3.1.</span> <span class="nav-text">同义词</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#创建使用同义词"><span class="nav-number">1.3.2.</span> <span class="nav-text">创建使用同义词</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#索引"><span class="nav-number">1.3.3.</span> <span class="nav-text">索引</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -681,8 +922,6 @@
   
 
 
-  
-
 
 
 
@@ -721,11 +960,6 @@
   
   
     <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
   
 
 
@@ -820,8 +1054,11 @@
   
 
    
-      <script type="text/javascript" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+<!-- <div class="bg_content">
     
+    <canvas id="canvas"></canvas>
+    </div> -->
 </body>
 </html>
-<script type="text/javascript" src="/js/src/love.js"></script>
+
+<!-- <script type="text/javascript" src="/js/src/canvas.js"></script> -->

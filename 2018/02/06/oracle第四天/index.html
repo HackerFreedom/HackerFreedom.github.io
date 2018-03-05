@@ -1,0 +1,1050 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+<script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+<link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+
+<style>
+    .pace .pace-progress {
+        background: #1E92FB; /*进度条颜色*/
+        height: 3px;
+    }
+    .pace .pace-progress-inner {
+         box-shadow: 0 0 10px #1E92FB, 0 0 5px     #1E92FB; /*阴影颜色*/
+    }
+    .pace .pace-activity {
+        border-top-color: #1E92FB;    /*上边框颜色*/
+        border-left-color: #1E92FB;    /*左边框颜色*/
+    }
+</style>
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="oracle基础知识," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="TO BE BTTER ME" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="PL/SQL 什么是PL/sql pl/sql是oracle对sql语言的过程化扩展，指在sql命令语言中增加了过程处理语句。     基本语法结构  [declare –声明变量 ] begin –代码逻辑 [exception –异常处理 ] end;  变量 声明变量的语法： 变量名 类型 （长度）； 变量赋值的语法： 变量名： =变量值；   案例需求：声明变量水费单价、水费字数、吨数、金">
+<meta name="keywords" content="oracle基础知识">
+<meta property="og:type" content="article">
+<meta property="og:title" content="oracle第四天">
+<meta property="og:url" content="http://HackerFreedom.github.io/2018/02/06/oracle第四天/index.html">
+<meta property="og:site_name" content="TO BE BTTER ME">
+<meta property="og:description" content="PL/SQL 什么是PL/sql pl/sql是oracle对sql语言的过程化扩展，指在sql命令语言中增加了过程处理语句。     基本语法结构  [declare –声明变量 ] begin –代码逻辑 [exception –异常处理 ] end;  变量 声明变量的语法： 变量名 类型 （长度）； 变量赋值的语法： 变量名： =变量值；   案例需求：声明变量水费单价、水费字数、吨数、金">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-02-06T13:03:08.135Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="oracle第四天">
+<meta name="twitter:description" content="PL/SQL 什么是PL/sql pl/sql是oracle对sql语言的过程化扩展，指在sql命令语言中增加了过程处理语句。     基本语法结构  [declare –声明变量 ] begin –代码逻辑 [exception –异常处理 ] end;  变量 声明变量的语法： 变量名 类型 （长度）； 变量赋值的语法： 变量名： =变量值；   案例需求：声明变量水费单价、水费字数、吨数、金">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"right","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://HackerFreedom.github.io/2018/02/06/oracle第四天/"/>
+
+
+
+
+
+  <title>oracle第四天 | TO BE BTTER ME</title>
+  
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+  
+  <div class="container sidebar-position-right page-post-detail">
+    <div class="headband"></div>
+  <a href="https://HackerFreedom.github.io"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://camo.githubusercontent.com/567c3a48d796e2fc06ea80409cc9dd82bf714434/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_darkblue_121621.png"></a>
+
+
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">TO BE BTTER ME</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Hacker</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            总章
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user-circle"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-board">
+          <a href="/board" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            留言
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-life">
+          <a href="/life" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-bolt"></i> <br />
+            
+            生活的随笔
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-photo">
+          <a href="/photo" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-camera-retro"></i> <br />
+            
+            相册
+          </a>
+        </li>
+      
+
+      
+   
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://HackerFreedom.github.io/2018/02/06/oracle第四天/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Sam">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/my.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="TO BE BTTER ME">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">oracle第四天</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-06T14:37:00+08:00">
+                2018-02-06
+              </time>
+            
+
+            
+
+            
+          </span>
+        
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Oracle的基础知识/" itemprop="url" rel="index">
+                    <span itemprop="name">Oracle的基础知识</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="PL-SQL"><a href="#PL-SQL" class="headerlink" title="PL/SQL"></a>PL/SQL</h1><ul>
+<li>什么是PL/sql<ul>
+<li>pl/sql是oracle对sql语言的过程化扩展，指在sql命令语言中增加了过程处理语句。</li>
+</ul>
+</li>
+</ul>
+<ol>
+<li><p>基本语法结构<br>  [declare<br> –声明变量<br> ]<br> begin<br> –代码逻辑<br> [exception<br> –异常处理<br> ]<br> end;</p>
+<ol>
+<li>变量<ol>
+<li>声明变量的语法： 变量名 类型 （长度）；</li>
+<li>变量赋值的语法： 变量名： =变量值；</li>
+</ol>
+<ul>
+<li>案例需求：<br>声明变量水费单价、水费字数、吨数、金额。<br>对水费单价、字数、进行赋值 。吨数根据水费字数换算，规则为水费字数除以<br>1000，并且四舍五入，保留两位小数。计算金额，金额=单价*吨数。<br>输出单价 、数量和金额。</li>
+</ul>
+</li>
+</ol>
+<ul>
+<li>变量的用法–<br>declare<br>  v_price number(10,2);–水费单价<br>  v_usenum number; –水费字数<br>  v_usenum2 number(10,2);–吨数<br>  v_money number(10,2);–金额<br>begin<br>  v_price:=2.45;–水费单价<br>  v_usenum:=8012;–字数<br>–字数换算为吨数<br>v_usenum2:= round( v_usenum/1000,2);<br>–计算金额<br>v_money:=round(v_price*v_usenum2,2);<br>dbms_output.put_line(‘单价：’||v_price||’吨<br>数:’||v_usenum2||’金额：’||v_money);<br>end;</li>
+</ul>
+</li>
+<li>属性类型<ol>
+<li>%TYPE引用型<br>作用引用某 表某列的字段类型。</li>
+<li>%ROWTYPE 记录型<br> 作用 ：标识某个表的行记录类型</li>
+</ol>
+</li>
+<li>异常<br>在运行程序时出现的错误叫做异常<br>发生异常后，语句将停止执行，控制权转移到 PL/SQL 块的异常处理部分<br>异常有两中类型：<br> 预定义异常 - 当 PL/SQL 程序违反 Oracle 规则或超越系统限制时隐式引发<br> 用户定义异常 - 用户可以在 PL/SQL 块的声明部分定义异常，自定义的<br> 异常通过 RAISE 语句显式引发</li>
+<li>条件判断<ol>
+<li>基础语法<br> if 条件 then<br> 业务逻辑<br> end if;</li>
+</ol>
+</li>
+<li><p>循环</p>
+<ol>
+<li>无条件循环<br> 语法结构：<pre><code>loop
+    --循环语句
+end loop；
+</code></pre></li>
+</ol>
+<ul>
+<li><p>eg 输出从1开始的100个数<br>  declare</p>
+<p>  v_num number:=1;<br>  begin<br>  loop<br>  dbms_output.put_line(v_num);<br>  v_num:=v_num+1;<br>  exit when v_num&gt;100;<br>  end loop;<br>  end ;</p>
+</li>
+</ul>
+<ol>
+<li><p>条件循环<br> 语法结构：</p>
+<pre><code>while 条件
+    loop
+
+    end loop；
+</code></pre><ul>
+<li>eg 输出从1开始的100个数<br>declare<br>v_num number:=1;<br>begin<br>while v_num&lt;=100<br>loop<br>dbms_output.put_line(v_num);<br>v_num:=v_num+1;<br>end loop;<br>end ;</li>
+</ul>
+</li>
+<li><p>for循环<br> 语法结构：</p>
+<pre><code>for 变量 in 起始值。。终止值
+loop
+end loop；
+</code></pre><ul>
+<li>eg 输出从1开始的100个数<br>declare<br>v_num number:=1;<br>begin<br>for v_num in 1..100<br>loop<br>dbms_output.put_line(v_num);<br>end loop;<br>end;</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><p>游标<br>游标是系统为用户开设的一个数据缓冲区,存放 SQL 语句的执行结果。 我们<br>可以把游标理解为 PL/SQL 中的结果集。</p>
+<ol>
+<li><p>语法构造：<br>cursor 游标名称 is sql语句</p>
+<p>open 游标名称<br>loop<br>fetch 游标名称 into 变量<br>exit when 游标名称%notfound<br>end loop;<br>close 游标名称</p>
+<ul>
+<li>eg 需求：打印业主类型为 1 的价格表<br>declare<pre><code>v_pricetable T_PRICETABLE%rowtype;--价格行对象
+cursor cur_pricetable is select * from T_PRICETABLE where
+ownertypeid=1;--定义游标
+</code></pre>begin<pre><code>    open cur_pricetable;--打开游标
+loop
+    fetch cur_pricetable into v_pricetable;--提取游标到变量
+    exit when cur_pricetable%notfound;--当游标到最后一行下面退
+    出循环
+    dbms_output.put_line( &apos;价格:&apos;
+    ||v_pricetable.price ||&apos;吨位：
+    &apos;||v_pricetable.minnum||&apos;-&apos;||v_pricetable.maxnum );
+end loop;
+    close cur_pricetable;--关闭游标
+end ;        
+</code></pre></li>
+</ul>
+<ol>
+<li>带参数的游标<br>我们的查询语句的条件值有可能是在运行时才能决定的，比如性业主类型，<br>declare<br>   v_pricetable T_PRICETABLE%rowtype;–价格行对象<br>   cursor cur_pricetable is select * from T_PRICETABLE where<br>   ownertypeid=1;–定义游标<br>begin<pre><code>open cur_pricetable（2）;--打开游标
+</code></pre>   loop<pre><code>fetch cur_pricetable into v_pricetable;--提取游标到变量
+exit when cur_pricetable%notfound;--当游标到最后一行下面退
+出循环
+dbms_output.put_line( &apos;价格:&apos;
+||v_pricetable.price ||&apos;吨位：
+&apos;||v_pricetable.minnum||&apos;-&apos;||v_pricetable.maxnum );
+</code></pre>   end loop;<pre><code>close cur_pricetable;--关闭游标
+</code></pre>   end ;</li>
+<li>for循环提取游标值<br>我们每次提前游标，需要打开游标，关闭游标 循环游标 提取游标 控制循环，等等，很麻烦。所以用简便的做法<br>declare<br>cursor cur_pricetable(v_ownertypeid number) is select *<br>from T_PRICETABLE where ownertypeid=v_ownertypeid;–定义游<br>标<br>begin<br>for v_pricetable in cur_pricetable(3)<br>loop<br>dbms_output.put_line(‘价格:’||v_pricetable.price ||’吨<br>位：’||v_pricetable.minnum||’-‘||v_pricetable.maxnum );<br>end loop;<br>end ;<h2 id="存储函数-（oracle和mysql都有）"><a href="#存储函数-（oracle和mysql都有）" class="headerlink" title="存储函数 ##（oracle和mysql都有）"></a>存储函数 ##（oracle和mysql都有）</h2>存储函数又成为自定位函数，可以接受一个或者多个参数，返回一个结果。</li>
+</ol>
+</li>
+</ol>
+</li>
+<li><p>存储函数语法结构</p>
+<ol>
+<li>创建或修改存储过程的语法：<br> CREATE [ OR REPLACE ] FUNCTION 函数名称<br> （参数名称 参数类型, 参数名称 参数类型, …）<pre><code>RETURN 结果变量数据类型
+</code></pre> IS<pre><code>变量声明部分;
+</code></pre> BEGIN<pre><code>逻辑部分;
+</code></pre> RETURN 结果变量;<pre><code>[EXCEPTION
+异常处理部分]
+</code></pre> END;<ul>
+<li>eg 需求： 创建存储函数，根据地址 ID 查询地址名称<br>  create function fn_getaddress(v_id number)<pre><code>return varchar2
+</code></pre>  is<pre><code>v_name varchar2(30);
+</code></pre>  begin<pre><code>select name into v_name from t_address where id=v_id;
+return v_name;
+</code></pre>  end;<br>select fn_getaddress(3) from dual</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><p>存储过程<br>存储过程是被命名的pl/sql块，存储于数据库中，是数据库对象的一种。<br>存储过程与存储函数都可以封装一定的业务逻辑并返回结果，存在区别如<br>下：<br>1、 存储函数中有返回值，且必须返回；而存储过程没有返回值，可以通过<br>传出参数返回多个值。<br>2、 存储函数可以在 select 语句中直接使用，而存储过程不能。过程多数是<br>被应用程序所调用。<br>3、 存储函数一般都是封装一个查询结果，而存储过程一般都封装一段事务<br>代码。<br>-存储过程语法结构</p>
+<ol>
+<li><p>创建和修改存储过程的语法<br> CREATE [ OR REPLACE ] PROCEDURE 存储过程名称</p>
+<pre><code>（参数名 类型, 参数名 类型, 参数名 类型）
+</code></pre><p> IS|AS</p>
+<pre><code>变量声明部分;
+</code></pre><p> BEGIN</p>
+<pre><code>逻辑部分
+[EXCEPTION
+异常处理部分]
+</code></pre><p> END;<br>参数只指定类型，不指定长度<br>过程参数的三种模式：<br> IN 传入参数（默认）<br> OUT 传出参数 ，主要用于返回程序运行结果<br> IN OUT 传入传出参数</p>
+</li>
+</ol>
+</li>
+</ol>
+<ul>
+<li><p>案例</p>
+<ol>
+<li>需求： 创建存储函数，根据地址 ID 查询地址名称。</li>
+<li>创建不带传出参数的存储过程：添加业主信息</li>
+</ol>
+<ul>
+<li>增加业主信息序列<br> create sequence seq_owners start with 11;</li>
+<li>增加业主信息存储过程<br>create or replace procedure pro_owners_add<pre><code>(
+v_name varchar2,
+v_addressid number,
+v_housenumber varchar2,
+v_watermeter varchar2,
+v_type number
+)
+</code></pre>is<br>begin<br>insert into T_OWNERS<pre><code>values( seq_owners.nextval,v_name,v_addressid,v_housenumb
+er,v_watermeter,sysdate,v_type );
+</code></pre>commit;<br>end;</li>
+</ul>
+</li>
+</ul>
+<p>pl/sql中调用存储过程<br>    call pro_owners_add(‘赵伟’,1,’999-3’,’132-7’,1);</p>
+<p>JDBC调用存储过程</p>
+<h3 id="触发器"><a href="#触发器" class="headerlink" title="触发器"></a>触发器</h3><ol>
+<li>什么是触发器<br>数据库触发器是一个于表相关联的，存储的pl/sql程序。每当一个特定的数据操作语句<br>（insert ，update，delete ）在指定的表发出时，Oracle自动的执行触发器中定义<br>的语句序列。</li>
+<li><p>触发器</p>
+<ol>
+<li>数据确认</li>
+<li>数据的备份</li>
+<li>实施复杂的安全性检查</li>
+</ol>
+</li>
+<li><p>触发器分类</p>
+<ol>
+<li>前置触发器</li>
+<li>后置触发器</li>
+</ol>
+</li>
+<li>创建触发器的语法<br> CREATE [or REPLACE] TRIGGER 触发器名<pre><code>BEFORE | AFTER
+[DELETE ][[or] INSERT] [[or]UPDATE [OF 列名]]
+</code></pre> ON 表名begin<pre><code>PLSQL 
+[FOR EACH ROW ][WHEN(条件) ]
+</code></pre> declare<br> ……<pre><code>块
+</code></pre> End ；    </li>
+</ol>
+<p>**<br>    create function fn_getaddress(v_id number)<br>    return varchar2<br>    is<br>    v_name varchar2(30);<br>    begin<br>    select name into v_name from t_address where id=v_id;<br>    return v_name;<br>    end;</p>
+<pre><code>2. 需求：查询业主 ID，业主名称，业主地址，业主地址使用刚才我们创建的函数来实现
+select id 编号,name 业主名称,fn_getaddress(addressid) 地址
+from t_owners
+</code></pre>
+      
+    </div>
+    
+    
+    
+  <div>
+  
+    <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+  
+  </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/oracle基础知识/" rel="tag"># oracle基础知识</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/02/02/oracle第三天/" rel="next" title="oracle第三天">
+                <i class="fa fa-chevron-left"></i> oracle第三天
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/02/06/面向对象的总结/" rel="prev" title="Java基础知识">
+                Java基础知识 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+<span class="jiathis_txt">分享到：</span>
+<a class="jiathis_button_fav">收藏夹</a>
+<a class="jiathis_button_copy">复制网址</a>
+<a class="jiathis_button_email">邮件</a>
+<a class="jiathis_button_weixin">微信</a>
+<a class="jiathis_button_qzone">QQ空间</a>
+<a class="jiathis_button_tqq">腾讯微博</a>
+<a class="jiathis_button_douban">豆瓣</a>
+<a class="jiathis_button_share">一键分享</a>
+
+<a href="http://www.jiathis.com/share?uid=2140465" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
+<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+var jiathis_config={
+  data_track_clickback:true,
+  summary:"",
+  shortUrl:false,
+  hideMore:false
+}
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zMzc1NS8xMDMwOQ=="></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+  
+  
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/my.jpg"
+                alt="Sam" />
+            
+              <p class="site-author-name" itemprop="name">Sam</p>
+              <p class="site-description motion-element" itemprop="description">一个热爱生活的B-boy</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">33</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">23</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">24</span>
+                  <span class="site-state-item-name">标签</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/HackerFreedom" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:614190293@gmail.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#PL-SQL"><span class="nav-number">1.</span> <span class="nav-text">PL/SQL</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#存储函数-（oracle和mysql都有）"><span class="nav-number">1.1.</span> <span class="nav-text">存储函数 ##（oracle和mysql都有）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#触发器"><span class="nav-number">1.1.1.</span> <span class="nav-text">触发器</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Sam</span>
+
+  
+</div>
+
+
+
+<div class="powered-by">
+<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
+  本站访客数:<span id="busuanzi_value_site_uv"></span>
+</span>
+</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+   
+<!-- <div class="bg_content">
+    
+    <canvas id="canvas"></canvas>
+    </div> -->
+</body>
+</html>
+
+<!-- <script type="text/javascript" src="/js/src/canvas.js"></script> -->

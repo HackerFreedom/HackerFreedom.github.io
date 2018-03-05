@@ -1,0 +1,966 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+<script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+<link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+
+<style>
+    .pace .pace-progress {
+        background: #1E92FB; /*进度条颜色*/
+        height: 3px;
+    }
+    .pace .pace-progress-inner {
+         box-shadow: 0 0 10px #1E92FB, 0 0 5px     #1E92FB; /*阴影颜色*/
+    }
+    .pace .pace-activity {
+        border-top-color: #1E92FB;    /*上边框颜色*/
+        border-left-color: #1E92FB;    /*左边框颜色*/
+    }
+</style>
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="hibernate优化," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="TO BE BTTER ME" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="学习目标: 能够使用HQL语句完成多表操作 能够从概念、特点、隔离级别几个方面描述出对事务的理解 记忆HQL优化的方法并能对一级缓存进行优化 能够说出对hibernate中的抓取策略的理解，并能够配置各种抓取策略 在这里我们首先要复习一下 sql语句的知识 HQL多表操作1.交叉连接 2.内连接     a)显示内连接     b)隐式内连接     *c)迫切内连接* 3.外连接     左外连">
+<meta name="keywords" content="hibernate优化">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java框架">
+<meta property="og:url" content="http://HackerFreedom.github.io/2018/02/27/hibernate优化/index.html">
+<meta property="og:site_name" content="TO BE BTTER ME">
+<meta property="og:description" content="学习目标: 能够使用HQL语句完成多表操作 能够从概念、特点、隔离级别几个方面描述出对事务的理解 记忆HQL优化的方法并能对一级缓存进行优化 能够说出对hibernate中的抓取策略的理解，并能够配置各种抓取策略 在这里我们首先要复习一下 sql语句的知识 HQL多表操作1.交叉连接 2.内连接     a)显示内连接     b)隐式内连接     *c)迫切内连接* 3.外连接     左外连">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-03-04T02:25:13.842Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Java框架">
+<meta name="twitter:description" content="学习目标: 能够使用HQL语句完成多表操作 能够从概念、特点、隔离级别几个方面描述出对事务的理解 记忆HQL优化的方法并能对一级缓存进行优化 能够说出对hibernate中的抓取策略的理解，并能够配置各种抓取策略 在这里我们首先要复习一下 sql语句的知识 HQL多表操作1.交叉连接 2.内连接     a)显示内连接     b)隐式内连接     *c)迫切内连接* 3.外连接     左外连">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"right","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://HackerFreedom.github.io/2018/02/27/hibernate优化/"/>
+
+
+
+
+
+  <title>Java框架 | TO BE BTTER ME</title>
+  
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+  
+  <div class="container sidebar-position-right page-post-detail">
+    <div class="headband"></div>
+  <a href="https://HackerFreedom.github.io"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://camo.githubusercontent.com/567c3a48d796e2fc06ea80409cc9dd82bf714434/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_darkblue_121621.png"></a>
+
+
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">TO BE BTTER ME</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Hacker</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            总章
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user-circle"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-board">
+          <a href="/board" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            留言
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-life">
+          <a href="/life" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-bolt"></i> <br />
+            
+            生活的随笔
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-photo">
+          <a href="/photo" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-camera-retro"></i> <br />
+            
+            相册
+          </a>
+        </li>
+      
+
+      
+   
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://HackerFreedom.github.io/2018/02/27/hibernate优化/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Sam">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/my.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="TO BE BTTER ME">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Java框架</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-27T10:42:00+08:00">
+                2018-02-27
+              </time>
+            
+
+            
+
+            
+          </span>
+        
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/三大框架/" itemprop="url" rel="index">
+                    <span itemprop="name">三大框架</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>学习目标:</p>
+<pre><code>能够使用HQL语句完成多表操作
+能够从概念、特点、隔离级别几个方面描述出对事务的理解
+记忆HQL优化的方法并能对一级缓存进行优化
+能够说出对hibernate中的抓取策略的理解，并能够配置各种抓取策略
+</code></pre><p>在这里我们首先要复习一下 sql语句的知识</p>
+<h1 id="HQL多表操作"><a href="#HQL多表操作" class="headerlink" title="HQL多表操作"></a>HQL多表操作</h1><pre><code>1.交叉连接
+2.内连接
+    a)显示内连接
+    b)隐式内连接
+    *c)迫切内连接*
+3.外连接
+    左外连接
+    *迫切左外连接*
+    右外连接
+</code></pre><p><em>注意：在hibernate中有迫切连接的概念，而sql中没有。</em><br>掌握：           </p>
+<pre><code>1. from Customer c join c.orders;
+    from Order o join o.c;
+2. 迫切和非迫切的区别：
+    1.非迫切返回对象数组，迫切直接返回对象
+    2.在一对多里面，这一条迫切的sql语句就完成了一方关联的多方数据的封装
+</code></pre><p>代码案例：<br>        @Test<br>        public void test3() {<br>        Query query = session<br>            .createQuery(“select distinct c from Customer c join fetch c.orders”);<br>            List<customer> list = query.list();<br>            for (Customer c : list) {</customer></p>
+<pre><code>        System.out.println(c + &quot; &quot; + c.getOrders());
+}
+}
+</code></pre><p>非迫切对象：<br>        Test<br>        public void test1() {<br>        Query query = session.createQuery(“from Customer c left join c.orders”);<br>        List<object[]> list = query.list();<br>        for (Object[] objects : list) {<br>             System.out.println(objects[0] + “ “ + objects[1]);<br>        }<br>        }</object[]></p>
+<h1 id="Hibernate的事务管理"><a href="#Hibernate的事务管理" class="headerlink" title="Hibernate的事务管理"></a>Hibernate的事务管理</h1><p><em>复习mysql的事务</em><br>1、事务：指的是一组逻辑操作，要么同时成功要么同时失败。<br>3、事务的四大特性：<br>原子性：组成事务的最小单元是不可分割的，要么同时成功要么同时失败。<br>一致性：执行事务前后，数据的完整性是一致的；（也就是案例中总钱数是一样的）<br>隔离性：在数据库中，各个事务之间是独立的，不受其他事务的影响。<br>持久性：事务一旦结束，数据就会持久保存到数据库中。</p>
+<ol>
+<li><p>事务的隔离级别</p>
+<ol>
+<li><p>脏读：一个事务读到了另一个事务未提交的数据<br>  不可重复读：一个事务读到了另一个事务已经提交的update数据<br>  虚读/幻读：一个事务读到了另一个事务已经提交的insert数据</p>
+<ol>
+<li>隔离级别<br>read uncommitted(未提交读)    ：脏读，不可重复读，虚读都有可能发生</li>
+</ol>
+<p>read committed(已提交读)    ：避免脏读。但是不可重复读和虚读是有可能发生</p>
+<p>repeatable-read(可重复读)    ：避免脏读和不可重复读，但是虚读有可能发生。</p>
+<p>serializable(串行化)        ：避免脏读，不可重复读，虚读。(mysql默认隔离级别) </p>
+<h2 id="对于hibernate的事务隔离级别设置"><a href="#对于hibernate的事务隔离级别设置" class="headerlink" title="对于hibernate的事务隔离级别设置"></a>对于hibernate的事务隔离级别设置</h2><p>它可取的值有 1 2 4 8<br>1代表的事务隔离级别为READ UNCOMMITTED<br>2代表的事务隔离级别为READ COMMITTED<br>4.代表的事务隔离级别为 REPEATABLE READ<br>8代表的事务隔离级别为 SERIALIZABLE<br>在hibernate.cfg.xml文件中配置<br><property name="hibernate.connection.isolation ">4</property></p>
+<h1 id="hibernate优化"><a href="#hibernate优化" class="headerlink" title="hibernate优化"></a>hibernate优化</h1></li>
+</ol>
+</li>
+</ol>
+<blockquote>
+<p>1.使用参数绑定<br>使用绑定参数的原因是让数据库一次解析SQL,对后续的重复请求可以使用用生成好的执行计划，这样做节省CPU时间和内存；避免SQL注入<br>2.尽量少使用NOT<br>如果where子句中包含not关键字，那么执行时该字段的索引失效。<br>3.尽量使用where来替换having<br>Having在检索出所有记录后才对结果集进行过滤，这个处理需要一定的开销，而where子句限制记录的数目，能减少这方面的开销<br>4.减少对表的查询<br>在含有子查询的HQL中,尽量减少对表的查询，降低开销<br>5.使用表的别名<br>当在HQL语句中连接多个表时，使用别名，提高程序阅读性，并把别名前缀与每个列上，这样一来，可以减少解析时间并减少列歧义引起的语法错误。<br>6.实体的更新与删除<br>    @Test<br>    public void test11() {<br>        Query query = session.createQuery(“update Order set money=100”);<br>        query.executeUpdate();<br>    }</p>
+</blockquote>
+<h2 id="一级缓存优化"><a href="#一级缓存优化" class="headerlink" title="一级缓存优化"></a>一级缓存优化</h2><p>一级缓存也叫做session缓存，在一个hibernate session有效，这级缓存的可干预性不强，大多于hibernate自动管理，但它提供清除缓存的方法，这在大批量增加(更新)操作是有效果的，例如，同时增加十万条记录，按常规进行，很可能会出现异常，这时可能需要手动清除一级缓存，session.evict以及session.clear.</p>
+<h3 id="检索策略"><a href="#检索策略" class="headerlink" title="检索策略"></a>检索策略</h3><p>延迟加载 是hibernate为提高程序执行的效率而提供的一种机制，lazy延迟加载：什么时候使用什么时候再去查询</p>
+<h1 id="类级别延迟"><a href="#类级别延迟" class="headerlink" title="类级别延迟"></a>类级别延迟</h1><p>使用延迟加载的方法查询某个类的时候是否采用的延迟称为是类级别的延迟。默认值是true。<br>Customer customer = session.load(Customer.class,1l);// 默认就会采用延迟加载，这种称为是类级别的延迟。</p>
+<p>#关联级别的延迟 #<br>查询到某个对象以后，获得其关联的对象。查询其关联对象的时候是否采用的延迟。称为是关联级别的延迟。<br>Customer c = session.get(Customer.class,1l);<br>c.getOrders(); // 查询关联对象的时候，是否采用延迟加载</p>
+<p><em>关联级别的延迟往往会与抓取策略一起使用，优化程序。</em><br><em>（关联级别的延迟在<set>或者是<many-to-one>标签上的配置是否延迟加载）</many-to-one></set></em></p>
+<h4 id="抓取策略"><a href="#抓取策略" class="headerlink" title="抓取策略"></a>抓取策略</h4><p>抓取策略指的是查找到某个对象后，抓取其关联的对象的时候采用的策略。<br>抓取策略就是在关联对象的配置上（<set>和<many-to-one>）配置<strong>fetch</strong>属性。</many-to-one></set></p>
+<p>在set上的fetch和lazy</p>
+<p>fetch:抓取策略，控制SQL语句的发送的格式。</p>
+<ul>
+<li>select    :默认值。发送一条select语句查询关联对象。</li>
+<li>join    :发送一条迫切左外连接查询关联对象。</li>
+<li>subselect    :发送一条子查询查询关联对象。</li>
+</ul>
+<p>lazy:延迟加载，控制SQL语句的发送的时候。</p>
+<ul>
+<li>true    :默认值。采用延迟加载。</li>
+<li>false    :不采用延迟加载。</li>
+<li>extra    :及其懒惰。</li>
+</ul>
+<p>在many-to-one上的fetch和lazy<br>fetch:抓取策略，控制SQL语句的发送的格式。</p>
+<pre><code>* select    ：默认值.发送一条select语句查询关联对象。
+* join    ：发送一条迫切左外连接查询关联对象。
+</code></pre><p>lazy：延迟加载，控制SQL的发送的时机。</p>
+<pre><code>* proxy    ：默认值。是否采用延迟，需要由另一方类上的延迟加载来决定。
+* false    ：不采用延迟加载。
+* no-proxy：不用研究
+</code></pre><h1 id="抓取策略的注解配置"><a href="#抓取策略的注解配置" class="headerlink" title="抓取策略的注解配置"></a>抓取策略的注解配置</h1><p>一方对应的多方订单<br><em>private Set<order> orders = new HashSet<order>();上的fetch和lazy</order></order></em><br>fetch:抓取策略，控制SQL语句的发送的格式。</p>
+<ul>
+<li>@Fetch(FetchMode.SELECT):默认值,发送一条select语句查询关联对象。</li>
+<li>@Fetch(FetchMode.JOIN):发送一条迫切左外连接查询关联对象。</li>
+<li>@Fetch(FetchMode.SUBSELECT):发送一条子查询查询关联对象。</li>
+</ul>
+<p><em>lazy:延迟加载，控制SQL语句的发送的时候。</em></p>
+<ul>
+<li>@LazyCollection(LazyCollectionOption.TRUE):默认值。采用延迟加载。</li>
+<li>@LazyCollection(LazyCollectionOption.FALSE):不采用延迟加载。</li>
+<li>@LazyCollection(LazyCollectionOption.EXTRA)    :及其懒惰。</li>
+</ul>
+<p>多方对应的唯一客户<br>private  Customer c; 上的fetch和lazy</p>
+<p>fetch:抓取策略，控制SQL语句的发送的格式。</p>
+<pre><code>* @Fetch(FetchMode.SELECT):默认值,发送一条select语句查询关联对象
+* @Fetch(FetchMode.JOIN):发送一条迫切左外连接查询关联对象。（这时如果配置了lazy会失效，且方案是立即查询）
+</code></pre><p>lazy：延迟加载，控制SQL的发送的时机。</p>
+<pre><code>* @LazyToOne(LazyToOneOption.FALSE)：默认值,不采用延迟加载
+* @LazyToOne(LazyToOneOption.PROXY)：
+</code></pre><p>是否采用延迟，需要由另一方类上的延迟加载来决定    </p>
+<ul>
+<li>@LazyToOne(LazyToOneOption.NO_PROXY)：不用研究</li>
+</ul>
+<h2 id="多于批量抓取出现n-1的问题"><a href="#多于批量抓取出现n-1的问题" class="headerlink" title="多于批量抓取出现n+1的问题"></a>多于批量抓取出现n+1的问题</h2><p>例子：对于这个查询如果@Fetch(FetchMode.SELECT)会发送1+n条sql语句，1查询Customer自己，n查询每个Customer对应Order</p>
+<p>查询多个对象的关联对象时，可以采用批量抓取方式来对程序进行优化.<br>要想实现批量抓取：<br>可以在配置文件中 batch-size属性来设置<br>可以使用注解 @BatchSize(size=4)—–为了减少select语句数目，可以设置<set>元素的batch-size属性<br>可以采用批量抓取来解决N+1问题.</set></p>
+<p><strong>注意</strong>：<br>无论是根据哪一方来查询别一方，在进行批量抓取时，都是在父方来设置<br>如果是要查询子信息，那么我们是在<set>上来设置 batch-size,如果是从子方来查询父方，也是在父方设置在<class>设置 batch-size；</class></set></p>
+
+      
+    </div>
+    
+    
+    
+  <div>
+  
+    <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+  
+  </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/hibernate优化/" rel="tag"># hibernate优化</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/02/25/hibernate查询/" rel="next" title="Java框架">
+                <i class="fa fa-chevron-left"></i> Java框架
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/02/27/hibernate缓存/" rel="prev" title="Java框架">
+                Java框架 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+<span class="jiathis_txt">分享到：</span>
+<a class="jiathis_button_fav">收藏夹</a>
+<a class="jiathis_button_copy">复制网址</a>
+<a class="jiathis_button_email">邮件</a>
+<a class="jiathis_button_weixin">微信</a>
+<a class="jiathis_button_qzone">QQ空间</a>
+<a class="jiathis_button_tqq">腾讯微博</a>
+<a class="jiathis_button_douban">豆瓣</a>
+<a class="jiathis_button_share">一键分享</a>
+
+<a href="http://www.jiathis.com/share?uid=2140465" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
+<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+var jiathis_config={
+  data_track_clickback:true,
+  summary:"",
+  shortUrl:false,
+  hideMore:false
+}
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zMzc1NS8xMDMwOQ=="></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+  
+  
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/my.jpg"
+                alt="Sam" />
+            
+              <p class="site-author-name" itemprop="name">Sam</p>
+              <p class="site-description motion-element" itemprop="description">一个热爱生活的B-boy</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">33</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">23</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">24</span>
+                  <span class="site-state-item-name">标签</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/HackerFreedom" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:614190293@gmail.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#HQL多表操作"><span class="nav-number">1.</span> <span class="nav-text">HQL多表操作</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Hibernate的事务管理"><span class="nav-number">2.</span> <span class="nav-text">Hibernate的事务管理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#对于hibernate的事务隔离级别设置"><span class="nav-number">2.1.</span> <span class="nav-text">对于hibernate的事务隔离级别设置</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#hibernate优化"><span class="nav-number">3.</span> <span class="nav-text">hibernate优化</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#一级缓存优化"><span class="nav-number">3.1.</span> <span class="nav-text">一级缓存优化</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#检索策略"><span class="nav-number">3.1.1.</span> <span class="nav-text">检索策略</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#类级别延迟"><span class="nav-number">4.</span> <span class="nav-text">类级别延迟</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#抓取策略"><span class="nav-number">4.0.0.1.</span> <span class="nav-text">抓取策略</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#抓取策略的注解配置"><span class="nav-number">5.</span> <span class="nav-text">抓取策略的注解配置</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#多于批量抓取出现n-1的问题"><span class="nav-number">5.1.</span> <span class="nav-text">多于批量抓取出现n+1的问题</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Sam</span>
+
+  
+</div>
+
+
+
+<div class="powered-by">
+<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
+  本站访客数:<span id="busuanzi_value_site_uv"></span>
+</span>
+</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+   
+<!-- <div class="bg_content">
+    
+    <canvas id="canvas"></canvas>
+    </div> -->
+</body>
+</html>
+
+<!-- <script type="text/javascript" src="/js/src/canvas.js"></script> -->

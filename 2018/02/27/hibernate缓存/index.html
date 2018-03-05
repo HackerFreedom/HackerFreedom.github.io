@@ -1,0 +1,962 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+<script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+<link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+
+<style>
+    .pace .pace-progress {
+        background: #1E92FB; /*进度条颜色*/
+        height: 3px;
+    }
+    .pace .pace-progress-inner {
+         box-shadow: 0 0 10px #1E92FB, 0 0 5px     #1E92FB; /*阴影颜色*/
+    }
+    .pace .pace-activity {
+        border-top-color: #1E92FB;    /*上边框颜色*/
+        border-left-color: #1E92FB;    /*左边框颜色*/
+    }
+</style>
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="hibernate缓存," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="TO BE BTTER ME" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="学习目标: 记忆持久化类的编写规则 能够使用主键生成策略生成主键    能够描述对一级缓存的理解 能够描述出持久化对象能够修改数据的原因 能够分析多表之间的三种关联关系，并且能设计三种关联关系的数据库表 能够独立完成一对多关系的配置，并能完成级联保存 能够清晰的描述出cascade和inverse的作用   持久类和主键生成策略 Hibernate中定义的主键类型包括：自然主键和代理主键自然主键：">
+<meta name="keywords" content="hibernate缓存">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java框架">
+<meta property="og:url" content="http://HackerFreedom.github.io/2018/02/27/hibernate缓存/index.html">
+<meta property="og:site_name" content="TO BE BTTER ME">
+<meta property="og:description" content="学习目标: 记忆持久化类的编写规则 能够使用主键生成策略生成主键    能够描述对一级缓存的理解 能够描述出持久化对象能够修改数据的原因 能够分析多表之间的三种关联关系，并且能设计三种关联关系的数据库表 能够独立完成一对多关系的配置，并能完成级联保存 能够清晰的描述出cascade和inverse的作用   持久类和主键生成策略 Hibernate中定义的主键类型包括：自然主键和代理主键自然主键：">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-03-04T01:22:46.508Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Java框架">
+<meta name="twitter:description" content="学习目标: 记忆持久化类的编写规则 能够使用主键生成策略生成主键    能够描述对一级缓存的理解 能够描述出持久化对象能够修改数据的原因 能够分析多表之间的三种关联关系，并且能设计三种关联关系的数据库表 能够独立完成一对多关系的配置，并能完成级联保存 能够清晰的描述出cascade和inverse的作用   持久类和主键生成策略 Hibernate中定义的主键类型包括：自然主键和代理主键自然主键：">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"right","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://HackerFreedom.github.io/2018/02/27/hibernate缓存/"/>
+
+
+
+
+
+  <title>Java框架 | TO BE BTTER ME</title>
+  
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+  
+  <div class="container sidebar-position-right page-post-detail">
+    <div class="headband"></div>
+  <a href="https://HackerFreedom.github.io"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://camo.githubusercontent.com/567c3a48d796e2fc06ea80409cc9dd82bf714434/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_darkblue_121621.png"></a>
+
+
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">TO BE BTTER ME</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Hacker</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            总章
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user-circle"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-board">
+          <a href="/board" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            留言
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-life">
+          <a href="/life" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-bolt"></i> <br />
+            
+            生活的随笔
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-photo">
+          <a href="/photo" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-camera-retro"></i> <br />
+            
+            相册
+          </a>
+        </li>
+      
+
+      
+   
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://HackerFreedom.github.io/2018/02/27/hibernate缓存/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Sam">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/my.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="TO BE BTTER ME">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Java框架</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-27T10:42:00+08:00">
+                2018-02-27
+              </time>
+            
+
+            
+
+            
+          </span>
+        
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/三大框架/" itemprop="url" rel="index">
+                    <span itemprop="name">三大框架</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>学习目标:</p>
+<pre><code>记忆持久化类的编写规则
+能够使用主键生成策略生成主键   
+能够描述对一级缓存的理解
+能够描述出持久化对象能够修改数据的原因
+能够分析多表之间的三种关联关系，并且能设计三种关联关系的数据库表
+能够独立完成一对多关系的配置，并能完成级联保存
+能够清晰的描述出cascade和inverse的作用  
+</code></pre><h1 id="持久类和主键生成策略"><a href="#持久类和主键生成策略" class="headerlink" title="持久类和主键生成策略"></a>持久类和主键生成策略</h1><p> Hibernate中定义的主键类型包括：自然主键和代理主键<br>自然主键：具有业务含义 字段 作为主键，比如：学号、身份证号<br>代理主键：不具有业务含义 字段作为主键（例如 自增id），比如：mysql自增主键，oracle序列生成的主键、uuid()方法生成的唯一序列串</p>
+<p> 手动生成主键: assigned （自然主键）<br>           hibernate生成主键：increment,uuid<br>           数据库生成主键：identity(mysql) sequence(orcale),  native(本地策略)</p>
+<ul>
+<li>increment <ul>
+<li>优点:可以方便跨平台</li>
+<li>缺点:不适合高并发访问</li>
+</ul>
+</li>
+<li>identity<ul>
+<li>优点:由底层数据库维护，和hibernate无关</li>
+<li>缺点:只能对支持自动增长的数据库有效</li>
+</ul>
+</li>
+<li><p>sequence </p>
+<ul>
+<li>优点:由底层数据库维护，和hibernate无关</li>
+<li>缺点:数据库必须支持sequence方案例如oracle</li>
+</ul>
+</li>
+<li><p>native </p>
+<ul>
+<li>优点:在项目中如果存在多个数据库时使用</li>
+<li>缺点:效率比较低<h1 id="持久对象的三种状态"><a href="#持久对象的三种状态" class="headerlink" title="持久对象的三种状态"></a>持久对象的三种状态</h1></li>
+</ul>
+</li>
+</ul>
+<ol>
+<li>瞬时态<ol>
+<li>临时态或者自由态：无OID 与数据库中的信息无关联，不在session管理范围内。 </li>
+</ol>
+</li>
+<li>持久态<ol>
+<li>有OID 由session管理，在数据库中有可能有，也有可有没有。</li>
+</ol>
+</li>
+<li>托管态<ol>
+<li>游离态或者离线态  持久态对象失去了与session的关联，托管态对象它存在OID,在数据库中有可能存在，也有可能不存在</li>
+</ol>
+</li>
+</ol>
+<h1 id="一级缓存"><a href="#一级缓存" class="headerlink" title="一级缓存"></a>一级缓存</h1><p>在session中定义了一系列的集合来存储数据，它们构成session缓存,只要session没有关闭，它就会一直存在。</p>
+<p>当我们通过hibernate中的session提供的一些API例如 save  get  update等进行操作时，就会将持久化对象保存到session中，当下一次在去查询缓存中具有的对象(OID值来判断)，就不会去从数据库查询，而是直接从缓存中获取。</p>
+<blockquote>
+<p>Hibernate的一级缓存存在的目的就是为了减少对数据库访问。<br>    在hibernate中还有一个二级缓存，它是SessionFactory级别缓存。</p>
+</blockquote>
+<p><strong>注意的要点</strong></p>
+<ol>
+<li>当commit的时候比对一级缓存和快照数据是否一致，如果不一致就发送更新的sql语句到数据库更新数据</li>
+<li>Hibernate对session的crud操作都会将数据缓存到一级缓存;只有oid查询（get/load）查询才会从一级缓存拿数据，其他查询就算一级缓存有数据任然会发  送sql语句查询，</li>
+<li>session一级缓存不允许不同的对象有相同的oid<br> 异常：A different object with the same identifier value was already associated with the session</li>
+<li>delete,update操作的托管对象如果oid在数据库没有该记录会报错<br> 异常： Batch update returned unexpected row count from update [0]; actual row count: 0;</li>
+<li>持久化对象关联了一个瞬时对象<br> 异常： org.hibernate.TransientObjectException: object references an unsaved transient instance - save the transient instance before flushing:</li>
+</ol>
+<h1 id="数据对象的三种关系"><a href="#数据对象的三种关系" class="headerlink" title="数据对象的三种关系"></a>数据对象的三种关系</h1><h2 id="一对一"><a href="#一对一" class="headerlink" title="一对一"></a>一对一</h2><h2 id="一对多"><a href="#一对多" class="headerlink" title="一对多"></a>一对多</h2><ol>
+<li>实体类 （注意提供一方和多方 的构造方法，）</li>
+<li><p>配置（映射文件的配置）</p>
+<ol>
+<li>多方      <pre><code>&lt;many-to-one name=&quot;&quot; class=&quot;&quot; column=&quot;&quot;/ &gt; 实现多对一
+   name属性它描述的是Order类中的一的一方的属性名称 Customer c;
+   class 代表一的一方的全类名
+   column 描述的是一对多，在多的一方产生的外键的名称 c_customer_id
+</code></pre></li>
+<li>一方<pre><code>&lt;set &gt;
+    &lt;key column=&quot;&quot;/&gt;
+        &lt;one-to-many class=&quot;&quot;&gt;
+    &lt;/set&gt;
+</code></pre>name属性就是set集合的属性名称<br>key:它主要描述关联的多的一方产生的外键名称，注意要与多的一方定义的外键名称相同<br>one-to-many的class描述集合中类的全类名</li>
+</ol>
+</li>
+<li><p>级联 </p>
+<pre><code>1. 级联发起方 需要关联被级联的一方
+
+    一方的Customer级联保存多方的Order条件：
+1.set上配置cascade=&quot;save-update&quot;
+2.一方关联被级联的多方Order（这时session保存的是客户）
+    c.getOrders().add(o1);
+    c.getOrders().add(o2);
+
+    多方的Order级联保存一方的Customer条件：    
+1.many-to-one配置cascade=&quot;save-update&quot;
+2.多方Order关联一方Customer  （这时session保存的订单） 
+     o1.setC(c);
+        o2.setC(c);
+</code></pre><h2 id="多对多"><a href="#多对多" class="headerlink" title="多对多"></a>多对多</h2></li>
+</ol>
+
+      
+    </div>
+    
+    
+    
+  <div>
+  
+    <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+  
+  </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/hibernate缓存/" rel="tag"># hibernate缓存</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/02/27/hibernate优化/" rel="next" title="Java框架">
+                <i class="fa fa-chevron-left"></i> Java框架
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/03/01/jsp介绍基础/" rel="prev" title="JSP和MVC模式">
+                JSP和MVC模式 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+<span class="jiathis_txt">分享到：</span>
+<a class="jiathis_button_fav">收藏夹</a>
+<a class="jiathis_button_copy">复制网址</a>
+<a class="jiathis_button_email">邮件</a>
+<a class="jiathis_button_weixin">微信</a>
+<a class="jiathis_button_qzone">QQ空间</a>
+<a class="jiathis_button_tqq">腾讯微博</a>
+<a class="jiathis_button_douban">豆瓣</a>
+<a class="jiathis_button_share">一键分享</a>
+
+<a href="http://www.jiathis.com/share?uid=2140465" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
+<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+var jiathis_config={
+  data_track_clickback:true,
+  summary:"",
+  shortUrl:false,
+  hideMore:false
+}
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zMzc1NS8xMDMwOQ=="></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+  
+  
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/my.jpg"
+                alt="Sam" />
+            
+              <p class="site-author-name" itemprop="name">Sam</p>
+              <p class="site-description motion-element" itemprop="description">一个热爱生活的B-boy</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">33</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">23</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">24</span>
+                  <span class="site-state-item-name">标签</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/HackerFreedom" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:614190293@gmail.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#持久类和主键生成策略"><span class="nav-number">1.</span> <span class="nav-text">持久类和主键生成策略</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#持久对象的三种状态"><span class="nav-number">2.</span> <span class="nav-text">持久对象的三种状态</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#一级缓存"><span class="nav-number">3.</span> <span class="nav-text">一级缓存</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#数据对象的三种关系"><span class="nav-number">4.</span> <span class="nav-text">数据对象的三种关系</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#一对一"><span class="nav-number">4.1.</span> <span class="nav-text">一对一</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#一对多"><span class="nav-number">4.2.</span> <span class="nav-text">一对多</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#多对多"><span class="nav-number">4.3.</span> <span class="nav-text">多对多</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Sam</span>
+
+  
+</div>
+
+
+
+<div class="powered-by">
+<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
+  本站访客数:<span id="busuanzi_value_site_uv"></span>
+</span>
+</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+   
+<!-- <div class="bg_content">
+    
+    <canvas id="canvas"></canvas>
+    </div> -->
+</body>
+</html>
+
+<!-- <script type="text/javascript" src="/js/src/canvas.js"></script> -->

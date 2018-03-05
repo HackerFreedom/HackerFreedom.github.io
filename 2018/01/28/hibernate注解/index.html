@@ -1,0 +1,1003 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+<script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+<link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+
+<style>
+    .pace .pace-progress {
+        background: #1E92FB; /*进度条颜色*/
+        height: 3px;
+    }
+    .pace .pace-progress-inner {
+         box-shadow: 0 0 10px #1E92FB, 0 0 5px     #1E92FB; /*阴影颜色*/
+    }
+    .pace .pace-activity {
+        border-top-color: #1E92FB;    /*上边框颜色*/
+        border-left-color: #1E92FB;    /*左边框颜色*/
+    }
+</style>
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="三大框架," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="TO BE BTTER ME" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="学习目标: 能够使用Hibernate注解完成PO类的配置 能够使用Hibernate注解完成三种关联关系的配置 能够分别使用HQL、QBC、本地SQL完成对数据的检索 要落未落的雨吃剩下三分之一的过期饼干掉了一个角就无法收拢的伞还有终于再也不联系的我们 注解开发 @Entity 声明一个实体@Table来描述类与表对应@Id来声明一个主键@GenerateValue 用它来声明一个主键生成策略">
+<meta name="keywords" content="三大框架">
+<meta property="og:type" content="article">
+<meta property="og:title" content="java框架">
+<meta property="og:url" content="http://HackerFreedom.github.io/2018/01/28/hibernate注解/index.html">
+<meta property="og:site_name" content="TO BE BTTER ME">
+<meta property="og:description" content="学习目标: 能够使用Hibernate注解完成PO类的配置 能够使用Hibernate注解完成三种关联关系的配置 能够分别使用HQL、QBC、本地SQL完成对数据的检索 要落未落的雨吃剩下三分之一的过期饼干掉了一个角就无法收拢的伞还有终于再也不联系的我们 注解开发 @Entity 声明一个实体@Table来描述类与表对应@Id来声明一个主键@GenerateValue 用它来声明一个主键生成策略">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-03-04T03:15:08.709Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="java框架">
+<meta name="twitter:description" content="学习目标: 能够使用Hibernate注解完成PO类的配置 能够使用Hibernate注解完成三种关联关系的配置 能够分别使用HQL、QBC、本地SQL完成对数据的检索 要落未落的雨吃剩下三分之一的过期饼干掉了一个角就无法收拢的伞还有终于再也不联系的我们 注解开发 @Entity 声明一个实体@Table来描述类与表对应@Id来声明一个主键@GenerateValue 用它来声明一个主键生成策略">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"right","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://HackerFreedom.github.io/2018/01/28/hibernate注解/"/>
+
+
+
+
+
+  <title>java框架 | TO BE BTTER ME</title>
+  
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+  
+  <div class="container sidebar-position-right page-post-detail">
+    <div class="headband"></div>
+  <a href="https://HackerFreedom.github.io"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://camo.githubusercontent.com/567c3a48d796e2fc06ea80409cc9dd82bf714434/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_darkblue_121621.png"></a>
+
+
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">TO BE BTTER ME</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Hacker</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            总章
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user-circle"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-board">
+          <a href="/board" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            留言
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-life">
+          <a href="/life" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-bolt"></i> <br />
+            
+            生活的随笔
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-photo">
+          <a href="/photo" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-camera-retro"></i> <br />
+            
+            相册
+          </a>
+        </li>
+      
+
+      
+   
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://HackerFreedom.github.io/2018/01/28/hibernate注解/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Sam">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/my.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="TO BE BTTER ME">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">java框架</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-28T08:50:56+08:00">
+                2018-01-28
+              </time>
+            
+
+            
+
+            
+          </span>
+        
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/hibernate注解/" itemprop="url" rel="index">
+                    <span itemprop="name">hibernate注解</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p> 学习目标:</p>
+<pre><code>能够使用Hibernate注解完成PO类的配置
+能够使用Hibernate注解完成三种关联关系的配置
+能够分别使用HQL、QBC、本地SQL完成对数据的检索
+</code></pre><p>要落未落的雨<br>吃剩下三分之一的过期饼干<br>掉了一个角就无法收拢的伞<br>还有终于再也不联系的我们</p>
+<h1 id="注解开发"><a href="#注解开发" class="headerlink" title="注解开发"></a>注解开发</h1><blockquote>
+<p>@Entity 声明一个实体<br>@Table来描述类与表对应<br>@Id来声明一个主键<br>@GenerateValue 用它来声明一个主键生成策略<br>@Column来定义列<br>@Temporal来声明日期类型</p>
+</blockquote>
+<p>@Entity<br>@Table(name=”t_person”)<br>public class Person {<br>@Id<br>@GenericGenerator(name=”myuuid”, strategy=”uuid”)<br>@GeneratedValue(generator=”myuuid”)<br>private String id;</p>
+<ol>
+<li><p>配置po类</p>
+<pre><code>@Entity
+</code></pre><p> @Table(name=”T_BOOK”)<br> public class Book {<br> @Id<br> @GeneratedValue(strategy=GenerationType.IDENTITY)<br> private Integer id;</p>
+<p> @Column(name=”c_name”, length=30)<br> private String name;</p>
+<p> @Temporal(TemporalType.TIMESTAMP)<br> private Date publicationDate;</p>
+<p> private Double price;</p>
+<p> public Double getPrice() {</p>
+<pre><code>return price;
+</code></pre><p> }<br> public void setPrice(Double price) {</p>
+<pre><code>this.price = price;
+</code></pre><p> }<br> public Integer getId() {</p>
+<pre><code>return id;
+</code></pre><p> }<br> public void setId(Integer id) {</p>
+<pre><code>this.id = id;
+</code></pre><p> }<br> public String getName() {<br> return name;<br> }<br> public void setName(String name) {</p>
+<pre><code>this.name = name;
+</code></pre><p> }<br> public Date getPublicationDate() {</p>
+<pre><code>return publicationDate;
+</code></pre><p> }<br> public void setPublicationDate(Date publicationDate) {</p>
+<pre><code>this.publicationDate = publicationDate;
+</code></pre><p> }<br> }</p>
+</li>
+<li><p>在hibernate.cfg.xml文件中添加这个PO类</p>
+<mapping class="cn.itheima.domain.Book">
+</mapping></li>
+<li><p>在测试文件中</p>
+<ol>
+<li>开启事务（通过hibernate的工具类）<br>  session = HibernateUtils.openSession();<pre><code>session.beginTransaction();
+</code></pre></li>
+<li>操作<br>  Book book = new Book();<br>  book.setName(“升入浅出hibernate”);<br>  book.setPrice(56d);<br>  book.setPublicationDate(new Date());<br>  session.save(book);</li>
+<li>关闭事务<br> session.getTransaction().commit();<br> session.close();</li>
+</ol>
+</li>
+</ol>
+<h2 id="三种关联关系的注解开发"><a href="#三种关联关系的注解开发" class="headerlink" title="三种关联关系的注解开发"></a>三种关联关系的注解开发</h2><ol>
+<li><p>hibernate注解开发-一对多.avi(重点)<br> <em>多方为-Order  一方–Customer</em> </p>
+<ol>
+<li><p>原因:在Customer中配置了mappedBy=”c”它代表的是外键的维护由Order方来维护，而Customer不维护，这时你在保存客户时，级联保存订单，是可以的，但是不能维护外键，所以，我们必须在代码中添加订单与客户关系。<br>// 原因:是为了维护外键<br>o1.setC(c);<br>o2.setC(c);<br>// 原因:是为了进行级联操作<br>c.getOrders().add(o1);<br>c.getOrders().add(o2);</p>
+<p> session.save(c);</p>
+</li>
+</ol>
+</li>
+<li><p>hibernate注解开发-一对一</p>
+<ol>
+<li><p>一对一操作有两种映射方式:</p>
+<ol>
+<li>唯一外键对应:在任意一方添加外键来描述对应关系</li>
+<li><p>主键对应：一方的主键作为另一方的主键<br>@Entity<br>@Table(name = “t_user”)<br>public class User {<br>@Id<br>@GeneratedValue(strategy=GenerationType.IDENTITY)<br>private Integer id;<br>private String name;</p>
+<p>@OneToOne(targetEntity=IDCard.class, mappedBy=”user”)<br>@Cascade(CascadeType.ALL)<br>private IDCard idCard;</p>
+</li>
+</ol>
+<p>@Entity<br>@Table(name = “t_idcard”)<br>public class IDCard {<br> @Id<br> @GeneratedValue(strategy=GenerationType.IDENTITY)<br> private Integer id;<br> private String cardNum;</p>
+<p> @OneToOne(targetEntity=User.class)<br> @JoinColumn(name=”user_id”, unique=true)<br> private User user;</p>
+</li>
+</ol>
+</li>
+</ol>
+<ol>
+<li><p>hibernate注解开发-多对多测试.avi</p>
+<ol>
+<li><p>多对多配置.avi(重点) </p>
+<p> @ManyToMany(targetEntity=Student.class, mappedBy=”teachers”)<br> private Set<student> students = new HashSet<student>();</student></student></p>
+</li>
+</ol>
+</li>
+</ol>
+<pre><code>    @ManyToMany(targetEntity=Teacher.class)
+    private Set&lt;Teacher&gt; teachers = new HashSet&lt;Teacher&gt;();
+
+2. 测试保存
+    1. 在Student类中配置了级联来级联保存Teacher
+        @ManyToMany(targetEntity=Teacher.class)
+        @Cascade(CascadeType.ALL)
+        private Set&lt;Teacher&gt; teachers = new HashSet&lt;Teacher&gt;();
+
+    2. 在teacher类中 配置了，级联来级联保存studne
+        1.
+
+
+3. 测试删除
+    1. 级联删除操作测试
+    在Teacher,Student双方都配置级联    
+        @ManyToMany(targetEntity=Student.class, mappedBy=&quot;teachers&quot;)
+        @Cascade(CascadeType.ALL)
+        private Set&lt;Student&gt; students = new HashSet&lt;Student&gt;();
+        @ManyToMany(targetEntity=Teacher.class)
+        @Cascade(CascadeType.ALL)
+        private Set&lt;Teacher&gt; teachers = new HashSet&lt;Teacher&gt;(); 
+</code></pre><h1 id="检索方式"><a href="#检索方式" class="headerlink" title="检索方式"></a>检索方式</h1><p>对数据库操作中，最常用的是select.使用hibernate如何select操作。<br>分为五种:</p>
+<pre><code>1. 导航对象图检索方式，根据已加载的对象导航到其它对象
+2. OID检索方式，按照对象的OID来检索对象
+3. HQL检索方式，使用面向对象的HQL查询语言
+4. QBC检索方式,使用QBC(Query by Criteria)API来检索对象，这种API封装了基于字符串形式的查询语句，提供了更加面向对象的查询接口
+5. 本地SQL检索方式，使用本地数据库的SQL查询语句
+</code></pre><p><strong>导航对象图检索方式</strong><br>Customer c=session.get(Customer.class,2);<br>c.getOrders().size()<br>通过在hibernate中进行映射关系，在hibernate操作时，可以通过导航方式得到其关联的持久化对象信息。<br><strong>OID检索方式</strong><br>Session.get(Customer.class,3);<br>Session.load(Order.class,1);<br>Hibernate中通过get/load方法查询指定的对象,要通过OID来查询。</p>
+<h2 id="HQL检索"><a href="#HQL检索" class="headerlink" title="HQL检索"></a>HQL检索</h2><p>完整的HQL语句形式如下： select/update/delete…… from …… where …… group by …… having …… order by …… asc/desc<br>（asc是指定列按升序排列,desc则是指定列按降序排列）<br>其中的update/delete为Hibernate3中所新添加的功能</p>
+<p>基本步骤:<br>1.得到Session<br>2.编写HQL语句<br>3.通过session.createQuery(hql)创建一个Query对象<br>4.为Query对象设置条件参数<br>5.执行list查询所有，它返回的是List集合 ， uniqueResut()返回一个查询结果。</p>
+<p>基本分为基本检索，条件检索， 分页检索， 统计分组，排序检索，投影检索，命名检索。</p>
+<h1 id="基本检索"><a href="#基本检索" class="headerlink" title="基本检索"></a>基本检索</h1><pre><code>String hql = &quot;from Customer&quot;;
+</code></pre><h1 id="排序检索"><a href="#排序检索" class="headerlink" title="排序检索"></a>排序检索</h1><pre><code>String hql = &quot;from Order order by money desc&quot;;
+</code></pre><h1 id="分组统计检索"><a href="#分组统计检索" class="headerlink" title="分组统计检索"></a>分组统计检索</h1><pre><code>@Test
+public void test1() {
+String hql = &quot;select sum(o.money),o.c from Order o group by o.c&quot;;
+Query query = session.createQuery(hql);
+List&lt;Object[]&gt; list = query.list();
+for (Object[] objects : list) {
+
+     System.out.println(objects[0] + &quot;  &quot;+objects[1]);
+}
+}
+</code></pre><h1 id="命名检索"><a href="#命名检索" class="headerlink" title="命名检索"></a>命名检索</h1><p>可以将hql语句先定义出来，在使用时通过session.getNamedQuery(hqlName);得到一个Query在执行<br>    @Entity<br>    @Table(name = “t_customer”)<br>    @NamedQuery(name = “myHql”, query = “from Customer”)<br>     //    @NamedQuerys((name = “myHql”, query = “from Customer”),…)多个hql语句<br>    public class Customer {<br>       …<br>    }</p>
+<pre><code>@Test
+public void test2() {
+session.beginTransaction();
+Query query = session.getNamedQuery(&quot;myHql&quot;);
+List&lt;Customer&gt; list = query.list();
+System.out.println(list);
+}
+</code></pre><h1 id="条件检索"><a href="#条件检索" class="headerlink" title="条件检索"></a>条件检索</h1><p>  String hql=”from order where money=?”<br>    <em>注意</em><br>这里的？是从1开始的索引，和mysql从0开始是不同的；</p>
+<h3 id="QBC检索"><a href="#QBC检索" class="headerlink" title="QBC检索"></a>QBC检索</h3><p><strong>QBC(query by criteria),它是一种更加面向对象的检索方式。</strong><br>QBC步骤:<br>1.通过Session得到一个Criteria对象   session.createCriteria()<br>2.设定条件  Criterion实例<br>它的获取可以通过Restrictions类提供静态Criteria的add方法用于添加查询条件调用list进行查询  criteria.list.</p>
+<p>1、在hibernate的PO类上使用jpa相关注解替换hbm映射文件配置<br>【day03】</p>
+<p>2、使用@OneToMany与@ManyToOne完成一对多关联映射并完成一对多的级联操作<br>【day03】</p>
+<p>3、使用@ManyToMany完成多对多关联映射并完成多对多的级联操作<br>【day03】</p>
+<p>4、使用@OneToOne完成一对一关联映射，并可以区分一对一中外键映射与主键映射的区别与设置方式</p>
+
+      
+    </div>
+    
+    
+    
+  <div>
+  
+    <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+  
+  </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/三大框架/" rel="tag"># 三大框架</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/01/28/nginx-svn/" rel="next" title="nginx&svn">
+                <i class="fa fa-chevron-left"></i> nginx&svn
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/01/28/面试/" rel="prev" title="面试-试题">
+                面试-试题 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+<span class="jiathis_txt">分享到：</span>
+<a class="jiathis_button_fav">收藏夹</a>
+<a class="jiathis_button_copy">复制网址</a>
+<a class="jiathis_button_email">邮件</a>
+<a class="jiathis_button_weixin">微信</a>
+<a class="jiathis_button_qzone">QQ空间</a>
+<a class="jiathis_button_tqq">腾讯微博</a>
+<a class="jiathis_button_douban">豆瓣</a>
+<a class="jiathis_button_share">一键分享</a>
+
+<a href="http://www.jiathis.com/share?uid=2140465" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
+<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+var jiathis_config={
+  data_track_clickback:true,
+  summary:"",
+  shortUrl:false,
+  hideMore:false
+}
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zMzc1NS8xMDMwOQ=="></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+  
+  
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/my.jpg"
+                alt="Sam" />
+            
+              <p class="site-author-name" itemprop="name">Sam</p>
+              <p class="site-description motion-element" itemprop="description">一个热爱生活的B-boy</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">33</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">23</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">24</span>
+                  <span class="site-state-item-name">标签</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/HackerFreedom" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:614190293@gmail.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#注解开发"><span class="nav-number">1.</span> <span class="nav-text">注解开发</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#三种关联关系的注解开发"><span class="nav-number">1.1.</span> <span class="nav-text">三种关联关系的注解开发</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#检索方式"><span class="nav-number">2.</span> <span class="nav-text">检索方式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#HQL检索"><span class="nav-number">2.1.</span> <span class="nav-text">HQL检索</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#基本检索"><span class="nav-number">3.</span> <span class="nav-text">基本检索</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#排序检索"><span class="nav-number">4.</span> <span class="nav-text">排序检索</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#分组统计检索"><span class="nav-number">5.</span> <span class="nav-text">分组统计检索</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#命名检索"><span class="nav-number">6.</span> <span class="nav-text">命名检索</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#条件检索"><span class="nav-number">7.</span> <span class="nav-text">条件检索</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#QBC检索"><span class="nav-number">7.0.1.</span> <span class="nav-text">QBC检索</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Sam</span>
+
+  
+</div>
+
+
+
+<div class="powered-by">
+<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
+  本站访客数:<span id="busuanzi_value_site_uv"></span>
+</span>
+</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+   
+<!-- <div class="bg_content">
+    
+    <canvas id="canvas"></canvas>
+    </div> -->
+</body>
+</html>
+
+<!-- <script type="text/javascript" src="/js/src/canvas.js"></script> -->

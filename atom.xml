@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://HackerFreedom.github.io/"/>
-  <updated>2018-02-03T16:36:27.577Z</updated>
+  <updated>2018-03-02T06:16:31.809Z</updated>
   <id>http://HackerFreedom.github.io/</id>
   
   <author>
@@ -17,20 +17,259 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>oracle</title>
-    <link href="http://HackerFreedom.github.io/2018/02/02/ORACLE/"/>
-    <id>http://HackerFreedom.github.io/2018/02/02/ORACLE/</id>
-    <published>2018-02-02T07:34:00.000Z</published>
-    <updated>2018-02-03T16:36:27.577Z</updated>
+    <title>JSP和MVC模式</title>
+    <link href="http://HackerFreedom.github.io/2018/03/01/jsp%E4%BB%8B%E7%BB%8D%E5%9F%BA%E7%A1%80/"/>
+    <id>http://HackerFreedom.github.io/2018/03/01/jsp介绍基础/</id>
+    <published>2018-03-01T07:11:00.000Z</published>
+    <updated>2018-03-02T06:16:31.809Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="oracle的简介"><a href="#oracle的简介" class="headerlink" title="oracle的简介"></a>oracle的简介</h1><p>tabs 查询所有的表</p><p>中文乱码解决<br>1.检查服务器编码: 执行SQL语法: select * from v$nls_parameters; 如果不是中文则执行2 2.设置本地客户端编码: 进入 我的电脑,属性,高级,环境变量,添加2项:LANG=zh_CN.GBK 和 NLS_LANG=”SIMPLIFIED CHINESE_CHINA.ZHS16GBK” 3. PL/SQL Developer设置并重新连接: 在pl/sql developer的菜单-&gt;tools-&gt;preferences-&gt;user interface-&gt;fonts 中修改为中文字体 OK了。</p><h2 id="单表查询"><a href="#单表查询" class="headerlink" title="单表查询"></a>单表查询</h2><ul><li><p>精确查找</p><p>  select * from T_owners where 条件</p></li><li><p>模糊查询<br>  select * from t_owners where name like’% 刘%’</p></li><li><p>and 运算符</p><p>  select * from t_owners where name like’% 刘%’and 条件</p></li><li><p>or 运算符</p><p>  select * from t_owners where name like’% 刘%’ or 条件</p></li><li><p>and和or运算符混用使用</p><p>  select *from  t_owners where（ name like’% 刘%’or 条件） and 条件 –由于and的优先级高</p></li><li><p>范围查询</p><p>  select * from t_account where usenum &gt;= 12313 and usenum &lt;22313</p></li><li>空值查询<br>  可以查询为空的记录<br>  select * from t_pricetable t where maxnum is not null</li><li><p>去掉重复记录</p><p>  select distinct addressid from t_owners<br><strong>distinct</strong></p></li><li><p>排序查询</p><ol><li><p>升序<br>默认</p></li><li><p>降序</p><p>select * from T_account order by usenum desc </p></li></ol></li></ul><p><strong>desc</strong></p><ul><li><p>伪列查询</p><ol><li><p><strong>ROWID</strong><br>获取每个数据的物理地址<br>select rowID ,t* form 地点 where 条件</p></li><li><p><strong>ROWNUM</strong><br>每次获取一行为 标识的一个行号<br>select rownum ,t*from </p></li></ol></li><li><p>聚合统计</p><ol><li><p>聚合函数</p><ul><li>sum 求和</li><li>avg 求平均数</li><li>max 求最大值</li><li>min 求最小值</li><li>count 求统计个数<ul><li>select count(*)from…where …</li></ul></li></ul></li><li><p>分组聚合Group by</p><ul><li>select areaid ,sum(money) from 表名 group by areaid </li></ul></li><li><p>分组后条件查询having</p><ul><li>select areaid ,sum(money) from 表名 group by areaid having 条件</li></ul></li></ol></li></ul><p><strong>总结</strong></p><p>select…from …where…group by…having</p><h3 id="多表查询"><a href="#多表查询" class="headerlink" title="多表查询"></a>多表查询</h3><ul><li>内连接</li><li></li><li>外连接<ol><li>左外连接查询</li><li>右外连接查询</li></ol></li></ul><h3 id="子查询"><a href="#子查询" class="headerlink" title="子查询"></a>子查询</h3><ul><li><p>单行子查询</p><ul><li>where 字句中的子查询<ol><li>只返回一条记录<ol><li>单行操作符  =    &gt;   &gt;=   &lt;    &lt;=   &lt;&gt;<br>select * from T_account where((条件包含条件)) </li></ol><ul><li>select 字句中的子查询</li></ul></li></ol></li></ul></li><li><p>多行子查询  in（范围） any all（记录允许多个记录）</p><ul><li><p>from字句中的子查询</p><p><em>关于多个表查询，先查两表关联的条件</em></p></li></ul></li><li><p>分页查询</p><ul><li>简单分页<ul><li>rownum  原理是按扫描的按顺序产生的，所以where条件不能用大于 或者等于</li></ul></li><li><p>基于排序分页</p></li><li></li></ul></li></ul><hr><p>子查询中空值的问题<br>      单行子查询的空值问题<br>    多行子查询中的null值问题<br>    如果表中有空值的话，不能用not in</p><h4 id="内置函数"><a href="#内置函数" class="headerlink" title="内置函数"></a>内置函数</h4><p>行列转换</p><ul><li>单行函数</li></ul><ul><li>行列转化</li></ul><p>alter user scott account unlock；<br>alter user scott </p>]]></content>
+    <summary type="html">
+    
+    </summary>
+    
+      <category term="jsp介绍" scheme="http://HackerFreedom.github.io/categories/jsp%E4%BB%8B%E7%BB%8D/"/>
+    
+    
+      <category term="jsp介绍基础" scheme="http://HackerFreedom.github.io/tags/jsp%E4%BB%8B%E7%BB%8D%E5%9F%BA%E7%A1%80/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Java框架</title>
+    <link href="http://HackerFreedom.github.io/2018/02/27/hibernate%E7%BC%93%E5%AD%98/"/>
+    <id>http://HackerFreedom.github.io/2018/02/27/hibernate缓存/</id>
+    <published>2018-02-27T02:42:00.000Z</published>
+    <updated>2018-03-04T01:22:46.508Z</updated>
+    
+    <content type="html"><![CDATA[<p>学习目标:</p><pre><code>记忆持久化类的编写规则能够使用主键生成策略生成主键   能够描述对一级缓存的理解能够描述出持久化对象能够修改数据的原因能够分析多表之间的三种关联关系，并且能设计三种关联关系的数据库表能够独立完成一对多关系的配置，并能完成级联保存能够清晰的描述出cascade和inverse的作用  </code></pre><h1 id="持久类和主键生成策略"><a href="#持久类和主键生成策略" class="headerlink" title="持久类和主键生成策略"></a>持久类和主键生成策略</h1><p> Hibernate中定义的主键类型包括：自然主键和代理主键<br>自然主键：具有业务含义 字段 作为主键，比如：学号、身份证号<br>代理主键：不具有业务含义 字段作为主键（例如 自增id），比如：mysql自增主键，oracle序列生成的主键、uuid()方法生成的唯一序列串</p><p> 手动生成主键: assigned （自然主键）<br>           hibernate生成主键：increment,uuid<br>           数据库生成主键：identity(mysql) sequence(orcale),  native(本地策略)</p><ul><li>increment <ul><li>优点:可以方便跨平台</li><li>缺点:不适合高并发访问</li></ul></li><li>identity<ul><li>优点:由底层数据库维护，和hibernate无关</li><li>缺点:只能对支持自动增长的数据库有效</li></ul></li><li><p>sequence </p><ul><li>优点:由底层数据库维护，和hibernate无关</li><li>缺点:数据库必须支持sequence方案例如oracle</li></ul></li><li><p>native </p><ul><li>优点:在项目中如果存在多个数据库时使用</li><li>缺点:效率比较低<h1 id="持久对象的三种状态"><a href="#持久对象的三种状态" class="headerlink" title="持久对象的三种状态"></a>持久对象的三种状态</h1></li></ul></li></ul><ol><li>瞬时态<ol><li>临时态或者自由态：无OID 与数据库中的信息无关联，不在session管理范围内。 </li></ol></li><li>持久态<ol><li>有OID 由session管理，在数据库中有可能有，也有可有没有。</li></ol></li><li>托管态<ol><li>游离态或者离线态  持久态对象失去了与session的关联，托管态对象它存在OID,在数据库中有可能存在，也有可能不存在</li></ol></li></ol><h1 id="一级缓存"><a href="#一级缓存" class="headerlink" title="一级缓存"></a>一级缓存</h1><p>在session中定义了一系列的集合来存储数据，它们构成session缓存,只要session没有关闭，它就会一直存在。</p><p>当我们通过hibernate中的session提供的一些API例如 save  get  update等进行操作时，就会将持久化对象保存到session中，当下一次在去查询缓存中具有的对象(OID值来判断)，就不会去从数据库查询，而是直接从缓存中获取。</p><blockquote><p>Hibernate的一级缓存存在的目的就是为了减少对数据库访问。<br>    在hibernate中还有一个二级缓存，它是SessionFactory级别缓存。</p></blockquote><p><strong>注意的要点</strong></p><ol><li>当commit的时候比对一级缓存和快照数据是否一致，如果不一致就发送更新的sql语句到数据库更新数据</li><li>Hibernate对session的crud操作都会将数据缓存到一级缓存;只有oid查询（get/load）查询才会从一级缓存拿数据，其他查询就算一级缓存有数据任然会发  送sql语句查询，</li><li>session一级缓存不允许不同的对象有相同的oid<br> 异常：A different object with the same identifier value was already associated with the session</li><li>delete,update操作的托管对象如果oid在数据库没有该记录会报错<br> 异常： Batch update returned unexpected row count from update [0]; actual row count: 0;</li><li>持久化对象关联了一个瞬时对象<br> 异常： org.hibernate.TransientObjectException: object references an unsaved transient instance - save the transient instance before flushing:</li></ol><h1 id="数据对象的三种关系"><a href="#数据对象的三种关系" class="headerlink" title="数据对象的三种关系"></a>数据对象的三种关系</h1><h2 id="一对一"><a href="#一对一" class="headerlink" title="一对一"></a>一对一</h2><h2 id="一对多"><a href="#一对多" class="headerlink" title="一对多"></a>一对多</h2><ol><li>实体类 （注意提供一方和多方 的构造方法，）</li><li><p>配置（映射文件的配置）</p><ol><li>多方      <pre><code>&lt;many-to-one name=&quot;&quot; class=&quot;&quot; column=&quot;&quot;/ &gt; 实现多对一   name属性它描述的是Order类中的一的一方的属性名称 Customer c;   class 代表一的一方的全类名   column 描述的是一对多，在多的一方产生的外键的名称 c_customer_id</code></pre></li><li>一方<pre><code>&lt;set &gt;    &lt;key column=&quot;&quot;/&gt;        &lt;one-to-many class=&quot;&quot;&gt;    &lt;/set&gt;</code></pre>name属性就是set集合的属性名称<br>key:它主要描述关联的多的一方产生的外键名称，注意要与多的一方定义的外键名称相同<br>one-to-many的class描述集合中类的全类名</li></ol></li><li><p>级联 </p><pre><code>1. 级联发起方 需要关联被级联的一方    一方的Customer级联保存多方的Order条件：1.set上配置cascade=&quot;save-update&quot;2.一方关联被级联的多方Order（这时session保存的是客户）    c.getOrders().add(o1);    c.getOrders().add(o2);    多方的Order级联保存一方的Customer条件：    1.many-to-one配置cascade=&quot;save-update&quot;2.多方Order关联一方Customer  （这时session保存的订单）      o1.setC(c);        o2.setC(c);</code></pre><h2 id="多对多"><a href="#多对多" class="headerlink" title="多对多"></a>多对多</h2></li></ol>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;h1 id=&quot;oracle的简介&quot;&gt;&lt;a href=&quot;#oracle的简介&quot; class=&quot;headerlink&quot; title=&quot;oracle的简介&quot;&gt;&lt;/a&gt;oracle的简介&lt;/h1&gt;&lt;p&gt;tabs 查询所有的表&lt;/p&gt;
-&lt;p&gt;中文乱码解决&lt;br&gt;1.检查服务器编码: 执行
+        &lt;p&gt;学习目标:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;记忆持久化类的编写规则
+能够使用主键生成策略生成主键   
+能够描述对一级缓存的理解
+能够描述出持久化对象能够修改数据的原因
+能够分析多表之间的三种关联关系，并且能设计三种关联关系的数据库表
+能够独立完成一对多关系的配置，并能完成级
+      
+    
+    </summary>
+    
+      <category term="三大框架" scheme="http://HackerFreedom.github.io/categories/%E4%B8%89%E5%A4%A7%E6%A1%86%E6%9E%B6/"/>
+    
+    
+      <category term="hibernate缓存" scheme="http://HackerFreedom.github.io/tags/hibernate%E7%BC%93%E5%AD%98/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Java框架</title>
+    <link href="http://HackerFreedom.github.io/2018/02/27/hibernate%E4%BC%98%E5%8C%96/"/>
+    <id>http://HackerFreedom.github.io/2018/02/27/hibernate优化/</id>
+    <published>2018-02-27T02:42:00.000Z</published>
+    <updated>2018-03-04T02:25:13.842Z</updated>
+    
+    <content type="html"><![CDATA[<p>学习目标:</p><pre><code>能够使用HQL语句完成多表操作能够从概念、特点、隔离级别几个方面描述出对事务的理解记忆HQL优化的方法并能对一级缓存进行优化能够说出对hibernate中的抓取策略的理解，并能够配置各种抓取策略</code></pre><p>在这里我们首先要复习一下 sql语句的知识</p><h1 id="HQL多表操作"><a href="#HQL多表操作" class="headerlink" title="HQL多表操作"></a>HQL多表操作</h1><pre><code>1.交叉连接2.内连接    a)显示内连接    b)隐式内连接    *c)迫切内连接*3.外连接    左外连接    *迫切左外连接*    右外连接</code></pre><p><em>注意：在hibernate中有迫切连接的概念，而sql中没有。</em><br>掌握：           </p><pre><code>1. from Customer c join c.orders;    from Order o join o.c;2. 迫切和非迫切的区别：    1.非迫切返回对象数组，迫切直接返回对象    2.在一对多里面，这一条迫切的sql语句就完成了一方关联的多方数据的封装</code></pre><p>代码案例：<br>        @Test<br>        public void test3() {<br>        Query query = session<br>            .createQuery(“select distinct c from Customer c join fetch c.orders”);<br>            List<customer> list = query.list();<br>            for (Customer c : list) {</customer></p><pre><code>        System.out.println(c + &quot; &quot; + c.getOrders());}}</code></pre><p>非迫切对象：<br>        Test<br>        public void test1() {<br>        Query query = session.createQuery(“from Customer c left join c.orders”);<br>        List<object[]> list = query.list();<br>        for (Object[] objects : list) {<br>             System.out.println(objects[0] + “ “ + objects[1]);<br>        }<br>        }</object[]></p><h1 id="Hibernate的事务管理"><a href="#Hibernate的事务管理" class="headerlink" title="Hibernate的事务管理"></a>Hibernate的事务管理</h1><p><em>复习mysql的事务</em><br>1、事务：指的是一组逻辑操作，要么同时成功要么同时失败。<br>3、事务的四大特性：<br>原子性：组成事务的最小单元是不可分割的，要么同时成功要么同时失败。<br>一致性：执行事务前后，数据的完整性是一致的；（也就是案例中总钱数是一样的）<br>隔离性：在数据库中，各个事务之间是独立的，不受其他事务的影响。<br>持久性：事务一旦结束，数据就会持久保存到数据库中。</p><ol><li><p>事务的隔离级别</p><ol><li><p>脏读：一个事务读到了另一个事务未提交的数据<br>  不可重复读：一个事务读到了另一个事务已经提交的update数据<br>  虚读/幻读：一个事务读到了另一个事务已经提交的insert数据</p><ol><li>隔离级别<br>read uncommitted(未提交读)    ：脏读，不可重复读，虚读都有可能发生</li></ol><p>read committed(已提交读)    ：避免脏读。但是不可重复读和虚读是有可能发生</p><p>repeatable-read(可重复读)    ：避免脏读和不可重复读，但是虚读有可能发生。</p><p>serializable(串行化)        ：避免脏读，不可重复读，虚读。(mysql默认隔离级别) </p><h2 id="对于hibernate的事务隔离级别设置"><a href="#对于hibernate的事务隔离级别设置" class="headerlink" title="对于hibernate的事务隔离级别设置"></a>对于hibernate的事务隔离级别设置</h2><p>它可取的值有 1 2 4 8<br>1代表的事务隔离级别为READ UNCOMMITTED<br>2代表的事务隔离级别为READ COMMITTED<br>4.代表的事务隔离级别为 REPEATABLE READ<br>8代表的事务隔离级别为 SERIALIZABLE<br>在hibernate.cfg.xml文件中配置<br><property name="hibernate.connection.isolation ">4</property></p><h1 id="hibernate优化"><a href="#hibernate优化" class="headerlink" title="hibernate优化"></a>hibernate优化</h1></li></ol></li></ol><blockquote><p>1.使用参数绑定<br>使用绑定参数的原因是让数据库一次解析SQL,对后续的重复请求可以使用用生成好的执行计划，这样做节省CPU时间和内存；避免SQL注入<br>2.尽量少使用NOT<br>如果where子句中包含not关键字，那么执行时该字段的索引失效。<br>3.尽量使用where来替换having<br>Having在检索出所有记录后才对结果集进行过滤，这个处理需要一定的开销，而where子句限制记录的数目，能减少这方面的开销<br>4.减少对表的查询<br>在含有子查询的HQL中,尽量减少对表的查询，降低开销<br>5.使用表的别名<br>当在HQL语句中连接多个表时，使用别名，提高程序阅读性，并把别名前缀与每个列上，这样一来，可以减少解析时间并减少列歧义引起的语法错误。<br>6.实体的更新与删除<br>    @Test<br>    public void test11() {<br>        Query query = session.createQuery(“update Order set money=100”);<br>        query.executeUpdate();<br>    }</p></blockquote><h2 id="一级缓存优化"><a href="#一级缓存优化" class="headerlink" title="一级缓存优化"></a>一级缓存优化</h2><p>一级缓存也叫做session缓存，在一个hibernate session有效，这级缓存的可干预性不强，大多于hibernate自动管理，但它提供清除缓存的方法，这在大批量增加(更新)操作是有效果的，例如，同时增加十万条记录，按常规进行，很可能会出现异常，这时可能需要手动清除一级缓存，session.evict以及session.clear.</p><h3 id="检索策略"><a href="#检索策略" class="headerlink" title="检索策略"></a>检索策略</h3><p>延迟加载 是hibernate为提高程序执行的效率而提供的一种机制，lazy延迟加载：什么时候使用什么时候再去查询</p><h1 id="类级别延迟"><a href="#类级别延迟" class="headerlink" title="类级别延迟"></a>类级别延迟</h1><p>使用延迟加载的方法查询某个类的时候是否采用的延迟称为是类级别的延迟。默认值是true。<br>Customer customer = session.load(Customer.class,1l);// 默认就会采用延迟加载，这种称为是类级别的延迟。</p><p>#关联级别的延迟 #<br>查询到某个对象以后，获得其关联的对象。查询其关联对象的时候是否采用的延迟。称为是关联级别的延迟。<br>Customer c = session.get(Customer.class,1l);<br>c.getOrders(); // 查询关联对象的时候，是否采用延迟加载</p><p><em>关联级别的延迟往往会与抓取策略一起使用，优化程序。</em><br><em>（关联级别的延迟在<set>或者是<many-to-one>标签上的配置是否延迟加载）</many-to-one></set></em></p><h4 id="抓取策略"><a href="#抓取策略" class="headerlink" title="抓取策略"></a>抓取策略</h4><p>抓取策略指的是查找到某个对象后，抓取其关联的对象的时候采用的策略。<br>抓取策略就是在关联对象的配置上（<set>和<many-to-one>）配置<strong>fetch</strong>属性。</many-to-one></set></p><p>在set上的fetch和lazy</p><p>fetch:抓取策略，控制SQL语句的发送的格式。</p><ul><li>select    :默认值。发送一条select语句查询关联对象。</li><li>join    :发送一条迫切左外连接查询关联对象。</li><li>subselect    :发送一条子查询查询关联对象。</li></ul><p>lazy:延迟加载，控制SQL语句的发送的时候。</p><ul><li>true    :默认值。采用延迟加载。</li><li>false    :不采用延迟加载。</li><li>extra    :及其懒惰。</li></ul><p>在many-to-one上的fetch和lazy<br>fetch:抓取策略，控制SQL语句的发送的格式。</p><pre><code>* select    ：默认值.发送一条select语句查询关联对象。* join    ：发送一条迫切左外连接查询关联对象。</code></pre><p>lazy：延迟加载，控制SQL的发送的时机。</p><pre><code>* proxy    ：默认值。是否采用延迟，需要由另一方类上的延迟加载来决定。* false    ：不采用延迟加载。* no-proxy：不用研究</code></pre><h1 id="抓取策略的注解配置"><a href="#抓取策略的注解配置" class="headerlink" title="抓取策略的注解配置"></a>抓取策略的注解配置</h1><p>一方对应的多方订单<br><em>private Set<order> orders = new HashSet<order>();上的fetch和lazy</order></order></em><br>fetch:抓取策略，控制SQL语句的发送的格式。</p><ul><li>@Fetch(FetchMode.SELECT):默认值,发送一条select语句查询关联对象。</li><li>@Fetch(FetchMode.JOIN):发送一条迫切左外连接查询关联对象。</li><li>@Fetch(FetchMode.SUBSELECT):发送一条子查询查询关联对象。</li></ul><p><em>lazy:延迟加载，控制SQL语句的发送的时候。</em></p><ul><li>@LazyCollection(LazyCollectionOption.TRUE):默认值。采用延迟加载。</li><li>@LazyCollection(LazyCollectionOption.FALSE):不采用延迟加载。</li><li>@LazyCollection(LazyCollectionOption.EXTRA)    :及其懒惰。</li></ul><p>多方对应的唯一客户<br>private  Customer c; 上的fetch和lazy</p><p>fetch:抓取策略，控制SQL语句的发送的格式。</p><pre><code>* @Fetch(FetchMode.SELECT):默认值,发送一条select语句查询关联对象* @Fetch(FetchMode.JOIN):发送一条迫切左外连接查询关联对象。（这时如果配置了lazy会失效，且方案是立即查询）</code></pre><p>lazy：延迟加载，控制SQL的发送的时机。</p><pre><code>* @LazyToOne(LazyToOneOption.FALSE)：默认值,不采用延迟加载* @LazyToOne(LazyToOneOption.PROXY)：</code></pre><p>是否采用延迟，需要由另一方类上的延迟加载来决定    </p><ul><li>@LazyToOne(LazyToOneOption.NO_PROXY)：不用研究</li></ul><h2 id="多于批量抓取出现n-1的问题"><a href="#多于批量抓取出现n-1的问题" class="headerlink" title="多于批量抓取出现n+1的问题"></a>多于批量抓取出现n+1的问题</h2><p>例子：对于这个查询如果@Fetch(FetchMode.SELECT)会发送1+n条sql语句，1查询Customer自己，n查询每个Customer对应Order</p><p>查询多个对象的关联对象时，可以采用批量抓取方式来对程序进行优化.<br>要想实现批量抓取：<br>可以在配置文件中 batch-size属性来设置<br>可以使用注解 @BatchSize(size=4)—–为了减少select语句数目，可以设置<set>元素的batch-size属性<br>可以采用批量抓取来解决N+1问题.</set></p><p><strong>注意</strong>：<br>无论是根据哪一方来查询别一方，在进行批量抓取时，都是在父方来设置<br>如果是要查询子信息，那么我们是在<set>上来设置 batch-size,如果是从子方来查询父方，也是在父方设置在<class>设置 batch-size；</class></set></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;学习目标:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;能够使用HQL语句完成多表操作
+能够从概念、特点、隔离级别几个方面描述出对事务的理解
+记忆HQL优化的方法并能对一级缓存进行优化
+能够说出对hibernate中的抓取策略的理解，并能够配置各种抓取策略
+&lt;/code&gt;&lt;/pre&gt;&lt;p
+      
+    
+    </summary>
+    
+      <category term="三大框架" scheme="http://HackerFreedom.github.io/categories/%E4%B8%89%E5%A4%A7%E6%A1%86%E6%9E%B6/"/>
+    
+    
+      <category term="hibernate优化" scheme="http://HackerFreedom.github.io/tags/hibernate%E4%BC%98%E5%8C%96/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Java框架</title>
+    <link href="http://HackerFreedom.github.io/2018/02/25/hibernate%E6%9F%A5%E8%AF%A2/"/>
+    <id>http://HackerFreedom.github.io/2018/02/25/hibernate查询/</id>
+    <published>2018-02-25T01:23:00.000Z</published>
+    <updated>2018-02-25T14:16:58.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="hibernate-框架"><a href="#hibernate-框架" class="headerlink" title="hibernate 框架"></a>hibernate 框架</h1><ul><li>session</li><li>hql查询</li><li>对象关系</li></ul><p>在hibernate核心配置文件中<br>create 创建表  会删除存在的表，有可能会丢失数据</p><blockquote><p> C:\ProgramData\Microsoft\Windows Defender</p></blockquote><h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><h1 id="流程"><a href="#流程" class="headerlink" title="流程"></a>流程</h1><p>！<a href="/2018/02/25/hibernate查询/hibernate.png"></a>;</p><p><strong>查询语句的汇总</strong></p><pre><code>1.oid查询：（oid是对象标识符）Customer  c = session.get(Customer.class, 1);Customer  c = session.load(Customer.class, 1);2.hql查询Query query = session.createQuery(“from Customer”);from后面跟的是类名（domain中的类）List&lt;Customer&gt; list = query.list(); 分页：query.setFirstResult(0);query.setMaxResults(10);投影：Query query = session.createQuery(“select name,address from Customer”);List&lt;Object[]&gt; list = Query.list();投影封装：Query query = session.createQuery(“select  new Customer(name,address) from Customer”);//这里我们得到的是customer对象但是我们要，提供customer（含参） 构造方法</code></pre><p>   <em>list封装数据</em><br>     Query query = session<br>      .createQuery(“select new List(name,address) from Customer”);<br>   <em>map封装数据</em><br>     Query query = session<br>    .createQuery(“select new Map(name,address) from Customer”);</p><pre><code>条件:</code></pre><p><em>无名称的查询，？表示占位符</em><br>    Query query = session.createQuery(“from Customer where name=?”);<br>    query.setParameter(“0”, “波多”);<br><em>含名称的查询</em><br>    Query query = session.createQuery(“from Customer where name=:abc”);<br>    query.setParameter(“abc”, “波多”);<br>    3.sql查询 SQLQuery是Query的子.<br>    SQLQuery  sqlQuery = session.createSQLQuery(“select * from t_customer”);<br>    List<object[]> list = sqlQuery.list();<br>    //封装到Customer对象<br>    sqlQuery.addEntity(Customer.class);<br>    List<customer> list = Query.list();</customer></object[]></p><h1 id="criteria"><a href="#criteria" class="headerlink" title="criteria"></a>criteria</h1><p>Criteria接口与Query接口非常类似，允许创建并执行面向对象的标准化查询。值得注意的是Criteria接口也是轻量级的，它不能在Session之外使用。<br> 4.qbc<br>    Criteria qbc = session.createCriteria(Customer.class); //实体类.class得到的是一个这个类的对象<br>    List<customer> list  = qbc.list();<br>    qbc条件查询<br>    qbc.add(Restrictions.eq(“name”, “波多”));<br>    List<customer> list  = qbc.list();<br>    criteria.add(Restrictions.or(Restricitons.eq(),Restrictions.list()…..))<br>    我们使用Criteria可以更加面向对象去操作，它非常适合进行多条件组合查询。</customer></customer></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;hibernate-框架&quot;&gt;&lt;a href=&quot;#hibernate-框架&quot; class=&quot;headerlink&quot; title=&quot;hibernate 框架&quot;&gt;&lt;/a&gt;hibernate 框架&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;session&lt;/li&gt;
+&lt;li&gt;hql查询&lt;/
+      
+    
+    </summary>
+    
+      <category term="三大框架" scheme="http://HackerFreedom.github.io/categories/%E4%B8%89%E5%A4%A7%E6%A1%86%E6%9E%B6/"/>
+    
+    
+      <category term="hibernate查询" scheme="http://HackerFreedom.github.io/tags/hibernate%E6%9F%A5%E8%AF%A2/"/>
+    
+  </entry>
+  
+  <entry>
+    <title></title>
+    <link href="http://HackerFreedom.github.io/2018/02/24/%E5%A4%A9%E6%B0%94api/"/>
+    <id>http://HackerFreedom.github.io/2018/02/24/天气api/</id>
+    <published>2018-02-24T02:51:30.102Z</published>
+    <updated>2018-02-24T02:51:30.113Z</updated>
+    
+    <content type="html"><![CDATA[<pre><code>//通过中国天气api调用    private String getWeatherInfo2(){            StringBuilder info = new StringBuilder();            try {                    DefaultHttpClient httpclient = new DefaultHttpClient();                    HttpGet httget = new HttpGet(&quot;http://m.weather.com.cn/data/101050101.html&quot;);                    ResponseHandler&lt;String&gt; responseHandler = new BasicResponseHandler();                    String responseBody = httpclient.execute(httget, responseHandler);                    System.out.println(responseBody);                    JsonParser jp = new JsonParser();                    JsonElement jse = jp.parse(responseBody);                    JsonObject jso = jse.getAsJsonObject().get(&quot;weatherinfo&quot;).getAsJsonObject();//                        String updTime = jso.get(&quot;fchh&quot;).getAsString();//                        if(updTime != null){//                                //温度//                                String j = jso.get(&quot;temp1&quot;).getAsString();//今天//                                String m = jso.get(&quot;temp2&quot;).getAsString();//明天//                                //天气情况//                                String j_weather = jso.get(&quot;weather1&quot;).getAsString();//今天//                                String m_weather = jso.get(&quot;weather2&quot;).getAsString();//明天//                                //风向风力//                                String j_wind = jso.get(&quot;wind1&quot;).getAsString();//今天//                                String m_wind = jso.get(&quot;wind2&quot;).getAsString();//明天//                                info.append(&quot;今天：&quot;).append(j).append(&quot; &quot;).append(j_weather).append(&quot; &quot;).append(j_wind).append(&quot;\n&quot;);//                                info.append(&quot;明天：&quot;).append(m).append(&quot; &quot;).append(m_weather).append(&quot; &quot;).append(m_wind).append(&quot;\n&quot;);//                        }                    String updTime = jso.get(&quot;fchh&quot;).getAsString();                    if(updTime != null){                            if(!updTime.trim().equals(&quot;18&quot;)){                                    //温度                                    String j = jso.get(&quot;temp1&quot;).getAsString();//今天                                    String m = jso.get(&quot;temp2&quot;).getAsString();//明天                                    //天气情况                                    String j_weather = jso.get(&quot;weather1&quot;).getAsString();//今天                                    String m_weather = jso.get(&quot;weather2&quot;).getAsString();//明天                                    //风向风力                                    String j_wind = jso.get(&quot;wind1&quot;).getAsString();//今天                                    String m_wind = jso.get(&quot;wind2&quot;).getAsString();//明天                                    info.append(&quot;今天：&quot;).append(j).append(&quot; &quot;).append(j_weather).append(&quot; &quot;).append(j_wind).append(&quot;\n&quot;);                                    info.append(&quot;明天：&quot;).append(m).append(&quot; &quot;).append(m_weather).append(&quot; &quot;).append(m_wind).append(&quot;\n&quot;);                            }else{                                    //18                                    //温度                                    String temp1 = jso.get(&quot;temp1&quot;).getAsString();//今天                                    String temp2 = jso.get(&quot;temp2&quot;).getAsString();//今天                                    String temp3 = jso.get(&quot;temp3&quot;).getAsString();//今天                                    String j = temp1.split(&quot;~&quot;)[1] + &quot;~&quot; +  temp2.split(&quot;~&quot;)[0];                                    String m = temp2.split(&quot;~&quot;)[1] + &quot;~&quot; + temp3.split(&quot;~&quot;)[0];//明天                                    //天气情况                                    String weather1 = jso.get(&quot;weather1&quot;).getAsString();                                    String weather2 = jso.get(&quot;weather2&quot;).getAsString();                                    String weather3 = jso.get(&quot;weather3&quot;).getAsString();                                    String j_weather = &quot;&quot;;                                    String j_weather_part1 = &quot;&quot;;                                    String j_weather_part2 = &quot;&quot;;                                    //判断是否有转                                    if(weather1.indexOf(&quot;转&quot;) &gt; 0){                                            //有                                            j_weather_part1 = weather1.split(&quot;转&quot;)[1];                                    }else{                                            j_weather_part1 = weather1;                                    }                                    if(weather2.indexOf(&quot;转&quot;) &gt; 0){                                            //有                                            j_weather_part2 = weather2.split(&quot;转&quot;)[0];                                    }else{                                            j_weather_part2 = weather2;                                    }                                    if(j_weather_part1.equalsIgnoreCase(j_weather_part2)){                                            j_weather = j_weather_part1;//今天                                    }else{                                            j_weather = j_weather_part1 + &quot;转&quot; + j_weather_part2;//今天                                    }                                    String m_weather = &quot;&quot;;                                    String m_weather_part1 = &quot;&quot;;                                    String m_weather_part2 = &quot;&quot;;                                    //判断是否有转                                    if(weather2.indexOf(&quot;转&quot;) &gt; 0){                                            //有                                            m_weather_part1 = weather2.split(&quot;转&quot;)[1];                                    }else{                                            m_weather_part1 = weather2;                                    }                                    if(weather3.indexOf(&quot;转&quot;) &gt; 0){                                            //有                                            m_weather_part2 = weather3.split(&quot;转&quot;)[0];                                    }else{                                            m_weather_part2 = weather3;                                    }                                    if(m_weather_part1.equalsIgnoreCase(m_weather_part2)){                                            m_weather = m_weather_part1;//今天                                    }else{                                            m_weather = m_weather_part1 + &quot;转&quot; + m_weather_part2;//明天                                    }                     //风向风力                                    String j_wind = jso.get(&quot;wind2&quot;).getAsString();//今天                                    String m_wind = jso.get(&quot;wind3&quot;).getAsString();//明天                                    info.append(&quot;今天：&quot;).append(j).append(&quot; &quot;).append(j_weather).append(&quot; &quot;).append(j_wind).append(&quot;\n&quot;);                                    info.append(&quot;明天：&quot;).append(m).append(&quot; &quot;).append(m_weather).append(&quot; &quot;).append(m_wind).append(&quot;\n&quot;);                            }                    }            } catch (Exception e) {            }            return info.toString();    }</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;pre&gt;&lt;code&gt;//通过中国天气api调用
+    private String getWeatherInfo2(){
+            StringBuilder info = new StringBuilder();
+            try {
+     
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Java基础知识</title>
+    <link href="http://HackerFreedom.github.io/2018/02/18/IO%E6%B5%81%E6%80%BB%E7%BB%93/"/>
+    <id>http://HackerFreedom.github.io/2018/02/18/IO流总结/</id>
+    <published>2018-02-18T06:28:00.000Z</published>
+    <updated>2018-02-18T06:43:30.361Z</updated>
+    
+    <content type="html"><![CDATA[<p>**</p><h1 id="字节流"><a href="#字节流" class="headerlink" title="字节流"></a>字节流</h1><h2 id="InputStream字节输入流"><a href="#InputStream字节输入流" class="headerlink" title="InputStream字节输入流"></a>InputStream字节输入流</h2><p>FileInputStream标准的字节输入流<br><em>一次读取一个字节数组</em><br>     BufferedInputStream: 该类实现缓冲的输入流</p><h3 id="OutputStream对象输入流"><a href="#OutputStream对象输入流" class="headerlink" title="OutputStream对象输入流"></a>OutputStream对象输入流</h3><h1 id="字符流"><a href="#字符流" class="headerlink" title="字符流"></a>字符流</h1>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;**&lt;/p&gt;
+&lt;h1 id=&quot;字节流&quot;&gt;&lt;a href=&quot;#字节流&quot; class=&quot;headerlink&quot; title=&quot;字节流&quot;&gt;&lt;/a&gt;字节流&lt;/h1&gt;&lt;h2 id=&quot;InputStream字节输入流&quot;&gt;&lt;a href=&quot;#InputStream字节输入流&quot; class
+      
+    
+    </summary>
+    
+      <category term="I/O流" scheme="http://HackerFreedom.github.io/categories/I-O%E6%B5%81/"/>
+    
+    
+      <category term="I/O流总结" scheme="http://HackerFreedom.github.io/tags/I-O%E6%B5%81%E6%80%BB%E7%BB%93/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Struts2 用法</title>
+    <link href="http://HackerFreedom.github.io/2018/02/08/struts2/"/>
+    <id>http://HackerFreedom.github.io/2018/02/08/struts2/</id>
+    <published>2018-02-08T14:13:00.000Z</published>
+    <updated>2018-02-27T00:50:55.129Z</updated>
+    
+    <content type="html"><![CDATA[<p>不会用，直接用<br>DTD（文档类型定义）的作用是定义 XML 文档的合法构建模块。它使用一系列的合法元素来定义文档结构。DTD 可被成行地声明于 XML 文档中，也可作为一个外部引用</p><ul><li>框架的内容</li></ul><h1 id="java开发中常用的框架"><a href="#java开发中常用的框架" class="headerlink" title="java开发中常用的框架"></a>java开发中常用的框架</h1><p>ssh<br>ssm</p><h1 id="struts2框架的介绍"><a href="#struts2框架的介绍" class="headerlink" title="struts2框架的介绍"></a>struts2框架的介绍</h1>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;不会用，直接用&lt;br&gt;DTD（文档类型定义）的作用是定义 XML 文档的合法构建模块。它使用一系列的合法元素来定义文档结构。DTD 可被成行地声明于 XML 文档中，也可作为一个外部引用&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;框架的内容&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&quot;java开
+      
+    
+    </summary>
+    
+      <category term="Struts2框架" scheme="http://HackerFreedom.github.io/categories/Struts2%E6%A1%86%E6%9E%B6/"/>
+    
+    
+      <category term="Struts2" scheme="http://HackerFreedom.github.io/tags/Struts2/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Struts2 用法</title>
+    <link href="http://HackerFreedom.github.io/2018/02/08/Struts2%E7%AC%AC%E4%BA%8C%E5%A4%A9/"/>
+    <id>http://HackerFreedom.github.io/2018/02/08/Struts2第二天/</id>
+    <published>2018-02-08T14:13:00.000Z</published>
+    <updated>2018-02-27T00:49:25.864Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="Struts2中获取Servlet-API"><a href="#Struts2中获取Servlet-API" class="headerlink" title="Struts2中获取Servlet API"></a>Struts2中获取Servlet API</h1><p>简单的说，可以在action类中获取requent，response，session   。。。对象<br>HttpServletRequest request = ServletActionContext.getRequest();<br>HttpServletResponse response = ServletActionContext.getResponse();<br>ServletContext servletContext = ServletActionContext.getServletContext();</p><h1 id="OGNL-表达式"><a href="#OGNL-表达式" class="headerlink" title="OGNL 表达式"></a>OGNL 表达式</h1><p>OGNL 是Object-Graph Navigation Language (对象图导航语言） 的缩写，他是一种功能强大的表达式语言，通过它简单一致的表达式语法，可以存取对象的任意属性，调用对象的方法，遍历整个对象的结构图，实现字段类</p><ul><li>OGNL作用：<ol><li>支持对象的操作，调用对象的方法</li><li>支持静态成员访问</li><li>支持赋值操作与表达串联</li><li>访问OGNL上下文，访问ActionContext</li><li>操作集合对象。</li></ol></li></ul><p><strong>OGNL三要素： 表达式   OgnlContext上下文  Root根</strong></p><h2 id="ognal表达式介绍"><a href="#ognal表达式介绍" class="headerlink" title="ognal表达式介绍"></a>ognal表达式介绍</h2><p>在struts2框架中我们使用ognl表达式的作用是从valueStack中获取数据。</p><p>valueStack—-&gt;存放数据；ognl—-&gt;取数据，(类似于之前的request域存数据，el表达式取数据)</p><p>要想在jsp页面上使用ognl表达式，就需要结合struts2框架的标签<br><s:property value="”表达式”">来使用<br><img src="/2018/02/08/Struts2第二天/struts201" alt="">;<br>    <em>引入struts2标签</em><br>    &lt;%@ taglib uri=”/struts-tags” prefix=”s”%&gt;</s:property></p><pre><code>使用ognl表达式获取数据: &lt;s:property value=&quot;username&quot;/&gt;</code></pre><h1 id="valueStack值栈"><a href="#valueStack值栈" class="headerlink" title="valueStack值栈"></a>valueStack值栈</h1><p>valueStack的主要目的是为我将我们action中产生的数据携带到页面上，也就是说valueStack它就是一个存储数据的容器。</p><ol><li>valueStack基于ognl,作用是在struts2框架中来存储数据</li><li>浏览器发出请求request——&gt;创建ValueStack对象——-&gt;创建当前访问的Action对象</li></ol><h2 id="valuesStack内部结构的介绍"><a href="#valuesStack内部结构的介绍" class="headerlink" title="valuesStack内部结构的介绍"></a>valuesStack内部结构的介绍</h2><ol><li>valueStack主要有两部分组成:<br>CompoundRoot  root:       就是一个ArrayList<br>Map<string,object> context:  就是一个Map</string,object></li><li>struts2框架向root存放的数据<br>浏览器发出请求request—–&gt;创建当前访问的Action对象—–&gt;将Action对象push到root</li><li>struts2框架向context存放的数据<br>浏览器发出请求request——&gt;创建ValueStack对象之后，向context存放存储了一些引用，这个引用主要是关于web开发中相关信息，如<br>parameters :请求参数<br>request:请求对象中所有属性<br>session:会话对象中所有属性<br>application:ServletContext对象中的所有属性</li></ol><blockquote><p>在struts2框架中我们通过ognl表达式来获取valueStack中数据，没有使用#就会从CompoundRoot中获取数据，如果使用#来获取，这时就会从context中来获取.</p></blockquote><h2 id="valueStack获取"><a href="#valueStack获取" class="headerlink" title="valueStack获取"></a>valueStack获取</h2><p>ValueStack valueStack = ActionContext.getContext().getValueStack();</p><h2 id="valueStack-存储数据-重点）"><a href="#valueStack-存储数据-重点）" class="headerlink" title="valueStack 存储数据 (重点）"></a>valueStack 存储数据 (重点）</h2><p><strong>注意： 我们使用valueStack来存储数据时，主要向root存储</strong></p><ol><li>手动向valueStack存储数据<br>``<br> public String execute （）｛<br> ValueStack stack = ActionContext.getContext().getValueStack();<br> stack.set(“name”, “itheima”);<br> stack.push(“itcast”);<br> return “success”;<br> ｝</li></ol><p>valueStackpush方法,  直接将对象压入到root<br>valueStackset(“key”, “value”)方法,  创建一个Map压入到root，再把数据以健值对<k,v>的形式存放到这个map中</k,v></p><p>``</p><ol><li>struts2框架自动向valueStack中存储数据<ol><li>在框架源码的DefaultActionInvocation类的init方法内:<br> 首先创建了当前访问的Action对象，然后通过stack.push(action)将当前访问的Action对象存放到valueStack的root中，也就是每次请求访问action的时候，都会构造出action对象并将这个action对象存储到valueStack的root(ArrayList)中。</li><li>在浏览器访问action的时候ModelDrivernInterceptor这个拦截器会执行如下代码:<br>``<br>if(action instanceof ModelDrivern) {<pre><code>modelDriven model= (ModelDriven)  action;</code></pre> Object model = modelDriven.getModel();<br> if(model !=null) {<pre><code>stack.push(model);</code></pre>}<br><em>以上代码会判断当前访问的Action对象有没有实现ModelDriven这个接口，如果实现了这个接口就通过action对象已经实现的通过getModel方法获取模型对象存放到root(ArrayList)中</em></li></ol></li></ol><p>``</p><p>##valueStack中数据获取(重点) ##</p><ol><li><p>获取手动存放的数据<br> public String execute()  {<br> ValueStack stack = ActionContext.getContext().getValueStack();<br> stack.set(“name”, “itheima”);<br> stack.push(“itcast”);<br> return “success”;<br> }</p><p> 在jsp页面中获取以上代码手动存放的数据<br> <s:property value="name"><br> <s:property value="[0]">可以查看整个root结构数据<br> <s:property value="[0].top"><br>获取root顶部的对象<br> <s: debug=""> 视图中可以 查看action的属性</s:></s:property></s:property></s:property></p></li><li><p>获取自动存放的数据<br> public class ValueStackAction1 {<br> private String username = “fox”;<br> public String getUsername() {</p><pre><code>return username;</code></pre><p> }<br> public String getPwd() {</p><pre><code>return &quot;123&quot;;</code></pre><p> }<br> }</p><p> 在页面中获取以上自动存放的数据，为什么?<br> <s:property value="username"><br> <s:property value="pwd"></s:property></s:property></p></li></ol>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;Struts2中获取Servlet-API&quot;&gt;&lt;a href=&quot;#Struts2中获取Servlet-API&quot; class=&quot;headerlink&quot; title=&quot;Struts2中获取Servlet API&quot;&gt;&lt;/a&gt;Struts2中获取Servlet API&lt;/
+      
+    
+    </summary>
+    
+      <category term="Struts2框架" scheme="http://HackerFreedom.github.io/categories/Struts2%E6%A1%86%E6%9E%B6/"/>
+    
+    
+      <category term="Struts2" scheme="http://HackerFreedom.github.io/tags/Struts2/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Java基础知识</title>
+    <link href="http://HackerFreedom.github.io/2018/02/06/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%9A%84%E6%80%BB%E7%BB%93/"/>
+    <id>http://HackerFreedom.github.io/2018/02/06/面向对象的总结/</id>
+    <published>2018-02-06T14:07:00.000Z</published>
+    <updated>2018-02-07T10:20:30.781Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="面向对象的思想-（面试重点）"><a href="#面向对象的思想-（面试重点）" class="headerlink" title="面向对象的思想 （面试重点）"></a>面向对象的思想 （面试重点）</h1><ol><li>更符合我们的思维习惯</li><li>把复杂的问题简单化</li><li>把我们从执行者变为指挥者</li></ol><p><strong>面向对象的三大特性</strong></p><h1 id="1-封装"><a href="#1-封装" class="headerlink" title="1. 封装"></a>1. 封装</h1><pre><code>1. 是用private修饰方法封装起来的类    1. 作用：提高代码的复用性，和安全性</code></pre><ul><li><p><em>this关键字</em><br>代表对象，就是所在函数所指的对象引用</p><blockquote><p>一般用于构造函数的引用<br>调用格式 ： this. ()<br>this对象后面跟上 .调用是成员属性或者是方法<br>this（） 调用的是本类中对应参数的构造函数<br>注意：用this调用构造函数，必须定义在构造函数的第一行。因为构造函数是用于初始化的，所以初始化动作一定要执行。否则编译失败。</p></blockquote></li><li><p><em>static关键词</em></p><ul><li>作用：<ol><li>想要实现对象中的共性数据的共享，可以将数据进行静态修饰</li><li>被static的成员方法，可以直接被类名直接调用，（类名. 静态方法）</li><li>静态随着类的加载而加载，且优先于对象的存在</li></ol></li><li>劣势：<ol><li>静态方法只能访问静态成员，不可以访问非静态成员</li><li>静态方法中不能使用this，super关键字（this代表是对象，而在静态时，有可能就没有对象）<br><strong>成员变量和静态变量区别</strong></li></ol></li></ul><ol><li>位置不同<ol><li>成员变量存在堆内存中，而静态变量存在于方法区中</li></ol></li><li>生命周期不同<ol><li>静态变量随着类的加载而存在，随着类的消失而消失</li><li>成员变量随着对象的创建而存在，随着对象被销毁而销毁</li></ol></li></ol></li></ul><h1 id="2-继承"><a href="#2-继承" class="headerlink" title="2. 继承"></a>2. 继承</h1><pre><code>1. 子类可以访问父类的非私有成员变量和方法- 作用：        1.提高代码的复用性，    2. 使类和类之间产生了关系，是产生多态的一个前提</code></pre><ul><li><strong>继承特点</strong></li></ul><ol><li>单继承： 一个类只能有一个父类</li><li>多重继承： 一个父类可以被多个子类继承 A继承B  B继承C  C继承D。</li></ol><p><em>super关键词</em><br> 用来调用父类中的属性值</p><ul><li>为什么在子类的构造函数的第一行总是会加入super（）？<br>  在子类继承父类，会继承到父类的数据，所以必须要父类先要有数据的初始化，<br>  所以子类在进行对象初始化的时候，要先调用父类的构造函数，这就是子类的实例化过程</li><li><p><strong>注意</strong><br>super在每一个子类的构造方法中是默认在第一行的。<br>且和this关键字，两者只能出现一个。<em>一山容不下二虎的!!</em></p><h1 id="3-多态"><a href="#3-多态" class="headerlink" title="3. 多态"></a>3. 多态</h1><ol><li>函数就有多态性， 就是某一事物不同的具体表现</li></ol><ul><li>作用<ol><li>提高了程序的扩展性</li></ol></li><li>前提<ol><li>必须要有实现关系或者继承关系</li><li>必须要有方法的重写</li></ol></li></ul></li><li><p>方法的重写<br>  1、方法名、参数、返回值相同。</p></li></ul><p>　　 2、子类方法不能缩小父类方法的访问权限。(public&gt;protected&gt;default&gt;private）</p><p>　　 3、子类方法不能抛出比父类方法更多的异常(但子类方法可以不抛出异常)。</p><p>　　 4、存在于父类和子类之间。</p><p>　　 5、方法被定义为final不能被重写。</p><p><em>final 特点</em></p><ol><li>这个关键词是一个修饰符，可以修饰类，方法，变量</li><li>被final修饰的类是一个最終类，不可以被继承</li><li>被final修饰的方法是一个最终的方法，不可以被重写</li><li><p>被final修饰的变量是一个常量，只能赋值一次<br><strong> 命名的规范：常量名称定义时，有规范，所有字母都大写，如果由多个单词组成，中间用 _ 连接。</strong></p><ul><li>方法的重载<br>方法重载是让类以统一的方式处理不同类型数据的一种手段。多个同名函数同时存在，具有不同的参数个数/类型。<br>重载Overloading是一个类中多态性的一种表现。<br> 1、参数类型、个数、顺序至少有一个不相同。 </li></ul><p>　　2、不能重载只有返回值不同的方法名。</p><p>　　3、存在于父类和子类、同类中。</p><ul><li>规则:</li></ul><ol><li>必须具有不同的参数列表；</li></ol></li></ol><ol><li><p>可以有不同的返回类型，只要参数列表不同就可以了；</p></li><li><p>可以有不同的访问修饰符；</p></li><li><p>可以抛出不同的异常；</p></li></ol><h2 id="抽象类"><a href="#抽象类" class="headerlink" title="抽象类"></a>抽象类</h2><ol><li>定义： <ol><li>被abstract所修饰的类，</li></ol></li><li>特点： <ol><li>抽象方法只能定义在抽象类中， 抽象类也可以有非抽象的方法</li><li>抽象类不可以被创建对象（实例化）</li><li>只能通过子类继承或者实现的方法，才能使子类实例化</li></ol></li></ol><h3 id="接口"><a href="#接口" class="headerlink" title="接口"></a>接口</h3><ol><li>定义：<br> 比抽象类还抽象的类，用关键词interface修饰</li><li>接口的特点：<ol><li>提高代码的可扩展性</li><li>规范并且约束了子类的行为（功能） </li></ol></li><li>接口中的成员的特点：<ol><li>成员变量：<br>接口中没有成员变量,只能由自定义常量; –&gt;因为接口中的方法没有方法体,所以没有地方给变量赋值;<pre><code>自定义常量的定义格式:</code></pre>public static final 数据类型 常量名 = 初始化值;</li><li>成员方法：<br>默认被 public abstract 所修饰;<pre><code>接口中的成员方法全部都是抽象方法;</code></pre></li><li>构造方法：<br>接口中没有构造方法,所以接口不能创建对象;</li></ol></li><li><p>接口和抽象类的区别:</p><pre><code>1.区别1:定义不同    接口:比抽象类还抽象的类;    抽象类:被abstract所修饰的类;2.区别2:构造方法        接口:没有构造方法,不能创建对象    抽象类:有构造方法,不能创建对象,但是可以给成员变量初始化;3.区别3:成员变量        接口:接口中没有成员变量只有自定义常量;    抽象类:可以有成员变量也可以有自定义常量;4.区别4:成员方法        接口:接口中的成员方法全部都是抽象方法;默认被 public 和 abstract  所修饰;    抽象类:可以有抽象方法也可以有非抽象方法;5.区别5:和类之间的关系:    接口:接口和类之间的关系是实现关系: implements    抽象类:抽象类和类之间的关系是继承关系: extends</code></pre><p><strong>总结各个类于接口的关系</strong><br>接口和类之间的关系:</p><pre><code>实现关系: implements格式:  public class 类名 implements 接口名1,接口名2....{            //实现接口中的抽象方法        }特点: 多实现,多层实现</code></pre><p> 接口和接口之间的关系:</p><pre><code>继承关系: extends格式:public interface 接口名 extends 接口名1,接口名2...{        }特点:多继承,多层继承</code></pre><p> 类和类之间的关系:</p><pre><code>继承关系: extends格式:    public class 类名 extends 类名1{    }特点:单一继承,多层继承;</code></pre></li></ol><h4 id="代码块"><a href="#代码块" class="headerlink" title="代码块"></a>代码块</h4><ol><li><p>局部代码块</p><ol><li>位置：<ol><li>方法内，for循环的大括号内，方法声明上</li></ol></li><li>作用： <ol><li>用于限定变量和对象的生命周期和作用域</li></ol></li></ol></li><li><p>构造代码块</p><ol><li>位置：<ol><li>成员位置-类中方法外</li><li>{<pre><code>//在类中方法外的代码块是构造代码块;</code></pre> }</li></ol></li><li>作用：<ol><li>抽取构造方法的共性，在每次创建对象前执行一次</li><li>执行次数:每创建一次对象就执行一次构造代码块;<br> 执行顺序:因为是对象产生的预加载;<pre><code>先执行构造代码块再执行构造方法;</code></pre></li></ol></li></ol></li><li><p>静态代码块</p><ol><li>位置：<ol><li>成员位置，类中方法外 且被static所修饰的</li></ol></li><li>作用：<ol><li>类的预加载，随着类的加载而加载，且执行一次<br>static{<pre><code>//在类中方法外并且被static修饰的代码块是静态代码块</code></pre> }<br>执行顺序:<br> 静态代码块 –&gt; 构造代码块 –&gt; 构造方法</li></ol></li></ol></li><li><p>同步代码块（多线程）<br> 同步代码块的格式：<br> synchronized(同步对象){<br> 需要同步的代码；<br> }s</p></li></ol><p>作用:<br>        维持多个线程在执行任务时的秩序,当一个线程没有完成任务的时候,另一个线程不能进入同步代码块;<br>    线程锁:<br>        这个锁对象可以是任意类型的对象,但是这个锁对象必须被所有的线程对象所共享;–&gt;必须在成员位置;<br>        一般情况下我们会在锁对象的位置上写一个this;</p><p>同步方法:被synchronized所修饰的方法是同步方法;<br>    同步方法也是有锁对象的;<br>    非静态的同步方法的锁对象就是this;<br>    静态的同步方法的锁对象是当前类的字节码对象;</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;面向对象的思想-（面试重点）&quot;&gt;&lt;a href=&quot;#面向对象的思想-（面试重点）&quot; class=&quot;headerlink&quot; title=&quot;面向对象的思想 （面试重点）&quot;&gt;&lt;/a&gt;面向对象的思想 （面试重点）&lt;/h1&gt;&lt;ol&gt;
+&lt;li&gt;更符合我们的思维习惯&lt;/li&gt;
+
+      
+    
+    </summary>
+    
+      <category term="面向对象" scheme="http://HackerFreedom.github.io/categories/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/"/>
+    
+    
+      <category term="面向对象的总结" scheme="http://HackerFreedom.github.io/tags/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%9A%84%E6%80%BB%E7%BB%93/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>oracle第四天</title>
+    <link href="http://HackerFreedom.github.io/2018/02/06/oracle%E7%AC%AC%E5%9B%9B%E5%A4%A9/"/>
+    <id>http://HackerFreedom.github.io/2018/02/06/oracle第四天/</id>
+    <published>2018-02-06T06:37:00.000Z</published>
+    <updated>2018-02-06T13:03:08.135Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="PL-SQL"><a href="#PL-SQL" class="headerlink" title="PL/SQL"></a>PL/SQL</h1><ul><li>什么是PL/sql<ul><li>pl/sql是oracle对sql语言的过程化扩展，指在sql命令语言中增加了过程处理语句。</li></ul></li></ul><ol><li><p>基本语法结构<br>  [declare<br> –声明变量<br> ]<br> begin<br> –代码逻辑<br> [exception<br> –异常处理<br> ]<br> end;</p><ol><li>变量<ol><li>声明变量的语法： 变量名 类型 （长度）；</li><li>变量赋值的语法： 变量名： =变量值；</li></ol><ul><li>案例需求：<br>声明变量水费单价、水费字数、吨数、金额。<br>对水费单价、字数、进行赋值 。吨数根据水费字数换算，规则为水费字数除以<br>1000，并且四舍五入，保留两位小数。计算金额，金额=单价*吨数。<br>输出单价 、数量和金额。</li></ul></li></ol><ul><li>变量的用法–<br>declare<br>  v_price number(10,2);–水费单价<br>  v_usenum number; –水费字数<br>  v_usenum2 number(10,2);–吨数<br>  v_money number(10,2);–金额<br>begin<br>  v_price:=2.45;–水费单价<br>  v_usenum:=8012;–字数<br>–字数换算为吨数<br>v_usenum2:= round( v_usenum/1000,2);<br>–计算金额<br>v_money:=round(v_price*v_usenum2,2);<br>dbms_output.put_line(‘单价：’||v_price||’吨<br>数:’||v_usenum2||’金额：’||v_money);<br>end;</li></ul></li><li>属性类型<ol><li>%TYPE引用型<br>作用引用某 表某列的字段类型。</li><li>%ROWTYPE 记录型<br> 作用 ：标识某个表的行记录类型</li></ol></li><li>异常<br>在运行程序时出现的错误叫做异常<br>发生异常后，语句将停止执行，控制权转移到 PL/SQL 块的异常处理部分<br>异常有两中类型：<br> 预定义异常 - 当 PL/SQL 程序违反 Oracle 规则或超越系统限制时隐式引发<br> 用户定义异常 - 用户可以在 PL/SQL 块的声明部分定义异常，自定义的<br> 异常通过 RAISE 语句显式引发</li><li>条件判断<ol><li>基础语法<br> if 条件 then<br> 业务逻辑<br> end if;</li></ol></li><li><p>循环</p><ol><li>无条件循环<br> 语法结构：<pre><code>loop    --循环语句end loop；</code></pre></li></ol><ul><li><p>eg 输出从1开始的100个数<br>  declare</p><p>  v_num number:=1;<br>  begin<br>  loop<br>  dbms_output.put_line(v_num);<br>  v_num:=v_num+1;<br>  exit when v_num&gt;100;<br>  end loop;<br>  end ;</p></li></ul><ol><li><p>条件循环<br> 语法结构：</p><pre><code>while 条件    loop    end loop；</code></pre><ul><li>eg 输出从1开始的100个数<br>declare<br>v_num number:=1;<br>begin<br>while v_num&lt;=100<br>loop<br>dbms_output.put_line(v_num);<br>v_num:=v_num+1;<br>end loop;<br>end ;</li></ul></li><li><p>for循环<br> 语法结构：</p><pre><code>for 变量 in 起始值。。终止值loopend loop；</code></pre><ul><li>eg 输出从1开始的100个数<br>declare<br>v_num number:=1;<br>begin<br>for v_num in 1..100<br>loop<br>dbms_output.put_line(v_num);<br>end loop;<br>end;</li></ul></li></ol></li><li><p>游标<br>游标是系统为用户开设的一个数据缓冲区,存放 SQL 语句的执行结果。 我们<br>可以把游标理解为 PL/SQL 中的结果集。</p><ol><li><p>语法构造：<br>cursor 游标名称 is sql语句</p><p>open 游标名称<br>loop<br>fetch 游标名称 into 变量<br>exit when 游标名称%notfound<br>end loop;<br>close 游标名称</p><ul><li>eg 需求：打印业主类型为 1 的价格表<br>declare<pre><code>v_pricetable T_PRICETABLE%rowtype;--价格行对象cursor cur_pricetable is select * from T_PRICETABLE whereownertypeid=1;--定义游标</code></pre>begin<pre><code>    open cur_pricetable;--打开游标loop    fetch cur_pricetable into v_pricetable;--提取游标到变量    exit when cur_pricetable%notfound;--当游标到最后一行下面退    出循环    dbms_output.put_line( &apos;价格:&apos;    ||v_pricetable.price ||&apos;吨位：    &apos;||v_pricetable.minnum||&apos;-&apos;||v_pricetable.maxnum );end loop;    close cur_pricetable;--关闭游标end ;        </code></pre></li></ul><ol><li>带参数的游标<br>我们的查询语句的条件值有可能是在运行时才能决定的，比如性业主类型，<br>declare<br>   v_pricetable T_PRICETABLE%rowtype;–价格行对象<br>   cursor cur_pricetable is select * from T_PRICETABLE where<br>   ownertypeid=1;–定义游标<br>begin<pre><code>open cur_pricetable（2）;--打开游标</code></pre>   loop<pre><code>fetch cur_pricetable into v_pricetable;--提取游标到变量exit when cur_pricetable%notfound;--当游标到最后一行下面退出循环dbms_output.put_line( &apos;价格:&apos;||v_pricetable.price ||&apos;吨位：&apos;||v_pricetable.minnum||&apos;-&apos;||v_pricetable.maxnum );</code></pre>   end loop;<pre><code>close cur_pricetable;--关闭游标</code></pre>   end ;</li><li>for循环提取游标值<br>我们每次提前游标，需要打开游标，关闭游标 循环游标 提取游标 控制循环，等等，很麻烦。所以用简便的做法<br>declare<br>cursor cur_pricetable(v_ownertypeid number) is select *<br>from T_PRICETABLE where ownertypeid=v_ownertypeid;–定义游<br>标<br>begin<br>for v_pricetable in cur_pricetable(3)<br>loop<br>dbms_output.put_line(‘价格:’||v_pricetable.price ||’吨<br>位：’||v_pricetable.minnum||’-‘||v_pricetable.maxnum );<br>end loop;<br>end ;<h2 id="存储函数-（oracle和mysql都有）"><a href="#存储函数-（oracle和mysql都有）" class="headerlink" title="存储函数 ##（oracle和mysql都有）"></a>存储函数 ##（oracle和mysql都有）</h2>存储函数又成为自定位函数，可以接受一个或者多个参数，返回一个结果。</li></ol></li></ol></li><li><p>存储函数语法结构</p><ol><li>创建或修改存储过程的语法：<br> CREATE [ OR REPLACE ] FUNCTION 函数名称<br> （参数名称 参数类型, 参数名称 参数类型, …）<pre><code>RETURN 结果变量数据类型</code></pre> IS<pre><code>变量声明部分;</code></pre> BEGIN<pre><code>逻辑部分;</code></pre> RETURN 结果变量;<pre><code>[EXCEPTION异常处理部分]</code></pre> END;<ul><li>eg 需求： 创建存储函数，根据地址 ID 查询地址名称<br>  create function fn_getaddress(v_id number)<pre><code>return varchar2</code></pre>  is<pre><code>v_name varchar2(30);</code></pre>  begin<pre><code>select name into v_name from t_address where id=v_id;return v_name;</code></pre>  end;<br>select fn_getaddress(3) from dual</li></ul></li></ol></li><li><p>存储过程<br>存储过程是被命名的pl/sql块，存储于数据库中，是数据库对象的一种。<br>存储过程与存储函数都可以封装一定的业务逻辑并返回结果，存在区别如<br>下：<br>1、 存储函数中有返回值，且必须返回；而存储过程没有返回值，可以通过<br>传出参数返回多个值。<br>2、 存储函数可以在 select 语句中直接使用，而存储过程不能。过程多数是<br>被应用程序所调用。<br>3、 存储函数一般都是封装一个查询结果，而存储过程一般都封装一段事务<br>代码。<br>-存储过程语法结构</p><ol><li><p>创建和修改存储过程的语法<br> CREATE [ OR REPLACE ] PROCEDURE 存储过程名称</p><pre><code>（参数名 类型, 参数名 类型, 参数名 类型）</code></pre><p> IS|AS</p><pre><code>变量声明部分;</code></pre><p> BEGIN</p><pre><code>逻辑部分[EXCEPTION异常处理部分]</code></pre><p> END;<br>参数只指定类型，不指定长度<br>过程参数的三种模式：<br> IN 传入参数（默认）<br> OUT 传出参数 ，主要用于返回程序运行结果<br> IN OUT 传入传出参数</p></li></ol></li></ol><ul><li><p>案例</p><ol><li>需求： 创建存储函数，根据地址 ID 查询地址名称。</li><li>创建不带传出参数的存储过程：添加业主信息</li></ol><ul><li>增加业主信息序列<br> create sequence seq_owners start with 11;</li><li>增加业主信息存储过程<br>create or replace procedure pro_owners_add<pre><code>(v_name varchar2,v_addressid number,v_housenumber varchar2,v_watermeter varchar2,v_type number)</code></pre>is<br>begin<br>insert into T_OWNERS<pre><code>values( seq_owners.nextval,v_name,v_addressid,v_housenumber,v_watermeter,sysdate,v_type );</code></pre>commit;<br>end;</li></ul></li></ul><p>pl/sql中调用存储过程<br>    call pro_owners_add(‘赵伟’,1,’999-3’,’132-7’,1);</p><p>JDBC调用存储过程</p><h3 id="触发器"><a href="#触发器" class="headerlink" title="触发器"></a>触发器</h3><ol><li>什么是触发器<br>数据库触发器是一个于表相关联的，存储的pl/sql程序。每当一个特定的数据操作语句<br>（insert ，update，delete ）在指定的表发出时，Oracle自动的执行触发器中定义<br>的语句序列。</li><li><p>触发器</p><ol><li>数据确认</li><li>数据的备份</li><li>实施复杂的安全性检查</li></ol></li><li><p>触发器分类</p><ol><li>前置触发器</li><li>后置触发器</li></ol></li><li>创建触发器的语法<br> CREATE [or REPLACE] TRIGGER 触发器名<pre><code>BEFORE | AFTER[DELETE ][[or] INSERT] [[or]UPDATE [OF 列名]]</code></pre> ON 表名begin<pre><code>PLSQL [FOR EACH ROW ][WHEN(条件) ]</code></pre> declare<br> ……<pre><code>块</code></pre> End ；    </li></ol><p>**<br>    create function fn_getaddress(v_id number)<br>    return varchar2<br>    is<br>    v_name varchar2(30);<br>    begin<br>    select name into v_name from t_address where id=v_id;<br>    return v_name;<br>    end;</p><pre><code>2. 需求：查询业主 ID，业主名称，业主地址，业主地址使用刚才我们创建的函数来实现select id 编号,name 业主名称,fn_getaddress(addressid) 地址from t_owners</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;PL-SQL&quot;&gt;&lt;a href=&quot;#PL-SQL&quot; class=&quot;headerlink&quot; title=&quot;PL/SQL&quot;&gt;&lt;/a&gt;PL/SQL&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;什么是PL/sql&lt;ul&gt;
+&lt;li&gt;pl/sql是oracle对sql语言的过程化扩展，指在sq
       
     
     </summary>
@@ -47,16 +286,46 @@
     <link href="http://HackerFreedom.github.io/2018/02/02/oracle%E7%AC%AC%E4%B8%89%E5%A4%A9/"/>
     <id>http://HackerFreedom.github.io/2018/02/02/oracle第三天/</id>
     <published>2018-02-02T07:34:00.000Z</published>
-    <updated>2018-02-05T01:20:14.587Z</updated>
+    <updated>2018-02-05T13:27:07.560Z</updated>
     
-    <content type="html"><![CDATA[<p>记录的结果是单行的，就是单行查询</p>]]></content>
+    <content type="html"><![CDATA[<p>记录的结果是单行的，就是单行查询</p><p>#什么是视图  #<br> 视图是一种数据库对象，是从一个或者多个表达式或视图中导出的虚表，视图对应的数据并不真正地存储视图中。</p><ul><li><p>使用视图的优点：</p><ol><li>简化数据操作: 视图可以简化用户处理数据的方式。</li><li>着重于特定数据： 不必要的数据或敏感数据可以不出现在视图中</li><li>可以对于不同的用户进行限定访问。</li></ol></li><li><p>创建或修改视图语法<br>  create 【OR REPLACE】 [FORCE] VIEW view_name<br>  as subquery<br>  [wtth check option]<br>  [wtth reao only]</p><p>  OR REPLACE ：若所创建的试图已经存在，ORACLE 自动重建该视图；<br>  FORCE ：不管基表是否存在 ORACLE 都会自动创建该视图；<br>  subquery ：一条完整的 SELECT 语句，可以在该语句中定义别名；<br>  WITH CHECK OPTION ：插入或修改的数据行必须满足视图定义的约束；<br>  WITH READ ONLY ：该视图上不能进行任何 DML 操作。</p></li><li><p>删除视图语法<br>  DROP VIEW view_name</p></li><li><p>简单视图的创建和使用<br>只是单纯的单表查询，并没有聚合函数</p></li><li><p>带约束的视图<br>要注意我们只能修改带有除主键相关的数，因为修改不了。<br>会报错： ！<a href="/2018/02/02/oracle第三天/oracle01.png"></a>;</p></li><li><p>只读视图的创建于使用<br>创建语句时指定wtth read only 选项，如果如果要修改其中的语句，就会报错<br>！<a href="/2018/02/02/oracle第三天/oracle02.png"></a>;</p></li><li><p>创建带错误的视图<br>就是在不存在的表中给出提示</p></li></ul><ul><li>复杂的视图的创建和使用<br>所有复杂的视图，有聚合函数或者多表关联查询<br>！<a href="/2018/02/02/oracle第三天/oracle03.png"></a>;<br> <em>这里会遇到一个键保留列 的概念</em><br>  意思是说我们在视图中，该表中的主键会显示出来，而且是唯一非空的，也就是表的键值在一个连接着视图中也是键值，<br>  那么就称这个表为键保留表。<br>  所以非键保留表是不能更新的；</li></ul><p><em>主键的介绍</em><br>  关系型数据库中的一条记录中有若干个属性，若其中某一个属性组(注意是组)能唯一标识一条记录，该属性组就可以成为一个主键。<br>    主键是能确定一条记录的唯一标识，比如，一条记录包括身份正号，姓名，年龄。身份证号是唯一能确定你这个人的，其他都可能有重复，所以，身份证号是主键。</p><pre><code>外键用于与另一张表的关联。是能确定另一张表记录的字段，用于保持数据的一致性。比如，A表中的一个字段，是B表的主键，那他就可以是A表的外键。</code></pre><h2 id="物化视图"><a href="#物化视图" class="headerlink" title="物化视图"></a>物化视图</h2><ul><li>什么是物化视图<br>视图就是一个虚拟的表，基于它创建时指定的查询语句返回的结果集。（就是把一个每次访问都执行这个查询，封装起来，也叫实体化视图）</li></ul><ul><li><p><strong>创建物化视图 语法</strong></p><p>  CREATE meterialized VIEW view_name</p><p>  [BUILD IMMEDIATE | BUILD DEFERRED ]<br>  REFRESH [FAST|COMPLETE|FORCE]<br>  [<br>  ON [COMMIT |DEMAND ] | START WITH (start_time) NEXT<br>  (next_time)<br>  ]<br>  AS<br>  subquery</p><p>  BUILD IMMEDIATE 是在创建物化视图的时候就生成数据<br>  BUILD DEFERRED 则在创建时不生成数据，以后根据需要再生成数据。<br>  默认为 build immediate。<br>  刷新（refresh）：指当基表发生了 DML 操作后，物化视图何时采用哪种<br>  方式和基表进行同步。<br>  REFRESH 后跟着指定的刷新方法有三种： FAST、 COMPLETE、 FORCE。 FAST<br>  刷新采用增量刷新，只刷新自上次刷新以后进行的修改。<br>   COMPLETE 刷新对整个物化视图进行完全的刷新。<br>  如果选择 FORCE 方式，则 Oracle 在刷新时会去判断是否可以进行快速刷新，<br>  如果可以则采用 FAST 方式，否则采用 COMPLETE的方式。 FORCE 是默认的方式。</p><p>  刷新的模式有两种：ON DEMAND 和 ON COMMIT。<br>   ON DEMAND 指需要    手动刷新物化视图（默认）</p><pre><code>ON COMMIT 指在基表发生 COMMIT 操作时自动刷新。</code></pre></li></ul><ul><li><p>案例</p><ol><li><ol><li>创建手动刷新的物化视图<br>create materialized view mv_address<br>as<br>select ad.id ,ad.name adname,ar.name ar_name<br>form t_address ad  , t_area ar<br>where ad.areaid=ar.id</li></ol></li><li><ol><li>插入数据<br>insert into t_address values(8,’’,1,1);</li></ol></li><li><ol><li>要手动刷新物化视图，才能提交到数据<br>begin<br>  dbms_mview.refresh(‘mv_address’,’C’);<br>end;</li></ol></li></ol></li></ul><pre><code>    或者在命名行cmd中刷新物化视图    exec dbms_mview.refresh(&apos;mv_address&apos;,&apos;C&apos;)2. 1. 创建自动刷新的物化视图create materialized view mv_address refreshon commitas select ad.id ,ad.name adname,ar.name ar_nameform t_address ad  , t_area arwhere ad.areaid=ar.id创建此物化视图后，当 T_ADDRESS 表(基表）发生变化时，MV_ADDRESS2 自动跟着改变。 3. 1. 创建不生成数据的物化的视图create materialized view mv_address2 build deferredrefreshon commitas select ad.id ,ad.name adname,ar.name ar_nameform t_address ad  , t_area arwhere ad.areaid=ar.id3. 2. 查询结果为空3. 3. 执行下列语句后就生成了语句，由于创建是自动提交的刷新    begin         dbms_mview.refresh(&apos;mv_address2&apos;,&apos;C&apos;);    end 4. 1. 创建增量刷新的物化视图 4. 2. 如果要创建增量刷新的物化视图，必须首先要创建物化视图的日志     create materialized view log on t_address with rowid；    create materialized view log on t_area with rowid创建的物化视图日志名称为MLOG$_表名称    4. 3. 创建物化视图</code></pre><p><strong>注意创建增量的刷新的物化视图</strong></p><pre><code>1. 创建物化视图前提是要先创建物化视图的日志2. 在查询语句中，必须包含所有表的rowid（以towid方式建立物理化视图日志）3. 在物理化视图中，     SNAPTIME$$：用于表示刷新时间。    DMLTYPE$$：用于表示 DML 操作类型，I 表示 INSERT，D 表示 DELETE，U表示 UPDATE。OLD_NEW$$：用于表示这个值是新值还是旧值。 N（EW）表示新值，O（LD）表示旧值，U 表示 UPDATE 操作。CHANGE_VECTOR$$：表示修改矢量，用来表示被修改的是哪个或哪几个字段。此列是 RAW 类型，其实 Oracle 采用的方式就是用每个 BIT 位去映射一个列。插入操作显示为：FE, 删除显示为：OO 更新操作则根据更新字段的位置而显示不同的值键保留表的可以修改</code></pre><p><em>如果是自动刷新的话，在提交数据的时候会跳过日志，直接提交给视图中，</em></p><h3 id="序列"><a href="#序列" class="headerlink" title="序列"></a>序列</h3><h3 id="什么是序列"><a href="#什么是序列" class="headerlink" title="什么是序列"></a>什么是序列</h3><p>序列是oracle中提供能产生唯一数字的数据库对象</p><h3 id="创建与使用"><a href="#创建与使用" class="headerlink" title="创建与使用"></a>创建与使用</h3><ul><li>创建序列语法：<ul><li>create sequence 序列名称</li><li>通过序列的伪列来访问序列的值<ul><li>nextval返回序列的下一值</li><li>currval 返回序列的当前值<br><em>注意：我们在刚建立序列后，无法提取当前值，只有先提取下一个值时才能再次提取当前值</em><br>提取下一个值<br>select 序列名.nextval from dual<br>提取当前值<br>select 序列名称.currval from dual</li></ul></li></ul></li><li>创建复杂序列<pre><code>CREATE SEQUENCE sequence //创建序列名称[INCREMENT BY n] //递增的序列值是 n 如果 n 是正数就递增,如果是负数就递减 默认是 1[START WITH n] //开始的值,递增默认是 minvalue 递减是 maxvalue[{MAXVALUE n | NOMAXVALUE}] //最大值[{MINVALUE n | NOMINVALUE}] //最小值[{CYCLE | NOCYCLE}] //循环/不循环[{CACHE n | NOCACHE}];//分配并存入到内存中</code></pre></li><li>案例<ol><li>有最大值的非循环序列<ol><li>创建序列语句：<br>create sequence seq_test1<br>increment by 10<br>start with 10<br>maxvalue 300<br>minvalue 20<br>以上的错误，是由于我们的开始值小于最小值 。开始值不能小于最小值，修改<br>create sequence seq_test1<br>increment by 10<br>start with 10<br>maxvalue 300<br>minvalue 5</li><li>有最大值的循环序列<br>create sequence seq_test2<br>increment by 10<br>start with 10<br>maxvalue 300<br>minvalue 5<br>cycle；</li></ol></li></ol></li></ul><p><em>循环的序列，第一次循环是从开始值开始循环，而第二次循环是从最小值开始循环。</em></p><ol><li><p>带缓存的序列：<br> create sequence seq_test3<br>   increment by 10<br>   start with 10<br>   maxvalue 300<br>   minvalue 5<br>   cycle<br>   cache 50;<br>我们缓存设定的值是 50，而最大值是 300，那么为什么还会提示这样的信息呢（CACHE must be less than one cycle）？<br>其实我们的 cache 虽然是 50，但是我们每次增长值是 10。这样 50 次缓存提取出<br>的数是 500 （50*10）</p><p>create sequence seq_test5<br>increment by 10<br>start with 10<br>maxvalue 501<br>minvalue 5<br>cycle<br>   cache 50;</p></li></ol><p><em>把最小值减 1，或把最大值加 1，都可以通过。</em></p><pre><code>4. 修改和删除序列    1. 修改序列：使用 ALTER SEQUENCE 语句修改序列，不能更改序列的 STARTWITH 参数    2. 删除序列： DROP SEQUENCE 序列名称;</code></pre><h4 id="同义词"><a href="#同义词" class="headerlink" title="同义词"></a>同义词</h4><p>同义词实质上就是指定方案对象的一个别名，，你可以创建公共同义词和私有同义词。其中，公共同义词属于 PUBLIC 特殊<br>用户组，数据库的所有用户都能访问；而私有同义词包含在特定用户的方案中，<br>只允许特定用户或者有基对象访问权限的用户进行访问<br>同义词本身不涉及安全，当你赋予一个同义词对象权限时，你实质上是在给<br>同义词的基对象赋予权限，同义词只是基对象的一个别名。</p><h4 id="创建使用同义词"><a href="#创建使用同义词" class="headerlink" title="创建使用同义词"></a>创建使用同义词</h4><ul><li><p>创建同义词的语法</p><p>  create 【public】 synonym for Object；<br>  其中 synonym 表示要创建的同义词的名称，object 表示表，视图，序列等我们要<br>  创建同义词的对象的名称。</p></li><li><p>案例</p><pre><code>`create synonym OWNERS for T_OWNERS;  使用同义词：select *from owners;`</code></pre></li><li>公有同义词 （所有用户都可以访问）</li><li>私有同义词 （只能被使用的用户调用访问）</li></ul><h4 id="索引"><a href="#索引" class="headerlink" title="索引"></a>索引</h4><ul><li><p>什么是索引<br><em>索引是用于加速数据存取的数据对象。合理的使用索引可以大大降低 i/o 次数,从而提高数据访问性能</em><br>索引是有存储空间的，所以存储的每条记录都是有物理地址的，也就是我们rowid伪列</p></li><li><p>普通索引</p></li></ul><p>`create index 索引名称 on 表名(列名）``</p><p>索引性能的测试：<br><em>发现通过物理地址查询数据的效率高于通过普通索引</em>    </p><ul><li>唯一索引<ul><li>语法： `create unique index 索引名称 on 表名(列名）``</li></ul></li><li><p>复合索引</p><ul><li>语法： create index 索引名称 on 表名(列名。列名。。）``</li></ul><ul><li>反向键的索引<br>当某个字段的值为连续增长的值，如果构建标准索引，会形成歪脖子<br>树。这样会增加查询的层数，性能会下降。建立反向键索引，可以使索引的值变<br>得不规则，从而使索引树能够均匀分布。</li></ul></li></ul><ul><li><p>位图索引</p><p>位图索引适合创建在低基数列上<br><strong>优点</strong><br>减少响应时间，节省空间占用<br>create bitmap index 索引名称 on 表名（ 列名）</p></li></ul><p>物化视图，是不能upate</p><p>一次缓存的数量必须要小于一次</p><p>所以</p><p>序列：<br>    循环<br>        默认缓存想啊想和·cache 20<br>        缓存的数量小于一次循环的数量<br>索引：<br>只对 有特点的数据进行创建索引<br>    有特点的数据 （自增长的数据创建反向键索引比较合适）<br>    低基数创建位图索引标胶·比较合适</p>]]></content>
     
     <summary type="html">
     
       
       
         &lt;p&gt;记录的结果是单行的，就是单行查询&lt;/p&gt;
-
+&lt;p&gt;#什么是视图  #&lt;br&gt; 视图是一种数据库对象，是从一个或者多个表达式或视图中导出的虚表，视图对应的数据并不真正地存储视图中。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;使用视图的优点：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;简化数据操作: 视图
+      
+    
+    </summary>
+    
+      <category term="Oracle的基础知识" scheme="http://HackerFreedom.github.io/categories/Oracle%E7%9A%84%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/"/>
+    
+    
+      <category term="oracle基础知识" scheme="http://HackerFreedom.github.io/tags/oracle%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>oracle</title>
+    <link href="http://HackerFreedom.github.io/2018/02/02/ORACLE/"/>
+    <id>http://HackerFreedom.github.io/2018/02/02/ORACLE/</id>
+    <published>2018-02-02T07:34:00.000Z</published>
+    <updated>2018-02-03T16:36:27.577Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="oracle的简介"><a href="#oracle的简介" class="headerlink" title="oracle的简介"></a>oracle的简介</h1><p>tabs 查询所有的表</p><p>中文乱码解决<br>1.检查服务器编码: 执行SQL语法: select * from v$nls_parameters; 如果不是中文则执行2 2.设置本地客户端编码: 进入 我的电脑,属性,高级,环境变量,添加2项:LANG=zh_CN.GBK 和 NLS_LANG=”SIMPLIFIED CHINESE_CHINA.ZHS16GBK” 3. PL/SQL Developer设置并重新连接: 在pl/sql developer的菜单-&gt;tools-&gt;preferences-&gt;user interface-&gt;fonts 中修改为中文字体 OK了。</p><h2 id="单表查询"><a href="#单表查询" class="headerlink" title="单表查询"></a>单表查询</h2><ul><li><p>精确查找</p><p>  select * from T_owners where 条件</p></li><li><p>模糊查询<br>  select * from t_owners where name like’% 刘%’</p></li><li><p>and 运算符</p><p>  select * from t_owners where name like’% 刘%’and 条件</p></li><li><p>or 运算符</p><p>  select * from t_owners where name like’% 刘%’ or 条件</p></li><li><p>and和or运算符混用使用</p><p>  select *from  t_owners where（ name like’% 刘%’or 条件） and 条件 –由于and的优先级高</p></li><li><p>范围查询</p><p>  select * from t_account where usenum &gt;= 12313 and usenum &lt;22313</p></li><li>空值查询<br>  可以查询为空的记录<br>  select * from t_pricetable t where maxnum is not null</li><li><p>去掉重复记录</p><p>  select distinct addressid from t_owners<br><strong>distinct</strong></p></li><li><p>排序查询</p><ol><li><p>升序<br>默认</p></li><li><p>降序</p><p>select * from T_account order by usenum desc </p></li></ol></li></ul><p><strong>desc</strong></p><ul><li><p>伪列查询</p><ol><li><p><strong>ROWID</strong><br>获取每个数据的物理地址<br>select rowID ,t* form 地点 where 条件</p></li><li><p><strong>ROWNUM</strong><br>每次获取一行为 标识的一个行号<br>select rownum ,t*from </p></li></ol></li><li><p>聚合统计</p><ol><li><p>聚合函数</p><ul><li>sum 求和</li><li>avg 求平均数</li><li>max 求最大值</li><li>min 求最小值</li><li>count 求统计个数<ul><li>select count(*)from…where …</li></ul></li></ul></li><li><p>分组聚合Group by</p><ul><li>select areaid ,sum(money) from 表名 group by areaid </li></ul></li><li><p>分组后条件查询having</p><ul><li>select areaid ,sum(money) from 表名 group by areaid having 条件</li></ul></li></ol></li></ul><p><strong>总结</strong></p><p>select…from …where…group by…having</p><h3 id="多表查询"><a href="#多表查询" class="headerlink" title="多表查询"></a>多表查询</h3><ul><li>内连接</li><li></li><li>外连接<ol><li>左外连接查询</li><li>右外连接查询</li></ol></li></ul><h3 id="子查询"><a href="#子查询" class="headerlink" title="子查询"></a>子查询</h3><ul><li><p>单行子查询</p><ul><li>where 字句中的子查询<ol><li>只返回一条记录<ol><li>单行操作符  =    &gt;   &gt;=   &lt;    &lt;=   &lt;&gt;<br>select * from T_account where((条件包含条件)) </li></ol><ul><li>select 字句中的子查询</li></ul></li></ol></li></ul></li><li><p>多行子查询  in（范围） any all（记录允许多个记录）</p><ul><li><p>from字句中的子查询</p><p><em>关于多个表查询，先查两表关联的条件</em></p></li></ul></li><li><p>分页查询</p><ul><li>简单分页<ul><li>rownum  原理是按扫描的按顺序产生的，所以where条件不能用大于 或者等于</li></ul></li><li><p>基于排序分页</p></li><li></li></ul></li></ul><hr><p>子查询中空值的问题<br>      单行子查询的空值问题<br>    多行子查询中的null值问题<br>    如果表中有空值的话，不能用not in</p><h4 id="内置函数"><a href="#内置函数" class="headerlink" title="内置函数"></a>内置函数</h4><p>行列转换</p><ul><li>单行函数</li></ul><ul><li>行列转化</li></ul><p>alter user scott account unlock；<br>alter user scott </p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;oracle的简介&quot;&gt;&lt;a href=&quot;#oracle的简介&quot; class=&quot;headerlink&quot; title=&quot;oracle的简介&quot;&gt;&lt;/a&gt;oracle的简介&lt;/h1&gt;&lt;p&gt;tabs 查询所有的表&lt;/p&gt;
+&lt;p&gt;中文乱码解决&lt;br&gt;1.检查服务器编码: 执行
       
     
     </summary>
@@ -124,7 +393,7 @@
     <link href="http://HackerFreedom.github.io/2018/01/29/Reflect/"/>
     <id>http://HackerFreedom.github.io/2018/01/29/Reflect/</id>
     <published>2018-01-29T06:01:02.000Z</published>
-    <updated>2018-01-31T11:37:20.123Z</updated>
+    <updated>2018-02-27T00:51:06.864Z</updated>
     
     <content type="html"><![CDATA[<h1 id="反射介绍"><a href="#反射介绍" class="headerlink" title="反射介绍"></a>反射介绍</h1><p>反射:简单说,就是动态加载一个类,并获取该类中的所有内容,并使用他们.(构造,成员变量,成员方法)<br><img src="/2018/01/29/Reflect/reflect01.png" alt="">;</p><p><em>优点</em></p><ol><li>反射提高程序的灵活性和扩展性；</li><li>降低耦合性，提高自适应能力；</li><li>它允许程序创建和控制任何类的对象，无序提前硬编码目标类</li></ol><p><em>缺点</em></p><ol><li>性能问题：使用反射基本是一种解释操作，用于字段和方法接入时要远慢于直接代码。因此反射机制主要应用在对灵活性和拓展性要求很高的系统框架上，普通程序不建议使用。</li><li>使用反射会模糊程序内部逻辑；程序员希望在源代码中看到程序的逻辑，反射却绕过了源代码的技术，因而会带来维护的问题，    反射代码比相应的直接代码更复杂。</li></ol><ul><li>java反射常用API<br><strong>class类的实例表示正在运行的java应用程序中的类和接口。枚举是一种类，注释是一种接口。</strong></li></ul><p>反射:动态加载一个类,得到Class对象,剖析Class对象,得到构造方法对象,成员变量对象,成员方法对象,并使用它们.<br>Class clazz = Class.forName(“com.itheima.Student”);<br>clazz.newInstance();</p><p>Student stu = new Student ();</p><h1 id="calss介绍及获取"><a href="#calss介绍及获取" class="headerlink" title="calss介绍及获取"></a>calss介绍及获取</h1><ul><li>获取class对象的三种方式<br>   class clazz=Class.forName(“”)</li></ul><p><img src="/2018/01/29/Reflect/reflect02.png" alt="">;</p><h1 id="Constructor介绍"><a href="#Constructor介绍" class="headerlink" title="Constructor介绍"></a>Constructor介绍</h1><ul><li>获取构造方法<ul><li>getConstructor（Class&lt;?&gt;…parameterTyps）</li><li>getDeclaredConstructor(Class&lt;?&gt;…parameterTypes);<br>总结: 有s获取多个,没s获取一个,Declared可获取private<br>最常用:<br>  Class.getConstructor().newInstance();<br>Class.newInstance()<h1 id="field介绍"><a href="#field介绍" class="headerlink" title="field介绍"></a>field介绍</h1><ul><li>获取成员变量</li><li>获取多个<br>getFields()<br>getDeclaredFields()    </li></ul></li><li>获取一个<br>  getField(“name”)<br>  getDeclaredField(“name”)<h1 id="Method获取介绍（重点-）"><a href="#Method获取介绍（重点-）" class="headerlink" title="Method获取介绍（重点 ）"></a>Method获取介绍（重点 ）</h1></li><li>获取成员方法</li><li>Class对象<br>Method  getMethod(String);<br>Method[]  getMethods(String);</li></ul></li></ul><p><strong>invoke方法介绍</strong><br><img src="/2018/01/29/Reflect/invoke01.png" alt="">;</p><p><em>invoke 参数1：方法所在的对象； 参数二：调用这个方法需要传递的参数   ；invoke 方法的返回值是被调用的方法的返回值</em></p><h1 id="method中-invoke方法使用注意事项"><a href="#method中-invoke方法使用注意事项" class="headerlink" title="method中 invoke方法使用注意事项"></a>method中 invoke方法使用注意事项</h1><p><em>如果方法是静态的，在通过invoke调用时不需要传递对象</em></p><p><img src="/2018/01/29/Reflect/invoke02.png" alt="">;<br><em>如果方法的参数是一个对象数组，通过invoke 调用要处理一下这个对象</em></p><p><img src="/2018/01/29/Reflect/invoke03.png" alt="">;<br>解决方案：强制转换类型<br>    将数组再套上一层数组</p><p><strong>反射总结</strong></p><blockquote><p>1.Class.forName(“包名.类名”);<br>2.Class.newInstance()<br>3.Class.getMethod(“方法名”).invoke(Object,args…);</p></blockquote><p><em>如何将map集合中的数据封装到JavaBean类中去</em></p><p><img src="/2018/01/29/Reflect/invoke04.png" alt="">;</p><h2 id="动态代理"><a href="#动态代理" class="headerlink" title="动态代理"></a>动态代理</h2><ol><li>静态代理：增强、包装、装饰者设计模式（Connection close、Request getParameter）</li><li>动态代理：Object Proxy.newProxyInstance(ClassLoader loader, Class [] interfaces, InvocationHandler h)</li></ol><h2 id="代理模式的介绍"><a href="#代理模式的介绍" class="headerlink" title="代理模式的介绍"></a>代理模式的介绍</h2><p>即proxyPatterm<br>代理模式的定义：为其他对象提供一种代理以控制对这个对象的访问。在某些情况下，一个对象不适合或者不能直接引用另一个对象，而代理对象可以在客户端和目标对象之间起到中介的作用。<br>总结来说就是，为其需找一个代替身（所谓影分身！！！）使其更加灵活，多变</p><p><strong>通过代理层这一中间层，有效的控制对于真实委托类对象的直接访问，同时可以实现自定义的控制策略（Spring的AOP机制），设计上获得更大的灵活性。</strong></p><ol><li>组成<br>抽象角色： 通过接口或者是抽象类声明真实角色实现的业务方法<br>代理角色： 实现抽象角色，是真实角色的代理<br>真实角色： 实现抽象角色，定义真实角色要实现的业务逻辑</li></ol><p>2.分类</p><ul><li>静态代理</li><li>动态代理</li><li><em>使用Proxy完成动态代理对象的创建</em><br>动态代理是在内存中直接生成代理对象<br><img src="/2018/01/29/Reflect/Proxy01.png" alt="">;</li></ul><ul><li><p><strong>java.lang.reflect.Proxy帮助我们完成动态代理创建</strong><br> // 方法 1: 该方法用于获取指定代理对象所关联的调用处理器<br> public static InvocationHandler getInvocationHandler(Object proxy) </p><p> // 方法 2：该方法用于获取关联于指定类装载器和一组接口的动态代理类的类对象<br> public static Class&lt;?&gt; getProxyClass(ClassLoader loader,<br> Class&lt;?&gt;… interfaces)</p><p> // 方法 3：该方法用于判断指定类对象是否是一个动态代理类<br> public static boolean isProxyClass(Class&lt;?&gt; cl) </p><p> // 方法 4：该方法用于为指定类装载器、一组接口及调用处理器生成动态代理类实例<br> public static Object newProxyInstance(ClassLoader loader,<br>  Class&lt;?&gt;[] interfaces,InvocationHandler h)</p></li></ul><ul><li><p><strong>invocationHandler:调用处理器接口，自定义invokle方法，用于实现对于真正委托类的代理访问。</strong></p><p>  /<em>*<br>   该方法负责集中处理动态代理类上的所有方法调用。<br>   第一个参数既是代理类实例，<br>   第二个参数是被调用的方法对象<br>   第三个方法是调用参数，方法的参数。<br>   调用处理器根据这三个参数进行预处理或分派到委托类实例上发射执行  </em>/<br>  public Object invoke(Object proxy, Method method, Object[] args)<br>  throws Throwable;</p></li></ul><ul><li><strong>java.lang.ClassLoader：类装载器类</strong>，将类的字节码装载到 Java 虚拟机（JVM）中并为其定义类对象，然后该类才能被使用。Proxy类与普通类的唯一区别就是其字节码是由 JVM 在运行时动态生成的而非预存在于任何一个 .class 文件中。 </li></ul><h2 id="动态代理机制"><a href="#动态代理机制" class="headerlink" title="动态代理机制"></a>动态代理机制</h2><p>对于一个动态代理的创建<br>    使用Proxy.newProxyInestance（classloader，Interface,invocationHandler）<br><img src="/2018/01/29/Reflect/Proxy.png" alt="动态代理">;</p><p>总结</p><blockquote><p>1.创建一个接口(抽象角色)<br>2.创建一个实现类实现接口(真实角色)<br>3.创建一个测试类,在测试类中,创建真实对象<br>a)创建代理对象(Proxy.newProxyInstance)<br>b)调用代理对象的方法</p><p>掌握Proxy.newProxyInstance()方法的使用(理解各参数的意义,返回值）</p></blockquote><h3 id="注解概述"><a href="#注解概述" class="headerlink" title="注解概述"></a>注解概述</h3><ol><li>注解的作用</li></ol><p><img src="/2018/01/29/Reflect/annotation01.png" alt=""></p><ol><li>java基本内置注解</li></ol><ul><li>@override实现或者重写父类或接口中的方法</li><li>@Deprecated用来标识过时的方法</li><li>@SupperssWarnnings(“all”)取消警告</li></ul><h3 id="元注解"><a href="#元注解" class="headerlink" title="元注解"></a>元注解</h3><p>元注解是一种基本注解，但是它是特殊的注解的标记，作用和目的就是给其他的普通注解进行解释说明</p><p><strong>元标签有 @Retention、@Documented、@Target、@Inherited、@Repeatable 5 种。</strong></p><ul><li>@Retention</li></ul><p>Retention 的英文意为保留期的意思。当 @Retention 应用到一个注解上的时候，它解释说明了这个注解的的存活时间。</p><blockquote><p>RetentionPolicy.SOURCE 注解只在源码阶段保留，在编译器进行编译时它将被丢弃忽视。<br> RetentionPolicy.CLASS 注解只被保留到编译进行的时候，它并不会被加载到 JVM 中。<br>RetentionPolicy.RUNTIME 注解可以保留到程序运行的时候，它会被加载进入到 JVM 中，所以在程序运行时可以获取到它们</p></blockquote><ul><li>@Documented</li></ul><p>顾名思义，这个元注解肯定是和文档有关。它的作用是能够将注解中的元素包含到 Javadoc 中去。</p><ul><li><p>@Target<br>当一个注解被 @Target 注解时，这个注解就被限定了运用的场景。</p><blockquote><p><strong>ElementType.ANNOTATION_TYPE</strong> 可以给一个注解进行注解<br>ElementType.CONSTRUCTOR 可以给构造方法进行注解<br><strong>ElementType.FIELD</strong> 可以给属性进行注解<br>ElementType.LOCAL_VARIABLE 可以给局部变量进行注解<br><strong>ElementType.METHOD</strong> 可以给方法进行注解<br>ElementType.PACKAGE 可以给一个包进行注解<br>ElementType.PARAMETER 可以给一个方法内的参数进行注解<br>ElementType.TYPE 可以给一个类型进行注解，比如类、接口、枚举</p></blockquote></li><li><p>@Inherited<br>Inherited 是继承的意思<br>注解Test 被 @Inherited 修饰，之后类 A 被 Test 注解，类 B 继承 A,类 B 也拥有 Test 这个注解。</p></li><li><p>@Repeatable<br>Repeatable 自然是可重复的意思。@Repeatable 是 Java 1.8 才加进来的，所以算是一个新的特性</p></li></ul>]]></content>
     
@@ -137,7 +406,7 @@
     
     </summary>
     
-      <category term="技术文章" scheme="http://HackerFreedom.github.io/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/"/>
+      <category term="反射" scheme="http://HackerFreedom.github.io/categories/%E5%8F%8D%E5%B0%84/"/>
     
     
       <category term="反射基本知识" scheme="http://HackerFreedom.github.io/tags/%E5%8F%8D%E5%B0%84%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86/"/>
@@ -149,7 +418,7 @@
     <link href="http://HackerFreedom.github.io/2018/01/28/p2p%E9%A1%B9%E7%9B%AE%E6%80%9D%E8%B7%AF/"/>
     <id>http://HackerFreedom.github.io/2018/01/28/p2p项目思路/</id>
     <published>2018-01-28T06:34:31.000Z</published>
-    <updated>2018-01-29T15:18:51.304Z</updated>
+    <updated>2018-02-27T00:53:51.682Z</updated>
     
     <content type="html"><![CDATA[<h2 id="账户中心-产品购买"><a href="#账户中心-产品购买" class="headerlink" title="账户中心-产品购买"></a>账户中心-产品购买</h2><p>思路分析：： 产品购买，首先要对产品进行查询，在p2p_home中要查询产品信息，在p2p_management中提供<br>产品的CRUD操作，文档说要用到跨域（但是跨域的概念是 服务器中的端口 协议  不同）</p><ol><li>用户的账户表中信息一定要改变</li><li>在product_account 中间表中插入 money 和 interest的字段名；</li></ol><p><em>整体思路</em></p><ol><li>产品信息要在moto.html中展现出来</li><li>moto.js文件中拼装</li><li><p>moto.html中产品信息生成 （在我要购买提加点击事件onclick） 写函数的时候看是否有参数是看在servlet是否需要参数接受<br>然后处理购买后的数据（）<br>配置结果–本金/</p></li><li><p>完成购买操作（金额 和产品信息传递给服务器，在服务器进行操作，修改账户信息，向product——account 修改账户信息，）</p></li><li><p>修改账户信息，向product_account表中插入数据（敏感数据的处理（bigdecimal的处理））</p></li><li>在product中插入数据  根据pid查询查询产品</li><li><p>attar  prop 是什么属性</p><p> 多表联查；</p></li></ol>]]></content>
     
@@ -162,10 +431,10 @@
     
     </summary>
     
-      <category term="技术文章" scheme="http://HackerFreedom.github.io/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/"/>
+      <category term="金融p2p项目" scheme="http://HackerFreedom.github.io/categories/%E9%87%91%E8%9E%8Dp2p%E9%A1%B9%E7%9B%AE/"/>
     
     
-      <category term="nginx&amp;svn基本知识" scheme="http://HackerFreedom.github.io/tags/nginx-svn%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86/"/>
+      <category term="p2p项目" scheme="http://HackerFreedom.github.io/tags/p2p%E9%A1%B9%E7%9B%AE/"/>
     
   </entry>
   
@@ -174,7 +443,7 @@
     <link href="http://HackerFreedom.github.io/2018/01/28/Cookie-Session/"/>
     <id>http://HackerFreedom.github.io/2018/01/28/Cookie-Session/</id>
     <published>2018-01-28T06:15:14.000Z</published>
-    <updated>2018-02-04T05:52:39.875Z</updated>
+    <updated>2018-02-27T02:41:18.161Z</updated>
     
     <content type="html"><![CDATA[<p>DDL是tra  删除命令，没有事务回滚</p><h1 id="会话技术的概述"><a href="#会话技术的概述" class="headerlink" title="会话技术的概述"></a>会话技术的概述</h1><p>简单来说，就是用户打开浏览器，访问web资源，然后关闭浏览器的整个过程。而用户每次访问留下的数据，就需要<br>我们用会话技术来保存了。</p><p><img src="/2018/01/28/Cookie-Session/main01.png" alt="requset请求的数据保存">;</p><h1 id="会话技术的实现原理"><a href="#会话技术的实现原理" class="headerlink" title="会话技术的实现原理"></a>会话技术的实现原理</h1><ul><li>会话技术的分类<ol><li>会话技术分为cookie 和session <ul><li>cookie属于客户端技术<br> 通过响应头的形式来保存信息</li><li>session属于服务端技术<br> 会在服务器中开辟一处空间来存储数据<br><strong>cookie和session的区别</strong><br>   cookie是把数据保存到浏览器中，session是把数据存储到服务器中</li></ul></li></ol></li><li>Cookie和Session的实现原理<br><img src="/2018/01/28/Cookie-Session/main02.png" alt="cookie和session的实现">;<br><img src="/2018/01/28/Cookie-Session/main03.png" alt="cookie和session的实现">;</li></ul><h2 id="获取Cookie的方法"><a href="#获取Cookie的方法" class="headerlink" title="获取Cookie的方法"></a>获取Cookie的方法</h2><pre><code>- 创建一个cookie1. getName () 返回Cookie的key2. getValue（） 3. setValue- 保存一个cookie1. addcookie() -- HttpServletResponse接口的方法- 获取一个cookie1. getCookies()  --HttpServletRequest接口的方法</code></pre><p><em>可以记录用户第一次访问的时间，用Cookies的方法</em><br><img src="/2018/01/28/Cookie-Session/cookie01.png" alt=""></p><h2 id="Cookie的分类"><a href="#Cookie的分类" class="headerlink" title="Cookie的分类"></a>Cookie的分类</h2><ul><li><em>会话级别的Cookie</em><br>  顾名思义，它存在的时间默认是一次会话，直到关闭浏览器</li><li><em>持久化的Cookie</em><ul><li>见明知意，它是设置Cookie的有效时间，数据会被序列化，既存储在硬盘上了；</li></ul></li></ul><p><img src="/2018/01/28/Cookie-Session/cookie02.png" alt="cookie的设置"></p><p><strong>Cookies要注意的点</strong><br>1 浏览器存储cookie有大小和个数的限制，各种浏览器不宜<br>2、cookie默认是一次会话结束就消失，但是要删除持久化的cookie，只需要调用setMaxAge(0);<br><em>但是要设置cookie相同的path</em></p><h3 id="Session的概述"><a href="#Session的概述" class="headerlink" title="Session的概述"></a>Session的概述</h3><p>Session称为是一次会话，Cookie将用户产生的私有数据保存到浏览器端，而Session将用户产生的私有的数据保存到服务器端</p><p>cookie和session的区别<br>Cookie的局限性：</p><ul><li>Cookie保存的数据是有个数和大小的限制的。<ul><li>数据是保存客户端浏览器上（相对不是很安全）</li></ul></li></ul><p>session:</p><pre><code>- Session没有个数和大小限制- 数据保存到服务器上</code></pre><p><strong>Session对象由服务器创建，开发人员可以调用request对象的getSession方法得到Session对象</strong></p><h3 id="Session的原理"><a href="#Session的原理" class="headerlink" title="Session的原理"></a>Session的原理</h3><p>Session其实是基于Cookie实现的，因为服务器会将一个唯一的SessionId写到Cookie里面，响应给浏览器，浏览器再次访问服务器(浏览器不关闭)会带着这个Cookie里面的SessionId来找到对应的区域数据。</p><p>保存sessionID的cookie默认是会话级别的,只存在于浏览器的内存中,浏览器窗口关了就没了。</p><h3 id="Session作为域对象存储数据"><a href="#Session作为域对象存储数据" class="headerlink" title="Session作为域对象存储数据"></a>Session作为域对象存储数据</h3><p>Session作为域对象的API</p><ul><li>setAttribute (string name,Object value)  存入数据</li><li>getAttribute(String name)   获取数据</li><li>removeAttribute(String name)   移除数据</li></ul><h3 id="Servlet数据访问范围的总结"><a href="#Servlet数据访问范围的总结" class="headerlink" title="Servlet数据访问范围的总结"></a>Servlet数据访问范围的总结</h3><pre><code>1、请求范围（ServletRequest） a)、何时创建和销毁的创建：当用户向服务器发送一次请求，服务器创建一个request对象。销毁：当服务器对这次请求作出了响应，服务器就会销毁这个request对象。b)、如何存取数据存数据：void setAttribute(String name,Object value);取数据：Object getAttribute(String name);c)、作用范围：一次请求。（转发就是一次请求）。2、会话范围（HttpSession）a)、何时创建和销毁的创建：服务器端第一次调用getSession()方法的时候。(测试访问jsp.html,servlet)销毁：三种情况。①、Session过期，默认的过期时间30分钟(web.xml中配置)。②、非正常关闭服务器。（正常关闭服务器—session会被序列化）。③、手动调用session.invalidate();b)、如何存取数据存数据：void setAttribute(String name,Object value);取数据：Object getAttribute(String name);c)、作用范围：一次会话（多次请求）3、应用范围（ServletContext）a)、何时创建和销毁的创建：服务器启动的时候创建，为每个web项目创建一个单独ServletContext对象。 销毁：服务器关闭的时候，或者项目从服务器中移除的时候。b)、如何存取数据存数据：void setAttribute(String name,Object value);取数据：Object getAttribute(String name);c)、作用范围：整个应用</code></pre>]]></content>
     
@@ -188,10 +457,35 @@
     
     </summary>
     
-      <category term="技术文章" scheme="http://HackerFreedom.github.io/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/"/>
+      <category term="缓存技术" scheme="http://HackerFreedom.github.io/categories/%E7%BC%93%E5%AD%98%E6%8A%80%E6%9C%AF/"/>
     
     
       <category term="Cookie-Session基础" scheme="http://HackerFreedom.github.io/tags/Cookie-Session%E5%9F%BA%E7%A1%80/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>jsp&amp;el&amp;jstl</title>
+    <link href="http://HackerFreedom.github.io/2018/01/28/jsp-el-jstl/"/>
+    <id>http://HackerFreedom.github.io/2018/01/28/jsp-el-jstl/</id>
+    <published>2018-01-28T06:15:14.000Z</published>
+    <updated>2018-02-27T02:39:00.253Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="JSP"><a href="#JSP" class="headerlink" title="JSP"></a>JSP</h1><h2 id="jsp的基本介绍"><a href="#jsp的基本介绍" class="headerlink" title="jsp的基本介绍"></a>jsp的基本介绍</h2><p>Servlet技术生成动态网页的时候很麻烦，需要通过response获得输出流，调用print方法进行打印的。这种编程方式很麻烦，而且美工也不容易处理。SUN公司为了简化动态网页开发，推出JSP</p><ul><li><p>JSP脚本元素<br>&lt;%!    %&gt;    :JSP声明 翻译成 Servlet成员部分的内容。声明变量，方法，内部类。<br>&lt;%= %&gt;    :翻译out.print(),在service方法内部。用于生成HTML页面源码。<br>&lt;%    %&gt;    :嵌入Java代码 翻译成service方法内部的代码块。声明变量，内部类</p></li><li><p>JSP的运行原理<br>JSP在执行时，会被服务器翻译为Servlet编译执行，JSP就是一个Servlet。</p></li></ul><h2 id="JSP的指令元素的概述"><a href="#JSP的指令元素的概述" class="headerlink" title="JSP的指令元素的概述"></a>JSP的指令元素的概述</h2><ul><li>Jsp有如下三大指令：<blockquote><p>page指令：用来设置jsp页面的某些属性和行为的；例如设置字符集等。。。<br>include指令：用来设置jsp页面包含哪些其他页面。<br>taglib指令：用来设置jsp页面引入了哪些标签库。</p></blockquote></li></ul><h2 id="Page指令属性"><a href="#Page指令属性" class="headerlink" title="Page指令属性"></a>Page指令属性</h2><blockquote><p>import属性：        用于导入Java包或类。<br>一次导入多个包&lt;%@ page import=”java.util.Date , java.util.List” %&gt;<br>contentType属性：标明JSP被浏览器解析和打开的时候采用的默认的字符集。<br>pageEncoding属性：JSP文件及JSP翻译后的Servlet保存到硬盘上采用字符集。</p></blockquote><p>##JSP的指令-include和taglib指令  ##</p><ul><li>include指令作用：用来设置jsp页面静态包含其他页面</li><li>2、include指令包含（静态包含）的原理和注意事项：<br><strong> 相当于代码复制,多个JSP会被翻译成一个Servlet</strong><br>  <img src="/2018/01/28/jsp-el-jstl/jsp01.png" alt="">;<br>  注意地方：<br>  应该将被包含的页面的结构去掉。<br>  在被包含的页面中定义变量，在包含的页面中还可以使用。</li></ul><h2 id="JSP的内置对象"><a href="#JSP的内置对象" class="headerlink" title="JSP的内置对象"></a>JSP的内置对象</h2><p><strong>内置对象就是可以在JSP页面中直接使用的对象。</strong></p><blockquote><p>request：客户端向服务器发送的请求对象。————————HttpServletRequest<br>response：服务器向客户端作的响应对象。————————–HttpServletResponse<br>session：客户端和服务器之间的会话对象。————————-HttpSession<br>application：整个应用——————————————————-ServletContext<br>page：当前jsp页面被翻译成的Servlet对象————————-Object<br>out：页面输出内容的对象————————————————-JspWriter<br>pageContext：当前jsp页面的上下文对象—————————–PageContext<br>config：当前jsp的ServletConfig对象———————————-ServletConfig<br>exception：当前页面的异常对象，只有当前页面的page指令中指明了isErrorPage=”true”才有此对象。——– Throwable</p></blockquote><p><em>pageContext对象的概述</em><br>pageContext对象<br>    可以存值，取值，移除值，查找值</p><pre><code>pageContext的作用:1.作为域对象保存数据获取其他8大内置对象</code></pre><p><img src="/2018/01/28/jsp-el-jstl/jsp02.png" alt="获取其它的内置对象">);</p><blockquote><p>在JSP页面中可以直接使用out,request对象,为什么还需要用pageContext获取?<br>可以作为参数传递.</p></blockquote><h2 id="jsp四个作用范围"><a href="#jsp四个作用范围" class="headerlink" title="jsp四个作用范围"></a>jsp四个作用范围</h2><p>pageContext ：代表page域，就是指当前页面范围<br>requset：他是代表一个求链<br>session：整个回话，<br>aplication：整个web应用（servletContext）</p><p>PAGE_SCOPE：页面范围<br>    页面范围：指的是在当前的页面内有效，出了这个页面，用pageContext保存的数据就无效了。<br>REQUEST_SCOPE：请求范围<br>    从客户端向服务器发送一次请求，直到服务器作出了响应之后，数据就无效，相当于Request域，也可以使用Request取值。<br>SESSION_SCOPE：会话范围<br>    从打开浏览器到关闭浏览器数以一次会话，在这个会话内数据都有效，相当于Session域。<br>APPLICATION_SCOPE：应用范围<br>    在整个应用中任意的地方都可以获取，相当于ServletContext域</p><p><em>在page,request,session.application范围依次查找(findAttribute)</em></p><h2 id="总结一点："><a href="#总结一点：" class="headerlink" title="##总结一点："></a>##总结一点：</h2><p>JSP=html+java+jsp特有东西<br>    a)JSP注释  // /**/  &lt;%– JSP注释 –%&gt;<br>    b)JSP页面指令<br>        1.&lt;%@ page import=”” %&gt;<br>        2.&lt;%@ include file=”” %&gt; 静态包含  代码复制<br>        3.&lt;%@ taglib uri=”” prefix=”” &gt;<br>    c)JSP内置对象<br>        1.pageContext request,response，session,application,,out,config,page,exception<br>        2.pageContext 的作用<br>    i.可以操作各个域<br>    a)findAttribute(“name”);</p><pre><code>2.  可以获取其他8个内置对象</code></pre><h2 id="JSP动作标签"><a href="#JSP动作标签" class="headerlink" title="JSP动作标签"></a>JSP动作标签</h2><p>JSP的动作标签用于在JSP页面中提供业务逻辑功能，避免在JSP页面中直接编写Java代码，造成jsp页面难以维护。<br>常用动作标签：<br>    <jsp:forward>    ：请求转发。<br>    <jsp:include>：包含（动态包含）。<br>    <jsp:param>：传递参数<br><img src="/2018/01/28/jsp-el-jstl/jsp03.png" alt="静态包含和动态包含的区别">;</jsp:param></jsp:include></jsp:forward></p><p>jsp中静态包含(include指令)与动态包含(include标签)区别?<br>1.静态包含包含的是内容，而动态包含包含的是结果。<br>2.静态包含不可以传递参数 ,而动态包含可以传递参数</p><p>静态包含:(代码拷贝,合一个文件),动态:(独立Java文件)<br>开发如何选择:<br>没有特殊需求,2个都可以<br><strong>被包含文件独立性高,用jsp:include 标签</strong></p><h3 id="ELd的概述"><a href="#ELd的概述" class="headerlink" title="ELd的概述"></a>ELd的概述</h3><p>EL主要是用来取代我们jsp页面的java代码，jsp页面一般是起显示数据作用的，所以不应该出现java代码，有java代码也不利于维护和合作开发，故出现了EL表达式。</p><blockquote><p>EL作用: 获取域中数据、执行运算、获取web常用对象。</p><p>  语法：${ EL表达式}</p></blockquote><h3 id="EL获取数据（重点）"><a href="#EL获取数据（重点）" class="headerlink" title="EL获取数据（重点）"></a>EL获取数据（重点）</h3><p>EL表达式语句在执行的时候，会调用pageContext.findAttribute()方法。分别从<em>page、request、session、application</em>范围查找相应对象，找到就会<em>返回相应对象，找不到返回””(不是null，是空的字符串)</em>。EL所获取的数据需要在四个作用范围中</p><h3 id="EL获取数组和集合中的数据"><a href="#EL获取数组和集合中的数据" class="headerlink" title="EL获取数组和集合中的数据"></a>EL获取数组和集合中的数据</h3><ol><li>El获取数组中的数据</li></ol><p><img src="/2018/01/28/jsp-el-jstl/EL01.png" alt="">;</p><ol><li><p>EL获取list集合的数据<br><img src="/2018/01/28/jsp-el-jstl/EL02.png" alt="">;</p></li><li><p>EL获取map集合的数据</p></li></ol><p><img src="/2018/01/28/jsp-el-jstl/EL03.png" alt="">;</p><blockquote><p>1.map集合的键要是String类型<br>2.当key中有特殊字符点时，map集合获取值就不能使用.了,使用下标的方式[“key”]</p></blockquote><h3 id="EL执行的运算"><a href="#EL执行的运算" class="headerlink" title="EL执行的运算"></a>EL执行的运算</h3><ol><li>算术运算</li><li>关系运算</li><li>逻辑运算</li><li>三元运算</li><li>empty运算</li></ol><p>empty用于集合,可以判断集合是否有元素,size()=0</p><p>&lt;%<br>List list = new ArrayList<string>();<br>request.setAttribute(“list”,list);<br>%&gt;<br>${empty list}  –返回true ,没有元素</string></p><h3 id="EL获取web开发常用对象"><a href="#EL获取web开发常用对象" class="headerlink" title="EL获取web开发常用对象"></a>EL获取web开发常用对象</h3><p><strong>掌握param、paramValues、cookie、pageContext以及四个域对象的含义和用法</strong><br><img src="/2018/01/28/jsp-el-jstl/EL04.png" alt="">;</p><p><strong>最常用</strong></p><blockquote><p>${cookie.remember.value}<br>${param[“name”]}</p><form action="”${pageContext.request.contextPath}/Servlet”" method="”post”"></form></blockquote><h4 id="JSTL概述"><a href="#JSTL概述" class="headerlink" title="JSTL概述"></a>JSTL概述</h4><p>是JSP标准标签库(JSTL)是一个jsp标签集合，封装了jsp应用的通用核心功能<br><em>JSTL支持通用的、结构化的任务，比如迭代，条件判断，XML文档操作，国际化标签，SQL标签。 除了这些，它还提供了一个框架来使用集成JSTL的自定义标签</em></p><p>JSTL分为i下面5类</p><blockquote><p>核心标签—————————————–c标签<br>格式化标签（国际化标签）—————-fmt标签<br>SQL 标签—————————————–sql标签<br>XML 标签—————————————-xml标签<br>JSTL 函数—————————————（EL函数）</p></blockquote><h4 id="JSTL的if标签属性"><a href="#JSTL的if标签属性" class="headerlink" title="JSTL的if标签属性"></a>JSTL的if标签属性</h4><ol><li>test：条件</li><li>var：将test中的条件的值符给一个变量</li><li>scope： 作用范围</li></ol><p><img src="/2018/01/28/jsp-el-jstl/JSTL01.png" alt="">;</p><h4 id="JSTL的foreach标签（重点）"><a href="#JSTL的foreach标签（重点）" class="headerlink" title="JSTL的foreach标签（重点）"></a>JSTL的foreach标签（重点）</h4><ol><li>items：要被循环的信息</li><li>begin：开始的元素</li><li>end:最后一个元素</li><li>step：每一次增长的值</li><li>var：代表当前条目的变量名称</li><li>varStatus：代表循环抓太多变量名称<br><img src="/2018/01/28/jsp-el-jstl/JSTL02.png" alt="foreach基本使用">;<br><img src="/2018/01/28/jsp-el-jstl/JSTL03.png" alt="foreach遍历数组">;</li></ol><p><img src="/2018/01/28/jsp-el-jstl/JSTL04.png" alt="foreach遍历list集合">;</p><p><img src="/2018/01/28/jsp-el-jstl/JSTL05.png" alt="foreach遍历map集合">;</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;JSP&quot;&gt;&lt;a href=&quot;#JSP&quot; class=&quot;headerlink&quot; title=&quot;JSP&quot;&gt;&lt;/a&gt;JSP&lt;/h1&gt;&lt;h2 id=&quot;jsp的基本介绍&quot;&gt;&lt;a href=&quot;#jsp的基本介绍&quot; class=&quot;headerlink&quot; title=&quot;jsp的基
+      
+    
+    </summary>
+    
+      <category term="JSP" scheme="http://HackerFreedom.github.io/categories/JSP/"/>
+    
+    
+      <category term="jsp&amp;el&amp;jstl基本知识" scheme="http://HackerFreedom.github.io/tags/jsp-el-jstl%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86/"/>
     
   </entry>
   
@@ -200,9 +494,9 @@
     <link href="http://HackerFreedom.github.io/2018/01/28/%E9%9D%A2%E8%AF%95/"/>
     <id>http://HackerFreedom.github.io/2018/01/28/面试/</id>
     <published>2018-01-28T06:15:14.000Z</published>
-    <updated>2018-02-03T06:52:12.844Z</updated>
+    <updated>2018-03-05T06:09:37.841Z</updated>
     
-    <content type="html"><![CDATA[<ol><li><em>**</em>Spring的DI是什么（学员注：除了IOC，AOP这些概念，还不太清楚DI的概念）</li><li>*任意数字序列”123456”之类，输出它们所有的排列组合</li><li><p><strong>*</strong>什么是AOP（学员注：会用，但感觉说不清楚）<br>我注：由上面这些题，可以看出，思想很重要，只有琢磨思想和原理的人才能很好地回答这些问题！</p><p> String str = “xafdvs”;<br> char[] arr1 = str.toCharArray();<br> char[] arr2 = Arrays.copyOf(arr1,arr1.length);<br> for(int i=0;i&lt;arr1.length-1;i++)<br> {<br> for(int j = i+1;j&lt;arr2.length;j++){<br> syso: arr1[i] + “,” + arr2[j];<br> }<br> }</p></li></ol><p>1.概念介绍：所谓AOP，即Aspect orientied program,就是面向方面的编程，<br>2.解释什么是方面：贯穿到系统的各个模块中的系统一个功能就是一个方面，<br>比如，记录日志，统一异常处理，事务处理，全限检查，这些功能都是软件系统<br>的一个面，而不是一点，在各个模块中都要出现。<br>3.什么是面向方面编程：把系统的一个方面的功能封装成对象的形式来处理<br>4.怎么进行面向方面编程：把功能模块对应的对象作为切面嵌入到原来的各个系统模块中，<br>采用代理技术，代理会调用目标，同时把切面功能的代码（对象）加入进来，所以，<br>用spring配置代理对象时只要要配两个属性，分别表示目标和切面对象（Advisor）。</p><p>多线程的<br>异常</p><p>事务回滚</p><p>容器<br>Collections是容器的工具类<br>Collection是</p><p>反射</p>]]></content>
+    <content type="html"><![CDATA[<ol><li><em>**</em>Spring的DI是什么（学员注：除了IOC，AOP这些概念，还不太清楚DI的概念）</li><li>*任意数字序列”123456”之类，输出它们所有的排列组合</li><li><p><strong>*</strong>什么是AOP（学员注：会用，但感觉说不清楚）<br>我注：由上面这些题，可以看出，思想很重要，只有琢磨思想和原理的人才能很好地回答这些问题！</p><p> String str = “xafdvs”;<br> char[] arr1 = str.toCharArray();<br> char[] arr2 = Arrays.copyOf(arr1,arr1.length);<br> for(int i=0;i&lt;arr1.length-1;i++)<br> {<br> for(int j = i+1;j&lt;arr2.length;j++){<br> syso: arr1[i] + “,” + arr2[j];<br> }<br> }</p></li></ol><p>1.概念介绍：所谓AOP，即Aspect orientied program,就是面向方面的编程，<br>2.解释什么是方面：贯穿到系统的各个模块中的系统一个功能就是一个方面，<br>比如，记录日志，统一异常处理，事务处理，全限检查，这些功能都是软件系统<br>的一个面，而不是一点，在各个模块中都要出现。<br>3.什么是面向方面编程：把系统的一个方面的功能封装成对象的形式来处理<br>4.怎么进行面向方面编程：把功能模块对应的对象作为切面嵌入到原来的各个系统模块中，<br>采用代理技术，代理会调用目标，同时把切面功能的代码（对象）加入进来，所以，<br>用spring配置代理对象时只要要配两个属性，分别表示目标和切面对象（Advisor）。</p><p>多线程的<br>异常</p><p>事务回滚</p><p>事务的隔离<br>Serializable </p><p>容器<br>Collections是容器的工具类<br>Collection是</p><p>反射</p><p>乐观锁、aop、js加密、防止表单重复提交、springboot</p><p>Java集合类框架的基本接口有哪些</p><p>json和json 阿里中的区别</p><p>内连接和外连接</p><p>三种状态的概述（hibernate）</p><p>你只需要努力，加油！！</p><p>ogm格式</p>]]></content>
     
     <summary type="html">
     
@@ -216,7 +510,7 @@
     
     </summary>
     
-      <category term="技术文章" scheme="http://HackerFreedom.github.io/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/"/>
+      <category term="面试" scheme="http://HackerFreedom.github.io/categories/%E9%9D%A2%E8%AF%95/"/>
     
     
       <category term="面试" scheme="http://HackerFreedom.github.io/tags/%E9%9D%A2%E8%AF%95/"/>
@@ -224,306 +518,31 @@
   </entry>
   
   <entry>
-    <title>jsp&amp;el&amp;jstl</title>
-    <link href="http://HackerFreedom.github.io/2018/01/28/jsp-el-jstl/"/>
-    <id>http://HackerFreedom.github.io/2018/01/28/jsp-el-jstl/</id>
-    <published>2018-01-28T06:15:14.000Z</published>
-    <updated>2018-01-29T07:11:32.742Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="JSP"><a href="#JSP" class="headerlink" title="JSP"></a>JSP</h1><h2 id="jsp的基本介绍"><a href="#jsp的基本介绍" class="headerlink" title="jsp的基本介绍"></a>jsp的基本介绍</h2><p>Servlet技术生成动态网页的时候很麻烦，需要通过response获得输出流，调用print方法进行打印的。这种编程方式很麻烦，而且美工也不容易处理。SUN公司为了简化动态网页开发，推出JSP</p><ul><li><p>JSP脚本元素<br>&lt;%!    %&gt;    :JSP声明 翻译成 Servlet成员部分的内容。声明变量，方法，内部类。<br>&lt;%= %&gt;    :翻译out.print(),在service方法内部。用于生成HTML页面源码。<br>&lt;%    %&gt;    :嵌入Java代码 翻译成service方法内部的代码块。声明变量，内部类</p></li><li><p>JSP的运行原理<br>JSP在执行时，会被服务器翻译为Servlet编译执行，JSP就是一个Servlet。</p></li></ul><h2 id="JSP的指令元素的概述"><a href="#JSP的指令元素的概述" class="headerlink" title="JSP的指令元素的概述"></a>JSP的指令元素的概述</h2><ul><li>Jsp有如下三大指令：<blockquote><p>page指令：用来设置jsp页面的某些属性和行为的；例如设置字符集等。。。<br>include指令：用来设置jsp页面包含哪些其他页面。<br>taglib指令：用来设置jsp页面引入了哪些标签库。</p></blockquote></li></ul><h2 id="Page指令属性"><a href="#Page指令属性" class="headerlink" title="Page指令属性"></a>Page指令属性</h2><blockquote><p>import属性：        用于导入Java包或类。<br>一次导入多个包&lt;%@ page import=”java.util.Date , java.util.List” %&gt;<br>contentType属性：标明JSP被浏览器解析和打开的时候采用的默认的字符集。<br>pageEncoding属性：JSP文件及JSP翻译后的Servlet保存到硬盘上采用字符集。</p></blockquote><p>##JSP的指令-include和taglib指令  ##</p><ul><li>include指令作用：用来设置jsp页面静态包含其他页面</li><li>2、include指令包含（静态包含）的原理和注意事项：<br><strong> 相当于代码复制,多个JSP会被翻译成一个Servlet</strong><br>  <img src="/2018/01/28/jsp-el-jstl/jsp01.png" alt="">;<br>  注意地方：<br>  应该将被包含的页面的结构去掉。<br>  在被包含的页面中定义变量，在包含的页面中还可以使用。</li></ul><h2 id="JSP的内置对象"><a href="#JSP的内置对象" class="headerlink" title="JSP的内置对象"></a>JSP的内置对象</h2><p><strong>内置对象就是可以在JSP页面中直接使用的对象。</strong></p><blockquote><p>request：客户端向服务器发送的请求对象。————————HttpServletRequest<br>response：服务器向客户端作的响应对象。————————–HttpServletResponse<br>session：客户端和服务器之间的会话对象。————————-HttpSession<br>application：整个应用——————————————————-ServletContext<br>page：当前jsp页面被翻译成的Servlet对象————————-Object<br>out：页面输出内容的对象————————————————-JspWriter<br>pageContext：当前jsp页面的上下文对象—————————–PageContext<br>config：当前jsp的ServletConfig对象———————————-ServletConfig<br>exception：当前页面的异常对象，只有当前页面的page指令中指明了isErrorPage=”true”才有此对象。——– Throwable</p></blockquote><p><em>pageContext对象的概述</em><br>pageContext对象<br>    可以存值，取值，移除值，查找值</p><pre><code>pageContext的作用:1.作为域对象保存数据获取其他8大内置对象</code></pre><p><img src="/2018/01/28/jsp-el-jstl/jsp02.png" alt="获取其它的内置对象">);</p><blockquote><p>在JSP页面中可以直接使用out,request对象,为什么还需要用pageContext获取?<br>可以作为参数传递.</p></blockquote><h2 id="jsp四个作用范围"><a href="#jsp四个作用范围" class="headerlink" title="jsp四个作用范围"></a>jsp四个作用范围</h2><p>pageContext ：代表page域，就是指当前页面范围<br>requset：他是代表一个求链<br>session：整个回话，<br>aplication：整个web应用（servletContext）</p><p>PAGE_SCOPE：页面范围<br>    页面范围：指的是在当前的页面内有效，出了这个页面，用pageContext保存的数据就无效了。<br>REQUEST_SCOPE：请求范围<br>    从客户端向服务器发送一次请求，直到服务器作出了响应之后，数据就无效，相当于Request域，也可以使用Request取值。<br>SESSION_SCOPE：会话范围<br>    从打开浏览器到关闭浏览器数以一次会话，在这个会话内数据都有效，相当于Session域。<br>APPLICATION_SCOPE：应用范围<br>    在整个应用中任意的地方都可以获取，相当于ServletContext域</p><p><em>在page,request,session.application范围依次查找(findAttribute)</em></p><h2 id="总结一点："><a href="#总结一点：" class="headerlink" title="##总结一点："></a>##总结一点：</h2><p>JSP=html+java+jsp特有东西<br>    a)JSP注释  // /**/  &lt;%– JSP注释 –%&gt;<br>    b)JSP页面指令<br>        1.&lt;%@ page import=”” %&gt;<br>        2.&lt;%@ include file=”” %&gt; 静态包含  代码复制<br>        3.&lt;%@ taglib uri=”” prefix=”” &gt;<br>    c)JSP内置对象<br>        1.pageContext request,response，session,application,,out,config,page,exception<br>        2.pageContext 的作用<br>    i.可以操作各个域<br>    a)findAttribute(“name”);</p><pre><code>2.  可以获取其他8个内置对象</code></pre><h2 id="JSP动作标签"><a href="#JSP动作标签" class="headerlink" title="JSP动作标签"></a>JSP动作标签</h2><p>JSP的动作标签用于在JSP页面中提供业务逻辑功能，避免在JSP页面中直接编写Java代码，造成jsp页面难以维护。<br>常用动作标签：<br>    <jsp:forward>    ：请求转发。<br>    <jsp:include>：包含（动态包含）。<br>    <jsp:param>：传递参数<br><img src="/2018/01/28/jsp-el-jstl/jsp03.png" alt="静态包含和动态包含的区别">;</jsp:param></jsp:include></jsp:forward></p><p>jsp中静态包含(include指令)与动态包含(include标签)区别?<br>1.静态包含包含的是内容，而动态包含包含的是结果。<br>2.静态包含不可以传递参数 ,而动态包含可以传递参数</p><p>静态包含:(代码拷贝,合一个文件),动态:(独立Java文件)<br>开发如何选择:<br>没有特殊需求,2个都可以<br><strong>被包含文件独立性高,用jsp:include 标签</strong></p><h3 id="ELd的概述"><a href="#ELd的概述" class="headerlink" title="ELd的概述"></a>ELd的概述</h3><p>EL主要是用来取代我们jsp页面的java代码，jsp页面一般是起显示数据作用的，所以不应该出现java代码，有java代码也不利于维护和合作开发，故出现了EL表达式。</p><blockquote><p>EL作用: 获取域中数据、执行运算、获取web常用对象。</p><p>  语法：${ EL表达式}</p></blockquote><h3 id="EL获取数据（重点）"><a href="#EL获取数据（重点）" class="headerlink" title="EL获取数据（重点）"></a>EL获取数据（重点）</h3><p>EL表达式语句在执行的时候，会调用pageContext.findAttribute()方法。分别从<em>page、request、session、application</em>范围查找相应对象，找到就会<em>返回相应对象，找不到返回””(不是null，是空的字符串)</em>。EL所获取的数据需要在四个作用范围中</p><h3 id="EL获取数组和集合中的数据"><a href="#EL获取数组和集合中的数据" class="headerlink" title="EL获取数组和集合中的数据"></a>EL获取数组和集合中的数据</h3><ol><li>El获取数组中的数据</li></ol><p><img src="/2018/01/28/jsp-el-jstl/EL01.png" alt="">;</p><ol><li><p>EL获取list集合的数据<br><img src="/2018/01/28/jsp-el-jstl/EL02.png" alt="">;</p></li><li><p>EL获取map集合的数据</p></li></ol><p><img src="/2018/01/28/jsp-el-jstl/EL03.png" alt="">;</p><blockquote><p>1.map集合的键要是String类型<br>2.当key中有特殊字符点时，map集合获取值就不能使用.了,使用下标的方式[“key”]</p></blockquote><h3 id="EL执行的运算"><a href="#EL执行的运算" class="headerlink" title="EL执行的运算"></a>EL执行的运算</h3><ol><li>算术运算</li><li>关系运算</li><li>逻辑运算</li><li>三元运算</li><li>empty运算</li></ol><p>empty用于集合,可以判断集合是否有元素,size()=0</p><p>&lt;%<br>List list = new ArrayList<string>();<br>request.setAttribute(“list”,list);<br>%&gt;<br>${empty list}  –返回true ,没有元素</string></p><h3 id="EL获取web开发常用对象"><a href="#EL获取web开发常用对象" class="headerlink" title="EL获取web开发常用对象"></a>EL获取web开发常用对象</h3><p><strong>掌握param、paramValues、cookie、pageContext以及四个域对象的含义和用法</strong><br><img src="/2018/01/28/jsp-el-jstl/EL04.png" alt="">;</p><p><strong>最常用</strong></p><blockquote><p>${cookie.remember.value}<br>${param[“name”]}</p><form action="”${pageContext.request.contextPath}/Servlet”" method="”post”"></form></blockquote><h4 id="JSTL概述"><a href="#JSTL概述" class="headerlink" title="JSTL概述"></a>JSTL概述</h4><p>是JSP标准标签库(JSTL)是一个jsp标签集合，封装了jsp应用的通用核心功能<br><em>JSTL支持通用的、结构化的任务，比如迭代，条件判断，XML文档操作，国际化标签，SQL标签。 除了这些，它还提供了一个框架来使用集成JSTL的自定义标签</em></p><p>JSTL分为i下面5类</p><blockquote><p>核心标签—————————————–c标签<br>格式化标签（国际化标签）—————-fmt标签<br>SQL 标签—————————————–sql标签<br>XML 标签—————————————-xml标签<br>JSTL 函数—————————————（EL函数）</p></blockquote><h4 id="JSTL的if标签属性"><a href="#JSTL的if标签属性" class="headerlink" title="JSTL的if标签属性"></a>JSTL的if标签属性</h4><ol><li>test：条件</li><li>var：将test中的条件的值符给一个变量</li><li>scope： 作用范围</li></ol><p><img src="/2018/01/28/jsp-el-jstl/JSTL01.png" alt="">;</p><h4 id="JSTL的foreach标签（重点）"><a href="#JSTL的foreach标签（重点）" class="headerlink" title="JSTL的foreach标签（重点）"></a>JSTL的foreach标签（重点）</h4><ol><li>items：要被循环的信息</li><li>begin：开始的元素</li><li>end:最后一个元素</li><li>step：每一次增长的值</li><li>var：代表当前条目的变量名称</li><li>varStatus：代表循环抓太多变量名称<br><img src="/2018/01/28/jsp-el-jstl/JSTL02.png" alt="foreach基本使用">;<br><img src="/2018/01/28/jsp-el-jstl/JSTL03.png" alt="foreach遍历数组">;</li></ol><p><img src="/2018/01/28/jsp-el-jstl/JSTL04.png" alt="foreach遍历list集合">;</p><p><img src="/2018/01/28/jsp-el-jstl/JSTL05.png" alt="foreach遍历map集合">;</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;JSP&quot;&gt;&lt;a href=&quot;#JSP&quot; class=&quot;headerlink&quot; title=&quot;JSP&quot;&gt;&lt;/a&gt;JSP&lt;/h1&gt;&lt;h2 id=&quot;jsp的基本介绍&quot;&gt;&lt;a href=&quot;#jsp的基本介绍&quot; class=&quot;headerlink&quot; title=&quot;jsp的基
-      
-    
-    </summary>
-    
-      <category term="技术文章" scheme="http://HackerFreedom.github.io/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/"/>
-    
-    
-      <category term="jsp&amp;el&amp;jstl基本知识" scheme="http://HackerFreedom.github.io/tags/jsp-el-jstl%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>nginx&amp;svn</title>
-    <link href="http://HackerFreedom.github.io/2018/01/28/nginx-svn/"/>
-    <id>http://HackerFreedom.github.io/2018/01/28/nginx-svn/</id>
+    <title>java框架</title>
+    <link href="http://HackerFreedom.github.io/2018/01/28/hibernate%E6%B3%A8%E8%A7%A3/"/>
+    <id>http://HackerFreedom.github.io/2018/01/28/hibernate注解/</id>
     <published>2018-01-28T00:50:56.000Z</published>
-    <updated>2018-01-29T07:10:52.689Z</updated>
+    <updated>2018-03-04T03:15:08.709Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="nginx简介"><a href="#nginx简介" class="headerlink" title="nginx简介"></a>nginx简介</h1><p>Nginx的概念：Nginx (“engine x”) 是一个高性能的HTTP和反向代理服务器，也是一个电子邮件（IMAP/POP3/SMTP）服务器。<br>Nginx的要点：<br>1、Nginx 可以在大多数 Unix、Linux OS 上编译运行，并有 Windows 移植版<br>2、支持高并发操作，实现负载均衡<br>正向代理和反向代理的区别：<br><img src="/2018/01/28/nginx-svn/nginx01.png" alt="">;</p><ul><li>正向代理:出去访问外网</li><li>反向代理:外网回来</li><li></li><li>正向代理它隐藏了客户端</li><li>反向代理它隐藏的是服务器端</li></ul><p><img src="/2018/01/28/nginx-svn/nginx02.png" alt="反向代理">;</p><h2 id="反向代理"><a href="#反向代理" class="headerlink" title="反向代理"></a>反向代理</h2><p>所谓的反向代理就是隐藏真实的服务器，通过proxy来指定要访问的服务端：</p><p>##负载均衡  ##</p><p>所谓的负载均衡简单说就是将一台服务原来承受的压力由多台服务器来分配，可以在nginx中实现tomcat集群，通过weight来分配权重。</p><p><img src="/2018/01/28/nginx-svn/nginx.png" alt="负载均衡">;</p><h2 id="nginx-amp-tomcat集群-amp-redis实现session共享"><a href="#nginx-amp-tomcat集群-amp-redis实现session共享" class="headerlink" title="nginx&amp;tomcat集群&amp;redis实现session共享"></a>nginx&amp;tomcat集群&amp;redis实现session共享</h2><p>在两个服务器中分别部署同一个项目：myweb,在该项目里面有一个index.jsp页面，在页面中获取了sessionid并显示在页面上。如果两个服务器中myweb项目里面的index.jsp中获取的sessionid一致，就说明session共享了。</p><h3 id="svn概述（小乌龟）"><a href="#svn概述（小乌龟）" class="headerlink" title="svn概述（小乌龟）"></a>svn概述（小乌龟）</h3><p>SVN是Subversion的简称，是一个自由开源的版本控制系统。<br>Subversion将文件存放在中心版本库里，这个版本库很像一个普通的文件服务器，不同的是，它可以记录每一次文件和目录的修改情况，这样就可以借此将数据恢复到以前的版本，并可以查看数据的更改细节<br>早期版本控制使用的是CVS,后来SVN替代了CVS,随着android兴起，出现Git版本控制工具，后续我们会学到。</p><p><img src="/2018/01/28/nginx-svn/svn01.png" alt="SVN">;<br>基本操作：</p><ol><li>Checkout：检出（从服务器上导出项目）</li><li>Update：更新文件（指的是用户后续从服务器上down代码，也成为更新操作）</li><li>Commit：提交文件（提交文件到服务器；）</li></ol>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;nginx简介&quot;&gt;&lt;a href=&quot;#nginx简介&quot; class=&quot;headerlink&quot; title=&quot;nginx简介&quot;&gt;&lt;/a&gt;nginx简介&lt;/h1&gt;&lt;p&gt;Nginx的概念：Nginx (“engine x”) 是一个高性能的HTTP和反向代理服务器，也是
-      
-    
-    </summary>
-    
-      <category term="技术文章" scheme="http://HackerFreedom.github.io/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/"/>
-    
-    
-      <category term="nginx&amp;svn基本知识" scheme="http://HackerFreedom.github.io/tags/nginx-svn%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>大学时的生活</title>
-    <link href="http://HackerFreedom.github.io/2018/01/28/Memoirs/"/>
-    <id>http://HackerFreedom.github.io/2018/01/28/Memoirs/</id>
-    <published>2018-01-28T00:50:56.000Z</published>
-    <updated>2018-01-29T04:06:56.611Z</updated>
-    
-    <content type="html"><![CDATA[<p>2015年我只为it梦来到了这个校园<br>2年时间我留下很多难难忘的回忆，和一个一生都忘不掉的人。<br>而这正是我，唯一依依不舍的理由。<br>感谢这个大学，即使现在还是一无所有，没有任何地点。<br>我还是那个热血的我，好奇的我，这一生我只想做一个有梦就追的男孩。<br>    当你想放弃的时候，你就想想当初为何要走，想走就继续，因为梦想还在，而你放弃，它就会一点点的侵犯你整个思想，直到你为之后悔莫及。<br>    当初爱上你，不是因为你的美丽，而是你在特殊的时间，给了我别人给不了的感觉，谢谢你陪我走过了这365天<br><img src="" alt=""></p>]]></content>
+    <content type="html"><![CDATA[<p> 学习目标:</p><pre><code>能够使用Hibernate注解完成PO类的配置能够使用Hibernate注解完成三种关联关系的配置能够分别使用HQL、QBC、本地SQL完成对数据的检索</code></pre><p>要落未落的雨<br>吃剩下三分之一的过期饼干<br>掉了一个角就无法收拢的伞<br>还有终于再也不联系的我们</p><h1 id="注解开发"><a href="#注解开发" class="headerlink" title="注解开发"></a>注解开发</h1><blockquote><p>@Entity 声明一个实体<br>@Table来描述类与表对应<br>@Id来声明一个主键<br>@GenerateValue 用它来声明一个主键生成策略<br>@Column来定义列<br>@Temporal来声明日期类型</p></blockquote><p>@Entity<br>@Table(name=”t_person”)<br>public class Person {<br>@Id<br>@GenericGenerator(name=”myuuid”, strategy=”uuid”)<br>@GeneratedValue(generator=”myuuid”)<br>private String id;</p><ol><li><p>配置po类</p><pre><code>@Entity</code></pre><p> @Table(name=”T_BOOK”)<br> public class Book {<br> @Id<br> @GeneratedValue(strategy=GenerationType.IDENTITY)<br> private Integer id;</p><p> @Column(name=”c_name”, length=30)<br> private String name;</p><p> @Temporal(TemporalType.TIMESTAMP)<br> private Date publicationDate;</p><p> private Double price;</p><p> public Double getPrice() {</p><pre><code>return price;</code></pre><p> }<br> public void setPrice(Double price) {</p><pre><code>this.price = price;</code></pre><p> }<br> public Integer getId() {</p><pre><code>return id;</code></pre><p> }<br> public void setId(Integer id) {</p><pre><code>this.id = id;</code></pre><p> }<br> public String getName() {<br> return name;<br> }<br> public void setName(String name) {</p><pre><code>this.name = name;</code></pre><p> }<br> public Date getPublicationDate() {</p><pre><code>return publicationDate;</code></pre><p> }<br> public void setPublicationDate(Date publicationDate) {</p><pre><code>this.publicationDate = publicationDate;</code></pre><p> }<br> }</p></li><li><p>在hibernate.cfg.xml文件中添加这个PO类</p><mapping class="cn.itheima.domain.Book"></mapping></li><li><p>在测试文件中</p><ol><li>开启事务（通过hibernate的工具类）<br>  session = HibernateUtils.openSession();<pre><code>session.beginTransaction();</code></pre></li><li>操作<br>  Book book = new Book();<br>  book.setName(“升入浅出hibernate”);<br>  book.setPrice(56d);<br>  book.setPublicationDate(new Date());<br>  session.save(book);</li><li>关闭事务<br> session.getTransaction().commit();<br> session.close();</li></ol></li></ol><h2 id="三种关联关系的注解开发"><a href="#三种关联关系的注解开发" class="headerlink" title="三种关联关系的注解开发"></a>三种关联关系的注解开发</h2><ol><li><p>hibernate注解开发-一对多.avi(重点)<br> <em>多方为-Order  一方–Customer</em> </p><ol><li><p>原因:在Customer中配置了mappedBy=”c”它代表的是外键的维护由Order方来维护，而Customer不维护，这时你在保存客户时，级联保存订单，是可以的，但是不能维护外键，所以，我们必须在代码中添加订单与客户关系。<br>// 原因:是为了维护外键<br>o1.setC(c);<br>o2.setC(c);<br>// 原因:是为了进行级联操作<br>c.getOrders().add(o1);<br>c.getOrders().add(o2);</p><p> session.save(c);</p></li></ol></li><li><p>hibernate注解开发-一对一</p><ol><li><p>一对一操作有两种映射方式:</p><ol><li>唯一外键对应:在任意一方添加外键来描述对应关系</li><li><p>主键对应：一方的主键作为另一方的主键<br>@Entity<br>@Table(name = “t_user”)<br>public class User {<br>@Id<br>@GeneratedValue(strategy=GenerationType.IDENTITY)<br>private Integer id;<br>private String name;</p><p>@OneToOne(targetEntity=IDCard.class, mappedBy=”user”)<br>@Cascade(CascadeType.ALL)<br>private IDCard idCard;</p></li></ol><p>@Entity<br>@Table(name = “t_idcard”)<br>public class IDCard {<br> @Id<br> @GeneratedValue(strategy=GenerationType.IDENTITY)<br> private Integer id;<br> private String cardNum;</p><p> @OneToOne(targetEntity=User.class)<br> @JoinColumn(name=”user_id”, unique=true)<br> private User user;</p></li></ol></li></ol><ol><li><p>hibernate注解开发-多对多测试.avi</p><ol><li><p>多对多配置.avi(重点) </p><p> @ManyToMany(targetEntity=Student.class, mappedBy=”teachers”)<br> private Set<student> students = new HashSet<student>();</student></student></p></li></ol></li></ol><pre><code>    @ManyToMany(targetEntity=Teacher.class)    private Set&lt;Teacher&gt; teachers = new HashSet&lt;Teacher&gt;();2. 测试保存    1. 在Student类中配置了级联来级联保存Teacher        @ManyToMany(targetEntity=Teacher.class)        @Cascade(CascadeType.ALL)        private Set&lt;Teacher&gt; teachers = new HashSet&lt;Teacher&gt;();    2. 在teacher类中 配置了，级联来级联保存studne        1.3. 测试删除    1. 级联删除操作测试    在Teacher,Student双方都配置级联            @ManyToMany(targetEntity=Student.class, mappedBy=&quot;teachers&quot;)        @Cascade(CascadeType.ALL)        private Set&lt;Student&gt; students = new HashSet&lt;Student&gt;();        @ManyToMany(targetEntity=Teacher.class)        @Cascade(CascadeType.ALL)        private Set&lt;Teacher&gt; teachers = new HashSet&lt;Teacher&gt;(); </code></pre><h1 id="检索方式"><a href="#检索方式" class="headerlink" title="检索方式"></a>检索方式</h1><p>对数据库操作中，最常用的是select.使用hibernate如何select操作。<br>分为五种:</p><pre><code>1. 导航对象图检索方式，根据已加载的对象导航到其它对象2. OID检索方式，按照对象的OID来检索对象3. HQL检索方式，使用面向对象的HQL查询语言4. QBC检索方式,使用QBC(Query by Criteria)API来检索对象，这种API封装了基于字符串形式的查询语句，提供了更加面向对象的查询接口5. 本地SQL检索方式，使用本地数据库的SQL查询语句</code></pre><p><strong>导航对象图检索方式</strong><br>Customer c=session.get(Customer.class,2);<br>c.getOrders().size()<br>通过在hibernate中进行映射关系，在hibernate操作时，可以通过导航方式得到其关联的持久化对象信息。<br><strong>OID检索方式</strong><br>Session.get(Customer.class,3);<br>Session.load(Order.class,1);<br>Hibernate中通过get/load方法查询指定的对象,要通过OID来查询。</p><h2 id="HQL检索"><a href="#HQL检索" class="headerlink" title="HQL检索"></a>HQL检索</h2><p>完整的HQL语句形式如下： select/update/delete…… from …… where …… group by …… having …… order by …… asc/desc<br>（asc是指定列按升序排列,desc则是指定列按降序排列）<br>其中的update/delete为Hibernate3中所新添加的功能</p><p>基本步骤:<br>1.得到Session<br>2.编写HQL语句<br>3.通过session.createQuery(hql)创建一个Query对象<br>4.为Query对象设置条件参数<br>5.执行list查询所有，它返回的是List集合 ， uniqueResut()返回一个查询结果。</p><p>基本分为基本检索，条件检索， 分页检索， 统计分组，排序检索，投影检索，命名检索。</p><h1 id="基本检索"><a href="#基本检索" class="headerlink" title="基本检索"></a>基本检索</h1><pre><code>String hql = &quot;from Customer&quot;;</code></pre><h1 id="排序检索"><a href="#排序检索" class="headerlink" title="排序检索"></a>排序检索</h1><pre><code>String hql = &quot;from Order order by money desc&quot;;</code></pre><h1 id="分组统计检索"><a href="#分组统计检索" class="headerlink" title="分组统计检索"></a>分组统计检索</h1><pre><code>@Testpublic void test1() {String hql = &quot;select sum(o.money),o.c from Order o group by o.c&quot;;Query query = session.createQuery(hql);List&lt;Object[]&gt; list = query.list();for (Object[] objects : list) {     System.out.println(objects[0] + &quot;  &quot;+objects[1]);}}</code></pre><h1 id="命名检索"><a href="#命名检索" class="headerlink" title="命名检索"></a>命名检索</h1><p>可以将hql语句先定义出来，在使用时通过session.getNamedQuery(hqlName);得到一个Query在执行<br>    @Entity<br>    @Table(name = “t_customer”)<br>    @NamedQuery(name = “myHql”, query = “from Customer”)<br>     //    @NamedQuerys((name = “myHql”, query = “from Customer”),…)多个hql语句<br>    public class Customer {<br>       …<br>    }</p><pre><code>@Testpublic void test2() {session.beginTransaction();Query query = session.getNamedQuery(&quot;myHql&quot;);List&lt;Customer&gt; list = query.list();System.out.println(list);}</code></pre><h1 id="条件检索"><a href="#条件检索" class="headerlink" title="条件检索"></a>条件检索</h1><p>  String hql=”from order where money=?”<br>    <em>注意</em><br>这里的？是从1开始的索引，和mysql从0开始是不同的；</p><h3 id="QBC检索"><a href="#QBC检索" class="headerlink" title="QBC检索"></a>QBC检索</h3><p><strong>QBC(query by criteria),它是一种更加面向对象的检索方式。</strong><br>QBC步骤:<br>1.通过Session得到一个Criteria对象   session.createCriteria()<br>2.设定条件  Criterion实例<br>它的获取可以通过Restrictions类提供静态Criteria的add方法用于添加查询条件调用list进行查询  criteria.list.</p><p>1、在hibernate的PO类上使用jpa相关注解替换hbm映射文件配置<br>【day03】</p><p>2、使用@OneToMany与@ManyToOne完成一对多关联映射并完成一对多的级联操作<br>【day03】</p><p>3、使用@ManyToMany完成多对多关联映射并完成多对多的级联操作<br>【day03】</p><p>4、使用@OneToOne完成一对一关联映射，并可以区分一对一中外键映射与主键映射的区别与设置方式</p>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;p&gt;2015年我只为it梦来到了这个校园&lt;br&gt;2年时间我留下很多难难忘的回忆，和一个一生都忘不掉的人。&lt;br&gt;而这正是我，唯一依依不舍的理由。&lt;br&gt;感谢这个大学，即使现在还是一无所有，没有任何地点。&lt;br&gt;我还是那个热血的我，好奇的我，这一生我只想做一个有梦就追的男孩。&lt;b
+        &lt;p&gt; 学习目标:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;能够使用Hibernate注解完成PO类的配置
+能够使用Hibernate注解完成三种关联关系的配置
+能够分别使用HQL、QBC、本地SQL完成对数据的检索
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;要落未落的雨&lt;br&gt;吃剩下三分之一的过期
       
     
     </summary>
     
-      <category term="生活" scheme="http://HackerFreedom.github.io/categories/%E7%94%9F%E6%B4%BB/"/>
+      <category term="hibernate注解" scheme="http://HackerFreedom.github.io/categories/hibernate%E6%B3%A8%E8%A7%A3/"/>
     
     
-      <category term="时尚" scheme="http://HackerFreedom.github.io/tags/%E6%97%B6%E5%B0%9A/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>监听器知识点</title>
-    <link href="http://HackerFreedom.github.io/2018/01/23/Listener-Filter/"/>
-    <id>http://HackerFreedom.github.io/2018/01/23/Listener-Filter/</id>
-    <published>2018-01-23T00:39:01.000Z</published>
-    <updated>2018-01-23T15:09:15.500Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="监听器的概述"><a href="#监听器的概述" class="headerlink" title="监听器的概述"></a>监听器的概述</h1><p>监听器就是一个实现了特定接口的Java类，这个Java类用于监听另一个Java类的方法调用或者属性的改变。当被监听对象发生上述事件后，监听器某个方法将会立即被执行。<br>监听器的用途<br>用来监听其他对象的变化的。主要应用在图形化界面开发上</p><h2 id="Servlet中的监听器"><a href="#Servlet中的监听器" class="headerlink" title="Servlet中的监听器"></a>Servlet中的监听器</h2><blockquote><p>1、Servlet中的监听器主要监听的事件源是域对象：ServletContext、HttpSession,ServletRequest</p><p>2、Servlet中监听器的分类：<br>a)监听三个域对象的创建、销毁。（有三个域对象就对应有三个监听器）<br>b)监听三个域对象的属性变更 (存值、替换值、移除值)的监听器。（三个）<br>c)监听HttpSession中javabean的状态改变（钝化、活化、绑定、解绑）的监听器。（两个）</p></blockquote><h2 id="ServletContextListener监听器的使用"><a href="#ServletContextListener监听器的使用" class="headerlink" title="ServletContextListener监听器的使用"></a>ServletContextListener监听器的使用</h2><p>ServletContextListener:监听ServletContext域对象的创建和销毁.</p><pre><code>* 创建:* 服务器启动的时候创建ServletContext对象(一个web应用创建一个ServletContext)* 销毁:* 服务器关闭的时候.(项目从服务器中移除的时候.)</code></pre><p>ServletContextAttributeListener:监听ServletContext对象的属性变更（attributeAdded,attributeRemoved,attributeReplaced ）</p><h2 id="HttpSessionListener监听器的使用"><a href="#HttpSessionListener监听器的使用" class="headerlink" title="HttpSessionListener监听器的使用"></a>HttpSessionListener监听器的使用</h2><p>HttpSessionAttributeListener:监听HttpSession中的属性变更<br><strong>重点（面试）</strong><br>    【HttpSession何时创建和销毁的】</p><pre><code>* 创建:服务器端第一次调用getSession();* 销毁:    * 非正常关闭服务器(正常关闭session会序列化):    * session过期了(默认30分钟)    * 调用session.invalidate();【HttpSession的问题】* 访问Servlet会不会创建Session    : 不会* 访问JSP会不会创建Session        ：会. ??* 访问html会不会创建Session        ：不会</code></pre><h2 id="ServletRequestListener监听器的使用"><a href="#ServletRequestListener监听器的使用" class="headerlink" title="ServletRequestListener监听器的使用"></a>ServletRequestListener监听器的使用</h2><p>ServletRequestAttributeListener：监听ServletRequest对象的属性变更的:<br>【request对象何时创建和销毁】:</p><ul><li>创建：客户端向服务器发送一次请求,服务器就会创建request对象.</li><li>销毁：服务器对这次请求作出响应后就会销毁request对象.</li></ul><ul><li>访问一个Servlet会不会创建request对象:会</li><li>访问一个JSP会不会创建request对象：会</li><li>访问一个HTML会不会创建request对象:会</li></ul><p><em>*三类八种</em><br>    监听器(3类8种)<br>    第一类:监听3个域对象的创建和销毁<br>    ServletContextListener<br>    HttpSessionListener<br>    ServletRequestListener<br>    第二类:监听3个域对象属性的变更(属性添加,移除,替换)<br>    ServletContextAttributeListener<br>    HttpSessionAttributeListener<br>    ServletRequestAttributeListener<br>    第三类: 有点特殊,只监听HttpSession中JavaBean的绑定和解绑,钝化和活化<br>    不需要配置</p><pre><code>Session的钝化实质是对于session的优化手段!!!    长时间不使用的session使其序列化.手动配置Session序列化:    * 手动配置Session的序列化通过标签&lt;Context&gt;标签.    * tomcat/conf/context.xml:代表所有的虚拟主机和所有虚拟路径按照这个配置来执行.    * tomcat/conf/Catalina/localhost/context.xml:代表所有localhost虚拟主机下的所有的项目都可以按照这个配置来执行.    * 工程META-INF/context.xml:代表只有当前的工程按照这个配置执行.    * 在context.xml中进行配置:    &lt;Context&gt;    &lt;!--         maxIdleSwap    :1.代表如果session一分钟没有使用的话,将session序列化到硬盘.        directory    :itcast. 将session序列化后,序列化文件保存在itcast的路径中.     --&gt;    &lt;Manager className=&quot;org.apache.catalina.session.PersistentManager&quot;        maxIdleSwap=&quot;1&quot;&gt;        &lt;Store className=&quot;org.apache.catalina.session.FileStore&quot;            directory=&quot;itcast&quot; /&gt;    &lt;/Manager&gt;&lt;/Context&gt;</code></pre><p><strong>总结</strong><br>第三类监听器,很特殊,1.只监听HttpSession, 2.不需要在web.XML中配置<br>1.HttpSessionBingingListerner 监听  某个Bean绑定到session和解除绑定<br>2.HttpSessionActivationListener 监听 某个Bean 钝化和活化<br>3.手动配置session钝化和活化</p><h3 id="Filter的概述"><a href="#Filter的概述" class="headerlink" title="Filter的概述"></a>Filter的概述</h3><p>过滤器:Filter. 对客户端向服务器发送的请求进行过滤</p><p><img src="" alt="Filter过滤原理">;</p><h3 id="FilterChain对象的概述"><a href="#FilterChain对象的概述" class="headerlink" title="FilterChain对象的概述"></a>FilterChain对象的概述</h3><p>FilterChain称为过滤器链，web应用中可以存在很多个Filter过滤器，多个Filter过滤器组合起来就是一个过滤器链，受同一个FilterChain管理。</p><p>过滤链中的Filter过滤器拦截是有先后顺序的，这个顺序取决于Filter在web.xml中<filter-mapping>的位置。<br><img src="" alt="FilterChain原理">;</filter-mapping></p><blockquote><p>注意:<br>过滤器的执行的顺序与<filter-mapping>的配置顺序有关.</filter-mapping></p></blockquote><h3 id="Filter的生命周期（了解）"><a href="#Filter的生命周期（了解）" class="headerlink" title="Filter的生命周期（了解）"></a>Filter的生命周期（了解）</h3><blockquote><p>过滤器的创建和销毁:</p><ul><li>创建:服务器启动的时候.</li><li>销毁:服务器关闭的时候.</li></ul></blockquote><h3 id="FilterConfig对象的概述-了解"><a href="#FilterConfig对象的概述-了解" class="headerlink" title="FilterConfig对象的概述(了解)"></a>FilterConfig对象的概述(了解)</h3><blockquote><p>增强一个类的方法<br>通过上面的分析，现在增强request的getParameter的方法。增强的过程要写在过滤器中。<br>如何增强一个类中的方法？<br>继承<br>必须要能够控制这个类的构造。<br>装饰者<br>被增强的类和增强的类需要实现相同的接口。<br>在增强的类中获得被增强的类的引用。<br>缺点：接口中的方法过多，重写很多其他的方法。<br>动态代理<br>类需要实现接口。</p></blockquote>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;监听器的概述&quot;&gt;&lt;a href=&quot;#监听器的概述&quot; class=&quot;headerlink&quot; title=&quot;监听器的概述&quot;&gt;&lt;/a&gt;监听器的概述&lt;/h1&gt;&lt;p&gt;监听器就是一个实现了特定接口的Java类，这个Java类用于监听另一个Java类的方法调用或者属性的改变。当
-      
-    
-    </summary>
-    
-      <category term="技术文章" scheme="http://HackerFreedom.github.io/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/"/>
-    
-    
-      <category term="Listener" scheme="http://HackerFreedom.github.io/tags/Listener/"/>
-    
-  </entry>
-  
-  <entry>
-    <title></title>
-    <link href="http://HackerFreedom.github.io/2018/01/22/suibi/"/>
-    <id>http://HackerFreedom.github.io/2018/01/22/suibi/</id>
-    <published>2018-01-22T03:20:18.874Z</published>
-    <updated>2018-01-27T01:15:54.676Z</updated>
-    
-    <content type="html"><![CDATA[<hr><p>title: “File”<br>categories: 随笔<br>date: 2018-01-21 19:15:39</p><h2 id="tags-“文件上传和下载”"><a href="#tags-“文件上传和下载”" class="headerlink" title="tags: “文件上传和下载”"></a>tags: “文件上传和下载”</h2>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;hr&gt;
-&lt;p&gt;title: “File”&lt;br&gt;categories: 随笔&lt;br&gt;date: 2018-01-21 19:15:39&lt;/p&gt;
-&lt;h2 id=&quot;tags-“文件上传和下载”&quot;&gt;&lt;a href=&quot;#tags-“文件上传和下载”&quot; class=&quot;headerlink
-      
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>文件上传和下载</title>
-    <link href="http://HackerFreedom.github.io/2018/01/21/FileUploadAndDownLoad/"/>
-    <id>http://HackerFreedom.github.io/2018/01/21/FileUploadAndDownLoad/</id>
-    <published>2018-01-21T11:15:39.000Z</published>
-    <updated>2018-01-27T01:13:16.529Z</updated>
-    
-    <content type="html"><![CDATA[<p>#文件上传的概述  #</p><ul><li>什么是文件上传<br>  文件上传：将客户端的文件通过流写入到服务器中</li><li>文件上传的技术<br>  SPSmartUpload    ：应用在JSP上的文件上传和下载的组件。<br>  FileUpload        ：应用在Java环境上的文件上传的功能。<br>  Servlet3.0            ：提供文件上传的功能<br>  Struts2            ：提供文件上传的功能</li><li>文件上传的要素<br>  表单的提交的方式需要是POST<br>  表单中需要有’<input type="”file”">‘元素，需要有name属性和值。<br>  表单enctype=”multipart/form-data”</li></ul><p><strong>总结:<br>设置了form 表单的enctype属性为multipart/form-data<br>请求体中,才会有文件的内容</strong></p><h1 id="文件上传的入门案例"><a href="#文件上传的入门案例" class="headerlink" title="文件上传的入门案例"></a>文件上传的入门案例</h1><blockquote><p>文件上传的原理:()<br>form设置了enctype=”multipart/form-data” 请求体中才有文件的内容.否则没有文件内容;<br>步骤:<br>1.获取请求头中的分割线<br>2.获取请求体中的所有内容(request.getIntstream())<br>3.通过分割线对内容进行分割,得到每个部分<br>4.判断每个部分(文件上传项或普通项)</p><p>文件上传3要素:<br>2.post提交<br>3.input type=file name=”info”<br>4.form enctype=”multipart/form-data”</p><p>1.创建工厂(磁盘文件项)<br>2.创建Servlet文件上传对象<br>3.解析request,得到List集合<br>4.遍历集合,判断每个项目是普通项还是文件上传项</p></blockquote><h2 id="文件上传的api之DiskFileItemFactory"><a href="#文件上传的api之DiskFileItemFactory" class="headerlink" title="文件上传的api之DiskFileItemFactory"></a>文件上传的api之DiskFileItemFactory</h2><p> <em>DiskFileItemFactory是创建FileItem对象的工厂，这个工厂类的常用方法：</em></p><p>public void setSizeThreshold（int sizeThreshold）：设置内存缓冲区的大小，默认值*为10K。当上传文件大于缓冲区大小时，fileupload组件将使用临时文件缓存上传文件。</p><p>public void setRepository（java.io.File repository）：指定临时文件目录，默认值为System.getProperty（“java.io.tmpdir”）。</p><p>public DiskFileItemFactory（int sizeThreshold，java.io.File repository）：构造函数</p><p><strong>API 的使用的代码</strong></p><p><img src="/2018/01/21/FileUploadAndDownLoad/api.png" alt="Api">;</p><h2 id="文件上传的API之SERVLETFILEUPLOAD"><a href="#文件上传的API之SERVLETFILEUPLOAD" class="headerlink" title="文件上传的API之SERVLETFILEUPLOAD"></a>文件上传的API之SERVLETFILEUPLOAD</h2><p>ServletFileUpload负责处理上传的文件数据，并将表单中的每个输入项封装成一个FileItem对象中。常用方法有：</p><ul><li><p>boolean isMultipartContent（HttpServletRequest request）：判断上传表单是否为multipart / form-data类型</p></li><li><p>列表parseRequest（HttpServletRequest请求）：解析请求对象，并把表单中的每一个输入项包装成一个fileItem对象，并返回一个保存了所有FileItem的列表集合。</p></li><li><p>setFileSizeMax（long fileSizeMax）：设置上传文件的最大值</p><p>  setSizeMax（long sizeMax）：设置上传文件总量的最大值</p><p>  setHeaderEncoding（java.lang.String encoding）：设置编码格式</p><p>  setProgressListener（ProgressListener pListener）</p></li></ul><p><img src="/2018/01/21/FileUploadAndDownLoad/servlet.png" alt="servlet">;</p><h2 id="文件上传的API之FileItem’"><a href="#文件上传的API之FileItem’" class="headerlink" title="文件上传的API之FileItem’"></a>文件上传的API之FileItem’</h2><blockquote><p>1.boolean  isFormField()。isFormField方法用来判断FileItem对象里面封装的数据是一个普通文本表单字段，还是一个文件表单字段。如果是普通文本表单字段，返回一个true否则返回一个false。因此可以用该方法判断是否是普通表单域还是文件上传表单域。</p><p>  2.String getName（）。getName方法用来获得文件上传字段中的文件名。</p><p>  3.String getFieldName（）。getFieldName方法用来返回表单标签的name属性的值。</p><p>  4.void write(File file)。write方法将FileItem对象中的内容保存到某个指定的文件中。如果FileItem对象中的内容是保存在某个临时文件中，该方法完成后，临时文件可以会被删除。该方法也可以将普通表单字段保存在一个文件中，但最主要的用途是把上传的文件内容保存在本地文件系统中。</p><p>  5.String getString（）。getString（）方法将FileItem对象中保存的数据流内容以一个字符串返回。它有两个重载形式。public java.lang.String getString()和public java.lang.String getString(java.lang.String encodeing) throws java.io.UnsupportedEncodingException。前者使用缺省的字符集编码将主体内容转换成字符串，后者使用参数指定的字符集编码。如果在读取普通表单字段元素的内容时，出现了乱码现象，可以调用第二个方法，并传入 正确的字符集编码名称。</p><p>  6.String getContentType()。此方法用来获得上传文件的类型，即标段字段元素描述头属性“content-type”的值，如image/jpeg。如果FileItem对象对应的是普通的表单字段，将返回null。</p><p>  7.boolean isInMemory()。判断FileItem对象封装的数据是保存在内存中还是硬盘中。</p><p>  8.void  delete（）。此方法用来清空FileItem对象中封装的主体内容，如果内容是被保存在临时文件中，该方法会把临时文件删除。</p><p>  9.InputStream  getInputStream()。以流的形式返回上传文件的主体内容。</p><p>  10.long  getSize()。返回上传文件的大小。</p></blockquote><hr><h3 id="文件上传兼容浏览器问题及解决"><a href="#文件上传兼容浏览器问题及解决" class="headerlink" title="文件上传兼容浏览器问题及解决"></a>文件上传兼容浏览器问题及解决</h3><blockquote><p>如果使用IE老版本的浏览器出现一个文件名称获取错误问题。IE老版本获取文件名称的时候，会带有路径。<br><img src="/2018/01/21/FileUploadAndDownLoad/IE.png" alt="IE">;</p></blockquote><h3 id="文件上传同一个目录下文件同名的问题及解决"><a href="#文件上传同一个目录下文件同名的问题及解决" class="headerlink" title="文件上传同一个目录下文件同名的问题及解决"></a>文件上传同一个目录下文件同名的问题及解决</h3><p>张三向服务器上传了一个文件aa.txt内容是hello world。李四向服务器上传了一个文件aa.txt内容hello Java。后上传的文件将先上传的文件覆盖了。</p><p>使用UUID对象随机生成一个字符串，然后使用这个字符串+后缀名最为文件的文件名。</p><p><img src="/2018/01/21/FileUploadAndDownLoad/UUID.png" alt="UUID">;</p><h3 id="文件上传同一个目录下文件过多的问题及解决"><a href="#文件上传同一个目录下文件过多的问题及解决" class="headerlink" title="文件上传同一个目录下文件过多的问题及解决"></a>文件上传同一个目录下文件过多的问题及解决</h3><p>按目录分离算法    ：按照某种特定算法进行分离。<br>上传一个文件，得到一个唯一的文件名。<br>唯一文件名获取其hashCode值。—–int类型的值（32位）<br>让hashCode的值 &amp; 0xf;—–得出的这个值作为一级目录。<br>让hashCode右移4位  &amp; 0xf;—-得出的这个值作为二级目录。<br>以此类推。<br><img src="/2018/01/21/FileUploadAndDownLoad/file.png" alt="file"><br><img src="/2018/01/21/FileUploadAndDownLoad/file2.png" alt="file2"></p><h4 id="文件下载概述"><a href="#文件下载概述" class="headerlink" title="文件下载概述"></a>文件下载概述</h4><p>【方式一】：通过超链接下载：<a href="”资源路径”"></a><br>                缺点：如果浏览器支持显示这种数据格式就不会提示下载了。</p><p>【方式二】：通过代码的方式实现文件下载：<br>                主要是要设置两个头，并且使用response对象的getOutputStream()获取输出流向客户端写数据。</p><p>Content-Type                :文件的MIME的类型<br>Content-Disposition        :浏览器支持该格式的文件，提示下载<br>输入流<br>总结<br><strong>2个头,一个流</strong></p><hr><p>下载会出现的中文乱码的问题集<br>    下载中文文件，由于不同的浏览器在下载文件的显示文件名的编码码表不一样，导致要下载的文件名显示不出来。我们可以通过request请求获取User-Agent请求头判断用户使用的是什么浏览器，然后用对应的编码就行了。<br><img src="/2018/01/21/FileUploadAndDownLoad/Agent.png" alt="Agent">;<br><img src="/2018/01/21/FileUploadAndDownLoad/Agent1.png" alt="Agent1"></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;#文件上传的概述  #&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;什么是文件上传&lt;br&gt;  文件上传：将客户端的文件通过流写入到服务器中&lt;/li&gt;
-&lt;li&gt;文件上传的技术&lt;br&gt;  SPSmartUpload    ：应用在JSP上的文件上传和下载的组件。&lt;br&gt;  FileUpload 
-      
-    
-    </summary>
-    
-      <category term="技术文章" scheme="http://HackerFreedom.github.io/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/"/>
-    
-    
-      <category term="文件上传和下载" scheme="http://HackerFreedom.github.io/tags/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E5%92%8C%E4%B8%8B%E8%BD%BD/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Redis概述</title>
-    <link href="http://HackerFreedom.github.io/2018/01/20/Redis/"/>
-    <id>http://HackerFreedom.github.io/2018/01/20/Redis/</id>
-    <published>2018-01-20T11:14:03.000Z</published>
-    <updated>2018-01-28T00:51:11.041Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="Redis介绍"><a href="#Redis介绍" class="headerlink" title="Redis介绍"></a>Redis介绍</h1><p><em>edis是一个开源的使用ANSI C语言编写、支持网络、可基于内存亦可持久化的日志型、Key-Value数据库，并提供多种语言的API。**</em>Redis是 NoSQL技术阵营中的一员，它通过多种键值数据类型来适应不同场景下的存储需求，借助一些高层级的接口使用其可以胜任，如缓存、队列系统的不同角色*</p><h1 id="Redis特性"><a href="#Redis特性" class="headerlink" title="Redis特性"></a>Redis特性</h1><ul><li>Redis 与其他 key - value 缓存产品有以下三个特点：</li><li>Redis支持数据的持久化，可以将内存中的数据保存在磁盘中，重启的时候可以再次加载进行使用。</li><li>Redis不仅仅支持简单的key-value类型的数据，同时还提供list，set，zset，hash等数据结构的存储。</li><li>Redis支持数据的备份，即master-slave模式的数据备份<br>  1、速度快<br>  Redis是用C语言实现的；<br>  Redis的所有数据存储在内存中。<br>  2、持久化<br>  Redis的所有数据存储在内存中，对数据的更新将异步地保存到磁盘上。<br>  3、支持多种数据结构<br>  Redis支持五种数据结构：String、List、Set、Hash、Zset<br>  4、支持多种编程语言<br>  Java、php、Python、Ruby、Lua、Node.js<br>  5、功能丰富<br>  除了支持五种数据结构之外，还支持事务、流水线、发布/订阅、消息队列等功能。<br>  6、源码简单<br>  约23000行C语言源代码。<br>  7、主从复制<br>  主服务器（master）执行添加、修改、删除，从服务器执行查询。<br>  8、高可用及分布式<br>  Redis-Sentinel（v2.8）支持高可用<br>  Redis-Cluster（v3.0）支持分布式</li></ul><blockquote><p>什么是高可用？<br>   一台服务器挂掉会有另一台服务器立马顶上，Redis-Sentinel监听所有的监听所有的Redis主从服务器，<br>   一旦发现主服务器挂掉了，他会从若干服务器中选择一台新的机器作为master，其他从服务器会成为这台新master的从服务器。</p><p>什么是分布式？<br>在一台物理计算机上，把数据A放到数据库D1，把数据B放到数据库D2，把数据C放到数据库D3属于分布式，但由于数据库的访问连接池是有限的，所以这种分布式解决方案存在性能瓶颈；<br>把数据A放到计算机C1的数据库D1，把数据B放到计算机C1的数据库D2，把数据C放到计算机C3的数据库D3也属于分布式，这种分布式解决方案扩展性好，如果系统增加了新业务X，X产生的数据Y可以放到计算机C4的数据库D4中，理论上来说这种方式可以无限扩展，从而保证系统的性能最大化。<br>存在瓶颈且价格较高的高性能单台服务器-&gt;可无限扩展的分布式集群</p></blockquote><pre><code>Redis可执行文件说明： redis-server.exe　　　　 Redis服务 redis-cli.exe　　　　　　Redis命令行客户端 redis-benchmark.exe　　Redis性能测试工具 redis-check-aof.exe　　 AOF文件修复工具 redis-check-dump.exe　RDB文件检测工具 redis-sentinel.exe　　　 Sentinel服务器（2.8以后）</code></pre><p>##Redis常用的五种数据类型  ##<br><strong>String</strong><br>    是最常用的一种数据类型，普通的key/value存储都可以归为此类。</p><pre><code>一个Key对应一个Value，string类型是二进制安全的。Redis的string可以包含任何数据，比如jpg图片(生成二进制)或者序列化的对象。</code></pre><p><strong>Hash(Key-Value)</strong><br>    hash是一个string 类型的field和value的映射表。</p><pre><code>hash特别适合存储对象。相对于将对象的每个字段存成单个string 类型。一个对象存储在hash类型中会占用更少的内存，并且可以更方便的存取整个对象。Redis的Hash数据类型的value内部是一个HashMap,如果该Map的成员比较少，则会采用一维数组的方式</code></pre><ul><li>采用String类型的存储对象，需要将对象进行序列化。<br><img src="/2018/01/20/Redis/redis01.jpg" alt="Redis"></li><li>增加了序列化/反序列化的开销，并且在需要修改其中一项信息时，需要把整个对象取回</li><li>使用Hash数据类型则不需要</li><li>Key仍然是用户ID, value是一个Map，这个Map的key是成员的属性名，value是属性值，这样对数据的修改和存取都可以直接通过其内部Map的Key(Redis里称内部Map的key为field), 也就是通过 key(用户ID) + field(属性标签) 就可以操作对应属性数据了，既不需要重复存储数据，也不会带来序列化和反序列化。</li></ul><p><strong>List</strong><br>    list是一个链表结构，主要功能是push, pop, 获取一个范围的所有的值等。操作中key理解为链表名字。</p><pre><code>Redis的list类型其实就是一个每个子元素都是string类型的双向链表。我们可以通过push,pop操作从链表的头部或者尾部添加删除元素，这样list既可以作为栈，又可以作为队列（栈就是insertFirst+deleteFirst，队列就是insertLast+deleteFirst）。可以支持反向查找和遍历，方便操作，不过带来了部分额外的内存开销。Redis内部的很多实现，包括发送缓冲队列等也都是用的这个数据结构</code></pre><ul><li><p><strong>Set</strong><br>  它是string类型的无序集合。set是通过hash table实现的，可以进行添加、删除和查找。<br>  对集合我们可以取并集，交集，差集.</p><p>  集合可以进行 交集、并集 如新浪微博中获取两个用户共同的关注人</p><p>  新浪微博使用redis有两种应用场景：</p><ol><li><p>直接把数据放到redis中进行存储，这些数据是独立的</p></li><li><p>有些数据包含表与表之间的逻辑关系，这些数据又访问比较频繁，<br> 如果直接从数据库中进行查询性能比较差。<br> 先将数据写到redis中，再将数据保存到mysql数据库</p></li></ol></li><li><p><strong>zset</strong></p><p>Redis sorted set的使用场景与set类似，<br>区别是set不是自动有序的，<br>而sorted set可以通过用户额外提供一个优先级(score)的参数来为成员排序，<br>并且是插入有序的，即自动排序。</p><p>可以理解为一列存 value,一列存顺序。操作中key理解为zset的名字.</p><p>当你需要一个有序的并且不重复的集合列表，那么可以选择sorted set数据结构</p></li></ul>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;Redis介绍&quot;&gt;&lt;a href=&quot;#Redis介绍&quot; class=&quot;headerlink&quot; title=&quot;Redis介绍&quot;&gt;&lt;/a&gt;Redis介绍&lt;/h1&gt;&lt;p&gt;&lt;em&gt;edis是一个开源的使用ANSI C语言编写、支持网络、可基于内存亦可持久化的日志型、Key
-      
-    
-    </summary>
-    
-      <category term="技术文章" scheme="http://HackerFreedom.github.io/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/"/>
-    
-    
-      <category term="redis基本知识" scheme="http://HackerFreedom.github.io/tags/redis%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>linux基本使用</title>
-    <link href="http://HackerFreedom.github.io/2018/01/20/linux/"/>
-    <id>http://HackerFreedom.github.io/2018/01/20/linux/</id>
-    <published>2018-01-20T11:14:03.000Z</published>
-    <updated>2018-01-20T11:14:28.949Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="linux常用命令"><a href="#linux常用命令" class="headerlink" title="linux常用命令"></a>linux常用命令</h1><pre><code>cd app    切换到app目录cd ..        切换到上一层目录cd /        切换到系统根目录cd ~        切换到用户主目录cd -        切换到上一个所在目录</code></pre><ul><li><strong>ls ll 列出文件列表**</strong><br>ls(list)是一个非常有用的命令，用来显示当前目录下的内容。配合参数的使用，能以不同的方式显示目录内容。<br>  ls -a  显示所有文件或目录（包含隐藏的文件）<ul><li>ls -l  缩写成ll<br>在linux中以 . 开头的文件都是隐藏的文件</li></ul></li></ul><ul><li><p>创建于删除目录<br>  mkdir(make directory)命令可用来创建子目录。<br>  mkdir app    在当前目录下创建app目录<br>  mkdir –p app2/test  多 级联创建aap2以及test目</p><p>  rmdir(remove directory)命令可用来删除“空”的子目录：<br>  rmdir app    删除app目录<br>  rm -rf   删除</p></li><li>浏览文件<br>  cat命令   输入文件夹来浏览文件<br>  tail 命令     tail -f catalina.log    动态查看日志(<strong>*</strong>) </li><li>文件操作<br>  cp是copy操作<br>  cp(copy)命令可以将文件从一处复制到另一处。一般在使用cp命令时将一个文件复制成另一个文件或复制到某目录时，需要指定源文件名与目标文件名或目录</li><li><p>打包压缩和解压<br>  <em>tar命令位于/bin目录下，它能够将用户所指定的文件或目录打包成一个文件，但不做压缩。一般Linux上常用的压缩方式是选用tar将许多文件打包成一个文件，再以gzip压缩命令压缩成xxx.tar.gz(或称为xxx.tgz)的文件。</em></p><p>  常用参数：<br>  -c：创建一个新tar文件<br>  -v：显示运行过程的信息<br>  -f：指定文件名<br>  -z：调用gzip压缩命令进行压缩<br>  -t：查看压缩文件的内容<br>  -x：解开tar文件</p><p>  打包：<br>  tar –cvf xxx.tar ./<em><br>  打包并且压缩：<br>  tar –zcvf xxx.tar.gz ./</em><br><strong>解压 **</strong><br>  tar –xvf xxx.tar<br>  tar -xvf xxx.tar.gz -C /usr/aaa**</p></li><li><p>文件查找<br><em>查找符合条件的文件find</em><br>  find / -name “ins<em>” 查找文件名称是以ins开头的文件<br>  find / -name “ins</em>” –ls<br>  find / –user itcast –ls 查找用户itcast的文件<br>  find / –user itcast –type d –ls 查找用户itcast的目录<br>  find /-perm -777 –type d-ls 查找权限是777的文件<br>查找文件里符合条件的字符串。<br><em>查找文件中符合条件的字符串grep</em><br>  grep lang anaconda-ks.cfg  在文件中查找lang</p></li><li><p>其它常用命令</p></li><li><strong>pwd</strong><br>  显示当前所在目录</li><li>touch<br>   创建一个空文件</li><li>ll -h<br>  友好显示文件大小</li><li><p>weget<br>  下载资料<br>   <em>wget <a href="http://nginx.org/download/nginx-1.9.12.tar.gz" target="_blank" rel="noopener">http://nginx.org/download/nginx-1.9.12.tar.gz</a></em></p><h2 id="VI与VIM编辑器-（基本的CRUD）"><a href="#VI与VIM编辑器-（基本的CRUD）" class="headerlink" title="VI与VIM编辑器 ##（基本的CRUD）"></a>VI与VIM编辑器 ##（基本的CRUD）</h2><p><strong>有三种模式 命令行  插入  底行</strong><br>  通过  vi（vim） 文件名  就可以对文件进行操作<br>  当操作时，开始是命令行模式   按I  o  a 切换到插入模式<br>  按esc 可以在重新切换到命令行模式<br><strong>在命令行模式下按 “:” 就可以切换到底行模式。</strong><br>  退出：esc  :q<br>  修改文件：输入i进入插入模式<br>  保存并退出：esc:wq</p><p>  不保存退出：esc:q!</p><p>  三种进入插入模式：<br>  i:在当前的光标所在处插入<br>  o:在当前光标所在的行的下一行插入<br>  a:在光标所在的下一个字符插入</p></li></ul><p><strong>快捷键：<br>dd – 快速删除一行<br>yy - 复制当前行<br>nyy - 从当前行向后复制几行<br>p - 粘贴<br>R – 替换*</strong>重定向<em>*</em>重定向输出，覆盖原有内容<em></em>重定向输出，又追加功能*<br>    cat /etc/passwd &gt; a.txt  将输出定向到a.txt中<br>    cat /etc/passwd &gt;&gt; a.txt  输出并且追加</p><pre><code>ifconfig &gt; ifconfig.txt</code></pre><p><strong>管道</strong><br><em>管道是Linux命令中重要的一个概念，其作用是将一个命令的输出用作另一个命令的输入。</em><br>    ls –help | more  分页查询帮助信息<br>    ps –ef | grep java  查询名称中包含java的进程</p><pre><code>ifconfig | morecat index.html | moreps –ef | grep aio</code></pre><p><strong>系统常用命令</strong></p><pre><code>date 显示或设置系统时间date  显示当前系统时间date -s “2014-01-01 10:10:10“  设置系统时间df 显示磁盘信息df –h  友好显示大小free 显示内存状态free –m 以mb单位显示内存组昂头top 显示，管理执行中的程序clear 清屏幕ps 正在运行的某个进程的状态ps –ef  查看所有进程ps –ef | grep ssh 查找某一进程kill 杀掉某一进程kill 2868  杀掉2868编号的进程kill -9 2868  强制杀死进程du 显示目录或文件的大小。du –h 显示当前目录的大小who 显示目前登入系统的用户信息。uname 显示系统信息。uname -a 显示本机详细信息。依次为：内核名称(类别)，主机名，内核版本号，内核版本，内核编译日期，硬件名，处理器类型，硬件平台类型，操作系统名称</code></pre><p><strong>2018/1/20 19:14:21 </strong></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;linux常用命令&quot;&gt;&lt;a href=&quot;#linux常用命令&quot; class=&quot;headerlink&quot; title=&quot;linux常用命令&quot;&gt;&lt;/a&gt;linux常用命令&lt;/h1&gt;&lt;pre&gt;&lt;code&gt;cd app    切换到app目录
-cd ..        切换
-      
-    
-    </summary>
-    
-      <category term="技术文章" scheme="http://HackerFreedom.github.io/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/"/>
-    
-    
-      <category term="shell基本命令" scheme="http://HackerFreedom.github.io/tags/shell%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>JQueryAjax知识点</title>
-    <link href="http://HackerFreedom.github.io/2018/01/19/Ajax/"/>
-    <id>http://HackerFreedom.github.io/2018/01/19/Ajax/</id>
-    <published>2018-01-19T09:33:03.000Z</published>
-    <updated>2018-01-22T04:00:22.517Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="Jquery第二天"><a href="#Jquery第二天" class="headerlink" title="Jquery第二天"></a>Jquery第二天</h1><h2 id="ajax概述"><a href="#ajax概述" class="headerlink" title="ajax概述"></a>ajax概述</h2><p><em>通过在后台与服务器进行少量数据交换，ajax可以使网页实现异步更新。这意味着可以在不重新加载整个网页的情况下，对网页的某部分进行更新。传统的网页（不使用 ajax）如果需要更新内容，必需重载整个网页面</em><br>    ajax的开发步骤：<br>        【第一步】：创建异步对象(XMLHttpRequest对象)<br>        var xmlHttp = createXmlHttp();<br>        【第二步】：设置监听<br>        【第三步】：设置请求方式,URL<br>        xmlHttp.onreadystatechange = function() {}</p><pre><code>    xmlHttp.open(“GET”,”/web15/ServletDemo1”,true);【第四步】：发送请求xmlHttp.send(null);【第五步】：在回调函数中获取响应数据xmlHttp.onreadystatechange = function(){    if(xmlHttp.readyState == 4){ //         if(xmlHttp.status == 200){ //            alert(xmlHttp.responseText);        }    }}</code></pre><h2 id="XMLHttpRequest对象详解-重点"><a href="#XMLHttpRequest对象详解-重点" class="headerlink" title="XMLHttpRequest对象详解(重点)"></a>XMLHttpRequest对象详解(重点)</h2><ol><li>XMLHttpRequest对象的常用属性：<br>readyState属性：HTTP 请求的状态.当一个 XMLHttpRequest 初次创建时，这个属性的值从 0 开始，直到接收到完整的 HTTP 响应，这个值增加到 4。</li><li><p>status属性：由服务器返回的 HTTP 状态代码，如 200 表示成功，而 404 表示 “Not Found” 错误。当 readyState 小于 3 的时候读取这一属性会导致一个异常。</p></li><li><p>onreadystatechange事件：每次 readyState 属性改变的时候调用的事件句柄函数。</p><h2 id="XMLHttpRequest常用方法"><a href="#XMLHttpRequest常用方法" class="headerlink" title="XMLHttpRequest常用方法"></a>XMLHttpRequest常用方法</h2></li><li>open它是用于设置请求方式，url及是否异步<br>参数1：HTTP 请求方式  POST/GET。<br>参数2:url路径<br>参数3:true/false 代表是否异步</li><li><p>send它是真正向服务器发送请求<br>如果请求方式是get，那么我们使用send(null) 原因:get请求方式是没有http请求体<br>只有post请求方式时，才有请求体,所以send的参数只是在post请求时使用例如<br>Xmlhttp.send(“username=xxx&amp;password=xxx”);</p></li><li><p>setRequestHeader<br>注意：如果请求方式是POST,那么我们在使用时，必须设置一个请求头，就需要使用setRequestHeader方法来完成</p><h3 id="jquery的ajax开发-load介绍"><a href="#jquery的ajax开发-load介绍" class="headerlink" title="jquery的ajax开发-load介绍"></a>jquery的ajax开发-load介绍</h3><p><strong>load（）方法的调用：想要把结果插入到哪个元素中，就使用这个元素的jQuery对象调用load方法。也就是说，load方法发送请求是直接将结果插入到dom元素中。<br>当有参数传递给服务器时就是post请求，没有参数传递就是get请求。</strong></p><h3 id="jquery的ajax开发-post与-get介绍-重点"><a href="#jquery的ajax开发-post与-get介绍-重点" class="headerlink" title="jquery的ajax开发-$.post与$.get介绍(重点)"></a>jquery的ajax开发-$.post与$.get介绍(重点)</h3><p> $.get与$.post他们针对于 get和post请求<br> URL：发送请求地址<br> data：待发送的key/value参数<br> callback：发送成功时回调函数<br> type：放回内容格式xml.html ,sctipt, json ,text, _default</p></li></ol><h4 id="json介绍"><a href="#json介绍" class="headerlink" title="json介绍"></a>json介绍</h4><p><em>JSON(JavaScript Object Notation, JS 对象标记) 是一种轻量级的数据交换格式，说白了就是客户端与服务器之间传递的数据格式（json、xml…）。</em></p><h4 id="fastjson使用介绍"><a href="#fastjson使用介绍" class="headerlink" title="fastjson使用介绍"></a>fastjson使用介绍</h4><p><em>fastjson是阿里公司为我们提供的一个解析和封装json数据的开源类库。也就是说使用fastjson一定要导入相关的jar包。同时还有其它许多类似的开源类库。</em><br><strong>对于json处理插件有 fastjson  jsonlib  flexjson jackson</strong><br><strong>注意：JSONObject.toJSONString（Object object）；传入的是Object 。</strong><br><strong>如果java对象中存在日期类型属性java.util.Date,是否可以用指定的格式来转换成json。</strong><br><strong>简单方式(保留想要的属性) SerializeFilter filter =new SimplePropertyPreFiler(“”,””)将需要的属性指定</strong></p><h2 id="关于fastjson将java对象转换成json时的循环引用问题-通过SerializerFeature-DisableCirularReferenceDetect"><a href="#关于fastjson将java对象转换成json时的循环引用问题-通过SerializerFeature-DisableCirularReferenceDetect" class="headerlink" title="关于fastjson将java对象转换成json时的循环引用问题? 通过SerializerFeature.DisableCirularReferenceDetect"></a><strong>关于fastjson将java对象转换成json时的循环引用问题? 通过SerializerFeature.DisableCirularReferenceDetect</strong></h2>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;Jquery第二天&quot;&gt;&lt;a href=&quot;#Jquery第二天&quot; class=&quot;headerlink&quot; title=&quot;Jquery第二天&quot;&gt;&lt;/a&gt;Jquery第二天&lt;/h1&gt;&lt;h2 id=&quot;ajax概述&quot;&gt;&lt;a href=&quot;#ajax概述&quot; class=&quot;head
-      
-    
-    </summary>
-    
-      <category term="技术文章" scheme="http://HackerFreedom.github.io/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/"/>
-    
-    
-      <category term="JQueryAjax" scheme="http://HackerFreedom.github.io/tags/JQueryAjax/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>JQuery知识点</title>
-    <link href="http://HackerFreedom.github.io/2018/01/19/Jquery/"/>
-    <id>http://HackerFreedom.github.io/2018/01/19/Jquery/</id>
-    <published>2018-01-19T09:33:03.000Z</published>
-    <updated>2018-01-20T06:20:43.018Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="jQuery介绍"><a href="#jQuery介绍" class="headerlink" title="jQuery介绍"></a>jQuery介绍</h1><pre><code>我们使用jquery可以更好完成以下操作1.html文档操作，对于dom相关操作优化2.jquery提供更加方便与丰富事件处理3.jquery提供简单动画特效4.jquery提供ajax交互我们知道，要使用任何一个js框架，都是需要导入相关的js文件。关于其它常用js框架:1.dojo 面向对象的js框架2.extjs 学习成本比较高 它提供大量的丰富组件，它效果展示非常好3.prototype 早期比较流行js框架4.angularJS 它是一个mvc js框架，它提供双向数据绑定。。jquery它的插件机制特别丰富,在开发中可以选择非常多的相关插件，例如，表单校验插件，树型结构。。。</code></pre><h2 id="jQuery核心函数"><a href="#jQuery核心函数" class="headerlink" title="jQuery核心函数"></a>jQuery核心函数</h2><pre><code>核心函数介绍1.入口函数：$(function() {                alert(&quot;hello jquery&quot;);    });$表示jQuery对象，不用记完整写法。2.DOM对象转jQuery对象 :   jQuery(html,[ownerDocument])：    $(&quot;&lt;div&gt;Hello&lt;/div&gt;&quot;)  //jquery 对象**图片**</code></pre><p>![“/“]</p><h3 id="jquery选择器-基本选择器-掌握"><a href="#jquery选择器-基本选择器-掌握" class="headerlink" title="jquery选择器-基本选择器(掌握)"></a>jquery选择器-基本选择器(掌握)</h3><p><em>$(“#d1”)、$(“div”)、$(“.d”)、分别是使用id、元素、class获取一个元素的jQuery对象。</em><br><em>$(“.d,#d1”)是获取并集。</em><br>    html() : 无参数代表获取元素中的html代码，如果有参数代表设置元素的html信息<br>    text(): 无参数代表获取元素中的文本信息，如果有参数代表设置元素的文本信息<br>    each(function(index){}):它可以帮助我们遍历元素，可以传递一个函数each(function(n)),n就代表的是每一个元素    的序号，在函数中可以通过this来获取其dom对象<br>    index():获取元素索引值<br>    size():元素的个数</p><pre><code>$(this)this就是js中的当前对象 一定要加$</code></pre><hr><h3 id="jquery选择器-层级选择器-掌握"><a href="#jquery选择器-层级选择器-掌握" class="headerlink" title="jquery选择器-层级选择器(掌握)"></a>jquery选择器-层级选择器(掌握)</h3><pre><code>空格 ：获取某个元素下的所有子元素（包括孙子元素…）大于号&gt;：获取元素的直接子元素加号+：获取第一个兄弟元素波浪线~：获取所有的兄弟元素</code></pre><h3 id="jquery过滤器-基本过滤选择器-会查文档"><a href="#jquery过滤器-基本过滤选择器-会查文档" class="headerlink" title="jquery过滤器-基本过滤选择器(会查文档)"></a>jquery过滤器-基本过滤选择器(会查文档)</h3><p><em>过滤选择器的作用：首先是通过基本选择器和层级选择器获取到一部分元素之后，通过过滤选择器进行筛选；</em>过滤选择器一般是以：开头，但是属性过滤选择器是用[属性]包裹属性：*<br>    ：even 匹配所有索引值为偶数的元素，从0开始计数<br>    ：odd  匹配所有索引值为奇数的元素，从0开始计数</p><h3 id="jquery过滤器-内容过滤选择器-了解"><a href="#jquery过滤器-内容过滤选择器-了解" class="headerlink" title="jquery过滤器-内容过滤选择器(了解)"></a>jquery过滤器-内容过滤选择器(了解)</h3><p><em>contains(text):匹配包含指定文本内容的元素</em></p><pre><code>：empty：匹配空元素（没有子元素或者文本的元素）。</code></pre><p>：has(selector)：匹配包含selector所指定的元素的元素；（selector指定的元素可能是子元素或者孙子元素…）<br>    例如：所有包含 p 元素的 div 元素：$(“div:has(p)”)<br>        ：parent：匹配非空元素（含有子元素或者文本的元素），与empty相反<br>    例如：匹配含有子元素或者文本的td元素：$(“td:parent”)</p><p><em>2、通过jQuery给一个元素添加class属性：$(“div”).addClass(“divClass”);</em></p><h3 id="jquery过滤器-可见性过滤选择器-会查文档"><a href="#jquery过滤器-可见性过滤选择器-会查文档" class="headerlink" title="jquery过滤器-可见性过滤选择器(会查文档)"></a>jquery过滤器-可见性过滤选择器(会查文档)</h3><p>可见性选择器主要是来匹配display:none的元素和<input type="”hidden”">的表单元素。<br>    val() 获取元素当前 的值vlaue值<br>    show() 让元素显示出来<br>    hide（） 让元素隐藏起来</p><h3 id="jquery过滤器-属性过滤选择器-建议掌握"><a href="#jquery过滤器-属性过滤选择器-建议掌握" class="headerlink" title="jquery过滤器-属性过滤选择器(建议掌握)"></a>jquery过滤器-属性过滤选择器(建议掌握)</h3><pre><code>^ =匹配开始$ =匹配结尾 * =匹配包含</code></pre><h3 id="jquery过滤器-子元素过滤选择器"><a href="#jquery过滤器-子元素过滤选择器" class="headerlink" title="jquery过滤器-子元素过滤选择器"></a>jquery过滤器-子元素过滤选择器</h3><pre><code>:nth-child  匹配其父元素的第N个子或奇偶数:onlu-child 如果某个元素是父元素中唯一的子元素，那将会被匹配</code></pre><h3 id="jquery过滤器-表单过滤选择器-掌握"><a href="#jquery过滤器-表单过滤选择器-掌握" class="headerlink" title="jquery过滤器-表单过滤选择器(掌握)"></a>jquery过滤器-表单过滤选择器(掌握)</h3><pre><code>方法：” hello”.trim();去掉首位空格或者$.trim(“hello”)也可以</code></pre><p><strong>常用事件</strong><br>        失去焦点事件：blur(function(){});//当失去焦点，会触发传递的function函数；<br>        单击事件：click(function(){});//当单击时，会触发传递的function函数；<br>        提交表单：submit()//提交表单；submit(function(){return false;});//阻止提交表单</p><h3 id="jquery过滤器-表单元素属性过滤选择器"><a href="#jquery过滤器-表单元素属性过滤选择器" class="headerlink" title="jquery过滤器-表单元素属性过滤选择器"></a>jquery过滤器-表单元素属性过滤选择器</h3><p><em>掌握表单的：checked和：selected属性过滤选择器</em></p><pre><code>选择器总结:    基本选择器：#id   .class   element  #id,.class,element组合    层级选择器：父子关系（$(“div #d”)   $(“div&gt;#d”)） 兄弟选择器（$(“div+p”)  $(“div~p”)）    基本过滤选择器：:first    :last      :not(selector)      :even     :odd 内容过滤选择器：:contains(text)   :empty    :has(selector) 属性过滤选择器：[attribute]    [attribute=value]    [attribute*=value]     [attrSel1][attrSel2][attrSelN] 表单元素过滤选择器：:input     :text     :password     :radio     :checkbox     :submit     :button     表单元素属性过滤选择器：:checked    :selected &lt;select name=”” multiple=”multiple”&gt;&lt;/select&gt;</code></pre><p>####jquery文档操作-插入(掌握)  ####<br>    父子关系<br>    $(“select”).append(“<option>研究生</option>”);  //添加儿子到最后<br>    $(“select”).prepend(“<option>学前班</option>”);  //添加儿子到最前面</p><pre><code>兄弟关系$(“&lt;option&gt;本科&lt;/option&gt;”).after(“&lt;option&gt;研究生&lt;/option&gt;”);    //添加兄弟到自己后面$(“&lt;option&gt;小学&lt;/option&gt;”).before(“&lt;option&gt;学前班&lt;/option&gt;”);  //添加个兄弟到自己前面**最常用:append()****</code></pre>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;jQuery介绍&quot;&gt;&lt;a href=&quot;#jQuery介绍&quot; class=&quot;headerlink&quot; title=&quot;jQuery介绍&quot;&gt;&lt;/a&gt;jQuery介绍&lt;/h1&gt;&lt;pre&gt;&lt;code&gt;我们使用jquery可以更好完成以下操作
-1.html文档操作，对于dom相
-      
-    
-    </summary>
-    
-      <category term="技术文章" scheme="http://HackerFreedom.github.io/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/"/>
-    
-    
-      <category term="JQuery" scheme="http://HackerFreedom.github.io/tags/JQuery/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>JQuery知识点</title>
-    <link href="http://HackerFreedom.github.io/2018/01/19/Jsonp/"/>
-    <id>http://HackerFreedom.github.io/2018/01/19/Jsonp/</id>
-    <published>2018-01-19T09:02:37.000Z</published>
-    <updated>2018-01-20T03:11:49.127Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="理解什么是跨域"><a href="#理解什么是跨域" class="headerlink" title="理解什么是跨域"></a>理解什么是跨域</h1><p>  跨域：指的是在当前工程里面访问了不同域或者服务器中的资源，只要是协议、主机名、端口号有一个不一致就属于跨域<br>  JSONP 是json的一种”使用模式,可以解决主浏览器的跨域的数据访问问题。而且jsonp抓到的并不是json，而是JavaScript，<br>  用JavaScript直译器执行而不是json解析器解析<br> <em>解决跨域的问题（基本原理）</em><br>    我们在浏览器端通过ajax跨域向服务器发送请求时，需要在请求参数里面添加dataType:”jsonp”属性，这个时候浏览器会自动向服务器提供一个叫callback的参数，后台需要把json数据使用callback参数值包裹起来生成一个jsonp数据格式发送给页面，就可以跨域访问获取数据了</p><h1 id="jquery中解决跨域问题原理分析"><a href="#jquery中解决跨域问题原理分析" class="headerlink" title="jquery中解决跨域问题原理分析"></a>jquery中解决跨域问题原理分析</h1><pre><code>相当于通过dom操作，创建了script标签，添加src属性，同时传递一个回调函数，我们重写这个回调函数接收参数。</code></pre><p>   <strong>图片</strong>：<img src="/myblog/public/images/bgimg" alt=""> </p><h1 id="原理"><a href="#原理" class="headerlink" title="原理:"></a>原理:</h1><pre><code>$.post(“8081/servletDemo”) 底层XMLHttpRequest(有跨域限制),而script 的SRC是开放的,jquery会自动生成如下代码&lt;script src=&quot;http://其他域/?callback=cb&quot;&lt;/script&gt;和一个函数function cb(json) {    json就可以使用了    再调用我们的回调函数,传入json对象}    当服务器返回: cb(json)  这个cb()函数就会执行</code></pre><h1 id="getJSON解决跨域问题-掌握"><a href="#getJSON解决跨域问题-掌握" class="headerlink" title="$.getJSON解决跨域问题(掌握)"></a>$.getJSON解决跨域问题(掌握)</h1><pre><code>$.getJSON实际上就是$.ajax的简化操作，注意路径后面要拼接一个callback=?浏览器会随机生成一个数来代替?</code></pre><p>   <strong>JSONP解决跨域</strong></p><pre><code>* $.ajax() 最基本的方法，参数很多* $.getJSON() 专门请求跨域 //在服务器设置一个响应头解决跨域* response.setHeader(&quot;Access-Control-Allow-Origin&quot;, &quot;*&quot;);协议、主机名、端口号有一个不一致就属于跨域。</code></pre><h1 id="解决"><a href="#解决" class="headerlink" title="解决:"></a>解决:</h1><pre><code>页面:$.getJSON(url?callback=?,{},function(data){...});后台:String callback = request.getParameter(“callback”);reponse.getWriter().print(callback+ “(” + json + “)”);原理:XMLHttpRequest对象有跨域限制&lt;script src=”http://localhost:8081/web02/serveltDemo1?callback=cb” &gt;&lt;/script&gt;function cb(json) {}&lt;script&gt;cb(json)&lt;/script&gt;</code></pre><h2 id="javaee三层架构介绍"><a href="#javaee三层架构介绍" class="headerlink" title="javaee三层架构介绍"></a>javaee三层架构介绍</h2><p><em>web层</em>: 他主要包含<em>requent，response，session</em>，就是servlet的控制中心的地方<br><em>业务层</em>: service层主要是操作一些逻辑数据，调用dao层来获取需求的数据<br><em>数据交互层</em>: 主要与数据库进行操作，CRUD；</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;理解什么是跨域&quot;&gt;&lt;a href=&quot;#理解什么是跨域&quot; class=&quot;headerlink&quot; title=&quot;理解什么是跨域&quot;&gt;&lt;/a&gt;理解什么是跨域&lt;/h1&gt;&lt;p&gt;  跨域：指的是在当前工程里面访问了不同域或者服务器中的资源，只要是协议、主机名、端口号有一个不一致
-      
-    
-    </summary>
-    
-      <category term="技术文章" scheme="http://HackerFreedom.github.io/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/"/>
-    
-    
-      <category term="JQuery" scheme="http://HackerFreedom.github.io/tags/JQuery/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>MarkDownPad基本使用</title>
-    <link href="http://HackerFreedom.github.io/2018/01/19/year-01-19-Hexo/"/>
-    <id>http://HackerFreedom.github.io/2018/01/19/year-01-19-Hexo/</id>
-    <published>2018-01-18T17:39:59.000Z</published>
-    <updated>2018-02-01T06:06:47.130Z</updated>
-    
-    <content type="html"><![CDATA[<p>标题：</p><h1 id="一级标题"><a href="#一级标题" class="headerlink" title="一级标题"></a>一级标题</h1><h2 id="二级标题"><a href="#二级标题" class="headerlink" title="二级标题"></a>二级标题</h2><h3 id="三级标题"><a href="#三级标题" class="headerlink" title="三级标题"></a>三级标题</h3><h4 id="四级标题"><a href="#四级标题" class="headerlink" title="四级标题"></a>四级标题</h4><h5 id="五级标题"><a href="#五级标题" class="headerlink" title="五级标题"></a>五级标题</h5><blockquote><p>引用</p></blockquote><p>在文本前面添加&gt;</p><blockquote><p>图片与链接</p></blockquote><p>`</p><blockquote><p>图片：<img src="/2018/01/19/year-01-19-Hexo/图片地址" alt="">图片地址可以使本地图片路径，或者图片网址</p></blockquote><p>网址：<a href=""></a><br>`</p><p>粗体与斜体</p><p>粗体：用两个<em>包含一段文本就是粗体。    例：<em>*粗体</em></em></p><p>斜体：用一个<em>包含一段文本就是斜体</em></p><p><em>表格</em></p><table><thead><tr><th>Tables</th><th style="text-align:center">Are</th><th style="text-align:right">Cool</th></tr></thead><tbody><tr><td>col 3 is</td><td style="text-align:center">right-aligned</td><td style="text-align:right">$1600</td></tr><tr><td>col 2 is</td><td style="text-align:center">centered</td><td style="text-align:right">$12</td></tr><tr><td>zebra stripes</td><td style="text-align:center">are neat</td><td style="text-align:right">$1</td></tr></tbody></table><p>生成的表格样式如下：</p><h2 id="TablesAreCool"><a href="#TablesAreCool" class="headerlink" title="TablesAreCool"></a>TablesAreCool</h2><p>col 3 isright-aligned$1600</p><p>col 2 iscentered$12</p><p>zebra stripesare neat$1</p><p>代码框</p><p>只需要用两个  <code>把中间的代码包含起来</code></p><html><br><head><br><title>我的第一个HTML页面</title><br></head><br><body><font color="”red”">早上好</font></body><br></html><pre><code>也可以使用tab键缩进4个空格</code></pre><p>分割线</p><hr><p>分割线的语法只需要加三个-号或*</p><p>建站<br>记录类型选A或CNAME，A记录的记录值就是ip地址，github(官方文档)提供了两个IP地址，192.30.252.153和192.30.252.154，这两个IP地址为github的服务器地址，两个都要填上，解析记录设置两个www和@，线路就默认就行了，CNAME记录值填你的github博客网址。如我的是MSK0379.github.io。<br>这些全部设置完成后，此时你并不能要申请的域名访问你的博客。接着你需要做的是在hexo根目录的source文件夹里创建CNAME文件，不带任何后缀，里面添加你的域名信息，如：activeblog.xin。实践证明如果此时你填写的是www.activeblog.xin那么以后你只能用www.activeblog.xin访问，而如果你填写的是activeblog.xin。那么用www.activeblog.xin和activeblog.xin访问都是可以的。重新清理hexo,并发布即可用新的域名访问</p><p>hexo g  hexo d<br><strong>注意的问题</strong></p><p>绑定了个人域名，但是域名解析错误。<br>域名解析正确但你的域名是通过国内注册商注册的，你的域名因没有实名制而无法访问。</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;标题：&lt;/p&gt;
-&lt;h1 id=&quot;一级标题&quot;&gt;&lt;a href=&quot;#一级标题&quot; class=&quot;headerlink&quot; title=&quot;一级标题&quot;&gt;&lt;/a&gt;一级标题&lt;/h1&gt;&lt;h2 id=&quot;二级标题&quot;&gt;&lt;a href=&quot;#二级标题&quot; class=&quot;headerlink&quot; title
-      
-    
-    </summary>
-    
-      <category term="Hexo教程" scheme="http://HackerFreedom.github.io/categories/Hexo%E6%95%99%E7%A8%8B/"/>
-    
-    
-      <category term="hexo#文章標籤 可以省略" scheme="http://HackerFreedom.github.io/tags/hexo-%E6%96%87%E7%AB%A0%E6%A8%99%E7%B1%A4-%E5%8F%AF%E4%BB%A5%E7%9C%81%E7%95%A5/"/>
+      <category term="三大框架" scheme="http://HackerFreedom.github.io/tags/%E4%B8%89%E5%A4%A7%E6%A1%86%E6%9E%B6/"/>
     
   </entry>
   

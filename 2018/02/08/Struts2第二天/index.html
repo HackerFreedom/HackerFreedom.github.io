@@ -1,0 +1,931 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+<script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+<link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+
+<style>
+    .pace .pace-progress {
+        background: #1E92FB; /*进度条颜色*/
+        height: 3px;
+    }
+    .pace .pace-progress-inner {
+         box-shadow: 0 0 10px #1E92FB, 0 0 5px     #1E92FB; /*阴影颜色*/
+    }
+    .pace .pace-activity {
+        border-top-color: #1E92FB;    /*上边框颜色*/
+        border-left-color: #1E92FB;    /*左边框颜色*/
+    }
+</style>
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Struts2," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="TO BE BTTER ME" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="Struts2中获取Servlet API简单的说，可以在action类中获取requent，response，session   。。。对象HttpServletRequest request = ServletActionContext.getRequest();HttpServletResponse response = ServletActionContext.getResponse();">
+<meta name="keywords" content="Struts2">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Struts2 用法">
+<meta property="og:url" content="http://HackerFreedom.github.io/2018/02/08/Struts2第二天/index.html">
+<meta property="og:site_name" content="TO BE BTTER ME">
+<meta property="og:description" content="Struts2中获取Servlet API简单的说，可以在action类中获取requent，response，session   。。。对象HttpServletRequest request = ServletActionContext.getRequest();HttpServletResponse response = ServletActionContext.getResponse();">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://hackerfreedom.github.io/2018/02/08/Struts2第二天/struts201">
+<meta property="og:updated_time" content="2018-02-27T00:49:25.864Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Struts2 用法">
+<meta name="twitter:description" content="Struts2中获取Servlet API简单的说，可以在action类中获取requent，response，session   。。。对象HttpServletRequest request = ServletActionContext.getRequest();HttpServletResponse response = ServletActionContext.getResponse();">
+<meta name="twitter:image" content="http://hackerfreedom.github.io/2018/02/08/Struts2第二天/struts201">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"right","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://HackerFreedom.github.io/2018/02/08/Struts2第二天/"/>
+
+
+
+
+
+  <title>Struts2 用法 | TO BE BTTER ME</title>
+  
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+  
+  <div class="container sidebar-position-right page-post-detail">
+    <div class="headband"></div>
+  <a href="https://HackerFreedom.github.io"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://camo.githubusercontent.com/567c3a48d796e2fc06ea80409cc9dd82bf714434/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_darkblue_121621.png"></a>
+
+
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">TO BE BTTER ME</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Hacker</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            总章
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user-circle"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-board">
+          <a href="/board" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            留言
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-life">
+          <a href="/life" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-bolt"></i> <br />
+            
+            生活的随笔
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-photo">
+          <a href="/photo" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-camera-retro"></i> <br />
+            
+            相册
+          </a>
+        </li>
+      
+
+      
+   
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://HackerFreedom.github.io/2018/02/08/Struts2第二天/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Sam">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/my.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="TO BE BTTER ME">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Struts2 用法</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-08T22:13:00+08:00">
+                2018-02-08
+              </time>
+            
+
+            
+
+            
+          </span>
+        
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Struts2框架/" itemprop="url" rel="index">
+                    <span itemprop="name">Struts2框架</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="Struts2中获取Servlet-API"><a href="#Struts2中获取Servlet-API" class="headerlink" title="Struts2中获取Servlet API"></a>Struts2中获取Servlet API</h1><p>简单的说，可以在action类中获取requent，response，session   。。。对象<br>HttpServletRequest request = ServletActionContext.getRequest();<br>HttpServletResponse response = ServletActionContext.getResponse();<br>ServletContext servletContext = ServletActionContext.getServletContext();</p>
+<h1 id="OGNL-表达式"><a href="#OGNL-表达式" class="headerlink" title="OGNL 表达式"></a>OGNL 表达式</h1><p>OGNL 是Object-Graph Navigation Language (对象图导航语言） 的缩写，他是一种功能强大的表达式语言，通过它简单一致的表达式语法，可以存取对象的任意属性，调用对象的方法，遍历整个对象的结构图，实现字段类</p>
+<ul>
+<li>OGNL作用：<ol>
+<li>支持对象的操作，调用对象的方法</li>
+<li>支持静态成员访问</li>
+<li>支持赋值操作与表达串联</li>
+<li>访问OGNL上下文，访问ActionContext</li>
+<li>操作集合对象。</li>
+</ol>
+</li>
+</ul>
+<p><strong>OGNL三要素： 表达式   OgnlContext上下文  Root根</strong></p>
+<h2 id="ognal表达式介绍"><a href="#ognal表达式介绍" class="headerlink" title="ognal表达式介绍"></a>ognal表达式介绍</h2><p>在struts2框架中我们使用ognl表达式的作用是从valueStack中获取数据。</p>
+<p>valueStack—-&gt;存放数据；ognl—-&gt;取数据，(类似于之前的request域存数据，el表达式取数据)</p>
+<p>要想在jsp页面上使用ognl表达式，就需要结合struts2框架的标签<br><s:property value="”表达式”">来使用<br><img src="/2018/02/08/Struts2第二天/struts201" alt="">;<br>    <em>引入struts2标签</em><br>    &lt;%@ taglib uri=”/struts-tags” prefix=”s”%&gt;</s:property></p>
+<pre><code>使用ognl表达式获取数据: &lt;s:property value=&quot;username&quot;/&gt;
+</code></pre><h1 id="valueStack值栈"><a href="#valueStack值栈" class="headerlink" title="valueStack值栈"></a>valueStack值栈</h1><p>valueStack的主要目的是为我将我们action中产生的数据携带到页面上，也就是说valueStack它就是一个存储数据的容器。</p>
+<ol>
+<li>valueStack基于ognl,作用是在struts2框架中来存储数据</li>
+<li>浏览器发出请求request——&gt;创建ValueStack对象——-&gt;创建当前访问的Action对象</li>
+</ol>
+<h2 id="valuesStack内部结构的介绍"><a href="#valuesStack内部结构的介绍" class="headerlink" title="valuesStack内部结构的介绍"></a>valuesStack内部结构的介绍</h2><ol>
+<li>valueStack主要有两部分组成:<br>CompoundRoot  root:       就是一个ArrayList<br>Map<string,object> context:  就是一个Map</string,object></li>
+<li>struts2框架向root存放的数据<br>浏览器发出请求request—–&gt;创建当前访问的Action对象—–&gt;将Action对象push到root</li>
+<li>struts2框架向context存放的数据<br>浏览器发出请求request——&gt;创建ValueStack对象之后，向context存放存储了一些引用，这个引用主要是关于web开发中相关信息，如<br>parameters :请求参数<br>request:请求对象中所有属性<br>session:会话对象中所有属性<br>application:ServletContext对象中的所有属性</li>
+</ol>
+<blockquote>
+<p>在struts2框架中我们通过ognl表达式来获取valueStack中数据，没有使用#就会从CompoundRoot中获取数据，如果使用#来获取，这时就会从context中来获取.</p>
+</blockquote>
+<h2 id="valueStack获取"><a href="#valueStack获取" class="headerlink" title="valueStack获取"></a>valueStack获取</h2><p>ValueStack valueStack = ActionContext.getContext().getValueStack();</p>
+<h2 id="valueStack-存储数据-重点）"><a href="#valueStack-存储数据-重点）" class="headerlink" title="valueStack 存储数据 (重点）"></a>valueStack 存储数据 (重点）</h2><p><strong>注意： 我们使用valueStack来存储数据时，主要向root存储</strong></p>
+<ol>
+<li>手动向valueStack存储数据<br>``<br> public String execute （）｛<br> ValueStack stack = ActionContext.getContext().getValueStack();<br> stack.set(“name”, “itheima”);<br> stack.push(“itcast”);<br> return “success”;<br> ｝</li>
+</ol>
+<p>valueStackpush方法,  直接将对象压入到root<br>valueStackset(“key”, “value”)方法,  创建一个Map压入到root，再把数据以健值对<k,v>的形式存放到这个map中</k,v></p>
+<p>``</p>
+<ol>
+<li>struts2框架自动向valueStack中存储数据<ol>
+<li>在框架源码的DefaultActionInvocation类的init方法内:<br> 首先创建了当前访问的Action对象，然后通过stack.push(action)将当前访问的Action对象存放到valueStack的root中，也就是每次请求访问action的时候，都会构造出action对象并将这个action对象存储到valueStack的root(ArrayList)中。</li>
+<li>在浏览器访问action的时候ModelDrivernInterceptor这个拦截器会执行如下代码:<br>``<br>if(action instanceof ModelDrivern) {<pre><code>modelDriven model= (ModelDriven)  action;
+</code></pre> Object model = modelDriven.getModel();<br> if(model !=null) {<pre><code>stack.push(model);
+</code></pre>}<br><em>以上代码会判断当前访问的Action对象有没有实现ModelDriven这个接口，如果实现了这个接口就通过action对象已经实现的通过getModel方法获取模型对象存放到root(ArrayList)中</em></li>
+</ol>
+</li>
+</ol>
+<p>``</p>
+<p>##valueStack中数据获取(重点) ##</p>
+<ol>
+<li><p>获取手动存放的数据<br> public String execute()  {<br> ValueStack stack = ActionContext.getContext().getValueStack();<br> stack.set(“name”, “itheima”);<br> stack.push(“itcast”);<br> return “success”;<br> }</p>
+<p> 在jsp页面中获取以上代码手动存放的数据<br> <s:property value="name"><br> <s:property value="[0]">可以查看整个root结构数据<br> <s:property value="[0].top"><br>获取root顶部的对象<br> <s: debug=""> 视图中可以 查看action的属性</s:></s:property></s:property></s:property></p>
+</li>
+<li><p>获取自动存放的数据<br> public class ValueStackAction1 {<br> private String username = “fox”;<br> public String getUsername() {</p>
+<pre><code>return username;
+</code></pre><p> }<br> public String getPwd() {</p>
+<pre><code>return &quot;123&quot;;
+</code></pre><p> }<br> }</p>
+<p> 在页面中获取以上自动存放的数据，为什么?<br> <s:property value="username"><br> <s:property value="pwd"></s:property></s:property></p>
+</li>
+</ol>
+
+      
+    </div>
+    
+    
+    
+  <div>
+  
+    <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+  
+  </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Struts2/" rel="tag"># Struts2</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/02/06/面向对象的总结/" rel="next" title="Java基础知识">
+                <i class="fa fa-chevron-left"></i> Java基础知识
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/02/08/struts2/" rel="prev" title="Struts2 用法">
+                Struts2 用法 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+<span class="jiathis_txt">分享到：</span>
+<a class="jiathis_button_fav">收藏夹</a>
+<a class="jiathis_button_copy">复制网址</a>
+<a class="jiathis_button_email">邮件</a>
+<a class="jiathis_button_weixin">微信</a>
+<a class="jiathis_button_qzone">QQ空间</a>
+<a class="jiathis_button_tqq">腾讯微博</a>
+<a class="jiathis_button_douban">豆瓣</a>
+<a class="jiathis_button_share">一键分享</a>
+
+<a href="http://www.jiathis.com/share?uid=2140465" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
+<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+var jiathis_config={
+  data_track_clickback:true,
+  summary:"",
+  shortUrl:false,
+  hideMore:false
+}
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zMzc1NS8xMDMwOQ=="></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+  
+  
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/my.jpg"
+                alt="Sam" />
+            
+              <p class="site-author-name" itemprop="name">Sam</p>
+              <p class="site-description motion-element" itemprop="description">一个热爱生活的B-boy</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">33</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">23</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">24</span>
+                  <span class="site-state-item-name">标签</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/HackerFreedom" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:614190293@gmail.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Struts2中获取Servlet-API"><span class="nav-number">1.</span> <span class="nav-text">Struts2中获取Servlet API</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#OGNL-表达式"><span class="nav-number">2.</span> <span class="nav-text">OGNL 表达式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#ognal表达式介绍"><span class="nav-number">2.1.</span> <span class="nav-text">ognal表达式介绍</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#valueStack值栈"><span class="nav-number">3.</span> <span class="nav-text">valueStack值栈</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#valuesStack内部结构的介绍"><span class="nav-number">3.1.</span> <span class="nav-text">valuesStack内部结构的介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#valueStack获取"><span class="nav-number">3.2.</span> <span class="nav-text">valueStack获取</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#valueStack-存储数据-重点）"><span class="nav-number">3.3.</span> <span class="nav-text">valueStack 存储数据 (重点）</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Sam</span>
+
+  
+</div>
+
+
+
+<div class="powered-by">
+<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
+  本站访客数:<span id="busuanzi_value_site_uv"></span>
+</span>
+</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+   
+<!-- <div class="bg_content">
+    
+    <canvas id="canvas"></canvas>
+    </div> -->
+</body>
+</html>
+
+<!-- <script type="text/javascript" src="/js/src/canvas.js"></script> -->
