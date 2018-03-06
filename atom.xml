@@ -36,6 +36,36 @@
   
   <entry>
     <title>Java框架</title>
+    <link href="http://HackerFreedom.github.io/2018/02/27/hibernate%E4%BC%98%E5%8C%96/"/>
+    <id>http://HackerFreedom.github.io/2018/02/27/hibernate优化/</id>
+    <published>2018-02-27T02:42:00.000Z</published>
+    <updated>2018-03-04T02:25:13.842Z</updated>
+    
+    <content type="html"><![CDATA[<p>学习目标:</p><pre><code>能够使用HQL语句完成多表操作能够从概念、特点、隔离级别几个方面描述出对事务的理解记忆HQL优化的方法并能对一级缓存进行优化能够说出对hibernate中的抓取策略的理解，并能够配置各种抓取策略</code></pre><p>在这里我们首先要复习一下 sql语句的知识</p><h1 id="HQL多表操作"><a href="#HQL多表操作" class="headerlink" title="HQL多表操作"></a>HQL多表操作</h1><pre><code>1.交叉连接2.内连接    a)显示内连接    b)隐式内连接    *c)迫切内连接*3.外连接    左外连接    *迫切左外连接*    右外连接</code></pre><p><em>注意：在hibernate中有迫切连接的概念，而sql中没有。</em><br>掌握：           </p><pre><code>1. from Customer c join c.orders;    from Order o join o.c;2. 迫切和非迫切的区别：    1.非迫切返回对象数组，迫切直接返回对象    2.在一对多里面，这一条迫切的sql语句就完成了一方关联的多方数据的封装</code></pre><p>代码案例：<br>        @Test<br>        public void test3() {<br>        Query query = session<br>            .createQuery(“select distinct c from Customer c join fetch c.orders”);<br>            List<customer> list = query.list();<br>            for (Customer c : list) {</customer></p><pre><code>        System.out.println(c + &quot; &quot; + c.getOrders());}}</code></pre><p>非迫切对象：<br>        Test<br>        public void test1() {<br>        Query query = session.createQuery(“from Customer c left join c.orders”);<br>        List<object[]> list = query.list();<br>        for (Object[] objects : list) {<br>             System.out.println(objects[0] + “ “ + objects[1]);<br>        }<br>        }</object[]></p><h1 id="Hibernate的事务管理"><a href="#Hibernate的事务管理" class="headerlink" title="Hibernate的事务管理"></a>Hibernate的事务管理</h1><p><em>复习mysql的事务</em><br>1、事务：指的是一组逻辑操作，要么同时成功要么同时失败。<br>3、事务的四大特性：<br>原子性：组成事务的最小单元是不可分割的，要么同时成功要么同时失败。<br>一致性：执行事务前后，数据的完整性是一致的；（也就是案例中总钱数是一样的）<br>隔离性：在数据库中，各个事务之间是独立的，不受其他事务的影响。<br>持久性：事务一旦结束，数据就会持久保存到数据库中。</p><ol><li><p>事务的隔离级别</p><ol><li><p>脏读：一个事务读到了另一个事务未提交的数据<br>  不可重复读：一个事务读到了另一个事务已经提交的update数据<br>  虚读/幻读：一个事务读到了另一个事务已经提交的insert数据</p><ol><li>隔离级别<br>read uncommitted(未提交读)    ：脏读，不可重复读，虚读都有可能发生</li></ol><p>read committed(已提交读)    ：避免脏读。但是不可重复读和虚读是有可能发生</p><p>repeatable-read(可重复读)    ：避免脏读和不可重复读，但是虚读有可能发生。</p><p>serializable(串行化)        ：避免脏读，不可重复读，虚读。(mysql默认隔离级别) </p><h2 id="对于hibernate的事务隔离级别设置"><a href="#对于hibernate的事务隔离级别设置" class="headerlink" title="对于hibernate的事务隔离级别设置"></a>对于hibernate的事务隔离级别设置</h2><p>它可取的值有 1 2 4 8<br>1代表的事务隔离级别为READ UNCOMMITTED<br>2代表的事务隔离级别为READ COMMITTED<br>4.代表的事务隔离级别为 REPEATABLE READ<br>8代表的事务隔离级别为 SERIALIZABLE<br>在hibernate.cfg.xml文件中配置<br><property name="hibernate.connection.isolation ">4</property></p><h1 id="hibernate优化"><a href="#hibernate优化" class="headerlink" title="hibernate优化"></a>hibernate优化</h1></li></ol></li></ol><blockquote><p>1.使用参数绑定<br>使用绑定参数的原因是让数据库一次解析SQL,对后续的重复请求可以使用用生成好的执行计划，这样做节省CPU时间和内存；避免SQL注入<br>2.尽量少使用NOT<br>如果where子句中包含not关键字，那么执行时该字段的索引失效。<br>3.尽量使用where来替换having<br>Having在检索出所有记录后才对结果集进行过滤，这个处理需要一定的开销，而where子句限制记录的数目，能减少这方面的开销<br>4.减少对表的查询<br>在含有子查询的HQL中,尽量减少对表的查询，降低开销<br>5.使用表的别名<br>当在HQL语句中连接多个表时，使用别名，提高程序阅读性，并把别名前缀与每个列上，这样一来，可以减少解析时间并减少列歧义引起的语法错误。<br>6.实体的更新与删除<br>    @Test<br>    public void test11() {<br>        Query query = session.createQuery(“update Order set money=100”);<br>        query.executeUpdate();<br>    }</p></blockquote><h2 id="一级缓存优化"><a href="#一级缓存优化" class="headerlink" title="一级缓存优化"></a>一级缓存优化</h2><p>一级缓存也叫做session缓存，在一个hibernate session有效，这级缓存的可干预性不强，大多于hibernate自动管理，但它提供清除缓存的方法，这在大批量增加(更新)操作是有效果的，例如，同时增加十万条记录，按常规进行，很可能会出现异常，这时可能需要手动清除一级缓存，session.evict以及session.clear.</p><h3 id="检索策略"><a href="#检索策略" class="headerlink" title="检索策略"></a>检索策略</h3><p>延迟加载 是hibernate为提高程序执行的效率而提供的一种机制，lazy延迟加载：什么时候使用什么时候再去查询</p><h1 id="类级别延迟"><a href="#类级别延迟" class="headerlink" title="类级别延迟"></a>类级别延迟</h1><p>使用延迟加载的方法查询某个类的时候是否采用的延迟称为是类级别的延迟。默认值是true。<br>Customer customer = session.load(Customer.class,1l);// 默认就会采用延迟加载，这种称为是类级别的延迟。</p><p>#关联级别的延迟 #<br>查询到某个对象以后，获得其关联的对象。查询其关联对象的时候是否采用的延迟。称为是关联级别的延迟。<br>Customer c = session.get(Customer.class,1l);<br>c.getOrders(); // 查询关联对象的时候，是否采用延迟加载</p><p><em>关联级别的延迟往往会与抓取策略一起使用，优化程序。</em><br><em>（关联级别的延迟在<set>或者是<many-to-one>标签上的配置是否延迟加载）</many-to-one></set></em></p><h4 id="抓取策略"><a href="#抓取策略" class="headerlink" title="抓取策略"></a>抓取策略</h4><p>抓取策略指的是查找到某个对象后，抓取其关联的对象的时候采用的策略。<br>抓取策略就是在关联对象的配置上（<set>和<many-to-one>）配置<strong>fetch</strong>属性。</many-to-one></set></p><p>在set上的fetch和lazy</p><p>fetch:抓取策略，控制SQL语句的发送的格式。</p><ul><li>select    :默认值。发送一条select语句查询关联对象。</li><li>join    :发送一条迫切左外连接查询关联对象。</li><li>subselect    :发送一条子查询查询关联对象。</li></ul><p>lazy:延迟加载，控制SQL语句的发送的时候。</p><ul><li>true    :默认值。采用延迟加载。</li><li>false    :不采用延迟加载。</li><li>extra    :及其懒惰。</li></ul><p>在many-to-one上的fetch和lazy<br>fetch:抓取策略，控制SQL语句的发送的格式。</p><pre><code>* select    ：默认值.发送一条select语句查询关联对象。* join    ：发送一条迫切左外连接查询关联对象。</code></pre><p>lazy：延迟加载，控制SQL的发送的时机。</p><pre><code>* proxy    ：默认值。是否采用延迟，需要由另一方类上的延迟加载来决定。* false    ：不采用延迟加载。* no-proxy：不用研究</code></pre><h1 id="抓取策略的注解配置"><a href="#抓取策略的注解配置" class="headerlink" title="抓取策略的注解配置"></a>抓取策略的注解配置</h1><p>一方对应的多方订单<br><em>private Set<order> orders = new HashSet<order>();上的fetch和lazy</order></order></em><br>fetch:抓取策略，控制SQL语句的发送的格式。</p><ul><li>@Fetch(FetchMode.SELECT):默认值,发送一条select语句查询关联对象。</li><li>@Fetch(FetchMode.JOIN):发送一条迫切左外连接查询关联对象。</li><li>@Fetch(FetchMode.SUBSELECT):发送一条子查询查询关联对象。</li></ul><p><em>lazy:延迟加载，控制SQL语句的发送的时候。</em></p><ul><li>@LazyCollection(LazyCollectionOption.TRUE):默认值。采用延迟加载。</li><li>@LazyCollection(LazyCollectionOption.FALSE):不采用延迟加载。</li><li>@LazyCollection(LazyCollectionOption.EXTRA)    :及其懒惰。</li></ul><p>多方对应的唯一客户<br>private  Customer c; 上的fetch和lazy</p><p>fetch:抓取策略，控制SQL语句的发送的格式。</p><pre><code>* @Fetch(FetchMode.SELECT):默认值,发送一条select语句查询关联对象* @Fetch(FetchMode.JOIN):发送一条迫切左外连接查询关联对象。（这时如果配置了lazy会失效，且方案是立即查询）</code></pre><p>lazy：延迟加载，控制SQL的发送的时机。</p><pre><code>* @LazyToOne(LazyToOneOption.FALSE)：默认值,不采用延迟加载* @LazyToOne(LazyToOneOption.PROXY)：</code></pre><p>是否采用延迟，需要由另一方类上的延迟加载来决定    </p><ul><li>@LazyToOne(LazyToOneOption.NO_PROXY)：不用研究</li></ul><h2 id="多于批量抓取出现n-1的问题"><a href="#多于批量抓取出现n-1的问题" class="headerlink" title="多于批量抓取出现n+1的问题"></a>多于批量抓取出现n+1的问题</h2><p>例子：对于这个查询如果@Fetch(FetchMode.SELECT)会发送1+n条sql语句，1查询Customer自己，n查询每个Customer对应Order</p><p>查询多个对象的关联对象时，可以采用批量抓取方式来对程序进行优化.<br>要想实现批量抓取：<br>可以在配置文件中 batch-size属性来设置<br>可以使用注解 @BatchSize(size=4)—–为了减少select语句数目，可以设置<set>元素的batch-size属性<br>可以采用批量抓取来解决N+1问题.</set></p><p><strong>注意</strong>：<br>无论是根据哪一方来查询别一方，在进行批量抓取时，都是在父方来设置<br>如果是要查询子信息，那么我们是在<set>上来设置 batch-size,如果是从子方来查询父方，也是在父方设置在<class>设置 batch-size；</class></set></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;学习目标:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;能够使用HQL语句完成多表操作
+能够从概念、特点、隔离级别几个方面描述出对事务的理解
+记忆HQL优化的方法并能对一级缓存进行优化
+能够说出对hibernate中的抓取策略的理解，并能够配置各种抓取策略
+&lt;/code&gt;&lt;/pre&gt;&lt;p
+      
+    
+    </summary>
+    
+      <category term="三大框架" scheme="http://HackerFreedom.github.io/categories/%E4%B8%89%E5%A4%A7%E6%A1%86%E6%9E%B6/"/>
+    
+    
+      <category term="hibernate优化" scheme="http://HackerFreedom.github.io/tags/hibernate%E4%BC%98%E5%8C%96/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Java框架</title>
     <link href="http://HackerFreedom.github.io/2018/02/27/hibernate%E7%BC%93%E5%AD%98/"/>
     <id>http://HackerFreedom.github.io/2018/02/27/hibernate缓存/</id>
     <published>2018-02-27T02:42:00.000Z</published>
@@ -62,36 +92,6 @@
     
     
       <category term="hibernate缓存" scheme="http://HackerFreedom.github.io/tags/hibernate%E7%BC%93%E5%AD%98/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Java框架</title>
-    <link href="http://HackerFreedom.github.io/2018/02/27/hibernate%E4%BC%98%E5%8C%96/"/>
-    <id>http://HackerFreedom.github.io/2018/02/27/hibernate优化/</id>
-    <published>2018-02-27T02:42:00.000Z</published>
-    <updated>2018-03-04T02:25:13.842Z</updated>
-    
-    <content type="html"><![CDATA[<p>学习目标:</p><pre><code>能够使用HQL语句完成多表操作能够从概念、特点、隔离级别几个方面描述出对事务的理解记忆HQL优化的方法并能对一级缓存进行优化能够说出对hibernate中的抓取策略的理解，并能够配置各种抓取策略</code></pre><p>在这里我们首先要复习一下 sql语句的知识</p><h1 id="HQL多表操作"><a href="#HQL多表操作" class="headerlink" title="HQL多表操作"></a>HQL多表操作</h1><pre><code>1.交叉连接2.内连接    a)显示内连接    b)隐式内连接    *c)迫切内连接*3.外连接    左外连接    *迫切左外连接*    右外连接</code></pre><p><em>注意：在hibernate中有迫切连接的概念，而sql中没有。</em><br>掌握：           </p><pre><code>1. from Customer c join c.orders;    from Order o join o.c;2. 迫切和非迫切的区别：    1.非迫切返回对象数组，迫切直接返回对象    2.在一对多里面，这一条迫切的sql语句就完成了一方关联的多方数据的封装</code></pre><p>代码案例：<br>        @Test<br>        public void test3() {<br>        Query query = session<br>            .createQuery(“select distinct c from Customer c join fetch c.orders”);<br>            List<customer> list = query.list();<br>            for (Customer c : list) {</customer></p><pre><code>        System.out.println(c + &quot; &quot; + c.getOrders());}}</code></pre><p>非迫切对象：<br>        Test<br>        public void test1() {<br>        Query query = session.createQuery(“from Customer c left join c.orders”);<br>        List<object[]> list = query.list();<br>        for (Object[] objects : list) {<br>             System.out.println(objects[0] + “ “ + objects[1]);<br>        }<br>        }</object[]></p><h1 id="Hibernate的事务管理"><a href="#Hibernate的事务管理" class="headerlink" title="Hibernate的事务管理"></a>Hibernate的事务管理</h1><p><em>复习mysql的事务</em><br>1、事务：指的是一组逻辑操作，要么同时成功要么同时失败。<br>3、事务的四大特性：<br>原子性：组成事务的最小单元是不可分割的，要么同时成功要么同时失败。<br>一致性：执行事务前后，数据的完整性是一致的；（也就是案例中总钱数是一样的）<br>隔离性：在数据库中，各个事务之间是独立的，不受其他事务的影响。<br>持久性：事务一旦结束，数据就会持久保存到数据库中。</p><ol><li><p>事务的隔离级别</p><ol><li><p>脏读：一个事务读到了另一个事务未提交的数据<br>  不可重复读：一个事务读到了另一个事务已经提交的update数据<br>  虚读/幻读：一个事务读到了另一个事务已经提交的insert数据</p><ol><li>隔离级别<br>read uncommitted(未提交读)    ：脏读，不可重复读，虚读都有可能发生</li></ol><p>read committed(已提交读)    ：避免脏读。但是不可重复读和虚读是有可能发生</p><p>repeatable-read(可重复读)    ：避免脏读和不可重复读，但是虚读有可能发生。</p><p>serializable(串行化)        ：避免脏读，不可重复读，虚读。(mysql默认隔离级别) </p><h2 id="对于hibernate的事务隔离级别设置"><a href="#对于hibernate的事务隔离级别设置" class="headerlink" title="对于hibernate的事务隔离级别设置"></a>对于hibernate的事务隔离级别设置</h2><p>它可取的值有 1 2 4 8<br>1代表的事务隔离级别为READ UNCOMMITTED<br>2代表的事务隔离级别为READ COMMITTED<br>4.代表的事务隔离级别为 REPEATABLE READ<br>8代表的事务隔离级别为 SERIALIZABLE<br>在hibernate.cfg.xml文件中配置<br><property name="hibernate.connection.isolation ">4</property></p><h1 id="hibernate优化"><a href="#hibernate优化" class="headerlink" title="hibernate优化"></a>hibernate优化</h1></li></ol></li></ol><blockquote><p>1.使用参数绑定<br>使用绑定参数的原因是让数据库一次解析SQL,对后续的重复请求可以使用用生成好的执行计划，这样做节省CPU时间和内存；避免SQL注入<br>2.尽量少使用NOT<br>如果where子句中包含not关键字，那么执行时该字段的索引失效。<br>3.尽量使用where来替换having<br>Having在检索出所有记录后才对结果集进行过滤，这个处理需要一定的开销，而where子句限制记录的数目，能减少这方面的开销<br>4.减少对表的查询<br>在含有子查询的HQL中,尽量减少对表的查询，降低开销<br>5.使用表的别名<br>当在HQL语句中连接多个表时，使用别名，提高程序阅读性，并把别名前缀与每个列上，这样一来，可以减少解析时间并减少列歧义引起的语法错误。<br>6.实体的更新与删除<br>    @Test<br>    public void test11() {<br>        Query query = session.createQuery(“update Order set money=100”);<br>        query.executeUpdate();<br>    }</p></blockquote><h2 id="一级缓存优化"><a href="#一级缓存优化" class="headerlink" title="一级缓存优化"></a>一级缓存优化</h2><p>一级缓存也叫做session缓存，在一个hibernate session有效，这级缓存的可干预性不强，大多于hibernate自动管理，但它提供清除缓存的方法，这在大批量增加(更新)操作是有效果的，例如，同时增加十万条记录，按常规进行，很可能会出现异常，这时可能需要手动清除一级缓存，session.evict以及session.clear.</p><h3 id="检索策略"><a href="#检索策略" class="headerlink" title="检索策略"></a>检索策略</h3><p>延迟加载 是hibernate为提高程序执行的效率而提供的一种机制，lazy延迟加载：什么时候使用什么时候再去查询</p><h1 id="类级别延迟"><a href="#类级别延迟" class="headerlink" title="类级别延迟"></a>类级别延迟</h1><p>使用延迟加载的方法查询某个类的时候是否采用的延迟称为是类级别的延迟。默认值是true。<br>Customer customer = session.load(Customer.class,1l);// 默认就会采用延迟加载，这种称为是类级别的延迟。</p><p>#关联级别的延迟 #<br>查询到某个对象以后，获得其关联的对象。查询其关联对象的时候是否采用的延迟。称为是关联级别的延迟。<br>Customer c = session.get(Customer.class,1l);<br>c.getOrders(); // 查询关联对象的时候，是否采用延迟加载</p><p><em>关联级别的延迟往往会与抓取策略一起使用，优化程序。</em><br><em>（关联级别的延迟在<set>或者是<many-to-one>标签上的配置是否延迟加载）</many-to-one></set></em></p><h4 id="抓取策略"><a href="#抓取策略" class="headerlink" title="抓取策略"></a>抓取策略</h4><p>抓取策略指的是查找到某个对象后，抓取其关联的对象的时候采用的策略。<br>抓取策略就是在关联对象的配置上（<set>和<many-to-one>）配置<strong>fetch</strong>属性。</many-to-one></set></p><p>在set上的fetch和lazy</p><p>fetch:抓取策略，控制SQL语句的发送的格式。</p><ul><li>select    :默认值。发送一条select语句查询关联对象。</li><li>join    :发送一条迫切左外连接查询关联对象。</li><li>subselect    :发送一条子查询查询关联对象。</li></ul><p>lazy:延迟加载，控制SQL语句的发送的时候。</p><ul><li>true    :默认值。采用延迟加载。</li><li>false    :不采用延迟加载。</li><li>extra    :及其懒惰。</li></ul><p>在many-to-one上的fetch和lazy<br>fetch:抓取策略，控制SQL语句的发送的格式。</p><pre><code>* select    ：默认值.发送一条select语句查询关联对象。* join    ：发送一条迫切左外连接查询关联对象。</code></pre><p>lazy：延迟加载，控制SQL的发送的时机。</p><pre><code>* proxy    ：默认值。是否采用延迟，需要由另一方类上的延迟加载来决定。* false    ：不采用延迟加载。* no-proxy：不用研究</code></pre><h1 id="抓取策略的注解配置"><a href="#抓取策略的注解配置" class="headerlink" title="抓取策略的注解配置"></a>抓取策略的注解配置</h1><p>一方对应的多方订单<br><em>private Set<order> orders = new HashSet<order>();上的fetch和lazy</order></order></em><br>fetch:抓取策略，控制SQL语句的发送的格式。</p><ul><li>@Fetch(FetchMode.SELECT):默认值,发送一条select语句查询关联对象。</li><li>@Fetch(FetchMode.JOIN):发送一条迫切左外连接查询关联对象。</li><li>@Fetch(FetchMode.SUBSELECT):发送一条子查询查询关联对象。</li></ul><p><em>lazy:延迟加载，控制SQL语句的发送的时候。</em></p><ul><li>@LazyCollection(LazyCollectionOption.TRUE):默认值。采用延迟加载。</li><li>@LazyCollection(LazyCollectionOption.FALSE):不采用延迟加载。</li><li>@LazyCollection(LazyCollectionOption.EXTRA)    :及其懒惰。</li></ul><p>多方对应的唯一客户<br>private  Customer c; 上的fetch和lazy</p><p>fetch:抓取策略，控制SQL语句的发送的格式。</p><pre><code>* @Fetch(FetchMode.SELECT):默认值,发送一条select语句查询关联对象* @Fetch(FetchMode.JOIN):发送一条迫切左外连接查询关联对象。（这时如果配置了lazy会失效，且方案是立即查询）</code></pre><p>lazy：延迟加载，控制SQL的发送的时机。</p><pre><code>* @LazyToOne(LazyToOneOption.FALSE)：默认值,不采用延迟加载* @LazyToOne(LazyToOneOption.PROXY)：</code></pre><p>是否采用延迟，需要由另一方类上的延迟加载来决定    </p><ul><li>@LazyToOne(LazyToOneOption.NO_PROXY)：不用研究</li></ul><h2 id="多于批量抓取出现n-1的问题"><a href="#多于批量抓取出现n-1的问题" class="headerlink" title="多于批量抓取出现n+1的问题"></a>多于批量抓取出现n+1的问题</h2><p>例子：对于这个查询如果@Fetch(FetchMode.SELECT)会发送1+n条sql语句，1查询Customer自己，n查询每个Customer对应Order</p><p>查询多个对象的关联对象时，可以采用批量抓取方式来对程序进行优化.<br>要想实现批量抓取：<br>可以在配置文件中 batch-size属性来设置<br>可以使用注解 @BatchSize(size=4)—–为了减少select语句数目，可以设置<set>元素的batch-size属性<br>可以采用批量抓取来解决N+1问题.</set></p><p><strong>注意</strong>：<br>无论是根据哪一方来查询别一方，在进行批量抓取时，都是在父方来设置<br>如果是要查询子信息，那么我们是在<set>上来设置 batch-size,如果是从子方来查询父方，也是在父方设置在<class>设置 batch-size；</class></set></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;学习目标:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;能够使用HQL语句完成多表操作
-能够从概念、特点、隔离级别几个方面描述出对事务的理解
-记忆HQL优化的方法并能对一级缓存进行优化
-能够说出对hibernate中的抓取策略的理解，并能够配置各种抓取策略
-&lt;/code&gt;&lt;/pre&gt;&lt;p
-      
-    
-    </summary>
-    
-      <category term="三大框架" scheme="http://HackerFreedom.github.io/categories/%E4%B8%89%E5%A4%A7%E6%A1%86%E6%9E%B6/"/>
-    
-    
-      <category term="hibernate优化" scheme="http://HackerFreedom.github.io/tags/hibernate%E4%BC%98%E5%8C%96/"/>
     
   </entry>
   
@@ -282,6 +282,32 @@
   </entry>
   
   <entry>
+    <title>oracle</title>
+    <link href="http://HackerFreedom.github.io/2018/02/02/ORACLE/"/>
+    <id>http://HackerFreedom.github.io/2018/02/02/ORACLE/</id>
+    <published>2018-02-02T07:34:00.000Z</published>
+    <updated>2018-02-03T16:36:27.577Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="oracle的简介"><a href="#oracle的简介" class="headerlink" title="oracle的简介"></a>oracle的简介</h1><p>tabs 查询所有的表</p><p>中文乱码解决<br>1.检查服务器编码: 执行SQL语法: select * from v$nls_parameters; 如果不是中文则执行2 2.设置本地客户端编码: 进入 我的电脑,属性,高级,环境变量,添加2项:LANG=zh_CN.GBK 和 NLS_LANG=”SIMPLIFIED CHINESE_CHINA.ZHS16GBK” 3. PL/SQL Developer设置并重新连接: 在pl/sql developer的菜单-&gt;tools-&gt;preferences-&gt;user interface-&gt;fonts 中修改为中文字体 OK了。</p><h2 id="单表查询"><a href="#单表查询" class="headerlink" title="单表查询"></a>单表查询</h2><ul><li><p>精确查找</p><p>  select * from T_owners where 条件</p></li><li><p>模糊查询<br>  select * from t_owners where name like’% 刘%’</p></li><li><p>and 运算符</p><p>  select * from t_owners where name like’% 刘%’and 条件</p></li><li><p>or 运算符</p><p>  select * from t_owners where name like’% 刘%’ or 条件</p></li><li><p>and和or运算符混用使用</p><p>  select *from  t_owners where（ name like’% 刘%’or 条件） and 条件 –由于and的优先级高</p></li><li><p>范围查询</p><p>  select * from t_account where usenum &gt;= 12313 and usenum &lt;22313</p></li><li>空值查询<br>  可以查询为空的记录<br>  select * from t_pricetable t where maxnum is not null</li><li><p>去掉重复记录</p><p>  select distinct addressid from t_owners<br><strong>distinct</strong></p></li><li><p>排序查询</p><ol><li><p>升序<br>默认</p></li><li><p>降序</p><p>select * from T_account order by usenum desc </p></li></ol></li></ul><p><strong>desc</strong></p><ul><li><p>伪列查询</p><ol><li><p><strong>ROWID</strong><br>获取每个数据的物理地址<br>select rowID ,t* form 地点 where 条件</p></li><li><p><strong>ROWNUM</strong><br>每次获取一行为 标识的一个行号<br>select rownum ,t*from </p></li></ol></li><li><p>聚合统计</p><ol><li><p>聚合函数</p><ul><li>sum 求和</li><li>avg 求平均数</li><li>max 求最大值</li><li>min 求最小值</li><li>count 求统计个数<ul><li>select count(*)from…where …</li></ul></li></ul></li><li><p>分组聚合Group by</p><ul><li>select areaid ,sum(money) from 表名 group by areaid </li></ul></li><li><p>分组后条件查询having</p><ul><li>select areaid ,sum(money) from 表名 group by areaid having 条件</li></ul></li></ol></li></ul><p><strong>总结</strong></p><p>select…from …where…group by…having</p><h3 id="多表查询"><a href="#多表查询" class="headerlink" title="多表查询"></a>多表查询</h3><ul><li>内连接</li><li></li><li>外连接<ol><li>左外连接查询</li><li>右外连接查询</li></ol></li></ul><h3 id="子查询"><a href="#子查询" class="headerlink" title="子查询"></a>子查询</h3><ul><li><p>单行子查询</p><ul><li>where 字句中的子查询<ol><li>只返回一条记录<ol><li>单行操作符  =    &gt;   &gt;=   &lt;    &lt;=   &lt;&gt;<br>select * from T_account where((条件包含条件)) </li></ol><ul><li>select 字句中的子查询</li></ul></li></ol></li></ul></li><li><p>多行子查询  in（范围） any all（记录允许多个记录）</p><ul><li><p>from字句中的子查询</p><p><em>关于多个表查询，先查两表关联的条件</em></p></li></ul></li><li><p>分页查询</p><ul><li>简单分页<ul><li>rownum  原理是按扫描的按顺序产生的，所以where条件不能用大于 或者等于</li></ul></li><li><p>基于排序分页</p></li><li></li></ul></li></ul><hr><p>子查询中空值的问题<br>      单行子查询的空值问题<br>    多行子查询中的null值问题<br>    如果表中有空值的话，不能用not in</p><h4 id="内置函数"><a href="#内置函数" class="headerlink" title="内置函数"></a>内置函数</h4><p>行列转换</p><ul><li>单行函数</li></ul><ul><li>行列转化</li></ul><p>alter user scott account unlock；<br>alter user scott </p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;oracle的简介&quot;&gt;&lt;a href=&quot;#oracle的简介&quot; class=&quot;headerlink&quot; title=&quot;oracle的简介&quot;&gt;&lt;/a&gt;oracle的简介&lt;/h1&gt;&lt;p&gt;tabs 查询所有的表&lt;/p&gt;
+&lt;p&gt;中文乱码解决&lt;br&gt;1.检查服务器编码: 执行
+      
+    
+    </summary>
+    
+      <category term="Oracle的基础知识" scheme="http://HackerFreedom.github.io/categories/Oracle%E7%9A%84%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/"/>
+    
+    
+      <category term="oracle基础知识" scheme="http://HackerFreedom.github.io/tags/oracle%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/"/>
+    
+  </entry>
+  
+  <entry>
     <title>oracle第三天</title>
     <link href="http://HackerFreedom.github.io/2018/02/02/oracle%E7%AC%AC%E4%B8%89%E5%A4%A9/"/>
     <id>http://HackerFreedom.github.io/2018/02/02/oracle第三天/</id>
@@ -300,32 +326,6 @@
 &lt;li&gt;&lt;p&gt;使用视图的优点：&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;简化数据操作: 视图
-      
-    
-    </summary>
-    
-      <category term="Oracle的基础知识" scheme="http://HackerFreedom.github.io/categories/Oracle%E7%9A%84%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/"/>
-    
-    
-      <category term="oracle基础知识" scheme="http://HackerFreedom.github.io/tags/oracle%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>oracle</title>
-    <link href="http://HackerFreedom.github.io/2018/02/02/ORACLE/"/>
-    <id>http://HackerFreedom.github.io/2018/02/02/ORACLE/</id>
-    <published>2018-02-02T07:34:00.000Z</published>
-    <updated>2018-02-03T16:36:27.577Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="oracle的简介"><a href="#oracle的简介" class="headerlink" title="oracle的简介"></a>oracle的简介</h1><p>tabs 查询所有的表</p><p>中文乱码解决<br>1.检查服务器编码: 执行SQL语法: select * from v$nls_parameters; 如果不是中文则执行2 2.设置本地客户端编码: 进入 我的电脑,属性,高级,环境变量,添加2项:LANG=zh_CN.GBK 和 NLS_LANG=”SIMPLIFIED CHINESE_CHINA.ZHS16GBK” 3. PL/SQL Developer设置并重新连接: 在pl/sql developer的菜单-&gt;tools-&gt;preferences-&gt;user interface-&gt;fonts 中修改为中文字体 OK了。</p><h2 id="单表查询"><a href="#单表查询" class="headerlink" title="单表查询"></a>单表查询</h2><ul><li><p>精确查找</p><p>  select * from T_owners where 条件</p></li><li><p>模糊查询<br>  select * from t_owners where name like’% 刘%’</p></li><li><p>and 运算符</p><p>  select * from t_owners where name like’% 刘%’and 条件</p></li><li><p>or 运算符</p><p>  select * from t_owners where name like’% 刘%’ or 条件</p></li><li><p>and和or运算符混用使用</p><p>  select *from  t_owners where（ name like’% 刘%’or 条件） and 条件 –由于and的优先级高</p></li><li><p>范围查询</p><p>  select * from t_account where usenum &gt;= 12313 and usenum &lt;22313</p></li><li>空值查询<br>  可以查询为空的记录<br>  select * from t_pricetable t where maxnum is not null</li><li><p>去掉重复记录</p><p>  select distinct addressid from t_owners<br><strong>distinct</strong></p></li><li><p>排序查询</p><ol><li><p>升序<br>默认</p></li><li><p>降序</p><p>select * from T_account order by usenum desc </p></li></ol></li></ul><p><strong>desc</strong></p><ul><li><p>伪列查询</p><ol><li><p><strong>ROWID</strong><br>获取每个数据的物理地址<br>select rowID ,t* form 地点 where 条件</p></li><li><p><strong>ROWNUM</strong><br>每次获取一行为 标识的一个行号<br>select rownum ,t*from </p></li></ol></li><li><p>聚合统计</p><ol><li><p>聚合函数</p><ul><li>sum 求和</li><li>avg 求平均数</li><li>max 求最大值</li><li>min 求最小值</li><li>count 求统计个数<ul><li>select count(*)from…where …</li></ul></li></ul></li><li><p>分组聚合Group by</p><ul><li>select areaid ,sum(money) from 表名 group by areaid </li></ul></li><li><p>分组后条件查询having</p><ul><li>select areaid ,sum(money) from 表名 group by areaid having 条件</li></ul></li></ol></li></ul><p><strong>总结</strong></p><p>select…from …where…group by…having</p><h3 id="多表查询"><a href="#多表查询" class="headerlink" title="多表查询"></a>多表查询</h3><ul><li>内连接</li><li></li><li>外连接<ol><li>左外连接查询</li><li>右外连接查询</li></ol></li></ul><h3 id="子查询"><a href="#子查询" class="headerlink" title="子查询"></a>子查询</h3><ul><li><p>单行子查询</p><ul><li>where 字句中的子查询<ol><li>只返回一条记录<ol><li>单行操作符  =    &gt;   &gt;=   &lt;    &lt;=   &lt;&gt;<br>select * from T_account where((条件包含条件)) </li></ol><ul><li>select 字句中的子查询</li></ul></li></ol></li></ul></li><li><p>多行子查询  in（范围） any all（记录允许多个记录）</p><ul><li><p>from字句中的子查询</p><p><em>关于多个表查询，先查两表关联的条件</em></p></li></ul></li><li><p>分页查询</p><ul><li>简单分页<ul><li>rownum  原理是按扫描的按顺序产生的，所以where条件不能用大于 或者等于</li></ul></li><li><p>基于排序分页</p></li><li></li></ul></li></ul><hr><p>子查询中空值的问题<br>      单行子查询的空值问题<br>    多行子查询中的null值问题<br>    如果表中有空值的话，不能用not in</p><h4 id="内置函数"><a href="#内置函数" class="headerlink" title="内置函数"></a>内置函数</h4><p>行列转换</p><ul><li>单行函数</li></ul><ul><li>行列转化</li></ul><p>alter user scott account unlock；<br>alter user scott </p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;oracle的简介&quot;&gt;&lt;a href=&quot;#oracle的简介&quot; class=&quot;headerlink&quot; title=&quot;oracle的简介&quot;&gt;&lt;/a&gt;oracle的简介&lt;/h1&gt;&lt;p&gt;tabs 查询所有的表&lt;/p&gt;
-&lt;p&gt;中文乱码解决&lt;br&gt;1.检查服务器编码: 执行
       
     
     </summary>
@@ -439,32 +439,6 @@
   </entry>
   
   <entry>
-    <title>Cookie-Session</title>
-    <link href="http://HackerFreedom.github.io/2018/01/28/Cookie-Session/"/>
-    <id>http://HackerFreedom.github.io/2018/01/28/Cookie-Session/</id>
-    <published>2018-01-28T06:15:14.000Z</published>
-    <updated>2018-02-27T02:41:18.161Z</updated>
-    
-    <content type="html"><![CDATA[<p>DDL是tra  删除命令，没有事务回滚</p><h1 id="会话技术的概述"><a href="#会话技术的概述" class="headerlink" title="会话技术的概述"></a>会话技术的概述</h1><p>简单来说，就是用户打开浏览器，访问web资源，然后关闭浏览器的整个过程。而用户每次访问留下的数据，就需要<br>我们用会话技术来保存了。</p><p><img src="/2018/01/28/Cookie-Session/main01.png" alt="requset请求的数据保存">;</p><h1 id="会话技术的实现原理"><a href="#会话技术的实现原理" class="headerlink" title="会话技术的实现原理"></a>会话技术的实现原理</h1><ul><li>会话技术的分类<ol><li>会话技术分为cookie 和session <ul><li>cookie属于客户端技术<br> 通过响应头的形式来保存信息</li><li>session属于服务端技术<br> 会在服务器中开辟一处空间来存储数据<br><strong>cookie和session的区别</strong><br>   cookie是把数据保存到浏览器中，session是把数据存储到服务器中</li></ul></li></ol></li><li>Cookie和Session的实现原理<br><img src="/2018/01/28/Cookie-Session/main02.png" alt="cookie和session的实现">;<br><img src="/2018/01/28/Cookie-Session/main03.png" alt="cookie和session的实现">;</li></ul><h2 id="获取Cookie的方法"><a href="#获取Cookie的方法" class="headerlink" title="获取Cookie的方法"></a>获取Cookie的方法</h2><pre><code>- 创建一个cookie1. getName () 返回Cookie的key2. getValue（） 3. setValue- 保存一个cookie1. addcookie() -- HttpServletResponse接口的方法- 获取一个cookie1. getCookies()  --HttpServletRequest接口的方法</code></pre><p><em>可以记录用户第一次访问的时间，用Cookies的方法</em><br><img src="/2018/01/28/Cookie-Session/cookie01.png" alt=""></p><h2 id="Cookie的分类"><a href="#Cookie的分类" class="headerlink" title="Cookie的分类"></a>Cookie的分类</h2><ul><li><em>会话级别的Cookie</em><br>  顾名思义，它存在的时间默认是一次会话，直到关闭浏览器</li><li><em>持久化的Cookie</em><ul><li>见明知意，它是设置Cookie的有效时间，数据会被序列化，既存储在硬盘上了；</li></ul></li></ul><p><img src="/2018/01/28/Cookie-Session/cookie02.png" alt="cookie的设置"></p><p><strong>Cookies要注意的点</strong><br>1 浏览器存储cookie有大小和个数的限制，各种浏览器不宜<br>2、cookie默认是一次会话结束就消失，但是要删除持久化的cookie，只需要调用setMaxAge(0);<br><em>但是要设置cookie相同的path</em></p><h3 id="Session的概述"><a href="#Session的概述" class="headerlink" title="Session的概述"></a>Session的概述</h3><p>Session称为是一次会话，Cookie将用户产生的私有数据保存到浏览器端，而Session将用户产生的私有的数据保存到服务器端</p><p>cookie和session的区别<br>Cookie的局限性：</p><ul><li>Cookie保存的数据是有个数和大小的限制的。<ul><li>数据是保存客户端浏览器上（相对不是很安全）</li></ul></li></ul><p>session:</p><pre><code>- Session没有个数和大小限制- 数据保存到服务器上</code></pre><p><strong>Session对象由服务器创建，开发人员可以调用request对象的getSession方法得到Session对象</strong></p><h3 id="Session的原理"><a href="#Session的原理" class="headerlink" title="Session的原理"></a>Session的原理</h3><p>Session其实是基于Cookie实现的，因为服务器会将一个唯一的SessionId写到Cookie里面，响应给浏览器，浏览器再次访问服务器(浏览器不关闭)会带着这个Cookie里面的SessionId来找到对应的区域数据。</p><p>保存sessionID的cookie默认是会话级别的,只存在于浏览器的内存中,浏览器窗口关了就没了。</p><h3 id="Session作为域对象存储数据"><a href="#Session作为域对象存储数据" class="headerlink" title="Session作为域对象存储数据"></a>Session作为域对象存储数据</h3><p>Session作为域对象的API</p><ul><li>setAttribute (string name,Object value)  存入数据</li><li>getAttribute(String name)   获取数据</li><li>removeAttribute(String name)   移除数据</li></ul><h3 id="Servlet数据访问范围的总结"><a href="#Servlet数据访问范围的总结" class="headerlink" title="Servlet数据访问范围的总结"></a>Servlet数据访问范围的总结</h3><pre><code>1、请求范围（ServletRequest） a)、何时创建和销毁的创建：当用户向服务器发送一次请求，服务器创建一个request对象。销毁：当服务器对这次请求作出了响应，服务器就会销毁这个request对象。b)、如何存取数据存数据：void setAttribute(String name,Object value);取数据：Object getAttribute(String name);c)、作用范围：一次请求。（转发就是一次请求）。2、会话范围（HttpSession）a)、何时创建和销毁的创建：服务器端第一次调用getSession()方法的时候。(测试访问jsp.html,servlet)销毁：三种情况。①、Session过期，默认的过期时间30分钟(web.xml中配置)。②、非正常关闭服务器。（正常关闭服务器—session会被序列化）。③、手动调用session.invalidate();b)、如何存取数据存数据：void setAttribute(String name,Object value);取数据：Object getAttribute(String name);c)、作用范围：一次会话（多次请求）3、应用范围（ServletContext）a)、何时创建和销毁的创建：服务器启动的时候创建，为每个web项目创建一个单独ServletContext对象。 销毁：服务器关闭的时候，或者项目从服务器中移除的时候。b)、如何存取数据存数据：void setAttribute(String name,Object value);取数据：Object getAttribute(String name);c)、作用范围：整个应用</code></pre>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;DDL是tra  删除命令，没有事务回滚&lt;/p&gt;
-&lt;h1 id=&quot;会话技术的概述&quot;&gt;&lt;a href=&quot;#会话技术的概述&quot; class=&quot;headerlink&quot; title=&quot;会话技术的概述&quot;&gt;&lt;/a&gt;会话技术的概述&lt;/h1&gt;&lt;p&gt;简单来说，就是用户打开浏览器，访问web资源
-      
-    
-    </summary>
-    
-      <category term="缓存技术" scheme="http://HackerFreedom.github.io/categories/%E7%BC%93%E5%AD%98%E6%8A%80%E6%9C%AF/"/>
-    
-    
-      <category term="Cookie-Session基础" scheme="http://HackerFreedom.github.io/tags/Cookie-Session%E5%9F%BA%E7%A1%80/"/>
-    
-  </entry>
-  
-  <entry>
     <title>面试-试题</title>
     <link href="http://HackerFreedom.github.io/2018/01/28/%E9%9D%A2%E8%AF%95/"/>
     <id>http://HackerFreedom.github.io/2018/01/28/面试/</id>
@@ -489,6 +463,32 @@
     
     
       <category term="面试" scheme="http://HackerFreedom.github.io/tags/%E9%9D%A2%E8%AF%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Cookie-Session</title>
+    <link href="http://HackerFreedom.github.io/2018/01/28/Cookie-Session/"/>
+    <id>http://HackerFreedom.github.io/2018/01/28/Cookie-Session/</id>
+    <published>2018-01-28T06:15:14.000Z</published>
+    <updated>2018-02-27T02:41:18.161Z</updated>
+    
+    <content type="html"><![CDATA[<p>DDL是tra  删除命令，没有事务回滚</p><h1 id="会话技术的概述"><a href="#会话技术的概述" class="headerlink" title="会话技术的概述"></a>会话技术的概述</h1><p>简单来说，就是用户打开浏览器，访问web资源，然后关闭浏览器的整个过程。而用户每次访问留下的数据，就需要<br>我们用会话技术来保存了。</p><p><img src="/2018/01/28/Cookie-Session/main01.png" alt="requset请求的数据保存">;</p><h1 id="会话技术的实现原理"><a href="#会话技术的实现原理" class="headerlink" title="会话技术的实现原理"></a>会话技术的实现原理</h1><ul><li>会话技术的分类<ol><li>会话技术分为cookie 和session <ul><li>cookie属于客户端技术<br> 通过响应头的形式来保存信息</li><li>session属于服务端技术<br> 会在服务器中开辟一处空间来存储数据<br><strong>cookie和session的区别</strong><br>   cookie是把数据保存到浏览器中，session是把数据存储到服务器中</li></ul></li></ol></li><li>Cookie和Session的实现原理<br><img src="/2018/01/28/Cookie-Session/main02.png" alt="cookie和session的实现">;<br><img src="/2018/01/28/Cookie-Session/main03.png" alt="cookie和session的实现">;</li></ul><h2 id="获取Cookie的方法"><a href="#获取Cookie的方法" class="headerlink" title="获取Cookie的方法"></a>获取Cookie的方法</h2><pre><code>- 创建一个cookie1. getName () 返回Cookie的key2. getValue（） 3. setValue- 保存一个cookie1. addcookie() -- HttpServletResponse接口的方法- 获取一个cookie1. getCookies()  --HttpServletRequest接口的方法</code></pre><p><em>可以记录用户第一次访问的时间，用Cookies的方法</em><br><img src="/2018/01/28/Cookie-Session/cookie01.png" alt=""></p><h2 id="Cookie的分类"><a href="#Cookie的分类" class="headerlink" title="Cookie的分类"></a>Cookie的分类</h2><ul><li><em>会话级别的Cookie</em><br>  顾名思义，它存在的时间默认是一次会话，直到关闭浏览器</li><li><em>持久化的Cookie</em><ul><li>见明知意，它是设置Cookie的有效时间，数据会被序列化，既存储在硬盘上了；</li></ul></li></ul><p><img src="/2018/01/28/Cookie-Session/cookie02.png" alt="cookie的设置"></p><p><strong>Cookies要注意的点</strong><br>1 浏览器存储cookie有大小和个数的限制，各种浏览器不宜<br>2、cookie默认是一次会话结束就消失，但是要删除持久化的cookie，只需要调用setMaxAge(0);<br><em>但是要设置cookie相同的path</em></p><h3 id="Session的概述"><a href="#Session的概述" class="headerlink" title="Session的概述"></a>Session的概述</h3><p>Session称为是一次会话，Cookie将用户产生的私有数据保存到浏览器端，而Session将用户产生的私有的数据保存到服务器端</p><p>cookie和session的区别<br>Cookie的局限性：</p><ul><li>Cookie保存的数据是有个数和大小的限制的。<ul><li>数据是保存客户端浏览器上（相对不是很安全）</li></ul></li></ul><p>session:</p><pre><code>- Session没有个数和大小限制- 数据保存到服务器上</code></pre><p><strong>Session对象由服务器创建，开发人员可以调用request对象的getSession方法得到Session对象</strong></p><h3 id="Session的原理"><a href="#Session的原理" class="headerlink" title="Session的原理"></a>Session的原理</h3><p>Session其实是基于Cookie实现的，因为服务器会将一个唯一的SessionId写到Cookie里面，响应给浏览器，浏览器再次访问服务器(浏览器不关闭)会带着这个Cookie里面的SessionId来找到对应的区域数据。</p><p>保存sessionID的cookie默认是会话级别的,只存在于浏览器的内存中,浏览器窗口关了就没了。</p><h3 id="Session作为域对象存储数据"><a href="#Session作为域对象存储数据" class="headerlink" title="Session作为域对象存储数据"></a>Session作为域对象存储数据</h3><p>Session作为域对象的API</p><ul><li>setAttribute (string name,Object value)  存入数据</li><li>getAttribute(String name)   获取数据</li><li>removeAttribute(String name)   移除数据</li></ul><h3 id="Servlet数据访问范围的总结"><a href="#Servlet数据访问范围的总结" class="headerlink" title="Servlet数据访问范围的总结"></a>Servlet数据访问范围的总结</h3><pre><code>1、请求范围（ServletRequest） a)、何时创建和销毁的创建：当用户向服务器发送一次请求，服务器创建一个request对象。销毁：当服务器对这次请求作出了响应，服务器就会销毁这个request对象。b)、如何存取数据存数据：void setAttribute(String name,Object value);取数据：Object getAttribute(String name);c)、作用范围：一次请求。（转发就是一次请求）。2、会话范围（HttpSession）a)、何时创建和销毁的创建：服务器端第一次调用getSession()方法的时候。(测试访问jsp.html,servlet)销毁：三种情况。①、Session过期，默认的过期时间30分钟(web.xml中配置)。②、非正常关闭服务器。（正常关闭服务器—session会被序列化）。③、手动调用session.invalidate();b)、如何存取数据存数据：void setAttribute(String name,Object value);取数据：Object getAttribute(String name);c)、作用范围：一次会话（多次请求）3、应用范围（ServletContext）a)、何时创建和销毁的创建：服务器启动的时候创建，为每个web项目创建一个单独ServletContext对象。 销毁：服务器关闭的时候，或者项目从服务器中移除的时候。b)、如何存取数据存数据：void setAttribute(String name,Object value);取数据：Object getAttribute(String name);c)、作用范围：整个应用</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;DDL是tra  删除命令，没有事务回滚&lt;/p&gt;
+&lt;h1 id=&quot;会话技术的概述&quot;&gt;&lt;a href=&quot;#会话技术的概述&quot; class=&quot;headerlink&quot; title=&quot;会话技术的概述&quot;&gt;&lt;/a&gt;会话技术的概述&lt;/h1&gt;&lt;p&gt;简单来说，就是用户打开浏览器，访问web资源
+      
+    
+    </summary>
+    
+      <category term="缓存技术" scheme="http://HackerFreedom.github.io/categories/%E7%BC%93%E5%AD%98%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="Cookie-Session基础" scheme="http://HackerFreedom.github.io/tags/Cookie-Session%E5%9F%BA%E7%A1%80/"/>
     
   </entry>
   
