@@ -98,20 +98,20 @@
 
 
 
-<meta name="description" content="Struts2中获取Servlet API简单的说，可以在action类中获取requent，response，session   。。。对象HttpServletRequest request = ServletActionContext.getRequest();HttpServletResponse response = ServletActionContext.getResponse();">
+<meta name="description" content="课程目标： 能够在action中熟练使用servlet api中的对象 能够清楚的说出ognl的作用 能够清晰的描述出valueStack的内部结构 能够完成向valueStack中存放数据的操作 能够完成从valueStack中获取数据的操作 能够说出el表达式能够获取valuestack中的值原因 能够说出interceptor的执行原理 能够自定义完成登陆拦截器 Struts2中获取Serv">
 <meta name="keywords" content="Struts2">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Struts2 用法">
+<meta property="og:title" content="Struts2的OGNL">
 <meta property="og:url" content="http://HackerFreedom.github.io/2018/02/08/Struts2第二天/index.html">
 <meta property="og:site_name" content="TO BE BTTER ME">
-<meta property="og:description" content="Struts2中获取Servlet API简单的说，可以在action类中获取requent，response，session   。。。对象HttpServletRequest request = ServletActionContext.getRequest();HttpServletResponse response = ServletActionContext.getResponse();">
+<meta property="og:description" content="课程目标： 能够在action中熟练使用servlet api中的对象 能够清楚的说出ognl的作用 能够清晰的描述出valueStack的内部结构 能够完成向valueStack中存放数据的操作 能够完成从valueStack中获取数据的操作 能够说出el表达式能够获取valuestack中的值原因 能够说出interceptor的执行原理 能够自定义完成登陆拦截器 Struts2中获取Serv">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://hackerfreedom.github.io/2018/02/08/Struts2第二天/struts201">
-<meta property="og:updated_time" content="2018-02-27T00:49:25.864Z">
+<meta property="og:image" content="http://hackerfreedom.github.io/2018/02/08/Struts2第二天/struts201.png">
+<meta property="og:updated_time" content="2018-03-12T14:28:01.406Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Struts2 用法">
-<meta name="twitter:description" content="Struts2中获取Servlet API简单的说，可以在action类中获取requent，response，session   。。。对象HttpServletRequest request = ServletActionContext.getRequest();HttpServletResponse response = ServletActionContext.getResponse();">
-<meta name="twitter:image" content="http://hackerfreedom.github.io/2018/02/08/Struts2第二天/struts201">
+<meta name="twitter:title" content="Struts2的OGNL">
+<meta name="twitter:description" content="课程目标： 能够在action中熟练使用servlet api中的对象 能够清楚的说出ognl的作用 能够清晰的描述出valueStack的内部结构 能够完成向valueStack中存放数据的操作 能够完成从valueStack中获取数据的操作 能够说出el表达式能够获取valuestack中的值原因 能够说出interceptor的执行原理 能够自定义完成登陆拦截器 Struts2中获取Serv">
+<meta name="twitter:image" content="http://hackerfreedom.github.io/2018/02/08/Struts2第二天/struts201.png">
 
 
 
@@ -147,7 +147,7 @@
 
 
 
-  <title>Struts2 用法 | TO BE BTTER ME</title>
+  <title>Struts2的OGNL | TO BE BTTER ME</title>
   
 
 
@@ -325,7 +325,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Struts2 用法</h1>
+          <h1 class="post-title" itemprop="name headline">Struts2的OGNL</h1>
         
 
         <div class="post-meta">
@@ -397,8 +397,17 @@
       
 
       
-        <h1 id="Struts2中获取Servlet-API"><a href="#Struts2中获取Servlet-API" class="headerlink" title="Struts2中获取Servlet API"></a>Struts2中获取Servlet API</h1><p>简单的说，可以在action类中获取requent，response，session   。。。对象<br>HttpServletRequest request = ServletActionContext.getRequest();<br>HttpServletResponse response = ServletActionContext.getResponse();<br>ServletContext servletContext = ServletActionContext.getServletContext();</p>
-<h1 id="OGNL-表达式"><a href="#OGNL-表达式" class="headerlink" title="OGNL 表达式"></a>OGNL 表达式</h1><p>OGNL 是Object-Graph Navigation Language (对象图导航语言） 的缩写，他是一种功能强大的表达式语言，通过它简单一致的表达式语法，可以存取对象的任意属性，调用对象的方法，遍历整个对象的结构图，实现字段类</p>
+        <p>课程目标：</p>
+<pre><code>能够在action中熟练使用servlet api中的对象
+能够清楚的说出ognl的作用
+能够清晰的描述出valueStack的内部结构
+能够完成向valueStack中存放数据的操作
+能够完成从valueStack中获取数据的操作
+能够说出el表达式能够获取valuestack中的值原因
+能够说出interceptor的执行原理
+能够自定义完成登陆拦截器
+</code></pre><h1 id="Struts2中获取Servlet-API"><a href="#Struts2中获取Servlet-API" class="headerlink" title="Struts2中获取Servlet API"></a>Struts2中获取Servlet API</h1><p>简单的说，可以在action类中获取requent，response，session 对象<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">HttpServletRequest request = ServletActionContext.getRequest();</span><br><span class="line">HttpServletResponse response = ServletActionContext.getResponse();</span><br><span class="line">ServletContext servletContext = ServletActionContext.getServletContext();</span><br></pre></td></tr></table></figure></p>
+<h1 id="OGNL-表达式"><a href="#OGNL-表达式" class="headerlink" title="OGNL 表达式"></a>OGNL 表达式</h1><p><code>OGNL</code> 是<code>Object-Graph Navigation Language</code> (对象图导航语言） 的缩写，他是一种功能强大的表达式语言，通过它简单一致的表达式语法，可以存取对象的任意属性，调用对象的方法，遍历整个对象的结构图，实现字段类</p>
 <ul>
 <li>OGNL作用：<ol>
 <li>支持对象的操作，调用对象的方法</li>
@@ -409,53 +418,58 @@
 </ol>
 </li>
 </ul>
-<p><strong>OGNL三要素： 表达式   OgnlContext上下文  Root根</strong></p>
+<p><strong> OGNL三要素： </strong></p>
+<ul>
+<li><strong>表达式  </strong> </li>
+<li><strong>OgnlContext上下文</strong>  </li>
+<li><strong>Root根</strong></li>
+</ul>
 <h2 id="ognal表达式介绍"><a href="#ognal表达式介绍" class="headerlink" title="ognal表达式介绍"></a>ognal表达式介绍</h2><p>在struts2框架中我们使用ognl表达式的作用是从valueStack中获取数据。</p>
 <p>valueStack—-&gt;存放数据；ognl—-&gt;取数据，(类似于之前的request域存数据，el表达式取数据)</p>
-<p>要想在jsp页面上使用ognl表达式，就需要结合struts2框架的标签<br><s:property value="”表达式”">来使用<br><img src="/2018/02/08/Struts2第二天/struts201" alt="">;<br>    <em>引入struts2标签</em><br>    &lt;%@ taglib uri=”/struts-tags” prefix=”s”%&gt;</s:property></p>
-<pre><code>使用ognl表达式获取数据: &lt;s:property value=&quot;username&quot;/&gt;
-</code></pre><h1 id="valueStack值栈"><a href="#valueStack值栈" class="headerlink" title="valueStack值栈"></a>valueStack值栈</h1><p>valueStack的主要目的是为我将我们action中产生的数据携带到页面上，也就是说valueStack它就是一个存储数据的容器。</p>
+<p>要想在jsp页面上使用ognl表达式，就需要结合struts2框架的标签<br><s:property value="”表达式”">来使用<br><img src="/2018/02/08/Struts2第二天/struts201.png" alt="">;<br>    <code>*引入struts2标签*</code><br>    <code>&lt;%@ taglib uri=&quot;/struts-tags&quot; prefix=&quot;s&quot;%&gt;</code></s:property></p>
+<p>   <code>使用ognl表达式获取数据: &lt;s:property value=&quot;username&quot;/&gt;</code></p>
+<h1 id="valueStack值栈"><a href="#valueStack值栈" class="headerlink" title="valueStack值栈"></a>valueStack值栈</h1><p>valueStack的主要目的是为我将我们action中产生的数据携带到页面上，也就是说valueStack它就是一个存储数据的容器。</p>
 <ol>
 <li>valueStack基于ognl,作用是在struts2框架中来存储数据</li>
-<li>浏览器发出请求request——&gt;创建ValueStack对象——-&gt;创建当前访问的Action对象</li>
+<li>浏览器发出请求<code>request</code>——&gt;创建<code>ValueStack对象-</code>——&gt;创建当前访问的<code>Action</code>对象</li>
 </ol>
 <h2 id="valuesStack内部结构的介绍"><a href="#valuesStack内部结构的介绍" class="headerlink" title="valuesStack内部结构的介绍"></a>valuesStack内部结构的介绍</h2><ol>
-<li>valueStack主要有两部分组成:<br>CompoundRoot  root:       就是一个ArrayList<br>Map<string,object> context:  就是一个Map</string,object></li>
+<li>valueStack主要有两部分组成:<br><code>CompoundRoot  root</code>:       就是一个<code>ArrayList</code><br><code>Map&lt;String,Object&gt; context</code>:  就是一个<code>Map</code></li>
 <li>struts2框架向root存放的数据<br>浏览器发出请求request—–&gt;创建当前访问的Action对象—–&gt;将Action对象push到root</li>
-<li>struts2框架向context存放的数据<br>浏览器发出请求request——&gt;创建ValueStack对象之后，向context存放存储了一些引用，这个引用主要是关于web开发中相关信息，如<br>parameters :请求参数<br>request:请求对象中所有属性<br>session:会话对象中所有属性<br>application:ServletContext对象中的所有属性</li>
+<li>struts2框架向context存放的数据<br>浏览器发出请求request——&gt;创建ValueStack对象之后，向context存放存储了一些引用，这个引用主要是关于web开发中相关信息，如<br><code>parameters</code> :请求参数<br><code>request</code>:请求对象中所有属性<br><code>session</code>:会话对象中所有属性<br><code>application:ServletContex</code>t对象中的所有属性</li>
 </ol>
 <blockquote>
-<p>在struts2框架中我们通过ognl表达式来获取valueStack中数据，没有使用#就会从CompoundRoot中获取数据，如果使用#来获取，这时就会从context中来获取.</p>
+<p>在struts2框架中我们通过ognl表达式来获取valueStack中数据，<code>没有使用#就会从CompoundRoot中获取数据</code>，如果使用<code>#来获取，这时就会从context中来获取</code>.</p>
 </blockquote>
-<h2 id="valueStack获取"><a href="#valueStack获取" class="headerlink" title="valueStack获取"></a>valueStack获取</h2><p>ValueStack valueStack = ActionContext.getContext().getValueStack();</p>
+<h2 id="valueStack获取"><a href="#valueStack获取" class="headerlink" title="valueStack获取"></a>valueStack获取</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">ValueStack valueStack = ActionContext.getContext().getValueStack();</span><br></pre></td></tr></table></figure>
 <h2 id="valueStack-存储数据-重点）"><a href="#valueStack-存储数据-重点）" class="headerlink" title="valueStack 存储数据 (重点）"></a>valueStack 存储数据 (重点）</h2><p><strong>注意： 我们使用valueStack来存储数据时，主要向root存储</strong></p>
 <ol>
-<li>手动向valueStack存储数据<br>``<br> public String execute （）｛<br> ValueStack stack = ActionContext.getContext().getValueStack();<br> stack.set(“name”, “itheima”);<br> stack.push(“itcast”);<br> return “success”;<br> ｝</li>
+<li><code>手动</code>向valueStack存储数据<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">public String execute （）｛</span><br><span class="line">ValueStack stack = ActionContext.getContext().getValueStack();</span><br><span class="line">stack.set(&quot;name&quot;, &quot;itheima&quot;);</span><br><span class="line">stack.push(&quot;itcast&quot;);</span><br><span class="line">return &quot;success&quot;;</span><br><span class="line">｝</span><br></pre></td></tr></table></figure>
+</li>
 </ol>
-<p>valueStackpush方法,  直接将对象压入到root<br>valueStackset(“key”, “value”)方法,  创建一个Map压入到root，再把数据以健值对<k,v>的形式存放到这个map中</k,v></p>
-<p>``</p>
+<p><strong> <code>valueStackpush</code>方法,  直接将对象压入到root </strong></p>
+<p><strong> <code>valueStackset(“key”, “value”</code>)方法,  创建一个<code>Map压入到root</code>，再把数据以健值对<k,v>的形式存放到这个map中</k,v></strong> </p>
+<hr>
 <ol>
-<li>struts2框架自动向valueStack中存储数据<ol>
-<li>在框架源码的DefaultActionInvocation类的init方法内:<br> 首先创建了当前访问的Action对象，然后通过stack.push(action)将当前访问的Action对象存放到valueStack的root中，也就是每次请求访问action的时候，都会构造出action对象并将这个action对象存储到valueStack的root(ArrayList)中。</li>
-<li>在浏览器访问action的时候ModelDrivernInterceptor这个拦截器会执行如下代码:<br>``<br>if(action instanceof ModelDrivern) {<pre><code>modelDriven model= (ModelDriven)  action;
-</code></pre> Object model = modelDriven.getModel();<br> if(model !=null) {<pre><code>stack.push(model);
-</code></pre>}<br><em>以上代码会判断当前访问的Action对象有没有实现ModelDriven这个接口，如果实现了这个接口就通过action对象已经实现的通过getModel方法获取模型对象存放到root(ArrayList)中</em></li>
-</ol>
-</li>
-</ol>
-<p>``</p>
-<p>##valueStack中数据获取(重点) ##</p>
+<li><p>struts2框架<code>自动</code>向valueStack中存储数据</p>
 <ol>
-<li><p>获取手动存放的数据<br> public String execute()  {<br> ValueStack stack = ActionContext.getContext().getValueStack();<br> stack.set(“name”, “itheima”);<br> stack.push(“itcast”);<br> return “success”;<br> }</p>
-<p> 在jsp页面中获取以上代码手动存放的数据<br> <s:property value="name"><br> <s:property value="[0]">可以查看整个root结构数据<br> <s:property value="[0].top"><br>获取root顶部的对象<br> <s: debug=""> 视图中可以 查看action的属性</s:></s:property></s:property></s:property></p>
+<li><p>在框架源码的<code>DefaultActionInvocation</code>类的init方法内:</p>
+<p>首先创建了当前访问的Action对象，然后通过stack.push(action)将当前访问的Action对象存放到valueStack的root中，也就是每次请求访问action的时候，都会构造出<br>action对象并将这个action对象存储到valueStack的root(ArrayList)中。</p>
 </li>
-<li><p>获取自动存放的数据<br> public class ValueStackAction1 {<br> private String username = “fox”;<br> public String getUsername() {</p>
-<pre><code>return username;
-</code></pre><p> }<br> public String getPwd() {</p>
-<pre><code>return &quot;123&quot;;
-</code></pre><p> }<br> }</p>
-<p> 在页面中获取以上自动存放的数据，为什么?<br> <s:property value="username"><br> <s:property value="pwd"></s:property></s:property></p>
+<li><p>在浏览器访问action的时候<code>ModelDrivernInterceptor</code>这个拦截器会执行如下代码:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">if(action instanceof ModelDrivern) &#123;</span><br><span class="line">   	 modelDriven model= (ModelDriven)  action;</span><br><span class="line">	Object model = modelDriven.getModel();</span><br><span class="line">	if(model !=null) &#123;</span><br><span class="line">		stack.push(model);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 </li>
+</ol>
+</li>
+</ol>
+<p><em>以上代码会判断当前访问的Action对象有没有实现ModelDriven这个接口，如果实现了这个接口就通过action对象已经实现的通过getModel方法获取模型对象存放到root(ArrayList)中</em></p>
+<hr>
+<h2 id="valueStack中数据获取-重点"><a href="#valueStack中数据获取-重点" class="headerlink" title="valueStack中数据获取(重点)"></a>valueStack中数据获取(重点)</h2><ol>
+<li><p>获取手动存放的数据</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">public String execute()  &#123;</span><br><span class="line">ValueStack stack = ActionContext.getContext().getValueStack();</span><br><span class="line">stack.set(&quot;name&quot;, &quot;itheima&quot;);</span><br><span class="line">stack.push(&quot;itcast&quot;);</span><br><span class="line">return &quot;success&quot;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">在jsp页面中获取以上代码手动存放的数据</span><br><span class="line">&lt;s:property value=&quot;name&quot;/&gt;</span><br><span class="line">&lt;s:property value=&quot;[0]&quot;/&gt;可以查看整个root结构数据</span><br><span class="line">&lt;s:property value=&quot;[0].top&quot;/&gt;&lt;br/&gt;获取root顶部的对象</span><br><span class="line">&lt;s: debug/&gt; 视图中可以 查看action的属性</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>获取自动存放的数据</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">public class ValueStackAction1 &#123;</span><br><span class="line">private String username = &quot;fox&quot;;</span><br><span class="line">public String getUsername() &#123;</span><br><span class="line">	return username;</span><br><span class="line">&#125;</span><br><span class="line">public String getPwd() &#123;</span><br><span class="line">	return &quot;123&quot;;</span><br><span class="line">&#125;</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">在页面中获取以上自动存放的数据，为什么?</span><br><span class="line">&lt;s:property value=&quot;username&quot; /&gt;</span><br><span class="line">&lt;s:property value=&quot;pwd&quot; /&gt;</span><br></pre></td></tr></table></figure></li>
 </ol>
 
       
@@ -495,8 +509,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/02/06/面向对象的总结/" rel="next" title="Java基础知识">
-                <i class="fa fa-chevron-left"></i> Java基础知识
+              <a href="/2018/02/08/Struts2的JSON数据/" rel="next" title="Struts2 JSON">
+                <i class="fa fa-chevron-left"></i> Struts2 JSON
               </a>
             
           </div>
@@ -621,7 +635,7 @@ var jiathis_config={
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">33</span>
+                  <span class="site-state-item-count">42</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -632,7 +646,7 @@ var jiathis_config={
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">23</span>
+                  <span class="site-state-item-count">31</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -643,7 +657,7 @@ var jiathis_config={
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">24</span>
+                  <span class="site-state-item-count">26</span>
                   <span class="site-state-item-name">标签</span>
                 
               </div>
@@ -698,7 +712,7 @@ var jiathis_config={
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Struts2中获取Servlet-API"><span class="nav-number">1.</span> <span class="nav-text">Struts2中获取Servlet API</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#OGNL-表达式"><span class="nav-number">2.</span> <span class="nav-text">OGNL 表达式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#ognal表达式介绍"><span class="nav-number">2.1.</span> <span class="nav-text">ognal表达式介绍</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#valueStack值栈"><span class="nav-number">3.</span> <span class="nav-text">valueStack值栈</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#valuesStack内部结构的介绍"><span class="nav-number">3.1.</span> <span class="nav-text">valuesStack内部结构的介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#valueStack获取"><span class="nav-number">3.2.</span> <span class="nav-text">valueStack获取</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#valueStack-存储数据-重点）"><span class="nav-number">3.3.</span> <span class="nav-text">valueStack 存储数据 (重点）</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Struts2中获取Servlet-API"><span class="nav-number">1.</span> <span class="nav-text">Struts2中获取Servlet API</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#OGNL-表达式"><span class="nav-number">2.</span> <span class="nav-text">OGNL 表达式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#ognal表达式介绍"><span class="nav-number">2.1.</span> <span class="nav-text">ognal表达式介绍</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#valueStack值栈"><span class="nav-number">3.</span> <span class="nav-text">valueStack值栈</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#valuesStack内部结构的介绍"><span class="nav-number">3.1.</span> <span class="nav-text">valuesStack内部结构的介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#valueStack获取"><span class="nav-number">3.2.</span> <span class="nav-text">valueStack获取</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#valueStack-存储数据-重点）"><span class="nav-number">3.3.</span> <span class="nav-text">valueStack 存储数据 (重点）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#valueStack中数据获取-重点"><span class="nav-number">3.4.</span> <span class="nav-text">valueStack中数据获取(重点)</span></a></li></ol></li></ol></div>
             
 
           </div>

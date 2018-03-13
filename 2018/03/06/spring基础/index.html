@@ -1,0 +1,943 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+<script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+<link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+
+<style>
+    .pace .pace-progress {
+        background: #1E92FB; /*进度条颜色*/
+        height: 3px;
+    }
+    .pace .pace-progress-inner {
+         box-shadow: 0 0 10px #1E92FB, 0 0 5px     #1E92FB; /*阴影颜色*/
+    }
+    .pace .pace-activity {
+        border-top-color: #1E92FB;    /*上边框颜色*/
+        border-left-color: #1E92FB;    /*左边框颜色*/
+    }
+</style>
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="三大框架," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="TO BE BTTER ME" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="课程目标: 能够结合spring的体系结构图描述spring的体系结构 能够清晰的描述出对IOC和DI的理解，并能描述出两者的联系和区别 能够在spring中独立完成Bean的管理，获取和实例化 能够分别使用xml配置和注解的方式完成Bean的管理和属性注入 能够描述出Spring在Web中应用的原理 能够使用Spring整合Junit完成单元测试 spring框架介绍(一站式) 轻量级开源框架致">
+<meta name="keywords" content="三大框架">
+<meta property="og:type" content="article">
+<meta property="og:title" content="java框架">
+<meta property="og:url" content="http://HackerFreedom.github.io/2018/03/06/spring基础/index.html">
+<meta property="og:site_name" content="TO BE BTTER ME">
+<meta property="og:description" content="课程目标: 能够结合spring的体系结构图描述spring的体系结构 能够清晰的描述出对IOC和DI的理解，并能描述出两者的联系和区别 能够在spring中独立完成Bean的管理，获取和实例化 能够分别使用xml配置和注解的方式完成Bean的管理和属性注入 能够描述出Spring在Web中应用的原理 能够使用Spring整合Junit完成单元测试 spring框架介绍(一站式) 轻量级开源框架致">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://hackerfreedom.github.io/2018/03/06/spring基础/bean1.png">
+<meta property="og:updated_time" content="2018-03-10T14:35:50.634Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="java框架">
+<meta name="twitter:description" content="课程目标: 能够结合spring的体系结构图描述spring的体系结构 能够清晰的描述出对IOC和DI的理解，并能描述出两者的联系和区别 能够在spring中独立完成Bean的管理，获取和实例化 能够分别使用xml配置和注解的方式完成Bean的管理和属性注入 能够描述出Spring在Web中应用的原理 能够使用Spring整合Junit完成单元测试 spring框架介绍(一站式) 轻量级开源框架致">
+<meta name="twitter:image" content="http://hackerfreedom.github.io/2018/03/06/spring基础/bean1.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"right","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://HackerFreedom.github.io/2018/03/06/spring基础/"/>
+
+
+
+
+
+  <title>java框架 | TO BE BTTER ME</title>
+  
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+  
+  <div class="container sidebar-position-right page-post-detail">
+    <div class="headband"></div>
+  <a href="https://HackerFreedom.github.io"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://camo.githubusercontent.com/567c3a48d796e2fc06ea80409cc9dd82bf714434/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_darkblue_121621.png"></a>
+
+
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">TO BE BTTER ME</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Hacker</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            总章
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user-circle"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-board">
+          <a href="/board" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            留言
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-life">
+          <a href="/life" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-bolt"></i> <br />
+            
+            生活的随笔
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-photo">
+          <a href="/photo" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-camera-retro"></i> <br />
+            
+            相册
+          </a>
+        </li>
+      
+
+      
+   
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://HackerFreedom.github.io/2018/03/06/spring基础/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Sam">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/my.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="TO BE BTTER ME">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">java框架</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-06T21:32:00+08:00">
+                2018-03-06
+              </time>
+            
+
+            
+
+            
+          </span>
+        
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/spring基础/" itemprop="url" rel="index">
+                    <span itemprop="name">spring基础</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>课程目标:</p>
+<pre><code>能够结合spring的体系结构图描述spring的体系结构
+能够清晰的描述出对IOC和DI的理解，并能描述出两者的联系和区别
+能够在spring中独立完成Bean的管理，获取和实例化
+能够分别使用xml配置和注解的方式完成Bean的管理和属性注入
+能够描述出Spring在Web中应用的原理
+能够使用Spring整合Junit完成单元测试
+</code></pre><h1 id="spring框架介绍"><a href="#spring框架介绍" class="headerlink" title="spring框架介绍"></a>spring框架介绍</h1><p>(一站式) 轻量级开源框架致力于 J2EE  .Net  安卓，应用的各层的解决方案</p>
+<h1 id="spring框架体系结构和优点"><a href="#spring框架体系结构和优点" class="headerlink" title="spring框架体系结构和优点"></a>spring框架体系结构和优点</h1><ol>
+<li>spring体系结构<br> 核心: beans,core,context,spEL<br> 数据访问:springDate  jdbcTemplate<pre><code>AOP：
+web:
+junit:
+</code></pre></li>
+<li>spring的优点<br> 方便解耦，简化开发<br> AOP 编程的支持<br> 声明式事务的支持<br> 方便程序的测试<br> 方便集成各种优秀框架<br> 降低 JavaEE API 的使用难度</li>
+</ol>
+<h1 id="IOC（控制反转）和DI（依赖注入）"><a href="#IOC（控制反转）和DI（依赖注入）" class="headerlink" title="IOC（控制反转）和DI（依赖注入）"></a>IOC（控制反转）和DI（依赖注入）</h1><p>IOC原理= 配置文件统一管理bean + 工厂 ======&gt; dom解析 + 反射</p>
+<p>代码实现：</p>
+<pre><code>1. 导入相关jar包
+2. 定义类
+3. 在applicationContext.xml文件中配置bean
+4. 通过AppliCationContext对象获取userService
+5. test中通过getBean(配置文件中id名称)来获取指定的对象
+</code></pre><h1 id="springDI介绍"><a href="#springDI介绍" class="headerlink" title="springDI介绍"></a>springDI介绍</h1><p><code>DI:dependency injection</code>依赖注入<br>在spring框架负责创建Bean对象时，动态将依赖对象注入到Bean组件</p>
+<p>面试题:IOC和DI区别?<br>1.IOC: Spring统一管理应用程序运行时所需要的资源</p>
+<ol>
+<li>DI ：应用程序运行时所需要的资源由Spring来提供    </li>
+<li>站在Spring的角度就是IOC, 站在应用程序的角度就是DI, IOC是DI的前提</li>
+<li>应用程序能够DI注入的前提是：所注入资源要在Spring的管理中; 自己也要在Spring管理中</li>
+</ol>
+<h1 id="Spring管理Bean"><a href="#Spring管理Bean" class="headerlink" title="Spring管理Bean"></a>Spring管理Bean</h1><h2 id="xml管理"><a href="#xml管理" class="headerlink" title="xml管理"></a>xml管理</h2><ol>
+<li>ApplicationContext与BeanFactory区别<ol>
+<li>ApplicationContext它是扩展BeanFactory接口,<br>ApplicationContext实例化bean采用的立即策略(默认)，<br>在加载applicationContext.xml文件的时候就实例化bean对象</li>
+<li>BeanFactory实例化bean采用的延迟策略，只有getBean的时候才会实例化bean对象</li>
+</ol>
+</li>
+<li>pringBean的获取与实例化-实例化三种方式<ol>
+<li>无参数构造<code>&lt;bean id=&quot;userService&quot; class=&quot;cn.itheima.ioc.UserServiceImpl&quot;&gt;&lt;/bean&gt;</code></li>
+<li>静态工厂方法</li>
+<li>实例工厂方法</li>
+</ol>
+</li>
+<li>pringBean的获取与实例化-作用域scope<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;bean id=&quot;userService&quot; class=&quot;cn.itheima.ioc.UserServiceImpl&quot; scope=&quot;singleton&quot;&gt;</span><br><span class="line">&lt;property name=&quot;info&quot; value=&quot;ITCAST&quot;&gt;&lt;/property&gt;</span><br><span class="line">&lt;/bean&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<blockquote>
+<p>在bean声明时它有一个scope属性，它是用于描述bean的作用域。<br>singleton:单例 代表在spring ioc容器中只有一个Bean实例 (默认的scope)<br>prototype多例 每一次从spring容器中获取时，都会返回一个新的实例<br>request 用在web开发中，将bean对象<code>request.setAttribute()</code>存储到request域中<br>session 用在web开发中，将bean对象<code>session.setAttribute()</code>存储到session域中<br>在开发中常用的值是singleton与prototype</p>
+</blockquote>
+<ol>
+<li>Bean的生命周期<br><img src="/2018/03/06/spring基础/bean1.png" alt=""><br>总结:<br> 对于bean的生命周期，我们需要关注的主要有两个方法:</li>
+</ol>
+<p>1.增强bean的功能可以使用后处理Bean, <code>BeanPostProcessor</code><br>2.如果需要初始化或销毁操作我们可以使用<code>init-method</code> <code>destroy-method</code></p>
+<p>注意:destroy-method只对scope=singleton有效果</p>
+<h1 id="构造器注入"><a href="#构造器注入" class="headerlink" title="构造器注入"></a>构造器注入</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 使用构造方法对car的属性进行注入 --&gt;</span><br><span class="line">&lt;bean id=&quot;car&quot; class=&quot;cn.itheima.di.Car&quot;&gt;</span><br><span class="line">	&lt;constructor-arg index=&quot;0&quot; value=&quot;奔弛&quot;/&gt;</span><br><span class="line">	&lt;constructor-arg index=&quot;1&quot; value=&quot;1000000&quot;/&gt;</span><br><span class="line">&lt;/bean&gt;</span><br><span class="line"></span><br><span class="line">public void test1() &#123;</span><br><span class="line">ApplicationContext applicationContext = </span><br><span class="line">	new ClassPathXmlApplicationContext(&quot;applicationContext.xml&quot;);</span><br><span class="line">	Car car = (Car) applicationContext.getBean(&quot;car&quot;);</span><br><span class="line">System.out.println(car.getName() + &quot;  &quot; + car.getPrice());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="属性注入-setter方法"><a href="#属性注入-setter方法" class="headerlink" title="属性注入-setter方法"></a>属性注入-setter方法</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 使用setter方法对car的属性进行注入 --&gt;</span><br><span class="line">&lt;bean id=&quot;car1&quot; class=&quot;cn.itheima.di.Car&quot;&gt;</span><br><span class="line">	&lt;property name=&quot;name&quot; value=&quot;宝马&quot; /&gt;</span><br><span class="line">	&lt;property name=&quot;price&quot; value=&quot;500000&quot; /&gt;</span><br><span class="line">&lt;/bean&gt;</span><br><span class="line"></span><br><span class="line">&lt;bean id=&quot;person&quot; class=&quot;cn.itheima.di.Person&quot;&gt;</span><br><span class="line">	&lt;property name=&quot;name&quot; value=&quot;张三&quot; /&gt;</span><br><span class="line">	&lt;property name=&quot;car&quot; ref=&quot;car1&quot; /&gt;&lt;!-- ref引用其它bean的id或name值 --&gt;</span><br><span class="line">&lt;/bean&gt;</span><br><span class="line"></span><br><span class="line">@Test</span><br><span class="line">public void test3() &#123;</span><br><span class="line">ApplicationContext applicationContext = </span><br><span class="line">new ClassPathXmlApplicationContext(&quot;applicationContext.xml&quot;);</span><br><span class="line">Person person = (Person) applicationContext.getBean(&quot;person&quot;);</span><br><span class="line">System.out.println(person.getName() + &quot;  &quot; + person.getCar().getName());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h1 id="集合属性注入"><a href="#集合属性注入" class="headerlink" title="集合属性注入"></a>集合属性注入</h1><p>在spring中对于集合属性，可以使用专门的标签来完成注入例如:list   set  map properties等集合元素来完成集合属性注入.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 集合属性注入 --&gt;</span><br><span class="line">&lt;bean id=&quot;collectionDemo&quot; class=&quot;cn.itheima.di.CollectionDemo&quot;&gt;</span><br><span class="line">&lt;property name=&quot;list&quot;&gt;</span><br><span class="line">	 &lt;list&gt;</span><br><span class="line">	&lt;value&gt;张三&lt;/value&gt;</span><br><span class="line">	&lt;value&gt;10&lt;/value&gt;</span><br><span class="line">	&lt;ref bean=&quot;car&quot; /&gt;</span><br><span class="line">	  &lt;/list&gt;</span><br><span class="line">&lt;/property&gt;</span><br><span class="line">&lt;property name=&quot;set&quot;&gt;</span><br><span class="line">	  &lt;set&gt;</span><br><span class="line">	&lt;value&gt;10&lt;/value&gt;</span><br><span class="line">	&lt;value&gt;李四&lt;/value&gt;</span><br><span class="line">	&lt;ref bean=&quot;person&quot; /&gt;</span><br><span class="line">	  &lt;/set&gt;</span><br><span class="line">&lt;/property&gt;</span><br><span class="line">&lt;property name=&quot;map&quot;&gt;</span><br><span class="line">	   &lt;map&gt;</span><br><span class="line">	  &lt;entry key=&quot;username&quot; value=&quot;李四&quot;&gt;&lt;/entry&gt;</span><br><span class="line">	  &lt;entry key-ref=&quot;person&quot; value-ref=&quot;car&quot;&gt;&lt;/entry&gt;</span><br><span class="line">	   &lt;/map&gt;</span><br><span class="line">&lt;/property&gt;</span><br><span class="line">&lt;property name=&quot;props&quot;&gt;</span><br><span class="line">	   &lt;props&gt;</span><br><span class="line">	  &lt;prop key=&quot;company&quot;&gt;ITCAST&lt;/prop&gt;</span><br><span class="line">	  &lt;prop key=&quot;price&quot;&gt;10000&lt;/prop&gt;</span><br><span class="line">	   &lt;/props&gt;</span><br><span class="line">&lt;/property&gt;</span><br><span class="line">&lt;/bean&gt;</span><br></pre></td></tr></table></figure></p>
+<p><strong>总结</strong><br>对于三种注入方式，只需要记住<code>constructor-arg</code> 描述构造器的，<code>property</code>是对类中属性的成员set方法的描述，但是集合中要提供name的集合名称。</p>
+<h1 id="名称空间p和c的使用"><a href="#名称空间p和c的使用" class="headerlink" title="名称空间p和c的使用"></a>名称空间p和c的使用</h1><p>P名称空间; C名称空间<br>首先它们不是真正的名称空间，是虚拟的。它是嵌入到spring内核中的。<br>使用p名称空间可以解决我们setter注入时<property>简化<br>使用c名称空间可以解决我们构造器注入时<code>&lt;constructor-arg&gt;</code>简化</property></p>
+<p><em>注意xml文件的配置</em><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span><br><span class="line">&lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot;</span><br><span class="line">	xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; </span><br><span class="line">	xmlns:p=&quot;http://www.springframework.org/schema/p&quot;</span><br><span class="line">	xmlns:c=&quot;http://www.springframework.org/schema/c&quot;</span><br><span class="line">	xsi:schemaLocation=&quot;</span><br><span class="line">http://www.springframework.org/schema/beans </span><br><span class="line">http://www.springframework.org/schema/beans/spring-beans.xsd&quot;&gt;</span><br><span class="line">&lt;/beans&gt;</span><br></pre></td></tr></table></figure></p>
+<h2 id="注解管理"><a href="#注解管理" class="headerlink" title="注解管理"></a>注解管理</h2><ol>
+<li>spring注解开发-bean注册.avi(重点) —–&gt;ioc<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">- 导入aop的jar包</span><br><span class="line">- 在xml中引入context的名称空间</span><br><span class="line">- 开启注解扫描</span><br><span class="line">	-  &lt;context:component-scan base-package=&quot;cn.itheima&quot; /&gt;  </span><br><span class="line">	-  这个配置作用是指定spring扫描的包,它包含了context:annotation-config的功能(让spring中常用的一些注解生效)</span><br><span class="line">- 在需要被ioc（Spring管理）的类上配置@Component</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>在spring2.5后为<code>@Component</code>添加了三个衍生的注解<br><code>@Repository</code> 用于DAO层<br><code>@Service</code> 用于service层<br><code>@Controller</code>  用于表现层<br>对于我们的bean所处在的位置可以选择上述三个注解来应用，如果你的bean不明确位置，就可以使用<code>@Component</code> </p>
+<h1 id="spring注解开发-属性依赖注入-avi-重点"><a href="#spring注解开发-属性依赖注入-avi-重点" class="headerlink" title="spring注解开发-属性依赖注入.avi(重点)"></a>spring注解开发-属性依赖注入.avi(重点)</h1><p>案例实现：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">@Service(&quot;userService&quot;)</span><br><span class="line">public class UserServiceImpl implements IUserService &#123;</span><br><span class="line">	</span><br><span class="line">@Value(&quot;张三&quot;)</span><br><span class="line">private String name;</span><br><span class="line"></span><br><span class="line">@Override</span><br><span class="line">public void add() &#123;</span><br><span class="line">	 System.out.println(&quot;userService add..&quot; + name);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;	</span><br><span class="line"></span><br><span class="line">@Service(&quot;userService&quot;)</span><br><span class="line">public class UserServiceImpl implements IUserService &#123;</span><br><span class="line">	</span><br><span class="line">	@Value(&quot;张三&quot;)</span><br><span class="line">	private String name;</span><br><span class="line"></span><br><span class="line">	@Autowired</span><br><span class="line">	private IUserDAO userDao;</span><br><span class="line">	</span><br><span class="line">@Override</span><br><span class="line">public void add() &#123;</span><br><span class="line">// System.out.println(&quot;userService add..&quot; + name);</span><br><span class="line">userDao.add();</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><em>注意</em>：<code>@Value @Autowired</code>它们可以修饰属性，也可以修饰setter方法（在这里会在Spring中调用这个方法），如果写在属性上，就不需要提供setter方法（只是起到赋值的作用）。</p>
+<h1 id="spring注解开发-属性依赖注入指定注入的名称-avi-重点"><a href="#spring注解开发-属性依赖注入指定注入的名称-avi-重点" class="headerlink" title="spring注解开发-属性依赖注入指定注入的名称.avi(重点)"></a>spring注解开发-属性依赖注入指定注入的名称.avi(重点)</h1><p>案例实现：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">@Service(&quot;userService&quot;)</span><br><span class="line">public class UserServiceImpl implements IUserService &#123;</span><br><span class="line">	</span><br><span class="line">@Autowired</span><br><span class="line">@Qualifier(&quot;userDao&quot;)</span><br><span class="line">private IUserDAO userDao;  //</span><br><span class="line"></span><br><span class="line">@Override</span><br><span class="line">public void add() &#123;</span><br><span class="line">userDao.add();</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">package cn.itheima.annotation;</span><br><span class="line"></span><br><span class="line">@Service(&quot;userService&quot;)</span><br><span class="line">public class UserServiceImpl implements IUserService &#123;</span><br><span class="line">@Resource(name=&quot;userDao&quot;)</span><br><span class="line">private IUserDAO userDao;</span><br><span class="line"></span><br><span class="line">@Override</span><br><span class="line">public void add() &#123;</span><br><span class="line">	 userDao.add();</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<ol>
+<li>spring注解开发-其它注解.avi(掌握)    </li>
+</ol>
+<p><code>@Scope(&quot;prototype&quot;)</code>@Scope它以描述bean的作用域<br><code>@PostConstruct</code>相当于<code>init-method=”mInit”</code><br><code>@PreDestroy</code> 相当于是<code>destroy-method=”mDestroy”</code><br>注意：对于销毁的方法它只对bean的<code>scope=singleton</code>有效</p>
+<p>依赖注入的前提，控制反转</p>
+
+      
+    </div>
+    
+    
+    
+  <div>
+  
+    <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+  
+  </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/三大框架/" rel="tag"># 三大框架</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/03/01/jsp介绍基础/" rel="next" title="JSP和MVC模式">
+                <i class="fa fa-chevron-left"></i> JSP和MVC模式
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/03/08/springAOP/" rel="prev" title="java框架">
+                java框架 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+<span class="jiathis_txt">分享到：</span>
+<a class="jiathis_button_fav">收藏夹</a>
+<a class="jiathis_button_copy">复制网址</a>
+<a class="jiathis_button_email">邮件</a>
+<a class="jiathis_button_weixin">微信</a>
+<a class="jiathis_button_qzone">QQ空间</a>
+<a class="jiathis_button_tqq">腾讯微博</a>
+<a class="jiathis_button_douban">豆瓣</a>
+<a class="jiathis_button_share">一键分享</a>
+
+<a href="http://www.jiathis.com/share?uid=2140465" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
+<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+var jiathis_config={
+  data_track_clickback:true,
+  summary:"",
+  shortUrl:false,
+  hideMore:false
+}
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zMzc1NS8xMDMwOQ=="></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+  
+  
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/my.jpg"
+                alt="Sam" />
+            
+              <p class="site-author-name" itemprop="name">Sam</p>
+              <p class="site-description motion-element" itemprop="description">一个热爱生活的B-boy</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">42</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">31</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">26</span>
+                  <span class="site-state-item-name">标签</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/HackerFreedom" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:614190293@gmail.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#spring框架介绍"><span class="nav-number">1.</span> <span class="nav-text">spring框架介绍</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#spring框架体系结构和优点"><span class="nav-number">2.</span> <span class="nav-text">spring框架体系结构和优点</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#IOC（控制反转）和DI（依赖注入）"><span class="nav-number">3.</span> <span class="nav-text">IOC（控制反转）和DI（依赖注入）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#springDI介绍"><span class="nav-number">4.</span> <span class="nav-text">springDI介绍</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Spring管理Bean"><span class="nav-number">5.</span> <span class="nav-text">Spring管理Bean</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#xml管理"><span class="nav-number">5.1.</span> <span class="nav-text">xml管理</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#构造器注入"><span class="nav-number">6.</span> <span class="nav-text">构造器注入</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#属性注入-setter方法"><span class="nav-number">7.</span> <span class="nav-text">属性注入-setter方法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#集合属性注入"><span class="nav-number">8.</span> <span class="nav-text">集合属性注入</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#名称空间p和c的使用"><span class="nav-number">9.</span> <span class="nav-text">名称空间p和c的使用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#注解管理"><span class="nav-number">9.1.</span> <span class="nav-text">注解管理</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#spring注解开发-属性依赖注入-avi-重点"><span class="nav-number">10.</span> <span class="nav-text">spring注解开发-属性依赖注入.avi(重点)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#spring注解开发-属性依赖注入指定注入的名称-avi-重点"><span class="nav-number">11.</span> <span class="nav-text">spring注解开发-属性依赖注入指定注入的名称.avi(重点)</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Sam</span>
+
+  
+</div>
+
+
+
+<div class="powered-by">
+<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
+  本站访客数:<span id="busuanzi_value_site_uv"></span>
+</span>
+</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+   
+<!-- <div class="bg_content">
+    
+    <canvas id="canvas"></canvas>
+    </div> -->
+</body>
+</html>
+
+<!-- <script type="text/javascript" src="/js/src/canvas.js"></script> -->

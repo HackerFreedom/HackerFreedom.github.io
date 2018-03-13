@@ -98,18 +98,26 @@
 
 
 
-<meta name="description" content="一个热爱生活的B-boy">
+<meta name="description" content="目标:  阐述什么是JSP及其运行原理阐述JSP中如何嵌入脚本元素以及软件开发模式的发展历程解决开发中的路径问题：相对路径与绝对路径阐述请求转发和重定向的区别(面试重点)完成登录成功统计在线人数的案例(重点)   JSP 的概述JSP：Java Server Pages (Java服务器端页面)，其实就在HTML中嵌入Java代码。 Servlet:擅长处理业务逻辑JSP:擅长输出HTML标签 j">
 <meta name="keywords" content="jsp介绍基础">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JSP和MVC模式">
 <meta property="og:url" content="http://HackerFreedom.github.io/2018/03/01/jsp介绍基础/index.html">
 <meta property="og:site_name" content="TO BE BTTER ME">
-<meta property="og:description" content="一个热爱生活的B-boy">
+<meta property="og:description" content="目标:  阐述什么是JSP及其运行原理阐述JSP中如何嵌入脚本元素以及软件开发模式的发展历程解决开发中的路径问题：相对路径与绝对路径阐述请求转发和重定向的区别(面试重点)完成登录成功统计在线人数的案例(重点)   JSP 的概述JSP：Java Server Pages (Java服务器端页面)，其实就在HTML中嵌入Java代码。 Servlet:擅长处理业务逻辑JSP:擅长输出HTML标签 j">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-02T06:16:31.809Z">
+<meta property="og:image" content="http://hackerfreedom.github.io/2018/03/01/jsp介绍基础/jsp01.png">
+<meta property="og:image" content="http://hackerfreedom.github.io/2018/03/01/jsp介绍基础/jsp02.png">
+<meta property="og:image" content="http://hackerfreedom.github.io/2018/03/01/jsp介绍基础/jsp03.png">
+<meta property="og:image" content="http://hackerfreedom.github.io/2018/03/01/jsp介绍基础/jsp04.png">
+<meta property="og:image" content="http://hackerfreedom.github.io/2018/03/01/jsp介绍基础/jsp05.png">
+<meta property="og:image" content="http://hackerfreedom.github.io/2018/03/01/jsp介绍基础/jsp06.png">
+<meta property="og:image" content="http://hackerfreedom.github.io/2018/03/01/jsp介绍基础/jsp07.png">
+<meta property="og:updated_time" content="2018-03-13T09:12:46.105Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JSP和MVC模式">
-<meta name="twitter:description" content="一个热爱生活的B-boy">
+<meta name="twitter:description" content="目标:  阐述什么是JSP及其运行原理阐述JSP中如何嵌入脚本元素以及软件开发模式的发展历程解决开发中的路径问题：相对路径与绝对路径阐述请求转发和重定向的区别(面试重点)完成登录成功统计在线人数的案例(重点)   JSP 的概述JSP：Java Server Pages (Java服务器端页面)，其实就在HTML中嵌入Java代码。 Servlet:擅长处理业务逻辑JSP:擅长输出HTML标签 j">
+<meta name="twitter:image" content="http://hackerfreedom.github.io/2018/03/01/jsp介绍基础/jsp01.png">
 
 
 
@@ -395,7 +403,65 @@
       
 
       
-        
+        <p>目标:</p>
+<blockquote>
+<p>阐述什么是JSP及其运行原理<br>阐述JSP中如何嵌入脚本元素以及软件开发模式的发展历程<br>解决开发中的路径问题：相对路径与绝对路径<br><code>阐述请求转发和重定向的区别(面试重点)</code><br>完成登录成功统计在线人数的案例(重点)</p>
+</blockquote>
+<hr>
+<h1 id="JSP-的概述"><a href="#JSP-的概述" class="headerlink" title="JSP 的概述"></a>JSP 的概述</h1><p>JSP：<code>Java Server Page</code>s (Java服务器端页面)，其实就在HTML中嵌入Java代码。</p>
+<p>Servlet:擅长处理业务逻辑<br>JSP:擅长输出HTML标签</p>
+<h2 id="jsp的运行原理"><a href="#jsp的运行原理" class="headerlink" title="jsp的运行原理"></a>jsp的运行原理</h2><p><img src="/2018/03/01/jsp介绍基础/jsp01.png" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">注意：jsp本身是一个Servlet，所以要访问jsp文件必须部署到服务器上</span><br></pre></td></tr></table></figure></p>
+<h2 id="jsp的脚本元素"><a href="#jsp的脚本元素" class="headerlink" title="jsp的脚本元素"></a>jsp的脚本元素</h2><p>1、使用<code>&lt;%!int i=100; %&gt;</code>声明的变量是成员变量<br>声明方法：</p>
+<p>2、书写java程序代码：（在<code>&lt;% %&gt;</code>里面声明的变量是局部变量）</p>
+<p>3、向页面输出java表达式结果：<code>&lt;%=i %&gt;</code></p>
+<p>注意: <code>&lt;%  Java代码 %&gt;</code> 和 <code>&lt;%=i%&gt;</code> 经常用,  &lt;%! 这个不太用  %&gt;</p>
+<p>总结:<br>JSP = HTML + Java代码 + JSP标签</p>
+<p>//这段代码在类的成员位置<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;%!</span><br><span class="line">int age = 19;</span><br><span class="line">public void show() &#123;...&#125;</span><br><span class="line">%&gt;</span><br><span class="line"></span><br><span class="line">//这段代码在一个方法里</span><br><span class="line">&lt;%</span><br><span class="line">int i = 10;</span><br><span class="line">System.out.println(i); </span><br><span class="line">%&gt;</span><br><span class="line"></span><br><span class="line">//这段代码在方法里, 用out.print()向页面输出</span><br><span class="line">&lt;%= i%&gt;</span><br></pre></td></tr></table></figure></p>
+<h2 id="jsp的开发模式之MVC模式"><a href="#jsp的开发模式之MVC模式" class="headerlink" title="jsp的开发模式之MVC模式"></a>jsp的开发模式之MVC模式</h2><ol>
+<li><p>Servlet优缺点：获取请求数据和处理数据非常方便；但是向页面输出并显示数据（html标签）非常麻烦，毫无格式！<br>jsp优缺点：jsp显示数据非常方便，像html格式一样；但是封装数据和处理数据比较麻烦。</p>
+</li>
+<li><p>MVC模式：<br>M：<code>model层</code>（模型层），一般用来封装和处理数据<br>V：<code>View层</code>（视图层），一般只用了展示数据，显示信息。<br>C： <code>Controller</code>层（控制层），一般调用Model层方法获取数据，发送给View层显示，起到一个连接Model层和View层的作用。</p>
+</li>
+</ol>
+<p>在我们的jsp开发之中，javaBean属于<code>model</code>层，Servlet属于<code>Controller</code>层，jsp属于<code>View</code>层</p>
+<p><img src="/2018/03/01/jsp介绍基础/jsp02.png" alt=""></p>
+<p>jsp + javaBean</p>
+<p>请求——-&gt;JSP—–&gt;JavaBean</p>
+<p>请求——–&gt;Servlet-(Controller)——-&gt;JavaBean(Model)——-&gt;JSP(View)</p>
+<blockquote>
+<p>jsp和Servlet各有什么优缺点？<br>jsp是一个html页面，用于显示数据，但是封装数据比较繁琐<br>而servlet在处理数据很容易，相反显示数据就很繁琐了</p>
+<p>MVC模式 是什么？</p>
+</blockquote>
+<p>m：表示model层，一般是用来处理数据的<br>v：表示view层，展示视图，显示信息</p>
+<h2 id="c-controller层，控制model层，发送给view层显示。"><a href="#c-controller层，控制model层，发送给view层显示。" class="headerlink" title="c:controller层，控制model层，发送给view层显示。"></a>c:controller层，控制model层，发送给view层显示。</h2><h1 id="开发中路径的问题"><a href="#开发中路径的问题" class="headerlink" title="开发中路径的问题"></a>开发中路径的问题</h1><ol>
+<li><p>相对路径是相对于当前的jsp或者html文件的。不以/ 开始,我们跳转之前要看这两个路径（当前文件路径和目标文件路径），很不方便。</p>
+</li>
+<li><p>绝对路径都是用/开头的，可以直接从项目名开始写，<br>例如：<code>&lt;a href=&quot;/javaweb_day11/AServlet&quot;&gt;</code>跳转<code>到AServlet2&lt;/a&gt;</code></p>
+</li>
+</ol>
+<p>注意: 强烈建议使用绝对路径,以/ 开始  </p>
+<h2 id="如-lt-a-href-”-web02-ServletDemo1”-gt-hello-lt-a-gt"><a href="#如-lt-a-href-”-web02-ServletDemo1”-gt-hello-lt-a-gt" class="headerlink" title="如:&lt;a href=”/web02/ServletDemo1” &gt;hello&lt;/a&gt;"></a>如:<code>&lt;a href=”/web02/ServletDemo1” &gt;hello&lt;/a&gt;</code></h2><h1 id="请求转发和重定向的区别"><a href="#请求转发和重定向的区别" class="headerlink" title="请求转发和重定向的区别"></a>请求转发和重定向的区别</h1><ul>
+<li>请求转发是一次请求一次响应，而重定向是两次请求两次响应。</li>
+<li>请求转发地址栏不会变化的，重定向地址栏发生变化。</li>
+<li>请求转发路径不带工程名，重定向需要带工程名路径。</li>
+<li>请求转发只能在本网站内部，重定向可以定向到任何网站。</li>
+</ul>
+<p><img src="/2018/03/01/jsp介绍基础/jsp03.png" alt="">;<br><strong>注意：</strong><br>如果需要使用request进行值传递，需要通过请求转发完成。如果页面需要跳转到其他网站上必须使用重定向。<br>   其他情况用哪个都行</p>
+<h2 id="转发和重定向如何选择"><a href="#转发和重定向如何选择" class="headerlink" title="转发和重定向如何选择?"></a>转发和重定向如何选择?</h2><p>1.如果要使用request共享数据,使用转发<br>i.<code>(reques.getRequestDispatcher(“/demo.jsp”).forward(request,response))</code><br>2.如果要跳转到其他网站,必须使用重定向    <code>(response.sendRedirect(“http://www.baidu.com”))</code></p>
+<h2 id="3-其他情况-2个都可以"><a href="#3-其他情况-2个都可以" class="headerlink" title="3.其他情况,2个都可以"></a>3.其他情况,2个都可以</h2><h1 id="request"><a href="#request" class="headerlink" title="request"></a>request</h1><p>获取请求参数<br>解决post中文乱码<br>解决get中文乱码</p>
+<hr>
+<h1 id="登录成功后的人数显示"><a href="#登录成功后的人数显示" class="headerlink" title="登录成功后的人数显示"></a>登录成功后的人数显示</h1><ul>
+<li>在服务器启动的时候初始化一个值为零，将这个值存入到ServletContext域中<br><img src="/2018/03/01/jsp介绍基础/jsp04.png" alt="">;</li>
+<li>将这个Servlet配置成启动时加载</li>
+</ul>
+<p><img src="/2018/03/01/jsp介绍基础/jsp05.png" alt="">;</p>
+<ul>
+<li><p>记录登录的人数<br><img src="/2018/03/01/jsp介绍基础/jsp06.png" alt="">;</p>
+</li>
+<li><p>在登录成功页面上显示总人数<br><img src="/2018/03/01/jsp介绍基础/jsp07.png" alt="">;</p>
+</li>
+</ul>
+
       
     </div>
     
@@ -433,7 +499,7 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/02/27/hibernate优化/" rel="next" title="Java框架">
+              <a href="/2018/02/27/hibernate缓存/" rel="next" title="Java框架">
                 <i class="fa fa-chevron-left"></i> Java框架
               </a>
             
@@ -442,6 +508,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/03/06/spring基础/" rel="prev" title="java框架">
+                java框架 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -526,8 +596,17 @@ var jiathis_config={
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -546,7 +625,7 @@ var jiathis_config={
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">33</span>
+                  <span class="site-state-item-count">42</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -557,7 +636,7 @@ var jiathis_config={
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">23</span>
+                  <span class="site-state-item-count">31</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -568,7 +647,7 @@ var jiathis_config={
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">24</span>
+                  <span class="site-state-item-count">26</span>
                   <span class="site-state-item-name">标签</span>
                 
               </div>
@@ -613,6 +692,22 @@ var jiathis_config={
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#JSP-的概述"><span class="nav-number">1.</span> <span class="nav-text">JSP 的概述</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#jsp的运行原理"><span class="nav-number">1.1.</span> <span class="nav-text">jsp的运行原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#jsp的脚本元素"><span class="nav-number">1.2.</span> <span class="nav-text">jsp的脚本元素</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#jsp的开发模式之MVC模式"><span class="nav-number">1.3.</span> <span class="nav-text">jsp的开发模式之MVC模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#c-controller层，控制model层，发送给view层显示。"><span class="nav-number">1.4.</span> <span class="nav-text">c:controller层，控制model层，发送给view层显示。</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#开发中路径的问题"><span class="nav-number">2.</span> <span class="nav-text">开发中路径的问题</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#如-lt-a-href-”-web02-ServletDemo1”-gt-hello-lt-a-gt"><span class="nav-number">2.1.</span> <span class="nav-text">如:&lt;a href=”/web02/ServletDemo1” &gt;hello&lt;/a&gt;</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#请求转发和重定向的区别"><span class="nav-number">3.</span> <span class="nav-text">请求转发和重定向的区别</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#转发和重定向如何选择"><span class="nav-number">3.1.</span> <span class="nav-text">转发和重定向如何选择?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-其他情况-2个都可以"><span class="nav-number">3.2.</span> <span class="nav-text">3.其他情况,2个都可以</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#request"><span class="nav-number">4.</span> <span class="nav-text">request</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#登录成功后的人数显示"><span class="nav-number">5.</span> <span class="nav-text">登录成功后的人数显示</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

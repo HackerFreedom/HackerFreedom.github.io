@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+<script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+<link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+
+<style>
+    .pace .pace-progress {
+        background: #1E92FB; /*进度条颜色*/
+        height: 3px;
+    }
+    .pace .pace-progress-inner {
+         box-shadow: 0 0 10px #1E92FB, 0 0 5px     #1E92FB; /*阴影颜色*/
+    }
+    .pace .pace-activity {
+        border-top-color: #1E92FB;    /*上边框颜色*/
+        border-left-color: #1E92FB;    /*左边框颜色*/
+    }
+</style>
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="黑客," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="TO BE BTTER ME" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="keywords" content="黑客">
+<meta property="og:type" content="article">
+<meta property="og:title" content="黑客之路">
+<meta property="og:url" content="http://HackerFreedom.github.io/2018/03/12/黑客之路/index.html">
+<meta property="og:site_name" content="TO BE BTTER ME">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://i.imgur.com/3TfVoGg.jpg">
+<meta property="og:updated_time" content="2018-03-13T10:32:56.501Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="黑客之路">
+<meta name="twitter:image" content="https://i.imgur.com/3TfVoGg.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"right","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://HackerFreedom.github.io/2018/03/12/黑客之路/"/>
+
+
+
+
+
+  <title>黑客之路 | TO BE BTTER ME</title>
+  
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+  
+  <div class="container sidebar-position-right page-post-detail">
+    <div class="headband"></div>
+  <a href="https://HackerFreedom.github.io"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://camo.githubusercontent.com/567c3a48d796e2fc06ea80409cc9dd82bf714434/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_darkblue_121621.png"></a>
+
+
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">TO BE BTTER ME</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Hacker</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            总章
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user-circle"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-board">
+          <a href="/board" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            留言
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-life">
+          <a href="/life" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-bolt"></i> <br />
+            
+            生活的随笔
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-photo">
+          <a href="/photo" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-camera-retro"></i> <br />
+            
+            相册
+          </a>
+        </li>
+      
+
+      
+   
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://HackerFreedom.github.io/2018/03/12/黑客之路/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Sam">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/my.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="TO BE BTTER ME">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">黑客之路</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-12T08:40:00+08:00">
+                2018-03-12
+              </time>
+            
+
+            
+
+            
+          </span>
+        
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/黑客之路/" itemprop="url" rel="index">
+                    <span itemprop="name">黑客之路</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><img src="https://i.imgur.com/3TfVoGg.jpg" alt=""><br><a id="more"></a><br>bookmark 基础必备<br>HTTP抓包与调试<br>Firefox插件<br>Firebug<br>抓包与各种调试<br>Tamper Data<br>拦截修改<br>Live Http Header<br>重放功能<br>Hackbar<br>编码解码/POST提交<br>Modify Headers<br>修改头部<br>Fiddler<br>浏览器代理神器<br>拦截请求或响应<br>抓包<br>重放<br>模拟请求<br>编码解码<br>第三方扩展<br>Watcher<br>Web前端安全的自动审计工具<br>Wireshark<br>各种强大的过滤器语法<br>Tcpdump<br>命令行的类Wireshark抓包神器<br>Python<br>urllib2<br>打开请求响应调试<br>编辑urllib2的do_open里的h.set_debuglevel<br>改为h.set_debuglevel(1)，这时可以清晰看到请求响应数据，包括https<br>什么是跳转<br>服务端跳转<br>302<br>&lt;?php header(“Location: 3.php”); ?&gt;<br>301<br>&lt;?php header(“HTTP/1.1 301 Moved Permanently”); header(“Location: 2.php”); ?&gt;<br>u=urllib2.urlopen(url)后，u.url能得到服务端跳转后的地址<br>urllib2自己的特性<br>所谓的会跟进去<br>客户端跳转</p>
+<p><meta http-equiv="refresh" content="0; url=http://www.evilcos.me"><br>htmlparse解析就行了<br>location.href=”http:/“ + “/evilcos.me”;<br>正则解析（弱）<br>JavaScript引擎解析（强）<br>Office能力<br>Word文档编写，看去要专业，尤其对外的<br>Excel里面大量的统计、图表功能，需要善于使用<br>PPT演讲、培训等必备，如何做好PPT？百度一下…<br>ksmiletris 进一步<br>yEd<br>Visio<br>FreeMind<br>本技能表就是这个制作<br>上手Linux<br>《鸟哥的Linux私房菜》<br>熟练VIM<br>实战至少3回合：<a href="http://coolshell.cn/articles/5426.html" target="_blank" rel="noopener">http://coolshell.cn/articles/5426.html</a> User Link<br>上手Python<br>idea <a href="https://www.python.org/dev/peps/pep-0008/" target="_blank" rel="noopener">https://www.python.org/dev/peps/pep-0008/</a> User Link<br>idea <a href="http://learnpythonthehardway.org/book/" target="_blank" rel="noopener">http://learnpythonthehardway.org/book/</a> User Link<br>《Python核心编程2》<br>第4章 Python对象<br>完整熟练<br>6.8 Unicode<br>完整熟练<br>8.11 迭代器和iter()函数<br>完整熟练<br>第9章 文件的输入和输出<br>完整熟练<br>第10章 错误和异常<br>完整熟练<br>第11章 函数和函数式编程<br>完整熟练<br>第12章 模块<br>完整熟练<br>第14章 执行环境<br>完整熟练<br>第15章 正则表达式<br>idea 完整熟练<br>第18章 多线程编程<br>完整熟练<br>20.2 使用Python进行Web应用：创建一个简单的Web客户端<br>完整熟练<br>算法<br>快排<br>二分<br>正则表达式<br>调试工具<br>ksmiletris Kodos<br>idea RegexBuddy<br>支持多种语言<br>支持调试优化<br>ksmiletris <a href="http://www.regexper.com/" target="_blank" rel="noopener">http://www.regexper.com/</a> User Link<br>正则图解<br>正则表达式30分钟入门教程：<a href="http://deerchao.net/tutorials/regex/regex.htm" target="_blank" rel="noopener">http://deerchao.net/tutorials/regex/regex.htm</a> User Link<br><a href="http://wiki.ubuntu.org.cn/Python正则表达式操作指南" target="_blank" rel="noopener">http://wiki.ubuntu.org.cn/Python正则表达式操作指南</a> User Link<br>《精通正则表达式》<br>研发能力<br>瀑布模型<br>需求-&gt;需求分析-&gt;设计-&gt;开发-&gt;测试-&gt;上线-&gt;运维/运营<br>idea 需求分析能力<br>给你一个需求，如何给出一个优美的执行思路——方法论<br>这个能力非常非常非常的关键<br>调试能力<br>只要定位出，就没有解决不了的Bugs<br>肉眼看到的都是假象<br>一定要专业的工具与经验配合<br>Bugs在哪出现，最终就在哪进行真实模拟调试<br>缩小范围<br>构建自己的测试样例<br>排除网络复杂未知情况<br>关联模块一个个排除<br>Python单步调试<br>import pdb;pdb.set_trace()<br>在需要单步调试的地方加上面这句，运行程序后中断在此，然后h查看指令进行一步步细细调试<br>粗暴调试：print<br>敏捷思想<br>快速迭代<br>任务拆细<br>idea v1原则：定义好v1的目标，快速完成v1为优先<br>习惯Wiki记录，利于沉淀与分享<br>翻墙<br>优雅解决方案<br>shadowsocks + 一台海外 VPS + Chrome(SwitchyOmega)/Firefox(AutoProxy)<br>详情了解：<a href="http://mp.weixin.qq.com/s?__biz=MzA3NTEzMTUwNA==&amp;mid=210457700&amp;idx=1&amp;sn=322d1e4c13d3f33ade848e3889c410bf#rd" target="_blank" rel="noopener">http://mp.weixin.qq.com/s?__biz=MzA3NTEzMTUwNA==&amp;mid=210457700&amp;idx=1&amp;sn=322d1e4c13d3f33ade848e3889c410bf#rd</a> User Link<br>SSH隧道<br><a href="http://www.ibm.com/developerworks/cn/linux/l-cn-sshforward/index.html" target="_blank" rel="noopener">http://www.ibm.com/developerworks/cn/linux/l-cn-sshforward/index.html</a> User Link<br>本地转发<br>ssh -L <local port="">:<remote host="">:<remote port=""> <ssh hostname=""><br>远程转发<br>反弹<br>ssh -R <local port="">:<remote host="">:<remote port=""> <ssh hostname=""><br>动态转发<br>ssh -D <local port=""> <ssh server=""><br>Web安全<br>零基础如何学习Web安全<br><a href="http://www.zhihu.com/question/21606800/answer/22268855" target="_blank" rel="noopener">http://www.zhihu.com/question/21606800/answer/22268855</a> User Link<br>Web服务组件<br>8+1：一图胜千言哎:) User Link<br>钟馗之眼<br>网络空间搜索引擎<br><a href="http://zoomeye.org" target="_blank" rel="noopener">http://zoomeye.org</a> User Link<br>大量样例：<a href="http://www.zoomeye.org/search/dork" target="_blank" rel="noopener">http://www.zoomeye.org/search/dork</a> User Link<br>组件具有影响面，越底层的组件影响面可能越大<br>安全维度<br>漏洞<br>风险<br>事件<br>Web安全标准<br>OWASP<br>WASC<br>实战环境<br>XSS<br>内部平台：ks-xsslab_open<br>可以上手<br>XSS<br>CSRF<br>ClickJacking<br><a href="http://xss-quiz.int21h.jp/" target="_blank" rel="noopener">http://xss-quiz.int21h.jp/</a> User Link<br>attach 答案：xss<em>quiz.txt User Link<br><a href="http://prompt.ml/0" target="_blank" rel="noopener">http://prompt.ml/0</a> User Link<br>答案：<a href="https://github.com/cure53/XSSChallengeWiki/wiki/prompt.ml" target="_blank" rel="noopener">https://github.com/cure53/XSSChallengeWiki/wiki/prompt.ml</a> User Link<br><a href="http://escape.alf.nu/" target="_blank" rel="noopener">http://escape.alf.nu/</a> User Link<br>答案：<a href="http://blog.nsfocus.net/alert1-to-win-write-up/" target="_blank" rel="noopener">http://blog.nsfocus.net/alert1-to-win-write-up/</a> User Link<br>SQL<br><a href="https://github.com/Audi-1/sqli-labs" target="_blank" rel="noopener">https://github.com/Audi-1/sqli-labs</a> User Link<br>SQLI-LABS is a platform to learn SQLI<br>i春秋<br><a href="http://www.ichunqiu.com/" target="_blank" rel="noopener">http://www.ichunqiu.com/</a> User Link<br>Seebug + ZoomEye<br><a href="http://seebug.org" target="_blank" rel="noopener">http://seebug.org</a> User Link<br><a href="http://zoomeye.org" target="_blank" rel="noopener">http://zoomeye.org</a> User Link<br>你懂得…<br>工具<br>我的渗透利器<br>Firefox<br>Firebug<br>调试JavaScript，HTTP请求响应观察，Cookie，DOM树观察等<br>Tamper Data<br>拦截修改<br>Live Http Header<br>重放功能<br>Hackbar<br>编码解码/POST提交<br>Modify Headers<br>修改头部<br>GreaseMonkey<br>Original Cookie Injector for Greasemonkey User Link<br>NoScript<br>进行一些JavaScript的阻断<br>AutoProxy<br>翻墙必备<br>Chrome<br>F12<br>打开开发者工具，功能==Firebug+本地存储观察等<br>SwichySharp<br>翻墙必备<br>CookieHacker<br><a href="http://evilcos.me/?p=366" target="_blank" rel="noopener">http://evilcos.me/?p=366</a> User Link<br>Web2.0 Hacking<br>XSS’OR<br>常用其中加解密与代码生成<br><a href="http://evilcos.me/lab/xssor/" target="_blank" rel="noopener">http://evilcos.me/lab/xssor/</a> User Link<br>源码：<a href="https://github.com/evilcos/xssor" target="_blank" rel="noopener">https://github.com/evilcos/xssor</a> User Link<br>XSSEE 3.0 Beta<br>Monyer开发的，加解密最好用神器<br><a href="http://evilcos.me/lab/xssee/" target="_blank" rel="noopener">http://evilcos.me/lab/xssee/</a> User Link<br>Online JavaScript beautifier<br>JavaScript美化工具，分析JavaScript常用<br><a href="http://jsbeautifier.org/" target="_blank" rel="noopener">http://jsbeautifier.org/</a> User Link<br>BeEF<br>The Browser Exploitation Framework<br><a href="http://beefproject.com/" target="_blank" rel="noopener">http://beefproject.com/</a> User Link<br>HTTP代理<br>Fiddler<br>非常经典好用的Web调试代理工具<br>Burp Suite<br>神器，不仅HTTP代理，还有爬虫、漏洞扫描、渗透、爆破等功能<br>mitmproxy<br>Python写的，基于这个框架写神器实在太方便了<br>漏洞扫描<br>AWVS<br>不仅漏扫方便，自带的一些小工具也好用<br>Nmap<br>绝对不仅仅是端口扫描！几百个脚本<br>Python自写脚本/工具<br>漏洞利用<br>sqlmap<br>SQL注入利用最牛神器，没有之一<br>Metasploit<br>最经典的渗透框架<br>Hydra<br>爆破必备<br>抓包工具<br>Wireshark<br>抓包必备<br>Tcpdump<br>Linux下命令行抓包，结果可以给Wireshark分析<br>Seebug + ZoomEye<br>类似这类平台都是我们需要的<br>Seebug类似的<br><a href="https://www.exploit-db.com/" target="_blank" rel="noopener">https://www.exploit-db.com/</a><br>ZoomEye类似的<br><a href="https://www.shodan.io/" target="_blank" rel="noopener">https://www.shodan.io/</a><br>Kali Linux<br>除了上面介绍的一些工具，其他海量各类型黑客工具，自己去摸索<br>书<br>《黑客攻防技术宝典（Web实战篇）》<br>《白帽子讲Web安全》<br>《Web前端黑客技术揭秘》<br>我和xisigr出品<br>《Web之困》<br>《SQL注入攻击与防御》<br>papers<br><a href="http://www.exploit-db.com/papers/" target="_blank" rel="noopener">http://www.exploit-db.com/papers/</a> User Link<br>BlackHat/Defcon/XCon/KCon/国内各安全沙龙等相关Papers需要持续跟进<br>idea 嵌入式安全<br>路由器安全<br>基础<br>嵌入式Linux系统方面知识<br>开放系统互联参考模型-第三层网络层<br>MIPS/ARM汇编知识<br>VxWorks系统方面知识<br>JTAG调试接口规范<br>嵌入式系统交叉环境开发<br>路由器芯片方案提供商<br>博通<br>Atheros<br>TrendChip<br>ACROSPEED<br>IC+<br>瑞昱<br>…<br>站点<br><a href="https://www.openwrt.org/" target="_blank" rel="noopener">https://www.openwrt.org/</a> User Link<br>OpenWrt is described as a Linux distribution for embedded devices<br><a href="http://routerpwn.com" target="_blank" rel="noopener">http://routerpwn.com</a> User Link<br>全球主流路由器相关漏洞大集合<br><a href="http://see.sl088.com/wiki/Uboot" target="_blank" rel="noopener">http://see.sl088.com/wiki/Uboot</a></em>%E7%BC%96%E8%AF%91 User Link<br>Uboot_编译<br><a href="http://www.devttys0.com/" target="_blank" rel="noopener">http://www.devttys0.com/</a> User Link<br>Embedded Device Hacking<br>工具<br>Binwalk<br>IDA Pro<br>gdb/gdbserver<br>qemu-system<br>qemu-user-static<br>Smiasm<br>Metasm<br>JTAG硬件调试器<br>书<br>《揭秘家用路由器0day漏洞挖掘技术》<br>《Hacking the XBOX: An Introduction to Reverse Engineering》<br>《Hacking the Cable Modem: What Cable Companies Don’t Want You to Know》<br>《MIPS体系结构透视 》<br>《计算机组成与设计：硬件、软件接口》<br>摄像头安全<br><a href="http://www.openipcam.com/" target="_blank" rel="noopener">http://www.openipcam.com/</a> User Link<br><a href="https://media.blackhat.com/us-13/US-13-Heffner-Exploiting-Network-Surveillance-Cameras-Like-A-Hollywood-Hacker-Slides.pdf" target="_blank" rel="noopener">https://media.blackhat.com/us-13/US-13-Heffner-Exploiting-Network-Surveillance-Cameras-Like-A-Hollywood-Hacker-Slides.pdf</a> User Link<br>工控安全<br>基础<br>工业生产环境的基本结构，如：SCADA、PCS<br>工业生产环境的信息安全风险点（可参考DHS出版物）<br>Improving Industrial Control Systems Cybersecurity with Defense-In-Depth Strategies<br>工控网络组态、逻辑开发、应用组态的基本技术方法<br>抓包、看RFC分析几个常规工业以太网协议，如：Profinet、Modbus<br>买两款PLC玩玩，会真实感受到工业环境的信息安全问题（一定记得买以太网模块，不贵二手几百块）<br>站点<br>事件跟踪分析<br><a href="http://plcscan.org/blog/" target="_blank" rel="noopener">http://plcscan.org/blog/</a> User Link<br><a href="http://scadastrangelove.blogspot.kr" target="_blank" rel="noopener">http://scadastrangelove.blogspot.kr</a> User Link<br><a href="http://www.phdays.com/" target="_blank" rel="noopener">http://www.phdays.com/</a> User Link<br><a href="http://www.scadasl.org" target="_blank" rel="noopener">http://www.scadasl.org</a> User Link<br><a href="https://scadahacker.com" target="_blank" rel="noopener">https://scadahacker.com</a> User Link<br>Duqu<br><a href="https://scadahacker.com/resources/duqu.html" target="_blank" rel="noopener">https://scadahacker.com/resources/duqu.html</a> User Link<br>Stuxnet<br><a href="https://scadahacker.com/resources/stuxnet.html" target="_blank" rel="noopener">https://scadahacker.com/resources/stuxnet.html</a> User Link<br>Havex<br><a href="https://scadahacker.com/resources/havex.html" target="_blank" rel="noopener">https://scadahacker.com/resources/havex.html</a> User Link<br>标准协会/测试工具<br>DHS CET套件<br><a href="http://ics-cert.us-cert.gov/Assessments" target="_blank" rel="noopener">http://ics-cert.us-cert.gov/Assessments</a> User Link<br>NERC ES-ISAC<br><a href="http://www.esisac.com/SitePages/Home.aspx" target="_blank" rel="noopener">http://www.esisac.com/SitePages/Home.aspx</a> User Link<br>ICS-ISAC<br><a href="http://ics-isac.org" target="_blank" rel="noopener">http://ics-isac.org</a> User Link<br>NTSB美国国家工控测试床<br><a href="http://energy.gov/oe/downloads/common-cyber-security-vulnerabilitiesobserved-control-system-assessments-inl-nstb" target="_blank" rel="noopener">http://energy.gov/oe/downloads/common-cyber-security-vulnerabilitiesobserved-control-system-assessments-inl-nstb</a> User Link<br>NIST SP 800-82<br><a href="http://csrc.nist.gov/publications/nistpubs/800-82/SP800-82-final.pdf" target="_blank" rel="noopener">http://csrc.nist.gov/publications/nistpubs/800-82/SP800-82-final.pdf</a> User Link<br>ISA-99控制系统安全协会<br><a href="http://isa99.isa.org/ISA99%20Wiki/Home.aspx" target="_blank" rel="noopener">http://isa99.isa.org/ISA99%20Wiki/Home.aspx</a> User Link<br>NERC CIP标准<br><a href="http://www.nerc.com/pa/Stand/Pages/ReliabilityStandards.aspx" target="_blank" rel="noopener">http://www.nerc.com/pa/Stand/Pages/ReliabilityStandards.aspx</a> User Link<br>工具<br>仿真类<br>电力仿真软件testhaness<br>Modbus仿真软件ModScan<br>电力104协议仿真软件PMA<br>测试类<br>Wurldtech Achilles<br>Codenomicon Defensics<br>Spirent<br>BPS<br>源代码<br>发现<br><a href="https://code.google.com/p/plcscan/" target="_blank" rel="noopener">https://code.google.com/p/plcscan/</a>  User Link<br><a href="https://code.google.com/p/modscan/" target="_blank" rel="noopener">https://code.google.com/p/modscan/</a>  User Link<br><a href="https://github.com/arnaudsoullie/scan7" target="_blank" rel="noopener">https://github.com/arnaudsoullie/scan7</a>  User Link<br><a href="https://github.com/atimorin" target="_blank" rel="noopener">https://github.com/atimorin</a> User Link<br><a href="https://github.com/digitalbond/Redpoint" target="_blank" rel="noopener">https://github.com/digitalbond/Redpoint</a> User Link<br>操纵<br><a href="https://www.scadaforce.com/modbus" target="_blank" rel="noopener">https://www.scadaforce.com/modbus</a> User Link<br><a href="https://github.com/bashwork/pymodbus" target="_blank" rel="noopener">https://github.com/bashwork/pymodbus</a> User Link<br><a href="https://rubygems.org/gems/modbus-cli" target="_blank" rel="noopener">https://rubygems.org/gems/modbus-cli</a> User Link<br><a href="http://libnodave.sourceforge.net" target="_blank" rel="noopener">http://libnodave.sourceforge.net</a> User Link<br><a href="https://code.google.com/p/dnp3" target="_blank" rel="noopener">https://code.google.com/p/dnp3</a> User Link<br>异常监测<br><a href="http://blog.snort.org/2012/01/snort-292-scada-preprocessors.html" target="_blank" rel="noopener">http://blog.snort.org/2012/01/snort-292-scada-preprocessors.html</a>  User Link<br><a href="http://www.digitalbond.com/tools/quickdraw/" target="_blank" rel="noopener">http://www.digitalbond.com/tools/quickdraw/</a> User Link<br>Fuzz<br><a href="https://github.com/jseidl/peach-pit/blob/master/modbus/modbus.xml" target="_blank" rel="noopener">https://github.com/jseidl/peach-pit/blob/master/modbus/modbus.xml</a> User Link<br>其他<br>ZoomEye工控专题： <a href="http://ics.zoomeye.org/" target="_blank" rel="noopener">http://ics.zoomeye.org/</a> User Link<br>Shodan工控专题：<a href="https://www.shodan.io/report/l7VjfVKc" target="_blank" rel="noopener">https://www.shodan.io/report/l7VjfVKc</a> User Link<br><a href="https://github.com/evilcos/papers/blob/master/网络空间工控设备的发现与入侵.ppt" target="_blank" rel="noopener">https://github.com/evilcos/papers/blob/master/网络空间工控设备的发现与入侵.ppt</a> User Link<br>zoomeye.org<br>全球可以找到无数真实路由器/摄像头/工控设备等<br>如：<a href="http://www.zoomeye.org/search?q=app:%22MikroTik%20RouterOS%22&amp;from=dork" target="_blank" rel="noopener">http://www.zoomeye.org/search?q=app:%22MikroTik%20RouterOS%22&amp;from=dork</a> User Link<br>研发清单<br>编码环境<br>pip<br>Docker/Vagrant<br>tmux/screen<br>vim<br>Markdown<br>zsh + oh-my-zsh<br>Python2.7+/3+</ssh></local></ssh></remote></remote></local></ssh></remote></remote></local></p>
+<blockquote>
+<p>Django1.4<br><a href="http://djangobook.py3k.cn/2.0/" target="_blank" rel="noopener">http://djangobook.py3k.cn/2.0/</a> User Link<br>Django Debug Toolbar User Link<br>其他框架<br>web.py<br>Flask<br>Tornado<br>node.js<br>Ubuntu/Gentoo/Centos<br>ipython<br>版本控制<br>废弃SVN，全面拥抱Git<br>GitLab<br>Nginx+uWSGI<br>Python<br>官方手册<br>至少过一遍，这都没过一遍，视野会局限<br>行之说：「我没看过Python的书，却熟读官方手册…」<br>Linux/UNIX<br>书<br>《鸟哥的Linux私房菜》<br>《Linux Shell脚本攻略》<br>《UNIX编程艺术》<br>《Software Design 中文版 01》《Software Design 中文版 02》《Software Design 中文版 03》<br>让你的电脑默认操作系统就是Linux…<br>前端<br>书<br>《JavaScript DOM编程艺术》<br>了解DOM<br>这同样是搞好前端安全的必要基础<br>库<br>jQuery<br>优秀的插件应该体验一遍，并做些尝试<br>官方文档得过一遍<br>D3.js<br>ECharts<br>来自百度<br>Google API<br>ZoomEye Map组件<br>ZoomEye团队自己基于开源的打造<br>AngularJS<br>Google出品的颠覆性前端框架<br>Bootstrap<br>应该使用一遍<br>爬虫进阶<br>代理池<br>爬虫「稳定」需要<br>网络请求<br>wget/curl<br>urllib2/httplib2/requests<br>idea scrapy<br>验证码破解<br>pytesser<br>调度<br>crontab是最原生的定时调度<br>基于redis实现的分布式调度<br>基于rpyc实现的分布式调度<br>celery/gearman等调度框架<br>并发<br>线程池<br>进程内优美的并发方案<br>协程<br>进程内另一种优美的并发方案<br>gevent<br>多进程<br>os.fork<br>idea multiprocessing<br>数据结构<br>JSON<br>cPickle<br>protobuf<br>数据存储及处理<br>数据库<br>MySQL<br>MongoDB<br>Cassandra<br>Hadoop体系<br>Redis<br>Sqlite<br>bsddb<br>ElasticSearch<br>大数据处理<br>Hive<br>Spark<br>ELK<br>ElasticSearch<br>Logstash<br>Kibana<br>DevOps<br>SSH证书<br>Fabric<br>SaltStack<br>puppet<br>pssh/dsh<br>运维进阶<br>运维工程师必须掌握的基础技能有哪些？<br><a href="http://www.zhihu.com/question/23665108/answer/25299881" target="_blank" rel="noopener">http://www.zhihu.com/question/23665108/answer/25299881</a> User Link<br>调试<br>pdb<br>logging<br>Sentry<br>strace/ltrace<br>lsof<br>性能<br>Python内<br>timeit<br>cProfile<br>Python性能分析指南：<a href="http://www.oschina.net/translate/python-performance-analysis" target="_blank" rel="noopener">http://www.oschina.net/translate/python-performance-analysis</a> User Link<br>Python外<br>top/htop/free/iostat/vmstat/ifconfig/iftop…<br>算法<br>分词<br>贝叶斯<br>神经元<br>遗传算法<br>聚类/分类<br>…<br>持续集成<br>自测试<br>nose<br>Jenkins<br>idea 安全<br>我的分享<br>程序员与黑客：<a href="http://www.infoq.com/cn/presentations/programmers-and-hackers" target="_blank" rel="noopener">http://www.infoq.com/cn/presentations/programmers-and-hackers</a> User Link<br>程序员与黑客2：<a href="http://www.infoq.com/cn/presentations/programmers-and-hackers-part02" target="_blank" rel="noopener">http://www.infoq.com/cn/presentations/programmers-and-hackers-part02</a> User Link<br>协作<br>类似Trello的在线协同平台<br>Slack<br>微信<br>立会<br>设计思想<br>人人都是架构师：具备架构思想是一件多酷的事<br>实战出真知<br>如何设计<br>attach 任务架构设计变迁.pdf User Link<br>松耦合、紧内聚<br>单元与单元属性<br>生产者与消费者<br>结构<br>队列<br>LRU<br>分布式<br>存储<br>计算<br>资源考虑<br>CPU<br>内存<br>带宽<br>粗暴美学/暴力美学<br>大数据，先考虑run it，然后才能知道规律在哪<br>「run it优先」能快速打通整体，洞察问题<br>「run it优先」能摆脱细节（繁枝末节）的束缚<br>「run it优先」能快速迭代出伟大的v1<br>一个字总结<br>美<br>牛人1,2,3<br>1研究：研究东西，有足够洞察力，研究水准不错<br>2研发：Hack Idea自己有魄力实现，不懂研发的黑客如同不会游泳的海盗<br>3工程：研发出来的需要实战、需要工程化，否则只是玩具，而不能成为真的武器<br>优质资源<br>书<br>多关注电子工业/图灵/机械工业/人民邮电等出版社，他们有专业团队来保障每年输出优质书籍<br>自己需要掌握鉴别好书的能力<br>站点<br>知乎周刊：<a href="http://zhuanlan.zhihu.com/Weekly" target="_blank" rel="noopener">http://zhuanlan.zhihu.com/Weekly</a> User Link<br>码农周刊：<a href="http://weekly.manong.io/" target="_blank" rel="noopener">http://weekly.manong.io/</a> User Link<br>Pycoder’s Weekly：<a href="http://pycoders.com/archive/" target="_blank" rel="noopener">http://pycoders.com/archive/</a> User Link<br>Hacker News：<a href="https://news.ycombinator.com/" target="_blank" rel="noopener">https://news.ycombinator.com/</a> User Link<br>Startup News：<a href="http://news.dbanotes.net/" target="_blank" rel="noopener">http://news.dbanotes.net/</a> User Link<br>开发者头条：<a href="http://toutiao.io/" target="_blank" rel="noopener">http://toutiao.io/</a> User Link<br>极客头条：<a href="http://geek.csdn.net/" target="_blank" rel="noopener">http://geek.csdn.net/</a> User Link<br>InfoQ：<a href="http://www.infoq.com/cn" target="_blank" rel="noopener">http://www.infoq.com/cn</a> User Link<br>Stack Overflow：<a href="http://stackoverflow.com/" target="_blank" rel="noopener">http://stackoverflow.com/</a> User Link<br>GitHub：<a href="https://github.com/" target="_blank" rel="noopener">https://github.com/</a> User Link<br>FreeBuf：<a href="http://www.freebuf.com/" target="_blank" rel="noopener">http://www.freebuf.com/</a> User Link<br>WooYun：<a href="http://drops.wooyun.org/" target="_blank" rel="noopener">http://drops.wooyun.org/</a> User Link<br>深蓝阅读：<a href="http://bluereader.org/" target="_blank" rel="noopener">http://bluereader.org/</a> User Link<br>RSS订阅<br>漏洞相关<br><a href="http://seebug.org/rss.xml" target="_blank" rel="noopener">http://seebug.org/rss.xml</a> User Link<br><a href="https://www.exploit-db.com/rss.xml" target="_blank" rel="noopener">https://www.exploit-db.com/rss.xml</a> User Link<br><a href="https://rss.packetstormsecurity.com" target="_blank" rel="noopener">https://rss.packetstormsecurity.com</a> User Link<br><a href="http://www.wooyun.org/feeds/public" target="_blank" rel="noopener">http://www.wooyun.org/feeds/public</a> User Link<br>强烈推荐圈内人打造的深蓝阅读<br><a href="http://bluereader.org/" target="_blank" rel="noopener">http://bluereader.org/</a> User Link<br>这上面已经很多黑客/技术类似的RSS资源了<br>威胁情报<br>本来不想提任何这方面的，想想还是抖个资源，如下<br><a href="https://github.com/kbandla/APTnotes" target="_blank" rel="noopener">https://github.com/kbandla/APTnotes</a> User Link<br>安全平台<br>在线学习平台<br>i春秋：<a href="http://www.ichunqiu.com" target="_blank" rel="noopener">http://www.ichunqiu.com</a> User Link<br><a href="https://pentesterlab.com" target="_blank" rel="noopener">https://pentesterlab.com</a> User Link<br>PoC提交与学习<br>Seebug: <a href="http://seebug.org" target="_blank" rel="noopener">http://seebug.org</a> User Link<br>Beebeeto: <a href="http://www.beebeeto.com" target="_blank" rel="noopener">http://www.beebeeto.com</a> User Link<br>Bugscan: <a href="http://www.bugscan.net" target="_blank" rel="noopener">http://www.bugscan.net</a> User Link<br>Tangscan: <a href="http://www.tangscan.com" target="_blank" rel="noopener">http://www.tangscan.com</a> User Link</p>
+</blockquote>
+
+      
+    </div>
+    
+    
+    
+  <div>
+  
+    <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+  
+  </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/黑客/" rel="tag"># 黑客</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/03/12/自律/" rel="next" title="如何自律">
+                <i class="fa fa-chevron-left"></i> 如何自律
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+<span class="jiathis_txt">分享到：</span>
+<a class="jiathis_button_fav">收藏夹</a>
+<a class="jiathis_button_copy">复制网址</a>
+<a class="jiathis_button_email">邮件</a>
+<a class="jiathis_button_weixin">微信</a>
+<a class="jiathis_button_qzone">QQ空间</a>
+<a class="jiathis_button_tqq">腾讯微博</a>
+<a class="jiathis_button_douban">豆瓣</a>
+<a class="jiathis_button_share">一键分享</a>
+
+<a href="http://www.jiathis.com/share?uid=2140465" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
+<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+var jiathis_config={
+  data_track_clickback:true,
+  summary:"",
+  shortUrl:false,
+  hideMore:false
+}
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zMzc1NS8xMDMwOQ=="></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+  
+  
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/my.jpg"
+                alt="Sam" />
+            
+              <p class="site-author-name" itemprop="name">Sam</p>
+              <p class="site-description motion-element" itemprop="description">一个热爱生活的B-boy</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">42</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">31</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">26</span>
+                  <span class="site-state-item-name">标签</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/HackerFreedom" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:614190293@gmail.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Sam</span>
+
+  
+</div>
+
+
+
+<div class="powered-by">
+<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
+  本站访客数:<span id="busuanzi_value_site_uv"></span>
+</span>
+</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+   
+<!-- <div class="bg_content">
+    
+    <canvas id="canvas"></canvas>
+    </div> -->
+</body>
+</html>
+
+<!-- <script type="text/javascript" src="/js/src/canvas.js"></script> -->

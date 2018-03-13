@@ -1,0 +1,1035 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+<script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+<link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+
+<style>
+    .pace .pace-progress {
+        background: #1E92FB; /*进度条颜色*/
+        height: 3px;
+    }
+    .pace .pace-progress-inner {
+         box-shadow: 0 0 10px #1E92FB, 0 0 5px     #1E92FB; /*阴影颜色*/
+    }
+    .pace .pace-activity {
+        border-top-color: #1E92FB;    /*上边框颜色*/
+        border-left-color: #1E92FB;    /*左边框颜色*/
+    }
+</style>
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="三大框架," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="TO BE BTTER ME" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="课程目标:    能够清晰的说出spring整合Hibernate框架的方式（两种）和原理（管理sessionfactory）    能够独立完成Spring框架整合Hibernate框架（相关的配置）    能够清晰的说出Spring框架整合Struts框架的原理（ObjectFactory）    能够在ssh框架整合的基础上使用Xml方式完成向数据库添加纪录的操作    能够在ssh框架整合">
+<meta name="keywords" content="三大框架">
+<meta property="og:type" content="article">
+<meta property="og:title" content="java框架">
+<meta property="og:url" content="http://HackerFreedom.github.io/2018/03/08/spring整合/index.html">
+<meta property="og:site_name" content="TO BE BTTER ME">
+<meta property="og:description" content="课程目标:    能够清晰的说出spring整合Hibernate框架的方式（两种）和原理（管理sessionfactory）    能够独立完成Spring框架整合Hibernate框架（相关的配置）    能够清晰的说出Spring框架整合Struts框架的原理（ObjectFactory）    能够在ssh框架整合的基础上使用Xml方式完成向数据库添加纪录的操作    能够在ssh框架整合">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://hackerfreedom.github.io/2018/03/08/spring整合/spring01.png">
+<meta property="og:image" content="http://hackerfreedom.github.io/2018/03/08/spring整合/spring02.png">
+<meta property="og:image" content="http://hackerfreedom.github.io/2018/03/08/spring整合/spring03.png">
+<meta property="og:image" content="http://hackerfreedom.github.io/2018/03/08/spring整合/spring04.png">
+<meta property="og:image" content="http://hackerfreedom.github.io/2018/03/08/spring整合/spring05.png">
+<meta property="og:image" content="http://hackerfreedom.github.io/2018/03/08/spring整合/spring06.png">
+<meta property="og:image" content="http://hackerfreedom.github.io/2018/03/08/spring整合/spring07.png">
+<meta property="og:image" content="http://hackerfreedom.github.io/2018/03/08/spring整合/spring08.png">
+<meta property="og:image" content="http://hackerfreedom.github.io/2018/03/08/spring整合/spring09.png">
+<meta property="og:image" content="http://hackerfreedom.github.io/2018/03/08/spring整合/spring10.png">
+<meta property="og:image" content="http://hackerfreedom.github.io/2018/03/08/spring整合/spring11.png">
+<meta property="og:image" content="http://hackerfreedom.github.io/2018/03/08/spring整合/spring12.png">
+<meta property="og:image" content="http://hackerfreedom.github.io/2018/03/08/spring整合/spring13.png">
+<meta property="og:image" content="http://hackerfreedom.github.io/2018/03/08/spring整合/spring14.png">
+<meta property="og:image" content="http://hackerfreedom.github.io/2018/03/08/spring整合/spring15.png">
+<meta property="og:image" content="http://hackerfreedom.github.io/2018/03/08/spring整合/anno01.png">
+<meta property="og:image" content="http://hackerfreedom.github.io/2018/03/08/spring整合/anno02.png">
+<meta property="og:image" content="http://hackerfreedom.github.io/2018/03/08/spring整合/anno03.png">
+<meta property="og:image" content="http://hackerfreedom.github.io/2018/03/08/spring整合/anno04.png">
+<meta property="og:image" content="http://hackerfreedom.github.io/2018/03/08/spring整合/anno05.png">
+<meta property="og:updated_time" content="2018-03-10T12:18:46.627Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="java框架">
+<meta name="twitter:description" content="课程目标:    能够清晰的说出spring整合Hibernate框架的方式（两种）和原理（管理sessionfactory）    能够独立完成Spring框架整合Hibernate框架（相关的配置）    能够清晰的说出Spring框架整合Struts框架的原理（ObjectFactory）    能够在ssh框架整合的基础上使用Xml方式完成向数据库添加纪录的操作    能够在ssh框架整合">
+<meta name="twitter:image" content="http://hackerfreedom.github.io/2018/03/08/spring整合/spring01.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"right","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://HackerFreedom.github.io/2018/03/08/spring整合/"/>
+
+
+
+
+
+  <title>java框架 | TO BE BTTER ME</title>
+  
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+  
+  <div class="container sidebar-position-right page-post-detail">
+    <div class="headband"></div>
+  <a href="https://HackerFreedom.github.io"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://camo.githubusercontent.com/567c3a48d796e2fc06ea80409cc9dd82bf714434/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_darkblue_121621.png"></a>
+
+
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">TO BE BTTER ME</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Hacker</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            总章
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user-circle"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-board">
+          <a href="/board" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            留言
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-life">
+          <a href="/life" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-bolt"></i> <br />
+            
+            生活的随笔
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-photo">
+          <a href="/photo" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-camera-retro"></i> <br />
+            
+            相册
+          </a>
+        </li>
+      
+
+      
+   
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://HackerFreedom.github.io/2018/03/08/spring整合/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Sam">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/my.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="TO BE BTTER ME">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">java框架</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-08T19:55:00+08:00">
+                2018-03-08
+              </time>
+            
+
+            
+
+            
+          </span>
+        
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/spring整合/" itemprop="url" rel="index">
+                    <span itemprop="name">spring整合</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>课程目标:<br>    能够清晰的说出spring整合Hibernate框架的方式（两种）和原理（管理sessionfactory）<br>    能够独立完成Spring框架整合Hibernate框架（相关的配置）<br>    能够清晰的说出Spring框架整合Struts框架的原理（ObjectFactory）<br>    能够在ssh框架整合的基础上使用Xml方式完成向数据库添加纪录的操作<br>    能够在ssh框架整合的基础上使用注解方式完成向数据库添加纪录的操作<br>    能够在ssh框架整合的基础上解决延迟加载的问题</p>
+<h1 id="框架整合jar包分析"><a href="#框架整合jar包分析" class="headerlink" title="框架整合jar包分析"></a>框架整合jar包分析</h1><pre><code>Springs整合struts2----------&gt;
+     spring-web-4.2.4.RELEASE.jar （将spring发布于web上）
+     struts2-spring-plugin-2.3.24.jar （解决action不能依赖spring工厂问题） 
+
+Spring整合Hibernate--------&gt;
+     spring-orm-4.2.4.RELEASE.jar  （加载映射文件）
+</code></pre><h1 id="基于xml配置方式整合SSH"><a href="#基于xml配置方式整合SSH" class="headerlink" title="基于xml配置方式整合SSH"></a>基于xml配置方式整合SSH</h1><ol>
+<li><p>struts:     struts.xml</p>
+<pre><code>        &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+ &lt;!DOCTYPE struts PUBLIC
+    &quot;-//Apache Software Foundation//DTD Struts Configuration 2.3//EN&quot;
+    &quot;http://struts.apache.org/dtds/struts-2.3.dtd&quot;&gt;
+&lt;struts&gt;
+
+    &lt;constant name=&quot;struts.devMode&quot; value=&quot;true&quot;&gt;&lt;/constant&gt;
+
+&lt;/struts&gt;
+</code></pre></li>
+<li>hibernate:  xxx.hbm.xml,<pre><code>     &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+ &lt;!DOCTYPE hibernate-mapping PUBLIC 
+ &quot;-//Hibernate/Hibernate Mapping DTD 3.0//EN&quot;
+` &quot;http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd&quot;&gt;`
+ &lt;hibernate-mapping&gt;
+ &lt;class name=&quot;&quot; table=&quot;&quot;&gt;
+       &lt;id name=&quot;id&quot;&gt;
+             &lt;generator class=&quot;identity&quot; /&gt;
+           &lt;/id&gt;
+       &lt;property name=&quot;&quot; /&gt;
+ &lt;/class&gt;
+ &lt;/hibernate-mapping&gt;
+</code></pre><em>hibernate.cfg.xml</em></li>
+<li><p>spring:     applicationContext.xml</p>
+</li>
+<li><p>web.xml:    struts过滤器，ContextLoaderListener</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&lt;context-param&gt;    </span><br><span class="line">    &lt;param-name&gt;contextConfigLocation&lt;/param-name&gt;</span><br><span class="line">   &lt;param-value&gt;classpath:applicationContext.xml&lt;/param-value&gt;</span><br><span class="line">    				</span><br><span class="line">    &lt;/context-param&gt;</span><br><span class="line">    &lt;listener&gt;`</span><br><span class="line">    &lt;listener-class&gt;org.springframework.web.context.ContextLoaderListener&lt;/listener-class&gt;</span><br><span class="line">    &lt;/listener&gt;</span><br><span class="line">   &lt;struts2&gt;`</span><br><span class="line">        &lt;filter&gt;</span><br><span class="line">    &lt;filter-name&gt;struts2&lt;/filter-name&gt;</span><br><span class="line">    &lt;filter-class&gt;org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter&lt;/filter-class&gt;</span><br><span class="line">    &lt;/filter&gt;</span><br><span class="line">    &lt;filter-mapping&gt;</span><br><span class="line">    &lt;filter-name&gt;struts2&lt;/filter-name&gt;</span><br><span class="line">    &lt;url-pattern&gt;/*&lt;/url-pattern&gt;</span><br><span class="line">    &lt;/filter-mapping&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<hr>
+<h2 id="Spring整合hibernate"><a href="#Spring整合hibernate" class="headerlink" title="Spring整合hibernate"></a>Spring整合hibernate</h2><p>//只需要使用spring中提供的一个LocalSessionFacotry来加载Hibernate的配置文件。<br><code>&lt;bean class=&quot;org.springframework.orm.hibernate5.LocalSessionFactoryBean&quot;&gt;
+    &lt;property name=&quot;configLocation&quot; value=&quot;classpath:hibernate.cfg.xml&quot;/&gt;
+    &lt;/bean&gt;</code><br>ssh-xml工程加载到服务器后，如果可以自动创建表，就代表spring整合hibernate ok.<br>注意:必须配置spring的ContextLoaderListener</p>
+<p><em>不在需要hibernate.cfg.xml文件，所有关于hibernate.cfg.xml文件中的配置都在spring的配置文件中来配置</em></p>
+<pre><code>1. 首先配置数据源
+</code></pre><p><img src="/2018/03/08/spring整合/spring01.png" alt=""></p>
+<pre><code>2. 引入properties文件
+</code></pre><p><img src="/2018/03/08/spring整合/spring02.png" alt=""></p>
+<pre><code>3. LocalSessionFactoryBean来完成spring管理hibernate中SessionFactory
+</code></pre><p><img src="/2018/03/08/spring整合/spring03.png" alt=""></p>
+<blockquote>
+<p>mappingResources它类似于我们之前<mapping resource="””"><br>mappingLocations它加载时是根据类路径加载 classpath:路径<br>mappingJarLocations它会加载jar文件中的hbm.xml文件<br>mappingDirectoryLocations 它加载的目录</mapping></p>
+</blockquote>
+<hr>
+<h1 id="spring整合hibernate后的DAO"><a href="#spring整合hibernate后的DAO" class="headerlink" title="spring整合hibernate后的DAO"></a>spring整合hibernate后的DAO</h1><p>Dao—继承JdbcDaoSupport—–注入DataSource——&gt;使用JdbcTemplate来完成操作</p>
+<p><strong>Dao—继承HibernateDaoSupport—–注入sessionFactory——&gt;使用hibernateTemplate来完成操作</strong></p>
+<pre><code>1. userDaoImpl 编写
+</code></pre><p><img src="/2018/03/08/spring整合/spring04.png" alt=""></p>
+<pre><code>2. 声明dao注入sessionFactory
+</code></pre><p><img src="/2018/03/08/spring整合/spring05.png" alt=""></p>
+<h2 id="spring整合hibernate的测试"><a href="#spring整合hibernate的测试" class="headerlink" title="spring整合hibernate的测试"></a>spring整合hibernate的测试</h2><p> DataSourceTransactionManager—–&gt;注入DataSource<br>HibernateTransactionManager—–&gt;注入sessionFactory（readOnly错误，不再hibernate模版中配置事务的话。）</p>
+<p><strong> UserServiceImplTest—-&gt;加载applicationContext.xml—-&gt;注入IUserService——&gt;注入IUserDAO</strong></p>
+<pre><code>1. 编写userServiceImpl
+</code></pre><p><img src="/2018/03/08/spring整合/spring06.png" alt=""></p>
+<pre><code>2. 配置UserServiceImpl注入UserDAOImpl
+</code></pre><p><img src="/2018/03/08/spring整合/spring07.png" alt=""></p>
+<pre><code>3. 配置事务管理（HibernateTransactionManager）
+</code></pre><p><img src="/2018/03/08/spring整合/spring08.png" alt=""></p>
+<pre><code>4. 代码测试
+</code></pre><h2 id=""><a href="#" class="headerlink" title=""></a><img src="/2018/03/08/spring整合/spring09.png" alt=""></h2><h1 id="Sring整合struts2框架"><a href="#Sring整合struts2框架" class="headerlink" title="Sring整合struts2框架"></a>Sring整合struts2框架</h1><ol>
+<li>创建一个jsp页面<br><code>&lt;form action=&quot;${pageContext.request.contextPath}/user_add&quot; method=&quot;post&quot;&gt;
+name:&lt;input type=&quot;text&quot; name=&quot;name&quot;&gt;&lt;br&gt;
+age:&lt;input type=&quot;text&quot; name=&quot;age&quot;&gt;&lt;br&gt;
+&lt;input type=&quot;submit&quot; value=&quot;addUser&quot;&gt;
+&lt;/form&gt;</code></li>
+<li><p>创建userAction类<br><img src="/2018/03/08/spring整合/spring10.png" alt=""></p>
+</li>
+<li><p>struts.xml文件中配置<br><code>&lt;package name=&quot;default&quot; namespace=&quot;/&quot; extends=&quot;struts-default&quot;&gt;
+&lt;action name=&quot;user_*&quot; class=&quot;cn.itheima.action.UserAction&quot; method=&quot;{1}&quot;&gt;
+ &lt;result name=&quot;success&quot;&gt;/success.jsp&lt;/result&gt;
+&lt;/action&gt;
+&lt;/package&gt;</code></p>
+</li>
+</ol>
+<h2 id="ssh整合-spring整合struts2-伪类名方式"><a href="#ssh整合-spring整合struts2-伪类名方式" class="headerlink" title="ssh整合-spring整合struts2 -伪类名方式"></a>ssh整合-spring整合struts2 -伪类名方式</h2><ol>
+<li>在UserAction类提供IUserService属性<br><img src="/2018/03/08/spring整合/spring11.png" alt=""></li>
+<li>在applicationContext.xml文件中配置<br><img src="/2018/03/08/spring整合/spring12.png" alt=""></li>
+<li>在struts.xml文件中引用userAction<br><img src="/2018/03/08/spring整合/spring13.png" alt=""></li>
+</ol>
+<p><strong>注意：必须在web.xml文件中配置struts2框架的Filter</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;filter&gt;</span><br><span class="line">&lt;filter-name&gt;struts2&lt;/filter-name&gt;</span><br><span class="line">&lt;filter-class&gt;org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter&lt;/filter-class&gt;</span><br><span class="line">&lt;/filter&gt;</span><br><span class="line">&lt;filter-mapping&gt;</span><br><span class="line">&lt;filter-name&gt;struts2&lt;/filter-name&gt;</span><br><span class="line">&lt;url-pattern&gt;/*&lt;/url-pattern&gt;</span><br><span class="line">&lt;/filter-mapping&gt;</span><br></pre></td></tr></table></figure></p>
+<h3 id="ssh整合-spring整合struts2-全类名方式"><a href="#ssh整合-spring整合struts2-全类名方式" class="headerlink" title="ssh整合-spring整合struts2 -全类名方式"></a>ssh整合-spring整合struts2 -全类名方式</h3><ul>
+<li><p><em>struts.xml文件配置class属性是UserAction类的全类名</em><br><img src="/2018/03/08/spring整合/spring14.png" alt=""></p>
+</li>
+<li><p>这时就会将action类中的servcie属性按照属性名称自动注入<br><img src="/2018/03/08/spring整合/spring15.png" alt=""></p>
+</li>
+</ul>
+<p>因为在default.properties中有一段配置</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">**默认这时就会根据名称进行注入**</span><br><span class="line">&lt;constant name=&quot;struts.objectFactory.spring.autoWire&quot; value=&quot;name&quot;/&gt;</span><br></pre></td></tr></table></figure>
+<p>在struts.xml文件中修改了注入的方式为type，就会根据属性里面的<strong>参数类型进行注入(set方法参数)  </strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;constant name=&quot;struts.objectFactory.spring.autoWire&quot; value=&quot;type&quot;/&gt;</span><br></pre></td></tr></table></figure></p>
+<p><strong>spring整合struts2框架总结</strong></p>
+<ol>
+<li>如果在struts.xml文件中<code>&lt;action class=”cn.itheima.action.UserAction”&gt;</code>如果写的是全类名，会自动注入service，默认按照名称注入</li>
+<li>如果在struts.xml文件中<code>&lt;action class=”userAction”&gt;</code>伪类名方式，在applicationContext.xml文件要配置<code>&lt;bean id=”userAction” class=”cn.itheima.action.UserAction”&gt;</code>并且需要手动注入service</li>
+<li>以上操作的前提是必须导入struts2-spring-plugin.jar包它改变struts2的bean工厂</li>
+<li>如果采用全类名方式，这时每一次请求都会新创建一个action</li>
+<li>如果采用的是伪类名方式必须在<bean>声明中添加<code>scope=”prototype”,</code>原因是struts2框架的action每一次请求都应该是一个新的action</bean></li>
+</ol>
+<hr>
+<h1 id="基于注解的方式整合SSH"><a href="#基于注解的方式整合SSH" class="headerlink" title="基于注解的方式整合SSH"></a>基于注解的方式整合SSH</h1><ol>
+<li>导入jar包<code>struts2-convention-plugin-2.3.24.jar包；</code></li>
+<li>使用JPA注解来定义PO类<ol>
+<li>@Entity 定义实体类，@Table 定义表，@Id 主键，@GeneratedValue 生成主键策略，@Column 定义列</li>
+<li>dentity由底层数据库生成标识符。identity是由数据库自己生成的，但这个主键必须设置为自增长，使用identity的前提条件是底层数据库支持自动增长字段类型</li>
+<li>native由hibernate根据使用的数据库自行判断</li>
+<li>Hibernate在保存对象时，生成一个UUID字符串作为主键，保证了唯一性<ol>
+<li>特点：uuid长度大，占用空间大，跨数据库，不用访问数据库就生成主键值，所以效率高且能保证唯一性，移植非常方便，推荐使用。</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>要在SessionFactory配置扫描包，这里是扫描PO类和数据库表建立ORM对象关系映射<br><img src="/2018/03/08/spring整合/anno01.png" alt=""></li>
+<li>在dao,service,action类上配置@Repository @Service（在service中添加事务 @Transactional） @Controller来完成bean注册；</li>
+<li>开启注解扫描<br>  <code>&lt;context:component-scan base-package=&quot;cn.itheima&quot;/&gt;</code></li>
+<li><p>声明事务管理器</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;bean id=&quot;transactionManager&quot; class=&quot;org.springframework.orm.hibernate5.HibernateTransactionManager&quot;&gt;</span><br><span class="line">&lt;property name=&quot;sessionFactory&quot; ref=&quot;sessionFactory&quot;/&gt;</span><br><span class="line">&lt;/bean&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>事务注解驱动<br><code>&lt;tx:annotation-driven transaction-manager=&quot;transactionManager&quot;/&gt;</code></p>
+</li>
+</ol>
+<hr>
+<p><strong>总结</strong></p>
+<ol>
+<li>dao类继承HibernateDaoSupport注入SessionFactory传给父类，在dao中就可以通过getHibernateTemplate()直接获取HibernateTemplate;<br><img src="/2018/03/08/spring整合/anno02.png" alt="">;</li>
+<li>在service及action中使用@Autowire来注入dao及service<br><img src="/2018/03/08/spring整合/anno03.png" alt="">;<br><img src="/2018/03/08/spring整合/anno04.png" alt="">;</li>
+<li>对于Struts2框架需要@Namespace @Action @ParentPakcage @Result来定义struts2流程</li>
+<li>要求action类必须是在包含action actions struts struts2字符串这样的包中才会扫描struts2相关注解,并且action类必须以Action结尾<br><img src="/2018/03/08/spring整合/anno05.png" alt="">;</li>
+</ol>
+<hr>
+<h1 id="NO-Session-问题解决"><a href="#NO-Session-问题解决" class="headerlink" title="NO Session 问题解决"></a>NO Session 问题解决</h1><ol>
+<li>不使用延迟加载</li>
+<li>手动将延迟加载初始化 Hibernate.initialize(延迟对象)</li>
+<li>使用spring提供的一个OpenSessionInViewFilter来解决<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;filter&gt;</span><br><span class="line">&lt;filter-name&gt;openSessionInView&lt;/filter-name&gt;</span><br><span class="line">&lt;filter-class&gt;org.springframework.orm.hibernate5.support.OpenSessionInViewFilter&lt;/filter-class&gt;</span><br><span class="line">&lt;/filter&gt;</span><br><span class="line">&lt;filter-mapping&gt;</span><br><span class="line">&lt;filter-name&gt;openSessionInView&lt;/filter-name&gt;</span><br><span class="line">&lt;url-pattern&gt;/*&lt;/url-pattern&gt;</span><br><span class="line">&lt;/filter-mapping&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p><strong> 基本的原理就是将session的关闭操作不在service层完成，而是在web层才关闭session.</strong><br><strong> 注意:openSessionInViewFilter一定要在Struts2 Filter前配置.</strong></p>
+<p><em>延迟问题，在获取代理对象时，事务已经关闭。所以获取不到这个对象的值，session已经关闭了</em></p>
+
+      
+    </div>
+    
+    
+    
+  <div>
+  
+    <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+  
+  </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/三大框架/" rel="tag"># 三大框架</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/03/08/springAOP/" rel="next" title="java框架">
+                <i class="fa fa-chevron-left"></i> java框架
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/03/09/新文档/" rel="prev" title="">
+                 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+<span class="jiathis_txt">分享到：</span>
+<a class="jiathis_button_fav">收藏夹</a>
+<a class="jiathis_button_copy">复制网址</a>
+<a class="jiathis_button_email">邮件</a>
+<a class="jiathis_button_weixin">微信</a>
+<a class="jiathis_button_qzone">QQ空间</a>
+<a class="jiathis_button_tqq">腾讯微博</a>
+<a class="jiathis_button_douban">豆瓣</a>
+<a class="jiathis_button_share">一键分享</a>
+
+<a href="http://www.jiathis.com/share?uid=2140465" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
+<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+var jiathis_config={
+  data_track_clickback:true,
+  summary:"",
+  shortUrl:false,
+  hideMore:false
+}
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zMzc1NS8xMDMwOQ=="></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+  
+  
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/my.jpg"
+                alt="Sam" />
+            
+              <p class="site-author-name" itemprop="name">Sam</p>
+              <p class="site-description motion-element" itemprop="description">一个热爱生活的B-boy</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">42</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">31</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">26</span>
+                  <span class="site-state-item-name">标签</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/HackerFreedom" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:614190293@gmail.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#框架整合jar包分析"><span class="nav-number">1.</span> <span class="nav-text">框架整合jar包分析</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#基于xml配置方式整合SSH"><span class="nav-number">2.</span> <span class="nav-text">基于xml配置方式整合SSH</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Spring整合hibernate"><span class="nav-number">2.1.</span> <span class="nav-text">Spring整合hibernate</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#spring整合hibernate后的DAO"><span class="nav-number">3.</span> <span class="nav-text">spring整合hibernate后的DAO</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#spring整合hibernate的测试"><span class="nav-number">3.1.</span> <span class="nav-text">spring整合hibernate的测试</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#"><span class="nav-number">3.2.</span> <span class="nav-text"></span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Sring整合struts2框架"><span class="nav-number">4.</span> <span class="nav-text">Sring整合struts2框架</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#ssh整合-spring整合struts2-伪类名方式"><span class="nav-number">4.1.</span> <span class="nav-text">ssh整合-spring整合struts2 -伪类名方式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ssh整合-spring整合struts2-全类名方式"><span class="nav-number">4.1.1.</span> <span class="nav-text">ssh整合-spring整合struts2 -全类名方式</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#基于注解的方式整合SSH"><span class="nav-number">5.</span> <span class="nav-text">基于注解的方式整合SSH</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#NO-Session-问题解决"><span class="nav-number">6.</span> <span class="nav-text">NO Session 问题解决</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Sam</span>
+
+  
+</div>
+
+
+
+<div class="powered-by">
+<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
+  本站访客数:<span id="busuanzi_value_site_uv"></span>
+</span>
+</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+   
+<!-- <div class="bg_content">
+    
+    <canvas id="canvas"></canvas>
+    </div> -->
+</body>
+</html>
+
+<!-- <script type="text/javascript" src="/js/src/canvas.js"></script> -->
