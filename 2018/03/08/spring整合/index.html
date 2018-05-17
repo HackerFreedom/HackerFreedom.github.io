@@ -126,7 +126,7 @@
 <meta property="og:image" content="http://hackerfreedom.github.io/2018/03/08/spring整合/anno03.png">
 <meta property="og:image" content="http://hackerfreedom.github.io/2018/03/08/spring整合/anno04.png">
 <meta property="og:image" content="http://hackerfreedom.github.io/2018/03/08/spring整合/anno05.png">
-<meta property="og:updated_time" content="2018-03-10T12:18:46.627Z">
+<meta property="og:updated_time" content="2018-04-18T01:58:08.130Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="java框架">
 <meta name="twitter:description" content="课程目标:    能够清晰的说出spring整合Hibernate框架的方式（两种）和原理（管理sessionfactory）    能够独立完成Spring框架整合Hibernate框架（相关的配置）    能够清晰的说出Spring框架整合Struts框架的原理（ObjectFactory）    能够在ssh框架整合的基础上使用Xml方式完成向数据库添加纪录的操作    能够在ssh框架整合">
@@ -417,48 +417,17 @@
 
       
         <p>课程目标:<br>    能够清晰的说出spring整合Hibernate框架的方式（两种）和原理（管理sessionfactory）<br>    能够独立完成Spring框架整合Hibernate框架（相关的配置）<br>    能够清晰的说出Spring框架整合Struts框架的原理（ObjectFactory）<br>    能够在ssh框架整合的基础上使用Xml方式完成向数据库添加纪录的操作<br>    能够在ssh框架整合的基础上使用注解方式完成向数据库添加纪录的操作<br>    能够在ssh框架整合的基础上解决延迟加载的问题</p>
-<h1 id="框架整合jar包分析"><a href="#框架整合jar包分析" class="headerlink" title="框架整合jar包分析"></a>框架整合jar包分析</h1><pre><code>Springs整合struts2----------&gt;
-     spring-web-4.2.4.RELEASE.jar （将spring发布于web上）
-     struts2-spring-plugin-2.3.24.jar （解决action不能依赖spring工厂问题） 
-
-Spring整合Hibernate--------&gt;
-     spring-orm-4.2.4.RELEASE.jar  （加载映射文件）
-</code></pre><h1 id="基于xml配置方式整合SSH"><a href="#基于xml配置方式整合SSH" class="headerlink" title="基于xml配置方式整合SSH"></a>基于xml配置方式整合SSH</h1><ol>
-<li><p>struts:     struts.xml</p>
-<pre><code>        &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
- &lt;!DOCTYPE struts PUBLIC
-    &quot;-//Apache Software Foundation//DTD Struts Configuration 2.3//EN&quot;
-    &quot;http://struts.apache.org/dtds/struts-2.3.dtd&quot;&gt;
-&lt;struts&gt;
-
-    &lt;constant name=&quot;struts.devMode&quot; value=&quot;true&quot;&gt;&lt;/constant&gt;
-
-&lt;/struts&gt;
-</code></pre></li>
-<li>hibernate:  xxx.hbm.xml,<pre><code>     &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
- &lt;!DOCTYPE hibernate-mapping PUBLIC 
- &quot;-//Hibernate/Hibernate Mapping DTD 3.0//EN&quot;
-` &quot;http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd&quot;&gt;`
- &lt;hibernate-mapping&gt;
- &lt;class name=&quot;&quot; table=&quot;&quot;&gt;
-       &lt;id name=&quot;id&quot;&gt;
-             &lt;generator class=&quot;identity&quot; /&gt;
-           &lt;/id&gt;
-       &lt;property name=&quot;&quot; /&gt;
- &lt;/class&gt;
- &lt;/hibernate-mapping&gt;
-</code></pre><em>hibernate.cfg.xml</em></li>
-<li><p>spring:     applicationContext.xml</p>
-</li>
-<li><p>web.xml:    struts过滤器，ContextLoaderListener</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&lt;context-param&gt;    </span><br><span class="line">    &lt;param-name&gt;contextConfigLocation&lt;/param-name&gt;</span><br><span class="line">   &lt;param-value&gt;classpath:applicationContext.xml&lt;/param-value&gt;</span><br><span class="line">    				</span><br><span class="line">    &lt;/context-param&gt;</span><br><span class="line">    &lt;listener&gt;`</span><br><span class="line">    &lt;listener-class&gt;org.springframework.web.context.ContextLoaderListener&lt;/listener-class&gt;</span><br><span class="line">    &lt;/listener&gt;</span><br><span class="line">   &lt;struts2&gt;`</span><br><span class="line">        &lt;filter&gt;</span><br><span class="line">    &lt;filter-name&gt;struts2&lt;/filter-name&gt;</span><br><span class="line">    &lt;filter-class&gt;org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter&lt;/filter-class&gt;</span><br><span class="line">    &lt;/filter&gt;</span><br><span class="line">    &lt;filter-mapping&gt;</span><br><span class="line">    &lt;filter-name&gt;struts2&lt;/filter-name&gt;</span><br><span class="line">    &lt;url-pattern&gt;/*&lt;/url-pattern&gt;</span><br><span class="line">    &lt;/filter-mapping&gt;</span><br></pre></td></tr></table></figure>
+<h1 id="框架整合jar包分析"><a href="#框架整合jar包分析" class="headerlink" title="框架整合jar包分析"></a>框架整合jar包分析</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">	</span><br><span class="line">Springs整合struts2----------&gt;</span><br><span class="line">     spring-web-4.2.4.RELEASE.jar （将spring发布于web上）</span><br><span class="line">     struts2-spring-plugin-2.3.24.jar （解决action不能依赖spring工厂问题） </span><br><span class="line">	</span><br><span class="line">Spring整合Hibernate--------&gt;</span><br><span class="line">           spring-orm-4.2.4.RELEASE.jar  （加载映射文件）</span><br></pre></td></tr></table></figure>
+<h1 id="基于xml配置方式整合SSH"><a href="#基于xml配置方式整合SSH" class="headerlink" title="基于xml配置方式整合SSH"></a>基于xml配置方式整合SSH</h1><ol>
+<li>struts:<br><strong>struts.xml</strong><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span><br><span class="line">	 &lt;!DOCTYPE struts PUBLIC</span><br><span class="line">		&quot;-//Apache Software Foundation//DTD Struts Configuration 2.3//EN&quot;</span><br><span class="line">		&quot;http://struts.apache.org/dtds/struts-2.3.dtd&quot;&gt;</span><br><span class="line">	&lt;struts&gt;</span><br><span class="line">	</span><br><span class="line">		&lt;constant name=&quot;struts.devMode&quot; value=&quot;true&quot;&gt;&lt;/constant&gt;</span><br><span class="line">	</span><br><span class="line">	&lt;/struts&gt;</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
+<p><strong>hibernate:  xxx.hbm.xml</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">	&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span><br><span class="line">	    &lt;!DOCTYPE hibernate-mapping PUBLIC </span><br><span class="line">	    &quot;-//Hibernate/Hibernate Mapping DTD 3.0//EN&quot;</span><br><span class="line">	   ` &quot;http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd&quot;&gt;`</span><br><span class="line">	    &lt;hibernate-mapping&gt;</span><br><span class="line">	    &lt;class name=&quot;&quot; table=&quot;&quot;&gt;</span><br><span class="line">	    	  &lt;id name=&quot;id&quot;&gt;</span><br><span class="line">					&lt;generator class=&quot;identity&quot; /&gt;</span><br><span class="line">		 		 &lt;/id&gt;</span><br><span class="line">		 	 &lt;property name=&quot;&quot; /&gt;</span><br><span class="line">	    &lt;/class&gt;</span><br><span class="line">	    &lt;/hibernate-mapping&gt;</span><br><span class="line">`</span><br></pre></td></tr></table></figure></p>
+<p><strong>hibernate.cfg.xml</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">3. spring:     applicationContext.xml</span><br><span class="line">			</span><br><span class="line">4. web.xml:    struts过滤器，ContextLoaderListener</span><br><span class="line"></span><br><span class="line">   &lt;context-param&gt;    </span><br><span class="line">    &lt;param-name&gt;contextConfigLocation&lt;/param-name&gt;</span><br><span class="line">   &lt;param-value&gt;classpath:applicationContext.xml&lt;/param-value&gt;</span><br><span class="line">    				</span><br><span class="line">    &lt;/context-param&gt;</span><br><span class="line">    &lt;listener&gt;`</span><br><span class="line">    &lt;listener-class&gt;org.springframework.web.context.ContextLoaderListener&lt;/listener-class&gt;</span><br><span class="line">    &lt;/listener&gt;</span><br><span class="line">   &lt;struts2&gt;`</span><br><span class="line">        &lt;filter&gt;</span><br><span class="line">    &lt;filter-name&gt;struts2&lt;/filter-name&gt;</span><br><span class="line">    &lt;filter-class&gt;org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter&lt;/filter-class&gt;</span><br><span class="line">    &lt;/filter&gt;</span><br><span class="line">    &lt;filter-mapping&gt;</span><br><span class="line">    &lt;filter-name&gt;struts2&lt;/filter-name&gt;</span><br><span class="line">    &lt;url-pattern&gt;/*&lt;/url-pattern&gt;</span><br><span class="line">    &lt;/filter-mapping&gt;</span><br></pre></td></tr></table></figure></p>
 <hr>
-<h2 id="Spring整合hibernate"><a href="#Spring整合hibernate" class="headerlink" title="Spring整合hibernate"></a>Spring整合hibernate</h2><p>//只需要使用spring中提供的一个LocalSessionFacotry来加载Hibernate的配置文件。<br><code>&lt;bean class=&quot;org.springframework.orm.hibernate5.LocalSessionFactoryBean&quot;&gt;
-    &lt;property name=&quot;configLocation&quot; value=&quot;classpath:hibernate.cfg.xml&quot;/&gt;
-    &lt;/bean&gt;</code><br>ssh-xml工程加载到服务器后，如果可以自动创建表，就代表spring整合hibernate ok.<br>注意:必须配置spring的ContextLoaderListener</p>
-<p><em>不在需要hibernate.cfg.xml文件，所有关于hibernate.cfg.xml文件中的配置都在spring的配置文件中来配置</em></p>
+<h2 id="Spring整合hibernate"><a href="#Spring整合hibernate" class="headerlink" title="Spring整合hibernate"></a>Spring整合hibernate</h2><p>//只需要使用spring中提供的一个LocalSessionFacotry来加载Hibernate的配置文件。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&lt;bean class=&quot;org.springframework.orm.hibernate5.LocalSessionFactoryBean&quot;&gt;</span><br><span class="line">&lt;property name=&quot;configLocation&quot; value=&quot;classpath:hibernate.cfg.xml&quot;/&gt;</span><br><span class="line">&lt;/bean&gt;</span><br></pre></td></tr></table></figure></p>
+<p>ssh-xml工程加载到服务器后，如果可以自动创建表，就代表spring整合hibernate ok.<br>注意:必须配置spring的ContextLoaderListener</p>
+<p>不在需要<code>hbernate.cfg.xml</code>文件，所有关于<code>hibernate.cfg.xml</code>文件中的配置都在spring的配置文件中来配置*</p>
 <pre><code>1. 首先配置数据源
 </code></pre><p><img src="/2018/03/08/spring整合/spring01.png" alt=""></p>
 <pre><code>2. 引入properties文件
@@ -485,18 +454,13 @@ Spring整合Hibernate--------&gt;
 </code></pre><p><img src="/2018/03/08/spring整合/spring08.png" alt=""></p>
 <pre><code>4. 代码测试
 </code></pre><h2 id=""><a href="#" class="headerlink" title=""></a><img src="/2018/03/08/spring整合/spring09.png" alt=""></h2><h1 id="Sring整合struts2框架"><a href="#Sring整合struts2框架" class="headerlink" title="Sring整合struts2框架"></a>Sring整合struts2框架</h1><ol>
-<li>创建一个jsp页面<br><code>&lt;form action=&quot;${pageContext.request.contextPath}/user_add&quot; method=&quot;post&quot;&gt;
-name:&lt;input type=&quot;text&quot; name=&quot;name&quot;&gt;&lt;br&gt;
-age:&lt;input type=&quot;text&quot; name=&quot;age&quot;&gt;&lt;br&gt;
-&lt;input type=&quot;submit&quot; value=&quot;addUser&quot;&gt;
-&lt;/form&gt;</code></li>
+<li><p>创建一个jsp页面</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;form action=&quot;$&#123;pageContext.request.contextPath&#125;/user_add&quot; method=&quot;post&quot;&gt;</span><br><span class="line">name:&lt;input type=&quot;text&quot; name=&quot;name&quot;&gt;&lt;br&gt;</span><br><span class="line">age:&lt;input type=&quot;text&quot; name=&quot;age&quot;&gt;&lt;br&gt;</span><br><span class="line">&lt;input type=&quot;submit&quot; value=&quot;addUser&quot;&gt;</span><br><span class="line">&lt;/form&gt;</span><br></pre></td></tr></table></figure>
+</li>
 <li><p>创建userAction类<br><img src="/2018/03/08/spring整合/spring10.png" alt=""></p>
 </li>
-<li><p>struts.xml文件中配置<br><code>&lt;package name=&quot;default&quot; namespace=&quot;/&quot; extends=&quot;struts-default&quot;&gt;
-&lt;action name=&quot;user_*&quot; class=&quot;cn.itheima.action.UserAction&quot; method=&quot;{1}&quot;&gt;
- &lt;result name=&quot;success&quot;&gt;/success.jsp&lt;/result&gt;
-&lt;/action&gt;
-&lt;/package&gt;</code></p>
+<li><p>struts.xml文件中配置</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;package name=&quot;default&quot; namespace=&quot;/&quot; extends=&quot;struts-default&quot;&gt;</span><br><span class="line">&lt;action name=&quot;user_*&quot; class=&quot;cn.itheima.action.UserAction&quot; method=&quot;&#123;1&#125;&quot;&gt;</span><br><span class="line">	&lt;result name=&quot;success&quot;&gt;/success.jsp&lt;/result&gt;</span><br><span class="line">&lt;/action&gt;</span><br><span class="line">&lt;/package&gt;</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
 <h2 id="ssh整合-spring整合struts2-伪类名方式"><a href="#ssh整合-spring整合struts2-伪类名方式" class="headerlink" title="ssh整合-spring整合struts2 -伪类名方式"></a>ssh整合-spring整合struts2 -伪类名方式</h2><ol>
@@ -508,10 +472,9 @@ age:&lt;input type=&quot;text&quot; name=&quot;age&quot;&gt;&lt;br&gt;
 <h3 id="ssh整合-spring整合struts2-全类名方式"><a href="#ssh整合-spring整合struts2-全类名方式" class="headerlink" title="ssh整合-spring整合struts2 -全类名方式"></a>ssh整合-spring整合struts2 -全类名方式</h3><ul>
 <li><p><em>struts.xml文件配置class属性是UserAction类的全类名</em><br><img src="/2018/03/08/spring整合/spring14.png" alt=""></p>
 </li>
-<li><p>这时就会将action类中的servcie属性按照属性名称自动注入<br><img src="/2018/03/08/spring整合/spring15.png" alt=""></p>
+<li><p>这时就会将action类中的servcie属性按照属性名称自动注入<br><img src="/2018/03/08/spring整合/spring15.png" alt=""><br>因为在default.properties中有一段配置</p>
 </li>
 </ul>
-<p>因为在default.properties中有一段配置</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">**默认这时就会根据名称进行注入**</span><br><span class="line">&lt;constant name=&quot;struts.objectFactory.spring.autoWire&quot; value=&quot;name&quot;/&gt;</span><br></pre></td></tr></table></figure>
 <p>在struts.xml文件中修改了注入的方式为type，就会根据属性里面的<strong>参数类型进行注入(set方法参数)  </strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;constant name=&quot;struts.objectFactory.spring.autoWire&quot; value=&quot;type&quot;/&gt;</span><br></pre></td></tr></table></figure></p>
 <p><strong>spring整合struts2框架总结</strong></p>
@@ -526,10 +489,10 @@ age:&lt;input type=&quot;text&quot; name=&quot;age&quot;&gt;&lt;br&gt;
 <h1 id="基于注解的方式整合SSH"><a href="#基于注解的方式整合SSH" class="headerlink" title="基于注解的方式整合SSH"></a>基于注解的方式整合SSH</h1><ol>
 <li>导入jar包<code>struts2-convention-plugin-2.3.24.jar包；</code></li>
 <li>使用JPA注解来定义PO类<ol>
-<li>@Entity 定义实体类，@Table 定义表，@Id 主键，@GeneratedValue 生成主键策略，@Column 定义列</li>
-<li>dentity由底层数据库生成标识符。identity是由数据库自己生成的，但这个主键必须设置为自增长，使用identity的前提条件是底层数据库支持自动增长字段类型</li>
-<li>native由hibernate根据使用的数据库自行判断</li>
-<li>Hibernate在保存对象时，生成一个UUID字符串作为主键，保证了唯一性<ol>
+<li><code>@Entity</code> 定义实体类，@Table 定义表，@Id 主键，@GeneratedValue 生成主键策略，@Column 定义列</li>
+<li><code>dentity</code>由底层数据库生成标识符。identity是由数据库自己生成的，但这个主键必须设置为自增长，使用identity的前提条件是底层数据库支持自动增长字段类型</li>
+<li><code>native</code>由hibernate根据使用的数据库自行判断</li>
+<li><code>Hibernate</code>在保存对象时，生成一个UUID字符串作为主键，保证了唯一性<ol>
 <li>特点：uuid长度大，占用空间大，跨数据库，不用访问数据库就生成主键值，所以效率高且能保证唯一性，移植非常方便，推荐使用。</li>
 </ol>
 </li>
@@ -547,7 +510,7 @@ age:&lt;input type=&quot;text&quot; name=&quot;age&quot;&gt;&lt;br&gt;
 <hr>
 <p><strong>总结</strong></p>
 <ol>
-<li>dao类继承HibernateDaoSupport注入SessionFactory传给父类，在dao中就可以通过getHibernateTemplate()直接获取HibernateTemplate;<br><img src="/2018/03/08/spring整合/anno02.png" alt="">;</li>
+<li>dao类继承<code>HibernateDaoSupport</code>注入SessionFactory传给父类，在dao中就可以通过getHibernateTemplate()直接获取HibernateTemplate;<br><img src="/2018/03/08/spring整合/anno02.png" alt="">;</li>
 <li>在service及action中使用@Autowire来注入dao及service<br><img src="/2018/03/08/spring整合/anno03.png" alt="">;<br><img src="/2018/03/08/spring整合/anno04.png" alt="">;</li>
 <li>对于Struts2框架需要@Namespace @Action @ParentPakcage @Result来定义struts2流程</li>
 <li>要求action类必须是在包含action actions struts struts2字符串这样的包中才会扫描struts2相关注解,并且action类必须以Action结尾<br><img src="/2018/03/08/spring整合/anno05.png" alt="">;</li>
@@ -609,8 +572,8 @@ age:&lt;input type=&quot;text&quot; name=&quot;age&quot;&gt;&lt;br&gt;
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/03/09/新文档/" rel="prev" title="">
-                 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/03/10/属性和模型驱动区别/" rel="prev" title="java框架">
+                java框架 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -725,7 +688,7 @@ var jiathis_config={
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">42</span>
+                  <span class="site-state-item-count">76</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -736,7 +699,7 @@ var jiathis_config={
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">31</span>
+                  <span class="site-state-item-count">46</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -747,7 +710,7 @@ var jiathis_config={
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">26</span>
+                  <span class="site-state-item-count">32</span>
                   <span class="site-state-item-name">标签</span>
                 
               </div>

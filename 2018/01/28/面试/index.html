@@ -98,18 +98,18 @@
 
 
 
-<meta name="description" content="**Spring的DI是什么（学员注：除了IOC，AOP这些概念，还不太清楚DI的概念） *任意数字序列”123456”之类，输出它们所有的排列组合 *什么是AOP（学员注：会用，但感觉说不清楚）我注：由上面这些题，可以看出，思想很重要，只有琢磨思想和原理的人才能很好地回答这些问题！  String str = “xafdvs”; char[] arr1 = str.toCharArray();">
+<meta name="description" content="**Spring的DI是什么（学员注：除了IOC，AOP这些概念，还不太清楚DI的概念） *任意数字序列”123456”之类，输出它们所有的排列组合 *什么是AOP（学员注：会用，但感觉说不清楚）我注：由上面这些题，可以看出，思想很重要，只有琢磨思想和原理的人才能很好地回答这些问题！123456789String str = &amp;quot;xafdvs&amp;quot;;char[] arr1 = st">
 <meta name="keywords" content="面试">
 <meta property="og:type" content="article">
 <meta property="og:title" content="面试-试题">
 <meta property="og:url" content="http://HackerFreedom.github.io/2018/01/28/面试/index.html">
 <meta property="og:site_name" content="TO BE BTTER ME">
-<meta property="og:description" content="**Spring的DI是什么（学员注：除了IOC，AOP这些概念，还不太清楚DI的概念） *任意数字序列”123456”之类，输出它们所有的排列组合 *什么是AOP（学员注：会用，但感觉说不清楚）我注：由上面这些题，可以看出，思想很重要，只有琢磨思想和原理的人才能很好地回答这些问题！  String str = “xafdvs”; char[] arr1 = str.toCharArray();">
+<meta property="og:description" content="**Spring的DI是什么（学员注：除了IOC，AOP这些概念，还不太清楚DI的概念） *任意数字序列”123456”之类，输出它们所有的排列组合 *什么是AOP（学员注：会用，但感觉说不清楚）我注：由上面这些题，可以看出，思想很重要，只有琢磨思想和原理的人才能很好地回答这些问题！123456789String str = &amp;quot;xafdvs&amp;quot;;char[] arr1 = st">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-08T06:11:02.400Z">
+<meta property="og:updated_time" content="2018-04-04T06:26:24.341Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="面试-试题">
-<meta name="twitter:description" content="**Spring的DI是什么（学员注：除了IOC，AOP这些概念，还不太清楚DI的概念） *任意数字序列”123456”之类，输出它们所有的排列组合 *什么是AOP（学员注：会用，但感觉说不清楚）我注：由上面这些题，可以看出，思想很重要，只有琢磨思想和原理的人才能很好地回答这些问题！  String str = “xafdvs”; char[] arr1 = str.toCharArray();">
+<meta name="twitter:description" content="**Spring的DI是什么（学员注：除了IOC，AOP这些概念，还不太清楚DI的概念） *任意数字序列”123456”之类，输出它们所有的排列组合 *什么是AOP（学员注：会用，但感觉说不清楚）我注：由上面这些题，可以看出，思想很重要，只有琢磨思想和原理的人才能很好地回答这些问题！123456789String str = &amp;quot;xafdvs&amp;quot;;char[] arr1 = st">
 
 
 
@@ -398,8 +398,7 @@
         <ol>
 <li><em>**</em>Spring的DI是什么（学员注：除了IOC，AOP这些概念，还不太清楚DI的概念）</li>
 <li>*任意数字序列”123456”之类，输出它们所有的排列组合</li>
-<li><p><strong>*</strong>什么是AOP（学员注：会用，但感觉说不清楚）<br>我注：由上面这些题，可以看出，思想很重要，只有琢磨思想和原理的人才能很好地回答这些问题！</p>
-<p> String str = “xafdvs”;<br> char[] arr1 = str.toCharArray();<br> char[] arr2 = Arrays.copyOf(arr1,arr1.length);<br> for(int i=0;i&lt;arr1.length-1;i++)<br> {<br> for(int j = i+1;j&lt;arr2.length;j++){<br> syso: arr1[i] + “,” + arr2[j];<br> }<br> }</p>
+<li><strong>*</strong>什么是AOP（学员注：会用，但感觉说不清楚）<br>我注：由上面这些题，可以看出，思想很重要，只有琢磨思想和原理的人才能很好地回答这些问题！<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">String str = &quot;xafdvs&quot;;</span><br><span class="line">char[] arr1 = str.toCharArray();</span><br><span class="line">char[] arr2 = Arrays.copyOf(arr1,arr1.length);</span><br><span class="line">for(int i=0;i&lt;arr1.length-1;i++)</span><br><span class="line">&#123;</span><br><span class="line">for(int j = i+1;j&lt;arr2.length;j++)&#123;</span><br><span class="line">syso: arr1[i] + &quot;,&quot; + arr2[j];</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
 <p>1.概念介绍：所谓AOP，即Aspect orientied program,就是面向方面的编程，<br>2.解释什么是方面：贯穿到系统的各个模块中的系统一个功能就是一个方面，<br>比如，记录日志，统一异常处理，事务处理，全限检查，这些功能都是软件系统<br>的一个面，而不是一点，在各个模块中都要出现。<br>3.什么是面向方面编程：把系统的一个方面的功能封装成对象的形式来处理<br>4.怎么进行面向方面编程：把功能模块对应的对象作为切面嵌入到原来的各个系统模块中，<br>采用代理技术，代理会调用目标，同时把切面功能的代码（对象）加入进来，所以，<br>用spring配置代理对象时只要要配两个属性，分别表示目标和切面对象（Advisor）。</p>
@@ -420,6 +419,8 @@
 <p>oop是名词</p>
 <p>不考虑事务隔离性会有什么问题？</p>
 <p>事务基于注解的步骤？</p>
+<p>nosession的问题？</p>
+<p> 在SSH框架开发中，我们通常是在Service层开启事务管理，在该事务中open Session和close Session，而框架中  关联数据  默认情况是“懒加载”的，主数据查询出来时关联数据是代理对象，并没有一起查出来的，所以当调用关联数据时，Hibernate才重新去数据库中查询，但这时Session已经关闭了，所以报NoSession错误</p>
 
       
     </div>
@@ -458,8 +459,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/01/28/Cookie-Session/" rel="next" title="Cookie-Session">
-                <i class="fa fa-chevron-left"></i> Cookie-Session
+              <a href="/2018/01/28/hibernate注解/" rel="next" title="java框架">
+                <i class="fa fa-chevron-left"></i> java框架
               </a>
             
           </div>
@@ -468,8 +469,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/01/28/p2p项目思路/" rel="prev" title="p2p项目">
-                p2p项目 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/01/28/Cookie-Session/" rel="prev" title="Cookie-Session">
+                Cookie-Session <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -575,7 +576,7 @@ var jiathis_config={
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">42</span>
+                  <span class="site-state-item-count">76</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -586,7 +587,7 @@ var jiathis_config={
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">31</span>
+                  <span class="site-state-item-count">46</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -597,7 +598,7 @@ var jiathis_config={
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">26</span>
+                  <span class="site-state-item-count">32</span>
                   <span class="site-state-item-name">标签</span>
                 
               </div>

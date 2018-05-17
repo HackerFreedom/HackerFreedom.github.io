@@ -111,7 +111,7 @@
 <meta property="og:image" content="http://hackerfreedom.github.io/2018/01/28/Cookie-Session/main03.png">
 <meta property="og:image" content="http://hackerfreedom.github.io/2018/01/28/Cookie-Session/cookie01.png">
 <meta property="og:image" content="http://hackerfreedom.github.io/2018/01/28/Cookie-Session/cookie02.png">
-<meta property="og:updated_time" content="2018-02-27T02:41:18.161Z">
+<meta property="og:updated_time" content="2018-05-16T06:35:23.623Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Cookie-Session">
 <meta name="twitter:description" content="DDL是tra  删除命令，没有事务回滚 会话技术的概述简单来说，就是用户打开浏览器，访问web资源，然后关闭浏览器的整个过程。而用户每次访问留下的数据，就需要我们用会话技术来保存了。 ; 会话技术的实现原理 会话技术的分类 会话技术分为cookie 和session  cookie属于客户端技术 通过响应头的形式来保存信息 session属于服务端技术 会在服务器中开辟一处空间来存储数据cook">
@@ -432,8 +432,10 @@
 </li>
 </ul>
 <p><img src="/2018/01/28/Cookie-Session/cookie02.png" alt="cookie的设置"></p>
-<p><strong>Cookies要注意的点</strong><br>1 浏览器存储cookie有大小和个数的限制，各种浏览器不宜<br>2、cookie默认是一次会话结束就消失，但是要删除持久化的cookie，只需要调用setMaxAge(0);<br><em>但是要设置cookie相同的path</em></p>
-<h3 id="Session的概述"><a href="#Session的概述" class="headerlink" title="Session的概述"></a>Session的概述</h3><p>Session称为是一次会话，Cookie将用户产生的私有数据保存到浏览器端，而Session将用户产生的私有的数据保存到服务器端</p>
+<h2 id="JavaScript获取Cookie"><a href="#JavaScript获取Cookie" class="headerlink" title="JavaScript获取Cookie"></a>JavaScript获取Cookie</h2><p>通过<code>Document.cookie</code> 属性可以获取新的<code>cookie</code>,也可以通过该属性访问非<code>HttpOnly</code> 标记的 Cookie<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">document.cookie = &quot;yummy_cookie=choco&quot;;</span><br><span class="line">document.cookie = &quot;tasty_cookie=strawberry&quot;;</span><br><span class="line">console.log(document.cookie);</span><br></pre></td></tr></table></figure></p>
+<h2 id="Cookies要注意的点"><a href="#Cookies要注意的点" class="headerlink" title="##Cookies要注意的点"></a>##<strong>Cookies要注意的点</strong></h2><p>1 浏览器存储cookie有大小和个数的限制，各种浏览器不宜<br>2、cookie默认是一次会话结束就消失，但是要删除持久化的cookie，只需要调用setMaxAge(0);<br><em>但是要设置cookie相同的path</em></p>
+<hr>
+<h1 id="Session的概述"><a href="#Session的概述" class="headerlink" title="Session的概述"></a>Session的概述</h1><p>Session称为是一次会话，Cookie将用户产生的私有数据保存到浏览器端，而Session将用户产生的私有的数据保存到服务器端,是的信息更加安全</p>
 <p>cookie和session的区别<br>Cookie的局限性：</p>
 <ul>
 <li>Cookie保存的数据是有个数和大小的限制的。<ul>
@@ -445,44 +447,30 @@
 <pre><code>- Session没有个数和大小限制
 - 数据保存到服务器上
 </code></pre><p><strong>Session对象由服务器创建，开发人员可以调用request对象的getSession方法得到Session对象</strong></p>
-<h3 id="Session的原理"><a href="#Session的原理" class="headerlink" title="Session的原理"></a>Session的原理</h3><p>Session其实是基于Cookie实现的，因为服务器会将一个唯一的SessionId写到Cookie里面，响应给浏览器，浏览器再次访问服务器(浏览器不关闭)会带着这个Cookie里面的SessionId来找到对应的区域数据。</p>
+<h2 id="Session的原理"><a href="#Session的原理" class="headerlink" title="Session的原理"></a>Session的原理</h2><p>Session其实是基于Cookie实现的，因为服务器会将一个唯一的SessionId写到Cookie里面，响应给浏览器，浏览器再次访问服务器(浏览器不关闭)会带着这个Cookie里面的SessionId来找到对应的区域数据。</p>
 <p>保存sessionID的cookie默认是会话级别的,只存在于浏览器的内存中,浏览器窗口关了就没了。</p>
-<h3 id="Session作为域对象存储数据"><a href="#Session作为域对象存储数据" class="headerlink" title="Session作为域对象存储数据"></a>Session作为域对象存储数据</h3><p>Session作为域对象的API</p>
+<h2 id="Session作为域对象存储数据"><a href="#Session作为域对象存储数据" class="headerlink" title="Session作为域对象存储数据"></a>Session作为域对象存储数据</h2><p>Session作为域对象的API</p>
 <ul>
 <li>setAttribute (string name,Object value)  存入数据</li>
 <li>getAttribute(String name)   获取数据</li>
 <li>removeAttribute(String name)   移除数据</li>
 </ul>
-<h3 id="Servlet数据访问范围的总结"><a href="#Servlet数据访问范围的总结" class="headerlink" title="Servlet数据访问范围的总结"></a>Servlet数据访问范围的总结</h3><pre><code>1、请求范围（ServletRequest）
- a)、何时创建和销毁的
-创建：当用户向服务器发送一次请求，服务器创建一个request对象。
-销毁：当服务器对这次请求作出了响应，服务器就会销毁这个request对象。
-b)、如何存取数据
-存数据：void setAttribute(String name,Object value);
-取数据：Object getAttribute(String name);
-c)、作用范围：一次请求。（转发就是一次请求）。
+<h2 id="Servlet数据访问范围的总结"><a href="#Servlet数据访问范围的总结" class="headerlink" title="Servlet数据访问范围的总结"></a>Servlet数据访问范围的总结</h2><p>1、请求范围（ServletRequest）<br>     a)、何时创建和销毁的<br>    创建：当用户向服务器发送一次请求，服务器创建一个request对象。<br>    销毁：当服务器对这次请求作出了响应，服务器就会销毁这个request对象。<br>    b)、如何存取数据<br>    存数据：void setAttribute(String name,Object value);<br>    取数据：Object getAttribute(String name);<br>    c)、作用范围：一次请求。（转发就是一次请求）。</p>
+<p>2、会话范围（HttpSession）<br>    a)、何时创建和销毁的<br>    创建：服务器端第一次调用getSession()方法的时候。(测试访问jsp.html,servlet)<br>    销毁：三种情况。<br>    ①、Session过期，默认的过期时间30分钟(web.xml中配置)。<br>    ②、非正常关闭服务器。（正常关闭服务器—session会被序列化）。<br>    ③、手动调用session.invalidate();<br>    b)、如何存取数据<br>    存数据：void setAttribute(String name,Object value);<br>    取数据：Object getAttribute(String name);<br>    c)、作用范围：一次会话（多次请求）</p>
+<p>3、应用范围（ServletContext）<br>    a)、何时创建和销毁的<br>    创建：服务器启动的时候创建，为每个web项目创建一个单独ServletContext对象。<br>    销毁：服务器关闭的时候，或者项目从服务器中移除的时候。<br>    b)、如何存取数据<br>    存数据：void setAttribute(String name,Object value);<br>    取数据：Object getAttribute(String name);<br>    c)、作用范围：整个应用</p>
+<h1 id="Cookie和session-选择"><a href="#Cookie和session-选择" class="headerlink" title="Cookie和session 选择"></a>Cookie和session 选择</h1><ul>
+<li>Cookie 只能存储 ASCII 码字符串，而 Session 则可以存取任何类型的数据，因此在考虑数据复杂性时 首选 Session；</li>
+<li>Cookie 存储在浏览器中，容易被恶意查看。如果非要将一些隐私数据存在 Cookie 中，可以将 Cookie 值进行加密，然后在服务器进行解密；</li>
+<li>对于大型网站，如果用户所有的信息都存储在 Session 中，那么开销是非常大的，因此不建议将所有的用户信息都存储到 Session 中</li>
+</ul>
+<hr>
+<p>学到这里的时候没有弄清客户端 和 服务端 ,浏览器的联系.<br>简单来讲,就是说,客户端是用你我等操作的pc端 一般就是request 请求<br>而服务端就是 处理我们请求的数据,  一般做出的是response请求.<br>浏览器就是说的是用来显示服务端处理后的数据,所以说三者并没有实质的区别.</p>
+<hr>
+<p>post 和 get 的区别 ?</p>
+<p>get 用于获取资源 </p>
+<p>post 用于传输实体主体</p>
+<p>两者都可以在请求中携带额外的参数,对于get来说是在URL地址上直接拼接的<br>而post是存储在请求体中的.</p>
 
-2、会话范围（HttpSession）
-a)、何时创建和销毁的
-创建：服务器端第一次调用getSession()方法的时候。(测试访问jsp.html,servlet)
-销毁：三种情况。
-①、Session过期，默认的过期时间30分钟(web.xml中配置)。
-②、非正常关闭服务器。（正常关闭服务器—session会被序列化）。
-③、手动调用session.invalidate();
-b)、如何存取数据
-存数据：void setAttribute(String name,Object value);
-取数据：Object getAttribute(String name);
-c)、作用范围：一次会话（多次请求）
-
-3、应用范围（ServletContext）
-a)、何时创建和销毁的
-创建：服务器启动的时候创建，为每个web项目创建一个单独ServletContext对象。 
-销毁：服务器关闭的时候，或者项目从服务器中移除的时候。
-b)、如何存取数据
-存数据：void setAttribute(String name,Object value);
-取数据：Object getAttribute(String name);
-c)、作用范围：整个应用
-</code></pre>
       
     </div>
     
@@ -520,8 +508,8 @@ c)、作用范围：整个应用
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/01/28/jsp-el-jstl/" rel="next" title="jsp&el&jstl">
-                <i class="fa fa-chevron-left"></i> jsp&el&jstl
+              <a href="/2018/01/28/面试/" rel="next" title="面试-试题">
+                <i class="fa fa-chevron-left"></i> 面试-试题
               </a>
             
           </div>
@@ -530,8 +518,8 @@ c)、作用范围：整个应用
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/01/28/面试/" rel="prev" title="面试-试题">
-                面试-试题 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/01/28/异常01/" rel="prev" title="nullPoint异常">
+                nullPoint异常 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -646,7 +634,7 @@ var jiathis_config={
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">42</span>
+                  <span class="site-state-item-count">76</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -657,7 +645,7 @@ var jiathis_config={
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">31</span>
+                  <span class="site-state-item-count">46</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -668,7 +656,7 @@ var jiathis_config={
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">26</span>
+                  <span class="site-state-item-count">32</span>
                   <span class="site-state-item-name">标签</span>
                 
               </div>
@@ -723,7 +711,7 @@ var jiathis_config={
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#会话技术的概述"><span class="nav-number">1.</span> <span class="nav-text">会话技术的概述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#会话技术的实现原理"><span class="nav-number">2.</span> <span class="nav-text">会话技术的实现原理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#获取Cookie的方法"><span class="nav-number">2.1.</span> <span class="nav-text">获取Cookie的方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Cookie的分类"><span class="nav-number">2.2.</span> <span class="nav-text">Cookie的分类</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Session的概述"><span class="nav-number">2.2.1.</span> <span class="nav-text">Session的概述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Session的原理"><span class="nav-number">2.2.2.</span> <span class="nav-text">Session的原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Session作为域对象存储数据"><span class="nav-number">2.2.3.</span> <span class="nav-text">Session作为域对象存储数据</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Servlet数据访问范围的总结"><span class="nav-number">2.2.4.</span> <span class="nav-text">Servlet数据访问范围的总结</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#会话技术的概述"><span class="nav-number">1.</span> <span class="nav-text">会话技术的概述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#会话技术的实现原理"><span class="nav-number">2.</span> <span class="nav-text">会话技术的实现原理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#获取Cookie的方法"><span class="nav-number">2.1.</span> <span class="nav-text">获取Cookie的方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Cookie的分类"><span class="nav-number">2.2.</span> <span class="nav-text">Cookie的分类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JavaScript获取Cookie"><span class="nav-number">2.3.</span> <span class="nav-text">JavaScript获取Cookie</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Cookies要注意的点"><span class="nav-number">2.4.</span> <span class="nav-text">##Cookies要注意的点</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Session的概述"><span class="nav-number">3.</span> <span class="nav-text">Session的概述</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Session的原理"><span class="nav-number">3.1.</span> <span class="nav-text">Session的原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Session作为域对象存储数据"><span class="nav-number">3.2.</span> <span class="nav-text">Session作为域对象存储数据</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Servlet数据访问范围的总结"><span class="nav-number">3.3.</span> <span class="nav-text">Servlet数据访问范围的总结</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Cookie和session-选择"><span class="nav-number">4.</span> <span class="nav-text">Cookie和session 选择</span></a></li></ol></div>
             
 
           </div>

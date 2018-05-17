@@ -106,7 +106,7 @@
 <meta property="og:site_name" content="TO BE BTTER ME">
 <meta property="og:description" content="linux常用命令cd app    切换到app目录 cd ..        切换到上一层目录 cd /        切换到系统根目录 cd ~        切换到用户主目录 cd -        切换到上一个所在目录  ls ll 列出文件列表**ls(list)是一个非常有用的命令，用来显示当前目录下的内容。配合参数的使用，能以不同的方式显示目录内容。  ls -a  显示所有文件或">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-02-27T02:38:44.287Z">
+<meta property="og:updated_time" content="2018-03-18T03:03:49.050Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="linux基本使用">
 <meta name="twitter:description" content="linux常用命令cd app    切换到app目录 cd ..        切换到上一层目录 cd /        切换到系统根目录 cd ~        切换到用户主目录 cd -        切换到上一个所在目录  ls ll 列出文件列表**ls(list)是一个非常有用的命令，用来显示当前目录下的内容。配合参数的使用，能以不同的方式显示目录内容。  ls -a  显示所有文件或">
@@ -402,43 +402,49 @@ cd ~        切换到用户主目录
 cd -        切换到上一个所在目录
 </code></pre><ul>
 <li><strong>ls ll 列出文件列表**</strong><br>ls(list)是一个非常有用的命令，用来显示当前目录下的内容。配合参数的使用，能以不同的方式显示目录内容。<br>  ls -a  显示所有文件或目录（包含隐藏的文件）<ul>
-<li>ls -l  缩写成ll<br>在linux中以 . 开头的文件都是隐藏的文件</li>
+<li>ls -l  缩写成ll<br>在<code>linux</code>中以 . 开头的文件都是隐藏的文件</li>
 </ul>
 </li>
 </ul>
 <ul>
-<li><p>创建于删除目录<br>  mkdir(make directory)命令可用来创建子目录。<br>  mkdir app    在当前目录下创建app目录<br>  mkdir –p app2/test  多 级联创建aap2以及test目</p>
-<p>  rmdir(remove directory)命令可用来删除“空”的子目录：<br>  rmdir app    删除app目录<br>  rm -rf   删除</p>
+<li><p>创建于删除目录</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">`mkdir(make directory)`命令可用来创建子目录。</span><br><span class="line">`mkdir app `  在当前目录下创建app目录</span><br><span class="line">`mkdir –p app2/test`  多 级联创建aap2以及test目</span><br><span class="line"></span><br><span class="line">`rmdir(remove directory)` 命令可用来删除“空”的子目录：</span><br><span class="line">`rmdir app`  删除app目录</span><br><span class="line">`rm -rf`   删除</span><br></pre></td></tr></table></figure>
 </li>
-<li>浏览文件<br>  cat命令   输入文件夹来浏览文件<br>  tail 命令     tail -f catalina.log    动态查看日志(<strong>*</strong>) </li>
+<li><p>浏览文件<br>  cat命令   输入文件夹来浏览文件<br>  tail 命令     tail -f catalina.log    动态查看日志(<strong>*</strong>) </p>
+</li>
 <li>文件操作<br>  cp是copy操作<br>  cp(copy)命令可以将文件从一处复制到另一处。一般在使用cp命令时将一个文件复制成另一个文件或复制到某目录时，需要指定源文件名与目标文件名或目录</li>
 <li><p>打包压缩和解压<br>  <em>tar命令位于/bin目录下，它能够将用户所指定的文件或目录打包成一个文件，但不做压缩。一般Linux上常用的压缩方式是选用tar将许多文件打包成一个文件，再以gzip压缩命令压缩成xxx.tar.gz(或称为xxx.tgz)的文件。</em></p>
-<p>  常用参数：<br>  -c：创建一个新tar文件<br>  -v：显示运行过程的信息<br>  -f：指定文件名<br>  -z：调用gzip压缩命令进行压缩<br>  -t：查看压缩文件的内容<br>  -x：解开tar文件</p>
-<p>  打包：<br>  tar –cvf xxx.tar ./<em><br>  打包并且压缩：<br>  tar –zcvf xxx.tar.gz ./</em><br><strong>解压 **</strong><br>  tar –xvf xxx.tar<br>  tar -xvf xxx.tar.gz -C /usr/aaa**</p>
+<p>  <code>常用参数：</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">-c：创建一个新tar文件</span><br><span class="line">-v：显示运行过程的信息</span><br><span class="line">-f：指定文件名</span><br><span class="line">-z：调用gzip压缩命令进行压缩                                                                                                                                                            </span><br><span class="line">-t：查看压缩文件的内容</span><br><span class="line">-x：解开tar文件</span><br><span class="line"></span><br><span class="line">`打包：`</span><br><span class="line">tar –cvf xxx.tar ./*</span><br><span class="line">打包并且压缩：</span><br><span class="line">tar –zcvf xxx.tar.gz ./*</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>文件查找<br><em>查找符合条件的文件find</em><br>  find / -name “ins<em>” 查找文件名称是以ins开头的文件<br>  find / -name “ins</em>” –ls<br>  find / –user itcast –ls 查找用户itcast的文件<br>  find / –user itcast –type d –ls 查找用户itcast的目录<br>  find /-perm -777 –type d-ls 查找权限是777的文件<br>查找文件里符合条件的字符串。<br><em>查找文件中符合条件的字符串grep</em><br>  grep lang anaconda-ks.cfg  在文件中查找lang</p>
+</ul>
+<p><strong>解压 **</strong><br>    tar –xvf xxx.tar<br>    tar -xvf xxx.tar.gz -C /usr/aaa**</p>
+<ul>
+<li>文件查找<br><em>查找符合条件的文件find</em><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">find / -name “ins*” 查找文件名称是以ins开头的文件</span><br><span class="line">find / -name “ins*” –ls </span><br><span class="line">find / –user itcast –ls 查找用户itcast的文件</span><br><span class="line">find / –user itcast –type d –ls 查找用户itcast的目录</span><br><span class="line">find /-perm -777 –type d-ls 查找权限是777的文件</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>其它常用命令</p>
-</li>
+</ul>
+<p>查找文件里符合条件的字符串。<br><em>查找文件中符合条件的字符串grep</em><br>    grep lang anaconda-ks.cfg  在文件中查找lang</p>
+<ul>
+<li>其它常用命令</li>
 <li><strong>pwd</strong><br>  显示当前所在目录</li>
 <li>touch<br>   创建一个空文件</li>
 <li>ll -h<br>  友好显示文件大小</li>
 <li><p>weget<br>  下载资料<br>   <em>wget <a href="http://nginx.org/download/nginx-1.9.12.tar.gz" target="_blank" rel="noopener">http://nginx.org/download/nginx-1.9.12.tar.gz</a></em></p>
-<h2 id="VI与VIM编辑器-（基本的CRUD）"><a href="#VI与VIM编辑器-（基本的CRUD）" class="headerlink" title="VI与VIM编辑器 ##（基本的CRUD）"></a>VI与VIM编辑器 ##（基本的CRUD）</h2><p><strong>有三种模式 命令行  插入  底行</strong><br>  通过  vi（vim） 文件名  就可以对文件进行操作<br>  当操作时，开始是命令行模式   按I  o  a 切换到插入模式<br>  按esc 可以在重新切换到命令行模式<br><strong>在命令行模式下按 “:” 就可以切换到底行模式。</strong><br>  退出：esc  :q<br>  修改文件：输入i进入插入模式<br>  保存并退出：esc:wq</p>
+<h1 id="VI与VIM编辑器-（基本的CRUD）"><a href="#VI与VIM编辑器-（基本的CRUD）" class="headerlink" title="VI与VIM编辑器 #（基本的CRUD）"></a>VI与VIM编辑器 #（基本的CRUD）</h1><p><strong>有三种模式 命令行  插入  底行</strong><br>  通过  vi（vim） 文件名  就可以对文件进行操作<br>  当操作时，开始是命令行模式   按I  o  a 切换到插入模式<br>  按esc 可以在重新切换到命令行模式<br><strong>在命令行模式下按 “:” 就可以切换到底行模式。</strong><br>  退出：esc  :q<br>  修改文件：输入i进入插入模式<br>  保存并退出：esc:wq</p>
 <p>  不保存退出：esc:q!</p>
 <p>  三种进入插入模式：<br>  i:在当前的光标所在处插入<br>  o:在当前光标所在的行的下一行插入<br>  a:在光标所在的下一个字符插入</p>
 </li>
 </ul>
 <p><strong>快捷键：<br>dd – 快速删除一行<br>yy - 复制当前行<br>nyy - 从当前行向后复制几行<br>p - 粘贴<br>R – 替换*
-</strong>重定向<em>*
+</strong> 重定向<em>*
 </em>重定向输出，覆盖原有内容<em>
 </em>重定向输出，又追加功能*<br>    cat /etc/passwd &gt; a.txt  将输出定向到a.txt中<br>    cat /etc/passwd &gt;&gt; a.txt  输出并且追加</p>
 <pre><code>ifconfig &gt; ifconfig.txt
-</code></pre><p><strong>管道</strong><br><em>管道是Linux命令中重要的一个概念，其作用是将一个命令的输出用作另一个命令的输入。</em><br>    ls –help | more  分页查询帮助信息<br>    ps –ef | grep java  查询名称中包含java的进程</p>
+</code></pre><p><strong> 管道</strong><br><em>管道是Linux命令中重要的一个概念，其作用是将一个命令的输出用作另一个命令的输入。</em><br>    ls –help | more  分页查询帮助信息<br>    ps –ef | grep java  查询名称中包含java的进程</p>
 <pre><code>ifconfig | more
 cat index.html | more
 ps –ef | grep aio
-</code></pre><p><strong>系统常用命令</strong></p>
+</code></pre><p><strong> 系统常用命令</strong></p>
 <pre><code>date 显示或设置系统时间
 date  显示当前系统时间
 date -s “2014-01-01 10:10:10“  设置系统时间
@@ -465,8 +471,7 @@ who 显示目前登入系统的用户信息。
 uname 显示系统信息。
 uname -a 显示本机详细信息。
 依次为：内核名称(类别)，主机名，内核版本号，内核版本，内核编译日期，硬件名，处理器类型，硬件平台类型，操作系统名称
-</code></pre><p><strong>2018/1/20 19:14:21 </strong></p>
-
+</code></pre>
       
     </div>
     
@@ -514,8 +519,8 @@ uname -a 显示本机详细信息。
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/01/21/FileUploadAndDownLoad/" rel="prev" title="文件上传和下载">
-                文件上传和下载 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/01/21/走向全站/" rel="prev" title="life">
+                life <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -630,7 +635,7 @@ var jiathis_config={
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">42</span>
+                  <span class="site-state-item-count">76</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -641,7 +646,7 @@ var jiathis_config={
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">31</span>
+                  <span class="site-state-item-count">46</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -652,7 +657,7 @@ var jiathis_config={
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">26</span>
+                  <span class="site-state-item-count">32</span>
                   <span class="site-state-item-name">标签</span>
                 
               </div>
@@ -707,7 +712,7 @@ var jiathis_config={
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#linux常用命令"><span class="nav-number">1.</span> <span class="nav-text">linux常用命令</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#VI与VIM编辑器-（基本的CRUD）"><span class="nav-number">1.1.</span> <span class="nav-text">VI与VIM编辑器 ##（基本的CRUD）</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#linux常用命令"><span class="nav-number">1.</span> <span class="nav-text">linux常用命令</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#VI与VIM编辑器-（基本的CRUD）"><span class="nav-number">2.</span> <span class="nav-text">VI与VIM编辑器 #（基本的CRUD）</span></a></li></ol></div>
             
 
           </div>

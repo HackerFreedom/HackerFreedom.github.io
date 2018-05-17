@@ -305,7 +305,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://HackerFreedom.github.io/2018/02/02/oracle第三天/">
+    <link itemprop="mainEntityOfPage" href="http://HackerFreedom.github.io/2018/04/06/mvc的设计模式/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Sam">
@@ -324,7 +324,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/02/02/oracle第三天/" itemprop="url">oracle第三天</a></h1>
+                <a class="post-title-link" href="/2018/04/06/mvc的设计模式/" itemprop="url">未命名</a></h1>
         
 
         <div class="post-meta">
@@ -336,8 +336,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-02T15:34:00+08:00">
-                2018-02-02
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-06T22:02:57+08:00">
+                2018-04-06
               </time>
             
 
@@ -346,28 +346,6 @@
             
           </span>
         
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Oracle的基础知识/" itemprop="url" rel="index">
-                    <span itemprop="name">Oracle的基础知识</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
           
 
           
@@ -398,18 +376,12 @@
       
         
           
-          记录的结果是单行的，就是单行查询
-#什么是视图  # 视图是一种数据库对象，是从一个或者多个表达式或视图中导出的虚表，视图对应的数据并不真正地存储视图中。
-
-使用视图的优点：
-
-简化数据操作: 视图可以简化用户处理数据的方式。
-着重于特定数据： 不必要的数据或敏感数据可以不出现在视图中
-可以对于不同
+          MVC的处理过程：首先控制器接受用户的请求，调用相应的模型来进行业务处理，并返回数据给控制器。控制器调用相应的视图来显示处理的结果。并通过视图呈现给用户。实现人机数据之间的交互；
+ Model（模型），是程序的主体部分，主要包含业务数据和业务逻辑。在模型层，还会涉及到用户发布的服务，在服务中会根据不
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2018/02/02/oracle第三天/#more" rel="contents">
+            <a class="btn" href="/2018/04/06/mvc的设计模式/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -461,7 +433,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://HackerFreedom.github.io/2018/02/02/ORACLE/">
+    <link itemprop="mainEntityOfPage" href="http://HackerFreedom.github.io/2018/04/06/servlet的生命周期/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Sam">
@@ -480,7 +452,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/02/02/ORACLE/" itemprop="url">oracle</a></h1>
+                <a class="post-title-link" href="/2018/04/06/servlet的生命周期/" itemprop="url">未命名</a></h1>
         
 
         <div class="post-meta">
@@ -492,8 +464,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-02T15:34:00+08:00">
-                2018-02-02
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-06T21:54:00+08:00">
+                2018-04-06
               </time>
             
 
@@ -502,28 +474,6 @@
             
           </span>
         
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Oracle的基础知识/" itemprop="url" rel="index">
-                    <span itemprop="name">Oracle的基础知识</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
           
 
           
@@ -554,12 +504,11 @@
       
         
           
-          oracle的简介tabs 查询所有的表
-中文乱码解决1.检查服务器编码: 执行SQL语法: select * from v$nls_parameters; 如果不是中文则执行2 2.设置本地客户端编码: 进入 我的电脑,属性,高级,环境变量,添加2项:LANG=zh_CN.GBK 和 NLS_LA
+          Servlet的的生命周期分为5个阶段：加载，创建，初始化，处理客户请求，卸载。（1）加载：容器通过类加载器使用的servlet类对应的文件加载的servlet（2）创建：通过调用servlet的构造函数创建一个小服务程序对象（3）初始化：调用初始化方法初始化（4）处理客户请求：每当有一个客户请求，
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2018/02/02/ORACLE/#more" rel="contents">
+            <a class="btn" href="/2018/04/06/servlet的生命周期/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -611,7 +560,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://HackerFreedom.github.io/2018/02/01/hexo修改的文件/">
+    <link itemprop="mainEntityOfPage" href="http://HackerFreedom.github.io/2018/04/01/bos之客户下单/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Sam">
@@ -630,7 +579,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/02/01/hexo修改的文件/" itemprop="url">hexo修改的地方</a></h1>
+                <a class="post-title-link" href="/2018/04/01/bos之客户下单/" itemprop="url">day10</a></h1>
         
 
         <div class="post-meta">
@@ -642,8 +591,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-01T19:35:00+08:00">
-                2018-02-01
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-01T22:19:00+08:00">
+                2018-04-01
               </time>
             
 
@@ -665,8 +614,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Hexo教程/" itemprop="url" rel="index">
-                    <span itemprop="name">Hexo教程</span>
+                  <a href="/categories/bos项目/" itemprop="url" rel="index">
+                    <span itemprop="name">bos项目</span>
                   </a>
                 </span>
 
@@ -703,18 +652,10 @@
 
       
         
-          
-          hexo clean #清除缓存 网页正常情况下可以忽略此条命令hexo g #生成静态网页hexo d #开始部署
-npm install hexo -g #安装npm update hexo -g #升级hexo init #初始化
-具体方法实现切换到根目录下，然后运行如下代码
-
-
-
-$ npm
-          ...
+          提供技术点，复习用
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2018/02/01/hexo修改的文件/#more" rel="contents">
+            <a class="btn" href="/2018/04/01/bos之客户下单/">
               阅读全文 &raquo;
             </a>
           </div>
@@ -766,7 +707,7 @@ $ npm
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://HackerFreedom.github.io/2018/01/31/web阶段总结/">
+    <link itemprop="mainEntityOfPage" href="http://HackerFreedom.github.io/2018/03/29/异常的介绍/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Sam">
@@ -785,7 +726,7 @@ $ npm
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/01/31/web阶段总结/" itemprop="url">web阶段的总结</a></h1>
+                <a class="post-title-link" href="/2018/03/29/异常的介绍/" itemprop="url">未命名</a></h1>
         
 
         <div class="post-meta">
@@ -797,8 +738,8 @@ $ npm
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-31T16:59:00+08:00">
-                2018-01-31
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-29T08:12:12+08:00">
+                2018-03-29
               </time>
             
 
@@ -807,28 +748,6 @@ $ npm
             
           </span>
         
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/随笔/" itemprop="url" rel="index">
-                    <span itemprop="name">随笔</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
           
 
           
@@ -859,12 +778,15 @@ $ npm
       
         
           
-          理解什么是前端和后端;
-更深刻的来说就是java的三层架构：数据访问层（dao层） 业务逻辑层（service层） 界面层（ui）Service 层–引用对应的dao数据库操作，业务逻辑层不仅可以处理自身需求的功能还可以调用dao层来完成扩展的功能，这样确实是有利于开发和维护，同时也体现了MVC的设
+          异常类型Exception  异常层次结构的根类
+ArithmeticException 算术错误情形，如以零作除数
+ArrayIndexOutOfBoundsException 数组下标越界
+NullPointerException 尝试访问 null 对象成员
+ClassNotFoundExce
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2018/01/31/web阶段总结/#more" rel="contents">
+            <a class="btn" href="/2018/03/29/异常的介绍/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -916,7 +838,7 @@ $ npm
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://HackerFreedom.github.io/2018/01/29/Reflect/">
+    <link itemprop="mainEntityOfPage" href="http://HackerFreedom.github.io/2018/03/27/ideal中debug的详解/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Sam">
@@ -935,7 +857,7 @@ $ npm
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/01/29/Reflect/" itemprop="url">Reflect&Porxy</a></h1>
+                <a class="post-title-link" href="/2018/03/27/ideal中debug的详解/" itemprop="url">ideal中的debug</a></h1>
         
 
         <div class="post-meta">
@@ -947,8 +869,8 @@ $ npm
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-29T14:01:02+08:00">
-                2018-01-29
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-27T09:41:00+08:00">
+                2018-03-27
               </time>
             
 
@@ -970,8 +892,8 @@ $ npm
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/反射/" itemprop="url" rel="index">
-                    <span itemprop="name">反射</span>
+                  <a href="/categories/ideal/" itemprop="url" rel="index">
+                    <span itemprop="name">ideal</span>
                   </a>
                 </span>
 
@@ -1008,21 +930,10 @@ $ npm
 
       
         
-          
-          反射介绍反射:简单说,就是动态加载一个类,并获取该类中的所有内容,并使用他们.(构造,成员变量,成员方法);
-优点
-
-反射提高程序的灵活性和扩展性；
-降低耦合性，提高自适应能力；
-它允许程序创建和控制任何类的对象，无序提前硬编码目标类
-
-缺点
-
-性能问题：使用反射基本是一种解释操作，用于字段和方法接
-          ...
+          ideal小白进阶
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2018/01/29/Reflect/#more" rel="contents">
+            <a class="btn" href="/2018/03/27/ideal中debug的详解/">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1074,7 +985,7 @@ $ npm
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://HackerFreedom.github.io/2018/01/28/p2p项目思路/">
+    <link itemprop="mainEntityOfPage" href="http://HackerFreedom.github.io/2018/03/27/maven命令处理/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Sam">
@@ -1093,7 +1004,7 @@ $ npm
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/01/28/p2p项目思路/" itemprop="url">p2p项目</a></h1>
+                <a class="post-title-link" href="/2018/03/27/maven命令处理/" itemprop="url">未命名</a></h1>
         
 
         <div class="post-meta">
@@ -1105,8 +1016,8 @@ $ npm
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-28T14:34:31+08:00">
-                2018-01-28
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-27T09:23:44+08:00">
+                2018-03-27
               </time>
             
 
@@ -1115,28 +1026,6 @@ $ npm
             
           </span>
         
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/金融p2p项目/" itemprop="url" rel="index">
-                    <span itemprop="name">金融p2p项目</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
           
 
           
@@ -1167,14 +1056,12 @@ $ npm
       
         
           
-          账户中心-产品购买思路分析：： 产品购买，首先要对产品进行查询，在p2p_home中要查询产品信息，在p2p_management中提供产品的CRUD操作，文档说要用到跨域（但是跨域的概念是 服务器中的端口 协议  不同）
-
-用户的账户表中信息一定要改变
-在product_account 中间表中插
+          maven处理第三方jar导入到本地仓库maven导入jar包。报错如下：
+ The goal you specified requires a project to execute but there is no POM in this directory (C:\Users\duli). Ple
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2018/01/28/p2p项目思路/#more" rel="contents">
+            <a class="btn" href="/2018/03/27/maven命令处理/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1226,7 +1113,7 @@ $ npm
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://HackerFreedom.github.io/2018/01/28/面试/">
+    <link itemprop="mainEntityOfPage" href="http://HackerFreedom.github.io/2018/03/25/内部类/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Sam">
@@ -1245,7 +1132,7 @@ $ npm
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/01/28/面试/" itemprop="url">面试-试题</a></h1>
+                <a class="post-title-link" href="/2018/03/25/内部类/" itemprop="url">未命名</a></h1>
         
 
         <div class="post-meta">
@@ -1257,8 +1144,8 @@ $ npm
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-28T14:15:14+08:00">
-                2018-01-28
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-25T23:05:06+08:00">
+                2018-03-25
               </time>
             
 
@@ -1267,28 +1154,6 @@ $ npm
             
           </span>
         
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/面试/" itemprop="url" rel="index">
-                    <span itemprop="name">面试</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
           
 
           
@@ -1319,15 +1184,16 @@ $ npm
       
         
           
-          
-**Spring的DI是什么（学员注：除了IOC，AOP这些概念，还不太清楚DI的概念）
-*任意数字序列”123456”之类，输出它们所有的排列组合
-*什么是AOP（学员注：会用，但感觉说不清楚）我注：由上面这些题，可以看出，思想很重要，只有琢磨思想和原理的人才能很好地回答这些问题！
- Strin
+          内部类类中定义的内部类的特点特点：
+
+内部类作为外部类的成员，可以直接访问外部类的成员（包括private成员），反之则不行。
+内部类做为外部类成员，可声明为private、默认、protected或public。
+内部类成员只有在内部类的范围之内是有效的。
+用内部类定义在外部类中不可访问的属性。这
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2018/01/28/面试/#more" rel="contents">
+            <a class="btn" href="/2018/03/25/内部类/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1379,7 +1245,7 @@ $ npm
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://HackerFreedom.github.io/2018/01/28/Cookie-Session/">
+    <link itemprop="mainEntityOfPage" href="http://HackerFreedom.github.io/2018/03/25/基本数据类型或者引用数据传递参数/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Sam">
@@ -1398,7 +1264,7 @@ $ npm
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/01/28/Cookie-Session/" itemprop="url">Cookie-Session</a></h1>
+                <a class="post-title-link" href="/2018/03/25/基本数据类型或者引用数据传递参数/" itemprop="url">未命名</a></h1>
         
 
         <div class="post-meta">
@@ -1410,8 +1276,8 @@ $ npm
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-28T14:15:14+08:00">
-                2018-01-28
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-25T12:55:30+08:00">
+                2018-03-25
               </time>
             
 
@@ -1420,28 +1286,6 @@ $ npm
             
           </span>
         
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/缓存技术/" itemprop="url" rel="index">
-                    <span itemprop="name">缓存技术</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
           
 
           
@@ -1472,17 +1316,11 @@ $ npm
       
         
           
-          DDL是tra  删除命令，没有事务回滚
-会话技术的概述简单来说，就是用户打开浏览器，访问web资源，然后关闭浏览器的整个过程。而用户每次访问留下的数据，就需要我们用会话技术来保存了。
-;
-会话技术的实现原理
-会话技术的分类
-会话技术分为cookie 和session 
-cookie属于客户端技术 
+          基本数据类型或者引用数据类型作为方法传递参数12345678910111213141516171819202122232425262728293031323334353637383940414243444546public class ReferenceType &#123;	class Point
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2018/01/28/Cookie-Session/#more" rel="contents">
+            <a class="btn" href="/2018/03/25/基本数据类型或者引用数据传递参数/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1534,7 +1372,7 @@ cookie属于客户端技术
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://HackerFreedom.github.io/2018/01/28/jsp-el-jstl/">
+    <link itemprop="mainEntityOfPage" href="http://HackerFreedom.github.io/2018/03/21/bos2-0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Sam">
@@ -1553,7 +1391,7 @@ cookie属于客户端技术
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/01/28/jsp-el-jstl/" itemprop="url">jsp&el&jstl</a></h1>
+                <a class="post-title-link" href="/2018/03/21/bos2-0/" itemprop="url">BOS项目</a></h1>
         
 
         <div class="post-meta">
@@ -1565,8 +1403,8 @@ cookie属于客户端技术
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-28T14:15:14+08:00">
-                2018-01-28
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-21T13:40:00+08:00">
+                2018-03-21
               </time>
             
 
@@ -1588,8 +1426,8 @@ cookie属于客户端技术
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/JSP/" itemprop="url" rel="index">
-                    <span itemprop="name">JSP</span>
+                  <a href="/categories/物流项目/" itemprop="url" rel="index">
+                    <span itemprop="name">物流项目</span>
                   </a>
                 </span>
 
@@ -1627,13 +1465,13 @@ cookie属于客户端技术
       
         
           
-          JSPjsp的基本介绍Servlet技术生成动态网页的时候很麻烦，需要通过response获得输出流，调用print方法进行打印的。这种编程方式很麻烦，而且美工也不容易处理。SUN公司为了简化动态网页开发，推出JSP
-
-JSP脚本元素&lt;%!    %&gt;    :JSP声明 翻译成 Ser
+          bos物流的项目思路分析
+项目背景1. 基于 宅急送公司业务需求 ，用友公司完成 BOS 系统开发
+多个项目小组 一起进行开发的 ，开发周期 1 年左右（编码 4 个月），开发工程师 20多人（每 4-5 人 组成一个小组，负责一个业务块）BOS 后台管理系统，分为七个部分 ：1、 基础设置 （物流
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2018/01/28/jsp-el-jstl/#more" rel="contents">
+            <a class="btn" href="/2018/03/21/bos2-0/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1685,7 +1523,7 @@ JSP脚本元素&lt;%!    %&gt;    :JSP声明 翻译成 Ser
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://HackerFreedom.github.io/2018/01/28/nginx-svn/">
+    <link itemprop="mainEntityOfPage" href="http://HackerFreedom.github.io/2018/03/21/一级缓存中快照的问题/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Sam">
@@ -1704,7 +1542,7 @@ JSP脚本元素&lt;%!    %&gt;    :JSP声明 翻译成 Ser
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/01/28/nginx-svn/" itemprop="url">nginx&svn</a></h1>
+                <a class="post-title-link" href="/2018/03/21/一级缓存中快照的问题/" itemprop="url">hibernate一级缓存</a></h1>
         
 
         <div class="post-meta">
@@ -1716,8 +1554,8 @@ JSP脚本元素&lt;%!    %&gt;    :JSP声明 翻译成 Ser
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-28T08:50:56+08:00">
-                2018-01-28
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-21T13:40:00+08:00">
+                2018-03-21
               </time>
             
 
@@ -1739,8 +1577,8 @@ JSP脚本元素&lt;%!    %&gt;    :JSP声明 翻译成 Ser
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/技术文章/" itemprop="url" rel="index">
-                    <span itemprop="name">技术文章</span>
+                  <a href="/categories/技术点/" itemprop="url" rel="index">
+                    <span itemprop="name">技术点</span>
                   </a>
                 </span>
 
@@ -1778,11 +1616,12 @@ JSP脚本元素&lt;%!    %&gt;    :JSP声明 翻译成 Ser
       
         
           
-          nginx简介Nginx的概念：Nginx (“engine x”) 是一个高性能的HTTP和反向代理服务器，也是一个电子邮件（IMAP/POP3/SMTP）服务器。Nginx的要点：1、Nginx 可以在大多数 Unix、Linux OS 上编译运行，并有 Windows 移植版2、支持高并发操作
+          关于Hibernate一级缓存的快照问题  Hibernate中的一级缓存的底层是以Map形式存在的，key是主键，value是对象，所以它的泛型为Map,key的泛型为串行化是因为主键都可被序列化。简单说完一级缓存的底层原理，下面开始讲快照问题。
+当程序调用get()方法时，Session会先在缓
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2018/01/28/nginx-svn/#more" rel="contents">
+            <a class="btn" href="/2018/03/21/一级缓存中快照的问题/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1826,7 +1665,7 @@ JSP脚本元素&lt;%!    %&gt;    :JSP声明 翻译成 Ser
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1878,7 +1717,7 @@ JSP脚本元素&lt;%!    %&gt;    :JSP声明 翻译成 Ser
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">42</span>
+                  <span class="site-state-item-count">76</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1889,7 +1728,7 @@ JSP脚本元素&lt;%!    %&gt;    :JSP声明 翻译成 Ser
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">31</span>
+                  <span class="site-state-item-count">46</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -1900,7 +1739,7 @@ JSP脚本元素&lt;%!    %&gt;    :JSP声明 翻译成 Ser
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">26</span>
+                  <span class="site-state-item-count">32</span>
                   <span class="site-state-item-name">标签</span>
                 
               </div>
