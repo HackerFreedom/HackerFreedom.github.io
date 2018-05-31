@@ -98,17 +98,17 @@
 
 
 
-<meta name="description" content="类加载器虚拟机设计团队把类加载阶段中的“通过一个类的全限定名来获取描述此类的二进制字节流 ( 即字节码 )”这个动作放到 Java 虚拟机外部去实现，以便让应用程序自己决定如何去获取所需要的类。实现这个动作的代码模块称为“类加载器”。  类与类加载器对于任意一个类，都需要由加载它的类加载器和这个类本身一同确立其在 Java 虚拟机中的唯一性，每一个类加载器，都拥有一个独立的类名称空间。通俗而言：比">
+<meta name="description" content="线程Thread 进程内部的一个执行单元，它是程序中一个单一的顺序控制流程 线程又被称为轻量级进程(lightweight process) 如果在一个进程中同时运行了多个线程，用来完成不同的工作，则称之为 多线程  线程特点 轻量级进程 独立调度的基本单位 可并发执行 共享进程资源  线程的创建和启动 线程的创建   方式1：继承Java.lang.Thread类，并覆盖run() 方法 方式2">
 <meta property="og:type" content="article">
-<meta property="og:title" content="java类的理解">
-<meta property="og:url" content="http://HackerFreedom.github.io/2018/05/17/新文档1/index.html">
+<meta property="og:title" content="线程的理解">
+<meta property="og:url" content="http://HackerFreedom.github.io/2018/05/29/线程的理解/index.html">
 <meta property="og:site_name" content="TO BE BTTER ME">
-<meta property="og:description" content="类加载器虚拟机设计团队把类加载阶段中的“通过一个类的全限定名来获取描述此类的二进制字节流 ( 即字节码 )”这个动作放到 Java 虚拟机外部去实现，以便让应用程序自己决定如何去获取所需要的类。实现这个动作的代码模块称为“类加载器”。  类与类加载器对于任意一个类，都需要由加载它的类加载器和这个类本身一同确立其在 Java 虚拟机中的唯一性，每一个类加载器，都拥有一个独立的类名称空间。通俗而言：比">
+<meta property="og:description" content="线程Thread 进程内部的一个执行单元，它是程序中一个单一的顺序控制流程 线程又被称为轻量级进程(lightweight process) 如果在一个进程中同时运行了多个线程，用来完成不同的工作，则称之为 多线程  线程特点 轻量级进程 独立调度的基本单位 可并发执行 共享进程资源  线程的创建和启动 线程的创建   方式1：继承Java.lang.Thread类，并覆盖run() 方法 方式2">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-17T07:40:34.357Z">
+<meta property="og:updated_time" content="2018-05-29T03:01:47.047Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="java类的理解">
-<meta name="twitter:description" content="类加载器虚拟机设计团队把类加载阶段中的“通过一个类的全限定名来获取描述此类的二进制字节流 ( 即字节码 )”这个动作放到 Java 虚拟机外部去实现，以便让应用程序自己决定如何去获取所需要的类。实现这个动作的代码模块称为“类加载器”。  类与类加载器对于任意一个类，都需要由加载它的类加载器和这个类本身一同确立其在 Java 虚拟机中的唯一性，每一个类加载器，都拥有一个独立的类名称空间。通俗而言：比">
+<meta name="twitter:title" content="线程的理解">
+<meta name="twitter:description" content="线程Thread 进程内部的一个执行单元，它是程序中一个单一的顺序控制流程 线程又被称为轻量级进程(lightweight process) 如果在一个进程中同时运行了多个线程，用来完成不同的工作，则称之为 多线程  线程特点 轻量级进程 独立调度的基本单位 可并发执行 共享进程资源  线程的创建和启动 线程的创建   方式1：继承Java.lang.Thread类，并覆盖run() 方法 方式2">
 
 
 
@@ -138,13 +138,13 @@
 
 
 
-  <link rel="canonical" href="http://HackerFreedom.github.io/2018/05/17/新文档1/"/>
+  <link rel="canonical" href="http://HackerFreedom.github.io/2018/05/29/线程的理解/"/>
 
 
 
 
 
-  <title>java类的理解 | TO BE BTTER ME</title>
+  <title>线程的理解 | TO BE BTTER ME</title>
   
 
 
@@ -305,7 +305,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://HackerFreedom.github.io/2018/05/17/新文档1/">
+    <link itemprop="mainEntityOfPage" href="http://HackerFreedom.github.io/2018/05/29/线程的理解/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Sam">
@@ -322,7 +322,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">java类的理解</h1>
+          <h1 class="post-title" itemprop="name headline">线程的理解</h1>
         
 
         <div class="post-meta">
@@ -334,8 +334,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-17T15:36:00+08:00">
-                2018-05-17
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-29T10:02:00+08:00">
+                2018-05-29
               </time>
             
 
@@ -357,8 +357,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/java/" itemprop="url" rel="index">
-                    <span itemprop="name">java</span>
+                  <a href="/categories/线程/" itemprop="url" rel="index">
+                    <span itemprop="name">线程</span>
                   </a>
                 </span>
 
@@ -394,23 +394,123 @@
       
 
       
-        <h1 id="类加载器"><a href="#类加载器" class="headerlink" title="类加载器"></a>类加载器</h1><p>虚拟机设计团队把类加载阶段中的“通过一个类的全限定名来获取描述此类的二进制字节流 ( 即字节码 )”这个动作放到 Java 虚拟机外部去实现，以便让应用程序自己决定如何去获取所需要的类。实现这个动作的代码模块称为“类加载器”。</p>
-<ol>
-<li>类与类加载器<br>对于任意一个类，都需要由加载它的类加载器和这个类本身一同确立其在 Java 虚拟机中的唯一性，每一个类加载器，都拥有一个独立的类名称空间。通俗而言：比较两个类是否“相等”（这里所指的“相等”，包括类的 Class 对象的 equals() 方法、isAssignableFrom() 方法、isInstance() 方法的返回结果，也包括使用 instanceof() 关键字做对象所属关系判定等情况），只有在这两个类是由同一个类加载器加载的前提下才有意义，否则，即使这两个类来源于同一个 Class 文件，被同一个虚拟机加载，只要加载它们的类加载器不同，那这两个类就必定不相等。<h2 id="2-类加载器分类"><a href="#2-类加载器分类" class="headerlink" title="2. 类加载器分类"></a>2. 类加载器分类</h2>从 Java 虚拟机的角度来讲，只存在以下两种不同的类加载器：</li>
+        <h1 id="线程Thread"><a href="#线程Thread" class="headerlink" title="线程Thread"></a>线程Thread</h1><ul>
+<li>进程内部的一个执行单元，它是程序中一个单一的顺序控制流程</li>
+<li>线程又被称为轻量级进程(lightweight process)</li>
+<li>如果在一个进程中同时运行了多个线程，用来完成不同的工作，则称之为 多线程</li>
+</ul>
+<h1 id="线程特点"><a href="#线程特点" class="headerlink" title="线程特点"></a>线程特点</h1><ul>
+<li>轻量级进程</li>
+<li>独立调度的基本单位</li>
+<li>可并发执行</li>
+<li>共享进程资源</li>
+</ul>
+<h1 id="线程的创建和启动"><a href="#线程的创建和启动" class="headerlink" title="线程的创建和启动"></a>线程的创建和启动</h1><ol>
+<li>线程的创建</li>
 </ol>
-<p>启动类加载器（Bootstrap ClassLoader），这个类加载器用 C++ 实现，是虚拟机自身的一部分；</p>
-<p>所有其他类的加载器，这些类由 Java 实现，独立于虚拟机外部，并且全都继承自抽象类 java.lang.ClassLoader。</p>
-<p>从 Java 开发人员的角度看，类加载器可以划分得更细致一些：</p>
-<p><code>启动类加载器</code>（Bootstrap ClassLoader） 此类加载器负责将存放在 <java_home>\lib 目录中的，或者被 -Xbootclasspath 参数所指定的路径中的，并且是虚拟机识别的（仅按照文件名识别，如 rt.jar，名字不符合的类库即使放在 lib 目录中也不会被加载）类库加载到虚拟机内存中。 启动类加载器无法被 Java 程序直接引用，用户在编写自定义类加载器时，如果需要把加载请求委派给启动类加载器，直接使用 null 代替即可。</java_home></p>
-<p><code>扩展类加载器</code>（Extension ClassLoader） 这个类加载器是由 ExtClassLoader（sun.misc.Launcher$ExtClassLoader）实现的。它负责将 <java_home>/lib/ext 或者被 java.ext.dir 系统变量所指定路径中的所有类库加载到内存中，开发者可以直接使用扩展类加载器。</java_home></p>
-<p><code>应用程序类加载器</code>（Application ClassLoader） 这个类加载器是由 AppClassLoader（sun.misc.Launcher$AppClassLoader）实现的。由于这个类加载器是 ClassLoader 中的 getSystemClassLoader() 方法的返回值，因此一般称为系统类加载器。它负责加载用户类路径（ClassPath）上所指定的类库，开发者可以直接使用这个类加载器，如果应用程序中没有自定义过自己的类加载器，一般情况下这个就是程序中默认的类加载器。</p>
-<h2 id="3-双亲委派模型"><a href="#3-双亲委派模型" class="headerlink" title="3. 双亲委派模型"></a>3. 双亲委派模型</h2><p>应用程序都是由三种类加载器相互配合进行加载的，如果有必要，还可以加入自己定义的类加载器。下图展示的类加载器之间的层次关系，称为类加载器的双亲委派模型（Parents Delegation Model）。该模型要求除了顶层的启动类加载器外，其余的类加载器都应有自己的父类加载器，这里类加载器之间的父子关系一般通过组合（Composition）关系来实现，而不是通过继承（Inheritance）的关系实现。</p>
-<p>（一）工作过程</p>
-<p>如果一个类加载器收到了类加载的请求，它首先不会自己去尝试加载，而是把这个请求委派给父类加载器，每一个层次的加载器都是如此，依次递归。因此所有的加载请求最终都应该传送到顶层的启动类加载器中，只有当父加载器反馈自己无法完成此加载请求（它搜索范围中没有找到所需类）时，子加载器才会尝试自己加载。</p>
-<p>（二）好处</p>
-<p>使用双亲委派模型来组织类加载器之间的关系，使得 Java 类随着它的类加载器一起具备了一种带有优先级的层次关系。例如类 java.lang.Object，它存放在 rt.jar 中，无论哪个类加载器要加载这个类，最终都是委派给处于模型最顶端的启动类加载器进行加载，因此 Object 类在程序的各种类加载器环境中都是同一个类。相反，如果没有双亲委派模型，由各个类加载器自行加载的话，如果用户编写了一个称为java.lang.Object 的类，并放在程序的 ClassPath 中，那系统中将会出现多个不同的 Object 类，程序将变得一片混乱。如果开发者尝试编写一个与 rt.jar 类库中已有类重名的 Java 类，将会发现可以正常编译，但是永远无法被加载运行。</p>
-<p>（三）实现<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">protected synchronized Class&lt;?&gt; loadClass(String name, boolean resolve) throws ClassNotFoundException&#123;</span><br><span class="line">    //check the class has been loaded or not</span><br><span class="line">    Class c = findLoadedClass(name);</span><br><span class="line">    if(c == null) &#123;</span><br><span class="line">        try&#123;</span><br><span class="line">            if(parent != null) &#123;</span><br><span class="line">                c = parent.loadClass(name, false);</span><br><span class="line">            &#125; else&#123;</span><br><span class="line">                c = findBootstrapClassOrNull(name);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; catch(ClassNotFoundException e) &#123;</span><br><span class="line">            //if throws the exception , the father can not complete the load</span><br><span class="line">        &#125;</span><br><span class="line">        if(c == null) &#123;</span><br><span class="line">            c = findClass(name);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    if(resolve) &#123;</span><br><span class="line">        resolveClass(c);</span><br><span class="line">    &#125;</span><br><span class="line">    return c;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h1 id="四、JVM-参数"><a href="#四、JVM-参数" class="headerlink" title="四、JVM 参数"></a>四、JVM 参数</h1><p>GC 优化配置<br>配置    描述<br>-Xms    初始化堆内存大小<br>-Xmx    堆内存最大值<br>-Xmn    新生代大小<br>-XX:PermSize    初始化永久代大小<br>-XX:MaxPermSize    永久代最大容量<br>GC 类型设置<br>配置    描述<br>-XX:+UseSerialGC    串行垃圾回收器<br>-XX:+UseParallelGC    并行垃圾回收器<br>-XX:+UseConcMarkSweepGC    并发标记扫描垃圾回收器<br>-XX:ParallelCMSThreads=    并发标记扫描垃圾回收器 = 为使用的线程数量<br>-XX:+UseG1GC    G1 垃圾回收器<br>java -Xmx12m -Xms3m -Xmn1m -XX:PermSize=20m -XX:MaxPermSize=20m -XX:+UseSerialGC -jar java-application.jar</p>
+<ul>
+<li>方式1：继承Java.lang.Thread类，并覆盖run() 方法</li>
+<li>方式2：实现Java.lang.Runnable接口，并实现run() 方法</li>
+<li>方式3: 实现Callable接口 </li>
+</ul>
+<ol>
+<li>线程的启动</li>
+</ol>
+<ul>
+<li>新建的线程不会自动开始运行，必须通过start( )方法启动</li>
+<li>不能直接调用run()来启动线程，这样run()将作为一个普通方法立即执行，执行完毕前其他线<br>程无法执行</li>
+<li>Java程序启动时，会立刻创建主线程，main就是在这个线程上运行。当不再产生新线程时，<br>程序是单线程的</li>
+</ul>
+<ol>
+<li>线程的生命周期</li>
+</ol>
+<ul>
+<li>新生状态：<br>• 用new关键字建立一个线程对象后，该线程对象就处于新生状态。<br>• 处于新生状态的线程有自己的内存空间，通过调用start进入就绪状态</li>
+<li>就绪状态：<br>• 处于就绪状态线程具备了运行条件，但还没分配到CPU，处于线程就绪队列，等待系统为其分配CPU<br>• 当系统选定一个等待执行的线程后，它就会从就绪状态进入执行状态，该动作称之为“cpu调度”。</li>
+<li>运行状态：<br>• 在运行状态的线程执行自己的run方法中代码，直到等待某资源而阻塞或完成任务而死亡。<br>• 如果在给定的时间片内没有执行结束，就会被系统给换下来回到等待执行状态。</li>
+<li>阻塞状态：<br>• 处于运行状态的线程在某些情况下，如执行了sleep（睡眠）方法，或等待I/O设备等资源，将让出CPU并暂时停止自己的运行，进<br>入阻塞状态。<br>• 在阻塞状态的线程不能进入就绪队列。只有当引起阻塞的原因消除时，如睡眠时间已到，或等待的I/O设备空闲下来，线程便转入<br>就绪状态，重新到就绪队列中排队等待，被系统选中后从原来停止的位置开始继续运行。</li>
+<li>死亡状态：<br>• 死亡状态是线程生命周期中的最后一个阶段。线程死亡的原因有三个。一个是正常运行的线程完成了它的全部工作；另一个是线<br>程被强制性地终止，如通过执行stop方法来终止一个线程[不推荐使用】，三是线程抛出未捕获的异常</li>
+</ul>
+<ol>
+<li>线程的控制方法</li>
+</ol>
+<ul>
+<li>join ()<br>• 阻塞指定线程等到另一个线程完成以后再继续执行</li>
+<li>sleep ()<br>• 使线程停止运行一段时间，将处于阻塞状态<br>• 如果调用了sleep方法之后，没有其他等待执行的线程，这个时候当前线程不会马上恢复执行！</li>
+<li>yield ()<br>• 让当前正在执行线程暂停，不是阻塞线程，而是将线程转入就绪状态<br>• 如果调用了yield方法之后，没有其他等待执行的线程，这个时候当前线程就会马上恢复执行！</li>
+<li>setDaemon ()<br>• 可以将指定的线程设置成后台线程<br>• 创建后台线程的线程结束时，后台线程也随之消亡<br>• 只能在线程启动之前把它设为后台线程</li>
+<li>interrupt()<br>• 并没有直接中断线程，而是需要被中断线程自己处理</li>
+<li>stop()<br>• 结束线程，不推荐使用</li>
+</ul>
+<h2 id="线程同步"><a href="#线程同步" class="headerlink" title="线程同步"></a>线程同步</h2><ul>
+<li>当多个线程访问同一个数据时，容易出现线程安全问题。需要让线程同步，保证数据安全</li>
+<li><p>线程同步的实现方案</p>
+<ul>
+<li>同步代码块<ul>
+<li>synchronized(obj){}</li>
+</ul>
+</li>
+<li>同步方法<ul>
+<li>private synchronized void makeWithdrawal(int amt) {}</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>lock 锁</p>
+<ul>
+<li>JDK1.5后新增功能，与采用synchronized相比，lock可提供多种锁方案，更灵活</li>
+<li>java.util.concurrent.lock 中的 Lock 框架是锁定的一个抽象，它允许把锁定的实现作为 Java 类，而不是作为语<br>言的特性来实现。这就为 Lock 的多种实现留下了空间，各种实现可能有不同的调度算法、性能特性或者锁<br>定语义。<ul>
+<li>ReentrantLock 类实现了 Lock ，它拥有与 synchronized 相同的并发性和内存语义， 但是添加了类似锁投票、<br>定时锁等候和可中断锁等候的一些特性。此外，它还提供了在激烈争用情况下更佳的性能。</li>
+<li>注意：如果同步代码有异常，要将unlock()写入finally语句块<h2 id="Lock和synchronized的区别"><a href="#Lock和synchronized的区别" class="headerlink" title="Lock和synchronized的区别"></a>Lock和synchronized的区别</h2></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Lock是显式锁（手动开启和关闭锁，别忘记关闭锁），synchronized是隐式锁</li>
+<li>Lock只有代码块锁，synchronized有代码块锁和方法锁</li>
+<li><p>使用Lock锁，JVM将花费较少的时间来调度线程，性能更好。并且具有更好的扩展性（提供更多的子类）</p>
+</li>
+<li><p>使用的顺序</p>
+<ul>
+<li>Lock—-同步代码块（已经进入了方法体，分配了相应资源）—-同步方法（在方法体之外）</li>
+</ul>
+</li>
+</ul>
+<h2 id="线程同步的优缺点"><a href="#线程同步的优缺点" class="headerlink" title="线程同步的优缺点"></a>线程同步的优缺点</h2><ul>
+<li>优点:解决了线程安全的问题</li>
+<li>缺点 :性能下降,带来了死锁的可能性</li>
+</ul>
+<h2 id="死锁"><a href="#死锁" class="headerlink" title="死锁"></a>死锁</h2><ul>
+<li>当两个线程相互等待对方释放“锁”时就会发生死锁</li>
+<li>出现死锁后，不会出现异常，不会出现提示，只是所有的线程都处于阻塞状态，无法继续</li>
+<li>多线程编程时应该注意避免死锁的发生</li>
+</ul>
+<p><strong>解决方案</strong><br>排除的方法:</p>
+<ol>
+<li>撤销陷入死锁的全部进程</li>
+<li>逐个撤消陷于死锁的进程，直到死锁不存在</li>
+</ol>
+<p>对于n个线程的访问:<br>提供线程的的执行顺序,同时释放和加上锁,就可以解决了.可以举同时进门的道理..</p>
+<hr>
+<h1 id="线程池"><a href="#线程池" class="headerlink" title="线程池"></a>线程池</h1><p>创建和销毁对象是非常耗费时间的,对于经常创建和销毁、使用量特别大的资源，比如并发情况下的线程，对性能影响很大</p>
+<ul>
+<li>思路:创建好多个线程，放入线程池中，使用时直接获取引用，不使用时放回池中。可以避<br>免频繁创建销毁、实现重复利用</li>
+</ul>
+<h2 id="线程池的优点"><a href="#线程池的优点" class="headerlink" title="线程池的优点"></a>线程池的优点</h2><ul>
+<li>提高响应速度（减少了创建新线程的时间）</li>
+<li>降低资源消耗（重复利用线程池中线程，不需要每次都创建）</li>
+<li>提高线程的可管理性：避免线程无限制创建、从而销耗系统资源，降低系统稳定性，甚至内<br>存溢出或者CPU耗尽</li>
+</ul>
+<h2 id="线程池-1"><a href="#线程池-1" class="headerlink" title="线程池"></a>线程池</h2><ul>
+<li>Executor：线程池顶级接口，只有一个方法</li>
+<li><p>ExecutorService：真正的线程池接口<br>• void execute(Runnable command) ：执行任务/命令，没有返回值，一般用来执行Runnable<br>• <t> Future<t> submit(Callable<t> task)：执行任务，有返回值，一般又来执行Callable<br>• void shutdown() ：关闭连接池</t></t></t></p>
+</li>
+<li><p>AbstractExecutorService：基本实现了ExecutorService的所有方法</p>
+</li>
+<li>ThreadPoolExecutor：默认的线程池实现类</li>
+<li>ScheduledThreadPoolExecutor：实现周期性任务调度的线程池</li>
+<li>Executors:工具类、线程池的工厂类，用于创建并返回不同类型的线程池<br>• Executors.newCachedThreadPool()：创建一个可根据需要创建新线程的线程池<br>• Executors.newFixedThreadPool(n); 创建一个可重用固定线程数的线程池<br>• Executors.newSingleThreadExecutor() ：创建一个只有一个线程的线程池<br>• Executors.newScheduledThreadPool(n)：创建一个线程池，它可安排在给定延迟后运行命令或者定期地执行。</li>
+</ul>
 
       
     </div>
@@ -443,8 +543,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/05/17/java类的理解/" rel="next" title="java类的理解">
-                <i class="fa fa-chevron-left"></i> java类的理解
+              <a href="/2018/05/17/ideal依赖异常/" rel="next" title="ideal遇到的坑">
+                <i class="fa fa-chevron-left"></i> ideal遇到的坑
               </a>
             
           </div>
@@ -452,10 +552,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/05/17/String-toString-String-valueOf的区别/" rel="prev" title="String中ValueOf的分析">
-                String中ValueOf的分析 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -580,7 +676,7 @@ var jiathis_config={
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">46</span>
+                  <span class="site-state-item-count">47</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -646,7 +742,7 @@ var jiathis_config={
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#类加载器"><span class="nav-number">1.</span> <span class="nav-text">类加载器</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-类加载器分类"><span class="nav-number">1.1.</span> <span class="nav-text">2. 类加载器分类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-双亲委派模型"><span class="nav-number">1.2.</span> <span class="nav-text">3. 双亲委派模型</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#四、JVM-参数"><span class="nav-number">2.</span> <span class="nav-text">四、JVM 参数</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#线程Thread"><span class="nav-number">1.</span> <span class="nav-text">线程Thread</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#线程特点"><span class="nav-number">2.</span> <span class="nav-text">线程特点</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#线程的创建和启动"><span class="nav-number">3.</span> <span class="nav-text">线程的创建和启动</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#线程同步"><span class="nav-number">3.1.</span> <span class="nav-text">线程同步</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Lock和synchronized的区别"><span class="nav-number">3.2.</span> <span class="nav-text">Lock和synchronized的区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#线程同步的优缺点"><span class="nav-number">3.3.</span> <span class="nav-text">线程同步的优缺点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#死锁"><span class="nav-number">3.4.</span> <span class="nav-text">死锁</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#线程池"><span class="nav-number">4.</span> <span class="nav-text">线程池</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#线程池的优点"><span class="nav-number">4.1.</span> <span class="nav-text">线程池的优点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#线程池-1"><span class="nav-number">4.2.</span> <span class="nav-text">线程池</span></a></li></ol></li></ol></div>
             
 
           </div>
